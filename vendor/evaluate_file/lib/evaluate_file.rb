@@ -22,7 +22,8 @@ module EvaluateFile
 private
   # Prints out a friendly error message that shows the original line of code
   def human_friendly_error(e)
-    error_info = e.backtrace.first
+    backtrace = e.backtrace.select { |l| l.include?('.kubes') } # TODO: make configurable so can be reused
+    error_info = backtrace.first
     path, line_no, _ = error_info.split(':')
     line_no = line_no.to_i
     puts "Error evaluating #{path}:".color(:red)
