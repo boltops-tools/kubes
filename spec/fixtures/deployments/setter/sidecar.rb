@@ -1,10 +1,11 @@
 @name = "demo-web"
 @labels = {app: "demo-web"}
-@namespace = "default"
 
-container!(
-  name: @name,
-  image: "nginx",
+@image = "nginx"
+
+sidecar!(
+  name: "sidecar",
+  image: "tongueroo/sinatra",
   ports: [
     containerPort: 88
   ]

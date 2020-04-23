@@ -1,3 +1,5 @@
 @name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
+@image = "nginx"
+
+# @labels = {app: "demo-web"}
+# @namespace = "default"

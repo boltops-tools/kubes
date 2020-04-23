@@ -6,21 +6,27 @@ module Kubes::Dsl::Evaluator
 
     # top-level of resource is quite common
     def resource
-      @resource = {
-        apiVersion: "apps/v1",
+      resource = @resource || {
+        apiVersion: @api_version || "apps/v1",
         kind: kind,
         metadata: metadata,
         spec: spec,
       }.deep_stringify_keys
+      HashSqueezer.new(resource).squeeze
     end
     alias_method :build, :resource
 
     def metadata
-      @metadata || {
+      @metadata || default_metadata
+    end
+
+    def default_metadata
+      props = {
         name: @name,
-        labels: @labels,
-        namespace: @namespace
       }
+      props[:labels] = @labels if @labels
+      props[:namespace] = @namespace if @namespace
+      props
     end
 
     def kind

@@ -2,10 +2,13 @@
 @labels = {app: "demo-web"}
 @namespace = "default"
 
-container!(
+containers!([{
   name: @name,
   image: "nginx",
   ports: [
     containerPort: 88
   ]
-)
+},{
+  name: "sidecar",
+  image: "tongueroo/sinatra",
+}])

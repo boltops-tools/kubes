@@ -1,18 +1,27 @@
 module Kubes::Dsl::Evaluator
   class Deployment < Resource
-    setter_methods :spec, :strategy, :template, :containers, :container
+    setter_methods :container, :containers, :match_labels, :selector, :sidecar, :spec, :strategy, :template
 
     def spec
       @spec || default_spec
     end
 
     def default_spec
-      {
+      props = {
         replicas: @replicas || 1,
-        selector: {matchLabels: @labels},
+        selector: selector,
         strategy: strategy,
         template: template,
       }
+    end
+
+    def selector
+      @selector || match_labels
+    end
+
+    def match_labels
+      default = {matchLabels: @labels} if @labels
+      @match_labels || default
     end
 
     def strategy
@@ -27,17 +36,26 @@ module Kubes::Dsl::Evaluator
 
     def template
       @template || {
-        metadata: {labels: @labels},
+        metadata: template_metdata,
         containers: containers,
       }
     end
 
+    def template_metdata
+      default = {labels: @labels} if @labels
+      @template_metdata || default
+    end
+
     def containers
-      @containers || [container]
+      @containers || [container, sidecar].compact
     end
 
     def container
       @container || default_container
+    end
+
+    def sidecar
+      @sidecar
     end
 
     def default_container
