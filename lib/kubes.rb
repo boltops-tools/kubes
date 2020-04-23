@@ -1,5 +1,6 @@
 $:.unshift(File.expand_path("../", __FILE__))
 require "active_support/core_ext/hash"
+require "fileutils"
 require "kubes/version"
 require "memoist"
 require "rainbow/ext/string"
@@ -17,4 +18,5 @@ Kubes::Autoloader.setup
 
 module Kubes
   class Error < StandardError; end
+  extend Core
 end
