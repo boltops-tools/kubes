@@ -1,4 +1,4 @@
-class Kubes::Dsl::Evaluator
+module Kubes::Dsl::Evaluator
   class Deployment < Resource
     setter_methods :spec, :strategy, :template, :containers, :container
 

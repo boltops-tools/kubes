@@ -1,4 +1,4 @@
-class Kubes::Dsl::Evaluator
+module Kubes::Dsl::Evaluator
   class Base
     include EvaluateFile
 
