@@ -1,7 +1,12 @@
 module Kubes::Builder
   class Deployment < Resource
     def spec
-      { replicas: @replicas || 1,
+      @spec || default_spec
+    end
+
+    def default_spec
+      {
+        replicas: @replicas || 1,
         selector: {matchLabels: @labels},
         strategy: strategy,
         template: template,
@@ -10,9 +15,9 @@ module Kubes::Builder
 
     def strategy
       {
-         rollingUpdate: {
-           maxSurge: @max_surge || 25,
-           maxUnavailable: @max_unavailable || 25
+        rollingUpdate: {
+          maxSurge: @max_surge || 25,
+          maxUnavailable: @max_unavailable || 25
         },
         type: "RollingUpdate",
       }
