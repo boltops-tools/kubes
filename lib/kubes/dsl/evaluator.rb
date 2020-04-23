@@ -1,5 +1,5 @@
 module Kubes::Dsl
-  class Evalator
+  class Evaluator
     include EvaluateFile
     include Syntax
 
@@ -10,7 +10,7 @@ module Kubes::Dsl
     end
 
     def run
-      evaluate_file(path)
+      evaluate_file(@path)
     end
   end
 end

@@ -1,5 +1,5 @@
 module Kubes::Dsl
-  class Syntax
+  module Syntax
     def containers(list=[])
       puts "containers list #{list}"
     end

@@ -4,7 +4,7 @@ require "rainbow/ext/string"
 module EvaluateFile
   class Error < StandardError; end
 
-  def evaluate(path)
+  def evaluate_file(path)
     source_code = IO.read(path)
     begin
       instance_eval(source_code, path)
