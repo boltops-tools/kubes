@@ -4,8 +4,9 @@
 
 @replicas = 2
 @image = "nginx"
-@container_port = 81
+@container_port = 80
 
+# More examples:
 # container!([
 #   name: @name,
 #   image: "nginx",

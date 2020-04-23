@@ -1,5 +1,5 @@
 module Kubes
-  class Generator
+  class Build
     def initialize(options)
       @options = options
       @path = @options[:path]
@@ -16,7 +16,8 @@ module Kubes
       dest = "#{Kubes.root}/.kubes/output/#{basename}.yaml"
       FileUtils.mkdir_p(File.dirname(dest))
       IO.write(dest, yaml)
-      puts "Generated #{dest}"
+      pretty_dest = dest.sub("#{Kubes.root}/",'')
+      puts "Generated #{pretty_dest}"
     end
 
     def each_resource
@@ -25,19 +26,15 @@ module Kubes
         next unless File.file?(path)
         basename = File.basename(path).sub('.rb','')
         klass_name = basename.camelize
-        klass = "Kubes::Dsl::#{klass_name}".constantize
+        begin
+          klass = "Kubes::Dsl::#{klass_name}".constantize
+        rescue NameError
+          puts "WARN: No generator support for #{path}. Skipping.".color(:yellow) if ENV["KUBES_WARN_DSL"]
+          next
+        end
         dsl = klass.new(path: path)
         yield(dsl, basename)
       end
     end
-
-
-    # def run
-    #   evaluator = Dsl::Evaluator.new(path: @path)
-    #   evaluator.run
-    #   deployment = Builder::Deployment.new(evaluator.vars)
-    #   resource = deployment.build
-    #   puts YAML.dump(resource)
-    # end
   end
 end
