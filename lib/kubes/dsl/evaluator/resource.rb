@@ -2,7 +2,8 @@ module Kubes::Dsl::Evaluator
   class Resource < Base
     extend MetaMethods
 
-    setter_methods :resource, :metadata, :kind
+    attr_reader :labels
+    setter_methods :resource, :metadata, :kind, :labels
 
     # top-level of resource is quite common
     def resource
@@ -24,7 +25,7 @@ module Kubes::Dsl::Evaluator
       props = {
         name: @name,
       }
-      props[:labels] = @labels if @labels
+      props[:labels] = labels if labels
       props[:namespace] = @namespace if @namespace
       props
     end

@@ -7,7 +7,7 @@ module Kubes::Dsl::Evaluator
     end
 
     def default_spec
-      props = {
+      {
         replicas: @replicas || 1,
         selector: selector,
         strategy: strategy,
@@ -20,7 +20,7 @@ module Kubes::Dsl::Evaluator
     end
 
     def match_labels
-      default = {matchLabels: @labels} if @labels
+      default = {matchLabels: labels} if labels
       @match_labels || default
     end
 
@@ -42,7 +42,7 @@ module Kubes::Dsl::Evaluator
     end
 
     def template_metdata
-      default = {labels: @labels} if @labels
+      default = {labels: labels} if labels
       @template_metdata || default
     end
 
