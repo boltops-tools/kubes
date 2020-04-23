@@ -1,4 +1,4 @@
-describe Kubes::Dsl::Evaluator::Deployment do
+describe Kubes::Dsl::Deployment do
   let(:evaluator) { described_class.new(options) }
   let(:options) { {path: fixture("deployments/#{deployment_name}") } }
 

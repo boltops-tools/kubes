@@ -6,11 +6,15 @@ module Kubes
     end
 
     def run
-      evaluator = Dsl::Evaluator.new(path: @path)
-      evaluator.run
-      deployment = Builder::Deployment.new(evaluator.vars)
-      resource = deployment.build
-      puts YAML.dump(resource)
     end
+
+
+    # def run
+    #   evaluator = Dsl::Evaluator.new(path: @path)
+    #   evaluator.run
+    #   deployment = Builder::Deployment.new(evaluator.vars)
+    #   resource = deployment.build
+    #   puts YAML.dump(resource)
+    # end
   end
 end

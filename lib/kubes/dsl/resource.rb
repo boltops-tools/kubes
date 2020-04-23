@@ -1,4 +1,4 @@
-module Kubes::Dsl::Evaluator
+module Kubes::Dsl
   class Resource < Base
     extend MetaMethods
 

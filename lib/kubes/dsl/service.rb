@@ -1,4 +1,4 @@
-module Kubes::Dsl::Evaluator
+module Kubes::Dsl
   class Service < Resource
     def default_api_version
       "v1"

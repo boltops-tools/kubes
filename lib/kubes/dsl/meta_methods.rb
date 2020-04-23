@@ -1,4 +1,4 @@
-module Kubes::Dsl::Evaluator
+module Kubes::Dsl
   module MetaMethods
     # Defines methods setting methods. Example:
     #
