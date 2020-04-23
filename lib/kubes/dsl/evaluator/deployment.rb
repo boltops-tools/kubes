@@ -2,8 +2,8 @@ module Kubes::Dsl::Evaluator
   class Deployment < Resource
     setter_methods :container, :containers, :match_labels, :selector, :sidecar, :spec, :strategy, :template
 
-    def spec
-      @spec || default_spec
+    def default_api_version
+      "apps/v1"
     end
 
     def default_spec

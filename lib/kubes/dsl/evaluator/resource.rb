@@ -8,7 +8,7 @@ module Kubes::Dsl::Evaluator
     # top-level of resource is quite common
     def resource
       resource = @resource || {
-        apiVersion: @api_version || "apps/v1",
+        apiVersion: @api_version || default_api_version,
         kind: kind,
         metadata: metadata,
         spec: spec,
@@ -21,12 +21,16 @@ module Kubes::Dsl::Evaluator
       @metadata || default_metadata
     end
 
+    def spec
+      @spec || default_spec
+    end
+
     def default_metadata
       props = {
         name: @name,
       }
       props[:labels] = labels if labels
-      props[:namespace] = @namespace if @namespace
+      props[:namespace] = @namespace
       props
     end
 

@@ -1,10 +1,6 @@
 describe Kubes::Dsl::Evaluator::Deployment do
   let(:evaluator) { described_class.new(options) }
-  let(:options) { {path: deployment_fixture(deployment_name) } }
-
-  def deployment_fixture(name)
-    "spec/fixtures/deployments/#{name}.rb"
-  end
+  let(:options) { {path: fixture("deployments/#{deployment_name}") } }
 
   context "minimum" do
     let(:deployment_name) { "minimum" }

@@ -22,6 +22,10 @@ module Helper
   def show_command?
     ENV['DEBUG'] || ENV['SHOW_COMMAND']
   end
+
+  def fixture(name)
+    "spec/fixtures/#{name}.rb"
+  end
 end
 
 RSpec.configure do |c|
