@@ -1,7 +1,9 @@
 $:.unshift(File.expand_path("../", __FILE__))
+require "active_support/core_ext/hash"
 require "kubes/version"
 require "memoist"
 require "rainbow/ext/string"
+require "yaml"
 
 gem_root = File.dirname(__dir__)
 $:.unshift("#{gem_root}/lib")

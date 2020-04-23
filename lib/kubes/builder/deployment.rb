@@ -24,5 +24,9 @@ module Kubes::Builder
         containers: containers,
       }
     end
+
+    def containers
+      @containers || []
+    end
   end
 end

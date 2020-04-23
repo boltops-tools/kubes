@@ -11,7 +11,7 @@ module Kubes::Builder
         kind: kind,
         metadata: metadata,
         spec: spec,
-      }
+      }.deep_stringify_keys
     end
 
     def metadata
@@ -23,7 +23,8 @@ module Kubes::Builder
     end
 
     def kind
-      File.basename(self.class.to_s) # IE: Deployment
+      kind = self.class.to_s.sub("Kubes::Builder::", "")
+      File.basename(kind) # IE: Deployment
     end
 
     def assign_instance_variables(vars)
