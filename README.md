@@ -1,6 +1,6 @@
 # Kubes
 
-[![Gem Version](https://badge.fury.io/rb/cody.png)](http://badge.fury.io/rb/cody)
+[![Gem Version](https://badge.fury.io/rb/kubes.png)](http://badge.fury.io/rb/kubes)
 
 [![BoltOps Badge](https://img.boltops.com/boltops/badges/boltops-badge.png)](https://www.boltops.com)
 
