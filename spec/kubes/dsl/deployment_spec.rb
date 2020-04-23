@@ -6,7 +6,7 @@ describe Kubes::Dsl::Deployment do
     let(:deployment_name) { "minimum" }
     it "run" do
       resource = evaluator.run
-      puts YAML.dump(resource)
+      puts resource
     end
   end
 
@@ -14,31 +14,15 @@ describe Kubes::Dsl::Deployment do
     let(:deployment_name) { "props" }
     it "run" do
       resource = evaluator.run
-      puts YAML.dump(resource)
+      puts resource
     end
   end
 
-  context "setter container!" do
-    let(:deployment_name) { "setter/container" }
+  context "setter metadata!" do
+    let(:deployment_name) { "setter/metadata" }
     it "run" do
       resource = evaluator.run
-      puts YAML.dump(resource)
-    end
-  end
-
-  context "setter sidecar!" do
-    let(:deployment_name) { "setter/sidecar" }
-    it "run" do
-      resource = evaluator.run
-      puts YAML.dump(resource)
-    end
-  end
-
-  context "setter containers!" do
-    let(:deployment_name) { "setter/containers" }
-    it "run" do
-      resource = evaluator.run
-      puts YAML.dump(resource)
+      puts resource
     end
   end
 
@@ -46,7 +30,31 @@ describe Kubes::Dsl::Deployment do
     let(:deployment_name) { "setter/spec" }
     it "run" do
       resource = evaluator.run
-      puts YAML.dump(resource)
+      puts resource
+    end
+  end
+
+  context "setter container!" do
+    let(:deployment_name) { "setter/container" }
+    it "run" do
+      resource = evaluator.run
+      puts resource
+    end
+  end
+
+  context "setter sidecar!" do
+    let(:deployment_name) { "setter/sidecar" }
+    it "run" do
+      resource = evaluator.run
+      puts resource
+    end
+  end
+
+  context "setter containers!" do
+    let(:deployment_name) { "setter/containers" }
+    it "run" do
+      resource = evaluator.run
+      puts resource
     end
   end
 end

@@ -1,5 +1,5 @@
 module Kubes
-  class Build
+  class Generate
     def initialize(options)
       @options = options
       @path = @options[:path]

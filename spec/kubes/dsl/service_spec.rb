@@ -6,7 +6,7 @@ describe Kubes::Dsl::Service do
     let(:deployment_name) { "minimum" }
     it "run" do
       resource = evaluator.run
-      puts YAML.dump(resource)
+      puts resource
     end
   end
 end

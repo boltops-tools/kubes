@@ -3,10 +3,10 @@ module Kubes
     class_option :verbose, type: :boolean
     class_option :noop, type: :boolean
 
-    desc "build", "build Kubenetes YAML file from DSL"
-    long_desc Help.text(:build)
-    def build
-      Build.new(options).run
+    desc "generate", "generate Kubenetes YAML file from DSL"
+    long_desc Help.text(:generate)
+    def generate
+      Generator.new(options).run
     end
 
     desc "completion *PARAMS", "Prints words for auto-completion."
