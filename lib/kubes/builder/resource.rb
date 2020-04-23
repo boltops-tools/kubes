@@ -28,6 +28,7 @@ module Kubes::Builder
     end
 
     def assign_instance_variables(vars)
+      puts "assign_instance_variables vars #{vars}"
       vars.each do |k,v|
         instance_variable_set("@#{k}", v)
       end
