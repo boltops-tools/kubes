@@ -8,7 +8,7 @@ module Kubes::Dsl
     # top-level of resource is quite common
     def resource
       resource = @resource || {
-        apiVersion: @api_version || default_api_version,
+        apiVersion: @apiVersion || default_api_version,
         kind: kind,
         metadata: metadata,
         spec: spec,
