@@ -12,7 +12,7 @@ module Kubes::Dsl
       [
         protocol: @protocol || "TCP",
         port: @port || 80,
-        targetPort: @target_port || 80,
+        targetPort: @targetPort || 80,
       ]
     end
   end

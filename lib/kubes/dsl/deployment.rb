@@ -1,6 +1,6 @@
 module Kubes::Dsl
   class Deployment < Resource
-    setter_methods :container, :containers, :match_labels, :selector, :sidecar, :spec, :strategy, :template
+    setter_methods :container, :containers, :matchLabels, :selector, :sidecar, :spec, :strategy, :template
 
     def default_api_version
       "apps/v1"
@@ -16,12 +16,12 @@ module Kubes::Dsl
     end
 
     def selector
-      @selector || match_labels
+      @selector || matchLabels
     end
 
-    def match_labels
+    def matchLabels
       default = {matchLabels: labels} if labels
-      @match_labels || default
+      @matchLabels || default
     end
 
     def strategy
@@ -63,8 +63,8 @@ module Kubes::Dsl
         name: @name,
         image: @image,
       }
-      if @container_port
-        props[:container_port] = @container_port
+      if @containerPort
+        props[:containerPort] = @containerPort
       end
       props
     end

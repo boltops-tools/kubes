@@ -26,7 +26,7 @@ Here's an example to build a deployment.yaml
 @namespace = "default"
 @replicas = 2
 @image = "nginx"
-@container_port = 80
+@containerPort = 80
 ```
 
 Run the `kubes generate` command:
@@ -64,7 +64,7 @@ spec:
     containers:
     - name: demo-web
       image: nginx
-      container_port: 80
+      containerPort: 80
 ```
 
 ## Service DSL
@@ -76,7 +76,7 @@ Here's an example of a service.
 ```ruby
 @name = "demo-web"
 @port = 80
-@target_port = 3000
+@targetPort = 3000
 ```
 
 Run the `kubes generate` command:

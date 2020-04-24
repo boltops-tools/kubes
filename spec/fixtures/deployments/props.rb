@@ -4,4 +4,4 @@
 
 @replicas = 2
 @image = "nginx"
-@container_port = 81
+@containerPort = 81

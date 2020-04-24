@@ -6,7 +6,7 @@ module Kubes
     desc "generate", "generate Kubenetes YAML file from DSL"
     long_desc Help.text(:generate)
     def generate
-      Generator.new(options).run
+      Generate.new(options).run
     end
 
     desc "completion *PARAMS", "Prints words for auto-completion."
