@@ -8,7 +8,7 @@ module Kubes::Dsl
     # top-level of resource is quite common
     def resource
       resource = @resource || {
-        apiVersion: @apiVersion || default_api_version,
+        apiVersion: apiVersion,
         kind: kind,
         metadata: metadata,
         spec: spec,
@@ -17,6 +17,10 @@ module Kubes::Dsl
       YAML.dump(data)
     end
     alias_method :build, :resource
+
+    def apiVersion
+      @apiVersion || default_api_version
+    end
 
     def metadata
       @metadata || default_metadata

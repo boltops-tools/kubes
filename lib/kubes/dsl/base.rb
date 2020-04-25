@@ -2,7 +2,6 @@ module Kubes::Dsl
   class Base
     include EvaluateFile
 
-    attr_reader :vars
     def initialize(options)
       @options = options
       @path = options[:path]
