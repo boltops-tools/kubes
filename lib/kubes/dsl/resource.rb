@@ -13,7 +13,7 @@ module Kubes::Dsl
         metadata: metadata,
         spec: spec,
       }.deep_stringify_keys
-      data = HashSqueezer.new.squeeze(resource)
+      data = HashSqueezer.squeeze(resource)
       YAML.dump(data)
     end
     alias_method :build, :resource
@@ -30,7 +30,7 @@ module Kubes::Dsl
       props = {
         name: @name,
       }
-      props[:labels] = labels if labels
+      props[:labels] = labels
       props[:namespace] = @namespace
       props
     end

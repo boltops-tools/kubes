@@ -20,7 +20,7 @@ module Kubes::Dsl
     end
 
     def matchLabels
-      default = {matchLabels: labels} if labels
+      default = {matchLabels: labels}
       @matchLabels || default
     end
 
@@ -42,7 +42,7 @@ module Kubes::Dsl
     end
 
     def template_metdata
-      default = {labels: labels} if labels
+      default = {labels: labels}
       @template_metdata || default
     end
 
@@ -62,10 +62,8 @@ module Kubes::Dsl
       props = {
         name: @name,
         image: @image,
+        containerPort: @containerPort,
       }
-      if @containerPort
-        props[:containerPort] = @containerPort
-      end
       props
     end
   end
