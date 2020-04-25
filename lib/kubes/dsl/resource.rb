@@ -13,7 +13,7 @@ module Kubes::Dsl
         metadata: metadata,
         spec: spec,
       }.deep_stringify_keys
-      data = HashSqueezer.new(resource).squeeze
+      data = HashSqueezer.new.squeeze(resource)
       YAML.dump(data)
     end
     alias_method :build, :resource

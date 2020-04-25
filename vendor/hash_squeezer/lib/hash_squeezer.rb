@@ -2,24 +2,14 @@ require "hash_squeezer/version"
 
 class HashSqueezer
   class Error < StandardError; end
-  def initialize(data)
-    @data = data
-  end
-
-  def squeeze(new_data=nil)
-    data = new_data.nil? ? @data : new_data
-
-    case data
-    when Array
-      data.map! { |v| squeeze(v) }
-    when Hash
-      data.each_with_object({}) do |(k,v), squeezed|
-        # only remove nil and empty Array values within Hash structures
-        squeezed[k] = squeeze(v) unless v.nil? || v.is_a?(Array) && v.empty?
-        squeezed
+    # Thanks https://stackoverflow.com/questions/3450641/removing-all-empty-elements-from-a-hash-yaml
+    def squeeze(hash_or_array)
+      p = proc do |*args|
+        v = args.last
+        v.delete_if(&p) if v.respond_to? :delete_if
+        v.nil? || v.respond_to?(:"empty?") && v.empty?
       end
-    else
-      data # do not transform
-    end
+
+      hash_or_array.delete_if(&p)
   end
 end
