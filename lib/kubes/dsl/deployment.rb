@@ -20,8 +20,7 @@ module Kubes::Dsl
     end
 
     def matchLabels
-      default = {matchLabels: labels}
-      @matchLabels || default
+      @matchLabels || {matchLabels: labels}
     end
 
     def strategy

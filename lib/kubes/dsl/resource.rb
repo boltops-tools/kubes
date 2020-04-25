@@ -3,12 +3,12 @@ module Kubes::Dsl
     extend MetaMethods
 
     attr_reader :labels
-    setter_methods :resource, :metadata, :kind, :labels
+    setter_methods :apiVersion, :resource, :metadata, :kind, :labels
 
     # top-level of resource is quite common
     def resource
       resource = @resource || {
-        apiVersion: @apiVersion || default_api_version,
+        apiVersion: apiVersion || default_api_version,
         kind: kind,
         metadata: metadata,
         spec: spec,
@@ -27,12 +27,11 @@ module Kubes::Dsl
     end
 
     def default_metadata
-      props = {
+      {
         name: @name,
+        labels: labels,
+        namespace: @namespace,
       }
-      props[:labels] = labels
-      props[:namespace] = @namespace
-      props
     end
 
     def kind
