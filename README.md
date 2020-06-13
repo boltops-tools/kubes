@@ -4,157 +4,68 @@
 
 [![BoltOps Badge](https://img.boltops.com/boltops/badges/boltops-badge.png)](https://www.boltops.com)
 
-DSL builds Kubenetes YAML files with a reasonable default structure.  Each part of the structure can be customized and overriden.
+Kubes will:
+
+1. Build the docker image and push it to repo
+2. Compile Kubernetes YAML files from DSL, injecting the build image
+3. Deploy via kubectl apply on the compiled Kubernetes YAML files
+
+Features:
+
+* Automation: Builds the Docker image and updates the compiled YAML files
+* Syntactic Sugar: Use an optional DSL or ERB/YAML to write your Kubneretes YAML files.
+* Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod.
 
 ## Usage
 
-    kubes init     # creates starter .kubes structure
-    kubes build    # builds Docker image
-    kubes generate # generates YAML files from DSL
-    kubes apply    # run `kubectl apply` using the YAML files
-    kubes deploy   # build, generate, apply in one step
+    kubes apply APP [RESOURCE]        # apply the Kubenetes YAML files without changing them
+    kubes compile                     # compile Kubenetes YAML files from DSL
+    kubes deploy APP [RESOURCE]       # deploy to Kubenetes: docker build/push, kubes compile...
+    kubes docker build                # Build docker image.
+    kubes init --app=APP --repo=REPO  # Init project
 
-## Deployment DSL
+## Init
 
-Here's an example to build a deployment.yaml
+The `init` command generates starter `.kubes` [structure](docs/structure.md). Refer to the structure docs for a complete explanation. Here's the resources part of the structure.
 
-.kubes/resources/deployment.rb:
+    .kubes
+    └── resources
+        └── demo-web
+            ├── deployment.rb
+            └── service.rb
 
-```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-@replicas = 2
-@image = "nginx"
-@containerPort = 80
-```
+Use YAML:
 
-Run the `kubes generate` command:
+    kubes init --app demo-web --image "user/demo" --type yaml
 
-    $ kubes generate
-    Generated .kubes/output/deployment.yaml
-    $
+Use DSL:
 
-It produces:
+    kubes init --app demo-web --image "user/demo" --type dsl
 
-.kubes/output/deployment.yaml:
+Different repos:
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: demo-web
-  labels:
-    app: demo-web
-  namespace: default
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: demo-web
-  strategy:
-    rollingUpdate:
-      maxSurge: 25
-      maxUnavailable: 25
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: demo-web
-    containers:
-    - name: demo-web
-      image: nginx
-      containerPort: 80
-```
+    kubes init --app demo-web --image "user/demo" # DockerHub
+    kubes init --app demo-web --image "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo/sinatra" # ECR
+    kubes init --app demo-web --image "gcr.io/#{ENV['GOOGLE_PROJECT']}/demo-web" # GCR
 
-## Service DSL
+## Deploy
 
-Here's an example of a service.
+Edit the files in the `.kubes/resources/demo-web` folder to your needs.
 
-.kubes/resources/service.rb
+Deploy all resources in .kubes/resources/demo-web
 
-```ruby
-@name = "demo-web"
-@port = 80
-@targetPort = 3000
-```
+    kubes deploy demo-web
 
-Run the `kubes generate` command:
+Deploy specific resource, like .kubes/resources/demo-web/deployment.rb
 
-    $ kubes generate
-    Generated .kubes/output/service.yaml
-    $
+    kubes deploy demo-web deployment
+    kubes deploy demo-web service
 
-It produces:
+## DSL or YAML
 
+You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML]()
 
-.kubes/output/service.yaml
-
-```yaml
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: demo-web
-spec:
-- protocol: TCP
-  port: 80
-  targetPort: 3000
-```
-
-## Customizing
-
-Each part of the structure can be customized and overridden if necessary. Here's an example of overriding with `metadata!` and `spec!`
-
-```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-
-metadata!(
-  name: @name,
-  labels: @labels.merge(label2: "value2"),
-  namespace: @namespace,
-)
-spec!(
-  replicas: 3,
-  selector: {matchLabels: @labels},
-  strategy: strategy,
-  template: template,
-)
-```
-
-
-Here's another example of overriding with `containers!`:
-
-```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-containers!([
-  name: @name,
-  image: "nginx",
-  ports: [
-    containerPort: 88
-  ]
-])
-```
-
-If you only have one container for the pod, which is common, you can use `container!`:
-
-```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-container!(
-  name: @name,
-  image: "nginx",
-  ports: [
-    containerPort: 88
-  ]
-)
-```
-
+## Layering Support
 
 ## Installation
 
@@ -162,10 +73,3 @@ Install with:
 
     gem install kubes
 
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am "Add some feature"`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
