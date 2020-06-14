@@ -28,7 +28,7 @@ Features:
 
 Kubes is pretty straightforward. Kubes first builds the Docker image and compiles Kubernetes YAML files. Then it merely calls `kubectl`.
 
-In fact, you can use Kubes to build the files first, and then run kubectl directly. Example:
+In fact, you can use Kubes to build the files first, and then run `kubectl` directly. Example:
 
     kubes docker build
     kubes docker push
@@ -45,10 +45,10 @@ You can also selectively apply specific files:
 
 ## Commands
 
-    kubes apply APP [RESOURCE]        # Apply the Kubenetes YAML files without changing them
+    kubes apply [APP] [RESOURCE]      # Apply the Kubenetes YAML files without changing them
     kubes compile                     # Compile Kubenetes YAML files from DSL
-    kubes delete APP [RESOURCE]       # Delete Kubenetes resources within the app folder
-    kubes deploy APP [RESOURCE]       # Deploy to Kubenetes: docker build/push, kubes compile...
+    kubes delete [APP] [RESOURCE]     # Delete Kubenetes resources within the app folder
+    kubes deploy [APP] [RESOURCE]     # Deploy to Kubenetes: docker build/push, kubes compile...
     kubes docker build                # Build docker image.
     kubes init --app=APP --repo=REPO  # Init project
 

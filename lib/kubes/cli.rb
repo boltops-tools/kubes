@@ -11,7 +11,7 @@ module Kubes
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
-    desc "apply APP [RESOURCE]", "Apply the Kubenetes YAML files without changing them"
+    desc "apply [APP] [RESOURCE]", "Apply the Kubenetes YAML files without changing them"
     long_desc Help.text(:apply)
     image_option.call
     def apply(app=nil, resource=nil)
@@ -32,14 +32,14 @@ module Kubes
       Compile.new(options).run
     end
 
-    desc "delete APP [RESOURCE]", "Delete Kubenetes resources within the app folder"
+    desc "delete [APP] [RESOURCE]", "Delete Kubenetes resources within the app folder"
     long_desc Help.text(:delete)
     image_option.call
     def delete(app=nil, resource=nil)
       Delete.new(options.merge(app: app, resource: resource)).run
     end
 
-    desc "deploy APP [RESOURCE]", "Deploy to Kubenetes: docker build/push, kubes compile, and kubectl apply"
+    desc "deploy [APP] [RESOURCE]", "Deploy to Kubenetes: docker build/push, kubes compile, and kubectl apply"
     long_desc Help.text(:deploy)
     image_option.call
     option :build, type: :boolean, default: true, desc: "whether or not to build docker image"
