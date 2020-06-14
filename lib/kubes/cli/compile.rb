@@ -1,8 +1,7 @@
 class Kubes::CLI
   class Compile < Base
-    include Kubes::Logging
-
     def run
+      Clean.new(@options.merge(mute: true)).run
       Kubes::Compiler.new(@options).run
     end
   end

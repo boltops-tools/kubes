@@ -18,6 +18,13 @@ module Kubes
       Apply.new(options.merge(app: app, resource: resource)).run
     end
 
+    desc "clean", "Remove .kubes/output files"
+    long_desc Help.text(:clean)
+    image_option.call
+    def clean
+      Clean.new(options).run
+    end
+
     desc "compile", "Compile Kubenetes YAML files from DSL"
     long_desc Help.text(:compile)
     image_option.call
