@@ -1,6 +1,6 @@
 # Layering
 
-Kubes supports layering files together so you can have a common resource definition and then override them with environment specific settings.
+Kubes supports layering files together so you can use the same Kubernetes files to build multiple environments like dev and prod.
 
 ## Resources
 

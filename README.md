@@ -14,11 +14,36 @@ Kubes will:
 
 Features:
 
-* Automation: Builds the Docker image and updates the compiled YAML files
-* Syntactic Sugar: Use an optional DSL or ERB/YAML to write your Kubneretes YAML files.
-* Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod.
+* Automation: [Builds the Docker image](docs/docker.md) and updates the compiled YAML files
+* Syntactic Sugar: Use an optional [DSL](docs/dsl.md) or [ERB/YAML](docs/yaml.md) to write your Kubneretes YAML files.
+* Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod with [layering](docs/layering.md).
+* CLI Customizations: You can customize the [cli args](docs/kubectl.md). You can also run hooks before and after kubectl commands.
 
 ## Usage
+
+    kubes init # creates .kubes structure
+    kubes deploy
+
+## How It Works
+
+Kubes is pretty straightforward. Kubes first builds the Docker image and compiles Kubernetes YAML files. Then it merely calls `kubectl`.
+
+In fact, you can use Kubes to build the files first, and then run kubectl directly. Example:
+
+    kubes docker build
+    kubes docker push
+    kubes compile
+
+Now, use `kubectl` directly. This will apply all the files:
+
+    kubectl apply --recursive -f .kubes/output
+
+You can also selectively apply specific files:
+
+    kubectl apply -f .kubes/output/demo-web/deployment.yaml
+    kubectl apply -f .kubes/output/demo-web/service.yaml
+
+## Commands
 
     kubes apply APP [RESOURCE]        # Apply the Kubenetes YAML files without changing them
     kubes compile                     # Compile Kubenetes YAML files from DSL
@@ -87,6 +112,10 @@ You can deploy them all at once with:
 You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML](docs/yaml.md)
 
 ## Layering Support
+
+Kubes supports layering files together so you can use the same Kubernetes files to build multiple environments like dev and prod.
+
+See [Layering Docs](docs/layering.md).
 
 ## Installation
 

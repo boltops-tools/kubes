@@ -5,7 +5,7 @@ module Kubes::Docker
     include Kubes::Util::Time
 
     delegate :image_name, to: :builder
-    def initialize(options)
+    def initialize(options={})
       @options = options
     end
 

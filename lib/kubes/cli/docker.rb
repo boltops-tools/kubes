@@ -12,9 +12,8 @@ class Kubes::CLI
     desc "push IMAGE", "Push the docker image."
     long_desc Help.text("docker:push")
     option :push, type: :boolean, default: false
-    def push(full_repo=nil)
-      # full_repo of nil results in defaulting to the last built image by ufo docker build
-      pusher = Kubes::Docker::Push.new(full_repo, options)
+    def push
+      pusher = Kubes::Docker::Push.new(options)
       pusher.run
     end
   end
