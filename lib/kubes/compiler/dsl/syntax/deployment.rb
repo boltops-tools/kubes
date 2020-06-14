@@ -65,9 +65,15 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_container
       {
-        name: @name,
+        command: command,
         image: @image,
+        name: @name,
       }
+    end
+
+    def command
+      return unless @command
+      @command.is_a?(String) ? @command.split(' ') : @command # else assume Array
     end
   end
 end
