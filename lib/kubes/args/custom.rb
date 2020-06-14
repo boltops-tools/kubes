@@ -1,13 +1,13 @@
-module Kubes::CLI::Kubectl::Args
+module Kubes::Args
   class Custom
     extend Memoist
     include Dsl
     include DslEvaluator
 
     attr_accessor :name
-    def initialize(name)
+    def initialize(name, file)
       @name = name.to_s
-      @file = "#{Kubes.root}/.kubes/config/kubectl/args.rb"
+      @file = file # IE: .kubes/config/kubectl/args.rb
       @commands = {}
     end
 

@@ -1,13 +1,7 @@
 module Kubes::Docker
   class Push < Base
-    extend Memoist
     include Kubes::Logging
     include Kubes::Util::Time
-
-    delegate :image_name, to: :builder
-    def initialize(options={})
-      @options = options
-    end
 
     def run
       update_auth_token
@@ -16,23 +10,20 @@ module Kubes::Docker
       if @options[:noop]
         message = "NOOP #{message}"
       else
-        command = "docker push #{image_name}"
-        logger.info "=> #{command}".color(:green)
-        success = sh(command)
-        unless success
-          logger.error "ERROR: The docker image fail to push.".color(:red)
-          exit 1
-        end
+        push
       end
       took = Time.now - start_time
       message << "\nDocker push took #{pretty_time(took)}.".color(:green)
       logger.info message
     end
 
-    def builder
-      Build.new(@options)
+    def push
+      params = args.flatten.join(' ')
+      command = "docker push #{params}"
+      run_hooks "push" do
+        sh(command)
+      end
     end
-    memoize :builder
 
     def update_auth_token
       auth = Kubes::Auth.new(image_name)

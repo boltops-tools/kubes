@@ -1,4 +1,4 @@
-class Kubes::CLI
+module Kubes
   class Kubectl
     extend Memoist
     include Kubes::Util::Sh
@@ -16,7 +16,7 @@ class Kubes::CLI
     end
 
     def run_hooks(name, &block)
-      hooks = Hooks::Builder.new(@mod, name)
+      hooks = Kubes::Hooks::Builder.new(name, "#{Kubes.root}/.kubes/config/kubectl/hooks.rb")
       hooks.build # build hooks
       hooks.run_hooks(&block)
     end
@@ -27,7 +27,7 @@ class Kubes::CLI
     end
 
     def custom
-      custom = Args::Custom.new(@name)
+      custom = Kubes::Args::Custom.new(@name, "#{Kubes.root}/.kubes/config/kubectl/args.rb")
       custom.build
       custom
     end
