@@ -18,15 +18,6 @@ class Kubes::CLI
     end
 
   public
-    def already_init_check
-      return unless File.exist?(".kubes")
-      logger.info <<~EOL
-        Theres already an .kubes folder. This project has already been initialized by kubes.
-        Delete the .kubes folder and run again if you want to reinitialize.
-      EOL
-      exit
-    end
-
     def create_base_files
       set_source("base")
       directory ".", "."

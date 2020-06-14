@@ -1,15 +1,10 @@
 module Kubes::Util
   module Sure
-    def sure?(message="Are you sure?", desc=nil)
+    def sure?(message="Are you sure?")
       if @options[:yes]
         sure = 'y'
       else
-        out = if desc
-          "\n#{desc}\n#{message} (y/N) "
-        else
-          "#{message} (y/N) "
-        end
-        print out
+        print "#{message} (y/N) "
         sure = $stdin.gets
       end
 

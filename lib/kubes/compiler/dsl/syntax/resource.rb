@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
-    attr_reader :labels
-    setter_methods :apiVersion, :resource, :metadata, :kind, :labels
+    setting_methods :apiVersion, :resource, :metadata, :kind, :labels
 
     # top-level of resource is quite common
     def resource

@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Deployment < Resource
-    attr_reader :sidecar
-    setter_methods :container, :containers, :matchLabels, :selector, :sidecar, :spec, :strategy, :template, :templateMetadata
+    setting_methods :container, :containers, :matchLabels, :selector, :sidecar, :spec, :strategy, :template, :templateMetadata
 
     def default_api_version
       "apps/v1"
