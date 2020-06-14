@@ -4,7 +4,7 @@ module Kubes
 
     def evaluate
       evaluate_file(".kubes/config.rb")
-      evaluate_file(".kubes/config/envs/#{Kubes.env}.rb")
+      evaluate_file(".kubes/config/env/#{Kubes.env}.rb")
     end
 
     def repo(v=nil)

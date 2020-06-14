@@ -39,17 +39,17 @@ You can override this on an environment basis:
 
     .kubes
     └── config
-      └── envs
+      └── env
         ├── dev.rb
         └── prod.rb
 
-config/envs/dev.rb:
+config/env/dev.rb:
 
 ```ruby
 repo "11223344-DEV.dkr.ecr.us-west-2.amazonaws.com/demo/sinatra"
 ```
 
-config/envs/prod.rb:
+config/env/prod.rb:
 
 ```ruby
 repo "1122334-PROD.dkr.ecr.us-west-2.amazonaws.com/demo/sinatra"
