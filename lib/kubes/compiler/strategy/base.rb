@@ -1,6 +1,7 @@
 class Kubes::Compiler::Strategy
   class Base
     include Kubes::Compiler::Layering
+    include Kubes::Logging
 
     def initialize(options={})
       @options = options

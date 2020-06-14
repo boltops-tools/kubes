@@ -11,6 +11,15 @@ class Kubes::Compiler::Strategy
       # Remove .kubes/resources
       klass_name = File.basename(@filename).sub('.rb','').camelize # Deployment, Service, etc
       "Kubes::Compiler::Dsl::Syntax::#{klass_name}".constantize
+    rescue NameError => e
+      file = ".kubes/resources/#{klass_name.underscore}"
+      logger.debug "#{e.class}: #{e.message}"
+      logger.error "ERROR: DSL syntax is not supported for this resource type: #{klass_name}".color(:red)
+      logger.error <<~EOL
+        The DSL does not support: #{file}.rb
+        Try using YAML instead: #{file}.yaml
+      EOL
+      exit 1
     end
   end
 end
