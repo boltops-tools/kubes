@@ -55,7 +55,7 @@ Different repos:
 
 Edit the files in the `.kubes/resources/demo-web` folder to your needs.
 
-Deploy all resources in .kubes/resources/demo-web
+Deploy all app resources in .kubes/resources/demo-web
 
     kubes deploy demo-web
 
@@ -63,6 +63,24 @@ Deploy specific resource, like .kubes/resources/demo-web/deployment.rb
 
     kubes deploy demo-web deployment
     kubes deploy demo-web service
+
+## Deploy: Web, Worker, Clock Pattern
+
+A common pattern is to use the same app code for different purposes like clock, worker, and web processes.
+
+    .kubes
+    └── resources
+        ├── demo-clock
+        │   └── deployment.rb
+        ├── demo-worker
+        │   └── deployment.rb
+        └── demo-web
+            ├── deployment.rb
+            └── service.rb
+
+You can deploy them all at once with:
+
+    kubes deploy
 
 ## DSL or YAML
 
@@ -75,4 +93,3 @@ You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML](docs/
 Install with:
 
     gem install kubes
-

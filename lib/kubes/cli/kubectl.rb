@@ -11,7 +11,7 @@ class Kubes::CLI
     end
 
     def apply
-      kubectl "apply -f #{resource_path}"
+      kubectl "apply --recursive -f #{resource_path}"
     end
 
     def resource_path
