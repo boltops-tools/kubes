@@ -30,8 +30,8 @@ module Kubes
     #
     def consider?(path)
       rel_path = path.sub(%r{.*\.kubes/resources/},'')
-      two_layers_deep = rel_path.split('/').size <= 2
-      two_layers_deep && File.file?(path)
+      two_levels_deep = rel_path.split('/').size <= 2
+      two_levels_deep && File.file?(path)
     end
 
     def write(filename, yaml)

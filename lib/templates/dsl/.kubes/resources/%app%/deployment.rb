@@ -4,7 +4,6 @@
 
 @replicas = 1
 @image = built_image # IE: tongueroo/demo-web:kubes-2020-06-13T19-55-16-43afc6e
-@containerPort = 80
 
 # The variables provide a convenient way to set the properties within the built deployment.yaml structure.
 # They provide a sensible default structure.
@@ -17,14 +16,6 @@
 #
 # Examples:
 #
-# container!([
-#   name: @name,
-#   image: "nginx",
-#   ports: [
-#     containerPort: 80
-#   ]
-# ])
-#
 # spec!(
 #   replicas: @replicas || 1,
 #   selector: {matchLabels: @labels},
@@ -32,6 +23,14 @@
 #   test: "me",
 #   template: template,
 # )
+#
+# container!([
+#   name: @name,
+#   image: "nginx",
+#   ports: [
+#     containerPort: 80
+#   ]
+# ])
 #
 # containers!([
 #   name: @name,
