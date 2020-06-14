@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Kubes::VERSION
   spec.authors       = ["Tung Nguyen"]
   spec.email         = ["tung@boltops.com"]
-  spec.summary       = "DSL that builds and compiles kubernetes yaml files"
+  spec.summary       = "Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, and apply them"
   spec.homepage      = "https://github.com/boltops-tools/kubes"
   spec.license       = "Apache2.0"
 

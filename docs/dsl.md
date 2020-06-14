@@ -14,9 +14,9 @@ Here's an example to build a deployment.yaml
 @image = "nginx"
 ```
 
-Run the `kubes generate` command:
+Run the `kubes compile` command:
 
-    $ kubes generate
+    $ kubes compile
     Generated .kubes/output/deployment.yaml
     $
 
@@ -63,9 +63,9 @@ Here's an example of a service.
 @targetPort = 3000
 ```
 
-Run the `kubes generate` command:
+Run the `kubes compile` command:
 
-    $ kubes generate
+    $ kubes compile
     Generated .kubes/output/service.yaml
     $
 
@@ -99,4 +99,4 @@ The default port is generally 80. The container may not be exposing port 80. In 
 
 ## Further Customizations
 
-Refer to [DSL Customizations](docs/cusomtizations.md)
+Refer to [DSL Customizations](dsl/customizations.md)

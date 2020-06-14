@@ -14,6 +14,7 @@ Kubes does one thing to provide extra power. Your YAML files are processed throu
 
 .kubes/resources/demo-web/deployment.yaml
 
+```yaml
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -40,3 +41,4 @@ spec:
       containers:
       - name: demo-web
         image: <%= built_image %>
+```

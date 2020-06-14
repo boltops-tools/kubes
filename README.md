@@ -4,6 +4,8 @@
 
 [![BoltOps Badge](https://img.boltops.com/boltops/badges/boltops-badge.png)](https://www.boltops.com)
 
+Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, and apply them.
+
 Kubes will:
 
 1. Build the docker image and push it to repo
@@ -63,7 +65,7 @@ Deploy specific resource, like .kubes/resources/demo-web/deployment.rb
 
 ## DSL or YAML
 
-You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML]()
+You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML](docs/yaml.md)
 
 ## Layering Support
 
