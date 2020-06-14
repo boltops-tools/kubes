@@ -22,6 +22,7 @@ Features:
 ## Usage
 
     kubes init # creates .kubes structure
+    # edit the .kubes/resources files to your needs
     kubes deploy
 
 ## How It Works
