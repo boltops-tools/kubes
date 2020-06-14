@@ -5,6 +5,7 @@ metadata:
   name: demo-web
   labels:
     app: demo-web
+  namespace: default
 spec:
   ports:
   - port: 80

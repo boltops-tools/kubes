@@ -1,4 +1,5 @@
 @name = "demo-web"
+@namespace = "default"
 @labels = {app: "demo-web"}
 @ports = [
   port: 80,

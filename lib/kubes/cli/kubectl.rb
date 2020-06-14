@@ -7,7 +7,7 @@ class Kubes::CLI
     end
 
     def delete
-      kubectl "delete -f #{resource_path}"
+      kubectl "delete --recursive -f #{resource_path}"
     end
 
     def apply

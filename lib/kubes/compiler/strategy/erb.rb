@@ -18,7 +18,8 @@ class Kubes::Compiler::Strategy
     def render(path)
       if File.exist?(path)
         yaml = RenderMePretty.result(path, context: self)
-        YAML.load(yaml)
+        result = YAML.load(yaml)
+        result.is_a?(Hash) ? result : {} # in case of blank yaml doc a Boolean false is returned
       else
         {}
       end
