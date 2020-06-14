@@ -20,9 +20,10 @@ Features:
 
 ## Usage
 
-    kubes apply APP [RESOURCE]        # apply the Kubenetes YAML files without changing them
-    kubes compile                     # compile Kubenetes YAML files from DSL
-    kubes deploy APP [RESOURCE]       # deploy to Kubenetes: docker build/push, kubes compile...
+    kubes apply APP [RESOURCE]        # Apply the Kubenetes YAML files without changing them
+    kubes compile                     # Compile Kubenetes YAML files from DSL
+    kubes delete APP [RESOURCE]       # Delete Kubenetes resources within the app folder
+    kubes deploy APP [RESOURCE]       # Deploy to Kubenetes: docker build/push, kubes compile...
     kubes docker build                # Build docker image.
     kubes init --app=APP --repo=REPO  # Init project
 

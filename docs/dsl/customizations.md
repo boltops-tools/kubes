@@ -23,21 +23,6 @@ spec!(
 ```
 
 
-Here's another example of overriding with `containers!`:
-
-```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-containers!([
-  name: @name,
-  image: "nginx",
-  ports: [
-    containerPort: 88
-  ]
-])
-```
-
 If you only have one container for the pod, which is common, you can use `container!`:
 
 ```ruby
@@ -47,8 +32,17 @@ If you only have one container for the pod, which is common, you can use `contai
 container!(
   name: @name,
   image: "nginx",
-  ports: [
-    containerPort: 88
-  ]
 )
+```
+
+Here's another example of overriding with with multiple `containers!`:
+
+```ruby
+@name = "demo-web"
+@labels = {app: "demo-web"}
+@namespace = "default"
+containers!([
+  name: @name,
+  image: "nginx",
+])
 ```

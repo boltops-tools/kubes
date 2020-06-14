@@ -6,6 +6,10 @@ class Kubes::CLI
       @options = options
     end
 
+    def delete
+      kubectl "delete -f #{resource_path}"
+    end
+
     def apply
       kubectl "apply -f #{resource_path}"
     end

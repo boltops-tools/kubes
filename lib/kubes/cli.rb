@@ -7,25 +7,32 @@ module Kubes
       option :image, desc: "override image"
     }
 
-    desc "docker SUBCOMMAND", "docker subcommands"
+    desc "docker SUBCOMMAND", "Docker subcommands"
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
-    desc "apply APP [RESOURCE]", "apply the Kubenetes YAML files without changing them"
+    desc "apply APP [RESOURCE]", "Apply the Kubenetes YAML files without changing them"
     long_desc Help.text(:apply)
     image_option.call
     def apply(app, resource=nil)
       Apply.new(options.merge(app: app, resource: resource)).run
     end
 
-    desc "compile", "compile Kubenetes YAML files from DSL"
+    desc "compile", "Compile Kubenetes YAML files from DSL"
     long_desc Help.text(:compile)
     image_option.call
     def compile
       Compile.new(options).run
     end
 
-    desc "deploy APP [RESOURCE]", "deploy to Kubenetes: docker build/push, kubes compile, and kubectl apply"
+    desc "delete APP [RESOURCE]", "Delete Kubenetes resources within the app folder"
+    long_desc Help.text(:delete)
+    image_option.call
+    def delete(app, resource=nil)
+      Delete.new(options.merge(app: app, resource: resource)).run
+    end
+
+    desc "deploy APP [RESOURCE]", "Deploy to Kubenetes: docker build/push, kubes compile, and kubectl apply"
     long_desc Help.text(:deploy)
     image_option.call
     option :build, type: :boolean, default: true, desc: "whether or not to build docker image"

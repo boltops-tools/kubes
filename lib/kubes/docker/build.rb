@@ -6,8 +6,14 @@ module Kubes::Docker
     end
 
     def run
-      store_image_name
+      reserve_image_name
       sh "docker build #{build_options}-t #{image_name} -f #{@dockerfile} ."
+      store_image_name
+    end
+
+    @@image_name = nil
+    def reserve_image_name
+      @@image_name = generate_name
     end
 
     # Store this in a file because this name gets reference in other tasks later
@@ -16,8 +22,7 @@ module Kubes::Docker
     # Only when a new docker build command gets run will the image name state be updated.
     def store_image_name
       FileUtils.mkdir_p(File.dirname(image_state_path))
-      image_name = generate_name
-      IO.write(image_state_path, image_name)
+      IO.write(image_state_path, @@image_name)
     end
 
     # output can get entirely wiped so dont use that folder
@@ -30,6 +35,7 @@ module Kubes::Docker
     #   tongueroo/demo-kubes:kubes-2018-04-20T09-29-08-b7d51df
     def image_name
       return generate_name if @options[:generate]
+      return @@image_name if @@image_name
       return "tongueroo/demo-kubes:kubes-12345678" if ENV['TEST']
 
       unless File.exist?(image_state_path)
