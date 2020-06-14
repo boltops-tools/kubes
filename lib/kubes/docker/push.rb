@@ -16,17 +16,19 @@ module Kubes::Docker
       if @options[:noop]
         message = "NOOP #{message}"
       else
-        command = "docker push #{image_name}"
-        logger.info "=> #{command}".color(:green)
-        success = sh(command)
-        unless success
-          logger.error "ERROR: The docker image fail to push.".color(:red)
-          exit 1
-        end
+        push
       end
       took = Time.now - start_time
       message << "\nDocker push took #{pretty_time(took)}.".color(:green)
       logger.info message
+    end
+
+    def push
+      command = "docker push #{image_name}"
+      logger.info "=> #{command}".color(:green)
+      run_hooks "push" do
+        sh(command)
+      end
     end
 
     def builder

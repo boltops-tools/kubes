@@ -1,4 +1,4 @@
-module Kubes::CLI::Kubectl::Args
+module Kubes::Args
   module Dsl
     def command(*commands, **props)
       commands.each do |name|

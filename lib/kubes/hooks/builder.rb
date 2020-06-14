@@ -1,4 +1,4 @@
-module Kubes::CLI::Kubectl::Hooks
+module Kubes::Hooks
   class Builder
     extend Memoist
     include Dsl
@@ -7,9 +7,9 @@ module Kubes::CLI::Kubectl::Hooks
     include Kubes::Util::Sh
 
     attr_accessor :name
-    def initialize(mod, name)
-      @mod, @name = mod, name.to_s
-      @file = "#{Kubes.root}/.kubes/config/kubectl/hooks.rb"
+    def initialize(name, file)
+      @name = name.to_s
+      @file = file # IE: .kubes/config/kubectl/hooks.rb
       @hooks = {before: {}, after: {}}
     end
 

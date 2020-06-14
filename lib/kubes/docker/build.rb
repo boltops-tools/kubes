@@ -7,7 +7,9 @@ module Kubes::Docker
 
     def run
       reserve_image_name
-      sh "docker build #{build_options}-t #{image_name} -f #{@dockerfile} ."
+      run_hooks "build" do
+        sh "docker build #{build_options}-t #{image_name} -f #{@dockerfile} ."
+      end
       store_image_name
     end
 
