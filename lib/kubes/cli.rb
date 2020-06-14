@@ -36,6 +36,7 @@ module Kubes
     desc "delete [APP] [RESOURCE]", "Delete Kubenetes resources within the app folder"
     long_desc Help.text(:delete)
     image_option.call
+    option :yes, aliases: %w[y], type: :boolean, desc: "Skip are you sure prompt"
     def delete(app=nil, resource=nil)
       Delete.new(options.merge(app: app, resource: resource)).run
     end

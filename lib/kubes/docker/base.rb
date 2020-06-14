@@ -69,7 +69,7 @@ module Kubes::Docker
     @@timestamp = Time.now.strftime('%Y-%m-%dT%H-%M-%S')
     def generate_name
       # IE: tongueroo/demo:kubes-
-      "#{repo}:kubes-#{@@timestamp}-#{git_sha}"
+      ["#{repo}:kubes-#{@@timestamp}", git_sha].compact.join('-')
     end
 
     def repo
@@ -79,6 +79,8 @@ module Kubes::Docker
     def git_sha
       return @git_sha if @git_sha
       # always call this and dont use the execute method because of the noop option
+      git_installed = system("type git > /dev/null 2>&1")
+      return unless git_installed && File.exist?("#{Kubes.root}/.git")
       @git_sha = `cd #{Kubes.root} && git rev-parse --short HEAD`
       @git_sha.strip!
     end
