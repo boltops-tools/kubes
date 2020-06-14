@@ -33,7 +33,7 @@ In fact, you can use Kubes to build the files first, and then run `kubectl` dire
 
     kubes docker build
     kubes docker push
-    kubes compile
+    kubes compile  # compiles the .kubes/resources files to .kubes/output
 
 Now, use `kubectl` directly. This will apply all the files:
 
@@ -43,6 +43,14 @@ You can also selectively apply specific files:
 
     kubectl apply -f .kubes/output/demo-web/deployment.yaml
     kubectl apply -f .kubes/output/demo-web/service.yaml
+
+You can also apply with kubes. This will compile the automatically files also.
+
+    kubes apply
+
+The deploy command, does all 3 steps: builds the docker image, compiles the `.kubes/resources` files, and runs kubectl apply.
+
+    kubes deploy
 
 ## Commands
 
