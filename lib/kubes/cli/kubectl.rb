@@ -1,30 +1,48 @@
 class Kubes::CLI
   class Kubectl
+    extend Memoist
     include Kubes::Util::Sh
 
-    def initialize(options={})
-      @options = options
+    def initialize(name, options={})
+      @name, @options = name, options
     end
 
-    def delete
-      kubectl "delete --recursive -f #{resource_path}"
+    def run
+      params = args.flatten.join(' ')
+      command = "kubectl #{@name} #{params}"
+      run_hooks(@name) do
+        sh(command)
+      end
     end
 
-    def apply
-      kubectl "apply --recursive -f #{resource_path}"
+    def run_hooks(name, &block)
+      hooks = Hooks::Builder.new(@mod, name)
+      hooks.build # build hooks
+      hooks.run_hooks(&block)
     end
 
-    def resource_path
-      [".kubes/output", @options[:app], resource].compact.join('/')
+    def args
+      # base at end in case of redirection. IE: command > /path
+      custom.args + default.args
     end
 
-    def resource
-      return unless r = @options[:resource] # intentional assignment
-      r.include?(".yaml") ? r : "#{r}.yaml"
+    def custom
+      custom = Args::Custom.new(@name)
+      custom.build
+      custom
     end
+    memoize :custom
 
-    def kubectl(command)
-      sh("kubectl #{command}")
+    def default
+      Args::Default.new(@name, @options)
+    end
+    memoize :default
+
+    class << self
+      def run(name, options={})
+        new(name, options).run
+      end
     end
   end
 end
+

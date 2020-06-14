@@ -2,7 +2,7 @@ class Kubes::CLI
   class Delete < Base
     def run
       Compile.new(@options).run
-      Kubectl.new(@options).delete
+      Kubectl.run(:delete, @options)
     end
   end
 end
