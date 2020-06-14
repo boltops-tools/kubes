@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Ingress < Resource
-    attr_reader :paths
-    setter_methods :rules, :paths
+    setting_methods :rules, :paths
 
     def default_api_version
       "networking.k8s.io/v1beta1"

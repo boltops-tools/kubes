@@ -30,7 +30,7 @@ Running the `kubes compile` command:
 
 Produces:
 
-.kubes/output/service.yaml
+.kubes/output/ingress.yaml
 
 ```yaml
 ---

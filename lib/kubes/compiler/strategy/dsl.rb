@@ -9,7 +9,7 @@ class Kubes::Compiler::Strategy
 
     def syntax_class
       # Remove .kubes/resources
-      klass_name = File.basename(@filename).sub('.rb','').camelize # Deployment, Service, etc
+      klass_name = File.basename(@filename).sub('.rb','').underscore.camelize # Deployment, Service, Ingress, ManagedCertificate, etc
       "Kubes::Compiler::Dsl::Syntax::#{klass_name}".constantize
     rescue NameError => e
       file = ".kubes/resources/#{klass_name.underscore}"

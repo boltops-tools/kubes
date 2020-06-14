@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
-    attr_reader :selector
-    setter_methods :selector, :type, :clusterIP
+    setting_methods :selector, :type, :clusterIP
 
     def default_api_version
       "v1"
