@@ -25,6 +25,8 @@ You can create a folder matching the name of the resource and provide environmen
             ├── dev.yaml
             └── prod.yaml
 
+Layering is supported for DSL `.rb` files just like YAML files.
+
 ## Config
 
 The `.kubes/config.rb` file is where you tell kubes which repo to push the Docker image to. It looks something like this:

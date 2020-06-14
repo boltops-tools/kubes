@@ -10,7 +10,7 @@ You can write your Kubneretes resources in standard YAML.
 
 ## Templating
 
-Kubes does one thing to provide extra power. Your YAML files are processed through an ERB templating language.  So you have dynamic control. Here's an example with the use of the `built_image` helper.
+Kubes does one thing to provide extra power. Your YAML files are processed through an ERB templating language.  So you have dynamic control. Here's an example with with `Kubes.env` and the `built_image` helper.
 
 .kubes/resources/demo-web/deployment.yaml
 
@@ -24,7 +24,7 @@ metadata:
     app: demo-web
   namespace: default
 spec:
-  replicas: 2
+  replicas: <%= Kubes.env == "prod" ? 2 : 1 %>
   selector:
     matchLabels:
       app: demo-web

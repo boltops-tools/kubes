@@ -14,6 +14,7 @@ module Kubes
     desc "apply [APP] [RESOURCE]", "Apply the Kubenetes YAML files without changing them"
     long_desc Help.text(:apply)
     image_option.call
+    option :compile, type: :boolean, default: true, desc: "whether or not to compile the .kube/resources"
     def apply(app=nil, resource=nil)
       Apply.new(options.merge(app: app, resource: resource)).run
     end

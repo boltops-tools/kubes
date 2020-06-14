@@ -2,8 +2,7 @@ class Kubes::CLI
   class Deploy < Base
     def run
       Build.new(@options).run if build?
-      Compile.new(@options).run
-      Apply.new(@options).run
+      Apply.new(@options).run # also calls Compile
     end
 
     def build?
