@@ -16,7 +16,7 @@ module Kubes
     def each_resource
       expr = "#{Kubes.root}/.kubes/resources/**/*.{rb,yaml}"
       Dir.glob(expr).each do |path|
-        return unless consider?(path)
+        next unless consider?(path)
         strategy = Strategy.new(@options.merge(path: path))
         result = strategy.compile
         yield(result) if result
