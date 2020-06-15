@@ -5,7 +5,7 @@ The Kubes DSL builds Kubenetes YAML files with a reasonable defaults. The suppor
 * [Deployment](dsl/deployment.md)
 * [Service](dsl/service.md)
 * [Ingress](dsl/ingress.md)
-* [ManagedCertificate](dsl/mananged-certificate.md)
+* [ManagedCertificate](dsl/managed-certificate.md)
 
 For resources, that are not supported, use [YAML](yaml.md) instead. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
 
