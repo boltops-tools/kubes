@@ -9,7 +9,7 @@ Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, a
 Kubes will:
 
 1. Build the docker image and push it to repo
-2. Compile Kubernetes YAML files from DSL, injecting the build image
+2. Compile Kubernetes YAML files from YAML/ERB or a DSL and adjusts the Docker build image
 3. Deploy via kubectl apply on the compiled Kubernetes YAML files
 
 Features:
