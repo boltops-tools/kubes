@@ -26,6 +26,10 @@ module Kubes::Compiler::Dsl::Syntax
       @spec || top_spec
     end
 
+    def top_spec
+      {}
+    end
+
     def default_metadata
       {
         name: @name,

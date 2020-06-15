@@ -2,6 +2,7 @@
 
 The Kubes DSL builds Kubenetes YAML files with a reasonable defaults. The support resources are:
 
+* [BackendConfig](dsl/backend-config.md)
 * [Deployment](dsl/deployment.md)
 * [Service](dsl/service.md)
 * [Ingress](dsl/ingress.md)
