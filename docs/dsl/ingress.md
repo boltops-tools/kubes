@@ -25,12 +25,12 @@ paths!([{
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/ingress.yaml
+    Generated .kubes/output/demo-web/ingress.yaml
     $
 
 Produces:
 
-.kubes/output/ingress.yaml
+.kubes/output/demo-web/ingress.yaml
 
 ```yaml
 ---

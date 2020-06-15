@@ -17,12 +17,12 @@ DSL builds Kubenetes YAML files with a reasonable default structure.  Each part 
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/deployment.yaml
+    Generated .kubes/output/demo-web/deployment.yaml
     $
 
 Produces:
 
-.kubes/output/deployment.yaml:
+.kubes/output/demo-web/deployment.yaml:
 
 ```yaml
 apiVersion: apps/v1

@@ -13,12 +13,12 @@ Here's an example of a service.
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/service.yaml
+    Generated .kubes/output/demo-web/service.yaml
     $
 
 Produces:
 
-.kubes/output/service.yaml
+.kubes/output/demo-web/service.yaml
 
 ```yaml
 ---

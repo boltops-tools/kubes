@@ -14,12 +14,12 @@ Here's an example of an managed_certificate.
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/managed_certificate.yaml
+    Generated .kubes/output/demo-web/managed_certificate.yaml
     $
 
 Produces:
 
-.kubes/output/managed_certificate.yaml
+.kubes/output/demo-web/managed_certificate.yaml
 
 ```yaml
 ---
