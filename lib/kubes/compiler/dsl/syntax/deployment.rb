@@ -1,13 +1,13 @@
 module Kubes::Compiler::Dsl::Syntax
   class Deployment < Resource
-    setting_methods :container, :containers, :matchLabels, :selector, :sidecar, :spec, :strategy, :template, :templateMetadata
+    attribute_methods :container, :containers, :matchLabels, :selector, :sidecar, :strategy, :template, :templateMetadata
 
     def default_api_version
       "apps/v1"
     end
 
-    def top_spec
-      {
+    def spec
+      @spec || {
         replicas: replicas,
         selector: selector,
         strategy: strategy,

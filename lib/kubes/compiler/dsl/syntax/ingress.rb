@@ -1,13 +1,13 @@
 module Kubes::Compiler::Dsl::Syntax
   class Ingress < Resource
-    setting_methods :rules, :paths
+    attribute_methods :rules, :paths
 
     def default_api_version
       "networking.k8s.io/v1beta1"
     end
 
-    def top_spec
-      {
+    def spec
+      @spec || {
         rules: rules,
       }
     end

@@ -1,6 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
-    setting_methods :apiVersion, :resource, :metadata, :kind, :labels
+    attribute_methods :apiVersion, :resource, :metadata, :kind, :labels
 
     # top-level of resource is quite common
     def resource
@@ -23,11 +23,7 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def spec
-      @spec || top_spec
-    end
-
-    def top_spec
-      {}
+      @spec || {}
     end
 
     def default_metadata

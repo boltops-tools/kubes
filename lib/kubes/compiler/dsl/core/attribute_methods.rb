@@ -1,8 +1,8 @@
 module Kubes::Compiler::Dsl::Core
-  module MetaMethods
+  module AttributeMethods
     # Defines methods setting methods. Example:
     #
-    #    setting_method :spec
+    #    attribute_method :spec
     #
     # Results in 2 method definitions:
     #
@@ -14,7 +14,7 @@ module Kubes::Compiler::Dsl::Core
     #       @spec = value
     #     end
     #
-    def setting_method(name)
+    def attribute_method(name)
       name_with_bang = "#{name}!" unless name.to_s.include?('!')
       name_without_bang = name_with_bang.sub('!','')
       define_method(name_without_bang) do
@@ -25,9 +25,9 @@ module Kubes::Compiler::Dsl::Core
       end
     end
 
-    def setting_methods(*names)
+    def attribute_methods(*names)
       names.each do |name|
-        setting_method(name)
+        attribute_method(name)
       end
     end
   end

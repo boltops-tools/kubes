@@ -1,6 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
-    setting_methods :selector, :type, :clusterIP
+    attribute_methods :selector, :type, :clusterIP
 
     def default_api_version
       "v1"
@@ -10,8 +10,8 @@ module Kubes::Compiler::Dsl::Syntax
       @selector || labels
     end
 
-    def top_spec
-      {
+    def spec
+      @spec || {
         ports: ports,
         selector: selector,
         type: @type || "ClusterIP",
