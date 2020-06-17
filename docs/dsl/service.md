@@ -6,8 +6,14 @@ Here's an example of a service.
 
 ```ruby
 @name = "demo-web"
-@port = 80
-@targetPort = 3000
+@labels = {app: "demo-web"}
+@namespace = "demo"
+@ports = [
+  port: 80,
+  protocol: "TCP",
+  targetPort: 8080,
+]
+@type = "NodePort"
 ```
 
 Running the `kubes compile` command:
@@ -26,19 +32,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: demo-web
+  labels:
+    app: demo-web
+  namespace: demo
 spec:
-- protocol: TCP
-  port: 80
-  targetPort: 3000
-```
-
-## Default Port
-
-The default port is generally 80. The container may not be exposing port 80. In this case, adjust `@targetPort`:
-
-.kubes/resources/demo-web/service.rb
-
-```ruby
-# ...
-@targetPort = 3000
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: demo-web
+  type: NodePort
 ```
