@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activesupport"
   spec.add_dependency "deep_merge"
   spec.add_dependency "dsl_evaluator"
+  spec.add_dependency "hash_squeezer"
   spec.add_dependency "memoist"
   spec.add_dependency "rainbow"
   spec.add_dependency "render_me_pretty"

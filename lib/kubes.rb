@@ -2,15 +2,11 @@ $:.unshift(File.expand_path("../", __FILE__))
 require "active_support/core_ext/hash"
 require "dsl_evaluator"
 require "fileutils"
+require "hash_squeezer"
 require "kubes/version"
 require "memoist"
 require "rainbow/ext/string"
 require "yaml"
-
-gem_root = File.dirname(__dir__)
-$:.unshift("#{gem_root}/lib")
-$:.unshift("#{gem_root}/vendor/hash_squeezer/lib")
-require "hash_squeezer"
 
 DslEvaluator.backtrace_reject = ".kubes"
 
