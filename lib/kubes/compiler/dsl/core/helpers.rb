@@ -9,5 +9,11 @@ module Kubes::Compiler::Dsl::Core
       end
       IO.read(path)
     end
+
+    def name_with_extra(value)
+      extra = ENV['KUBES_EXTRA']
+      extra ? "#{value}-#{extra}" : value
+    end
+    alias_method :with_extra, :name_with_extra
   end
 end

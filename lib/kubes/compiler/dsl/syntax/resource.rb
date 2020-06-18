@@ -4,6 +4,8 @@ module Kubes::Compiler::Dsl::Syntax
                       :kind,
                       :labels,
                       :metadata,
+                      :name,
+                      :namespace,
                       :resource,
                       :spec
 
@@ -21,14 +23,20 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_metadata
       {
-        name: @name,
+        name: name,
         labels: labels,
-        namespace: @namespace,
+        namespace: namespace,
       }
     end
 
     def default_kind
       self.class.to_s.split('::').last # IE: Deployment
+    end
+
+    # Override to account for KUBES_EXTRA feature
+    def name!(value)
+      extra = ENV['KUBES_EXTRA']
+      @name = extra ? "#{value}-#{extra}" : value
     end
   end
 end

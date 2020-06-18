@@ -9,7 +9,7 @@ module Kubes::Compiler::Dsl::Syntax
                       :sidecar,
                       :strategy,
                       :template,
-                      :templateMetadata,
+                      :templateMetadata, # different to not collide with top-level metadata
                       :templateSpec
 
     def default_apiVersion
