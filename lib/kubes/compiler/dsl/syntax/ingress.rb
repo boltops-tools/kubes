@@ -10,9 +10,7 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_spec
-      {
-        rules: rules,
-      }
+      { rules: rules }
     end
 
     def default_rules

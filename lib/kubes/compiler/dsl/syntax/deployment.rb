@@ -4,13 +4,46 @@ module Kubes::Compiler::Dsl::Syntax
                       :container,
                       :containers,
                       :matchLabels,
+                      :maxSurge,
+                      :maxUnavailable,
                       :replicas,
                       :selector,
                       :sidecar,
                       :strategy,
                       :template,
-                      :templateMetadata, # different to not collide with top-level metadata
+                      :templateMetadata,
                       :templateSpec
+
+    # kubectl explain deployment.spec.template.spec.containers
+    attribute_methods :args,                     # <[]string>
+                      :command,                  # <[]string>
+                      :env,                      # <[]Object>
+                      :envFrom,                  # <[]Object>
+                      :image,                    # <string>
+                      :imagePullPolicy,          # <string>
+                      :lifecycle,                # <Object>
+                      :livenessProbe,            # <Object>
+                      :container_name,           # <string> -required- (originally called name)
+                      :ports,                    # <[]Object>
+                      :readinessProbe,           # <Object>
+                      :resources,                # <Object>
+                      :securityContext,          # <Object>
+                      :startupProbe,             # <Object>
+                      :stdin,                    # <boolean>
+                      :stdinOnce,                # <boolean>
+                      :terminationMessagePath,   # <string>
+                      :terminationMessagePolicy, # <string>
+                      :tty,                      # <boolean>
+                      :volumeDevices,            # <[]Object>
+                      :volumeMounts,             # <[]Object>
+                      :workingDir                # <string>
+
+    # kubectl explain deployment.spec.template.spec.containers.ports
+   attribute_methods :containerPort, # <integer> -required-
+                     :hostIP,        # <string>
+                     :hostPort,      # <integer>
+                     :port_name,     # <string> (originally called name)
+                     :protocol       # <string>
 
     def default_apiVersion
       "apps/v1"
@@ -30,7 +63,7 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_selector
-      {matchLabels: matchLabels}
+      { matchLabels: matchLabels }
     end
 
     def default_matchLabels
@@ -40,11 +73,19 @@ module Kubes::Compiler::Dsl::Syntax
     def default_strategy
       {
         rollingUpdate: {
-          maxSurge: @maxSurge || 25,
-          maxUnavailable: @maxUnavailable || 25
+          maxSurge: maxSurge,
+          maxUnavailable: maxUnavailable,
         },
         type: "RollingUpdate",
       }
+    end
+
+    def default_maxSurge
+      25
+    end
+
+    def default_maxUnavailable
+      25
     end
 
     def default_template
@@ -55,13 +96,11 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_templateSpec
-      {
-        containers: containers,
-      }
+      { containers: containers }
     end
 
     def default_templateMetadata
-      {labels: labels}
+      { labels: labels }
     end
 
     def default_containers
@@ -70,14 +109,43 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_container
       {
+        args: args,
         command: command,
-        image: @image,
-        name: @name,
+        env: env,
+        envFrom: envFrom,
+        image: image,
+        imagePullPolicy: imagePullPolicy,
+        lifecycle: lifecycle,
+        livenessProbe: livenessProbe,
+        name: container_name || name,
+        ports: ports,
+        readinessProbe: readinessProbe,
+        resources: resources,
+        securityContext: securityContext,
+        startupProbe: startupProbe,
+        stdin: stdin,
+        stdinOnce: stdinOnce,
+        terminationMessagePath: terminationMessagePath,
+        terminationMessagePolicy: terminationMessagePolicy,
+        tty: tty,
+        volumeDevices: volumeDevices,
+        volumeMounts: volumeMounts,
+        workingDir: workingDir,
       }
     end
 
+    def default_ports
+      [
+        containerPort: containerPort,
+        hostIP: hostIP,
+        hostPort: hostPort,
+        port_name: port_name,
+        protocol: protocol,
+      ]
+    end
+
     # Override command instead of default_command since we want to change a String to an Array
-    def command
+    def command_reader
       @command.is_a?(String) ? @command.split(' ') : @command # else assume Array
     end
   end

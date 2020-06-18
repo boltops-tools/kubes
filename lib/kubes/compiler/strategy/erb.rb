@@ -3,7 +3,9 @@ require "render_me_pretty"
 
 class Kubes::Compiler::Strategy
   class Erb < Base
+    extend Kubes::Compiler::Dsl::Core::AttributeMethods
     include Kubes::Compiler::Dsl::Core::Helpers
+    include Kubes::Compiler::Shared::Helpers # name
 
     def run
       data = render(@path)
@@ -23,6 +25,11 @@ class Kubes::Compiler::Strategy
       else
         {}
       end
+    end
+
+    # Override to account for KUBES_EXTRA feature - duplicated in
+    def name_writer(value)
+      @name = extra ? "#{value}-#{extra}" : value
     end
   end
 end

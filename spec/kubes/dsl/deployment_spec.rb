@@ -1,4 +1,4 @@
-describe Kubes::Dsl::Deployment do
+describe Kubes::Compiler::Dsl::Syntax::Deployment do
   let(:evaluator) { described_class.new(options) }
   let(:options) { {path: fixture("deployments/#{deployment_name}") } }
 
@@ -22,7 +22,8 @@ describe Kubes::Dsl::Deployment do
     let(:deployment_name) { "setter/metadata" }
     it "run" do
       resource = evaluator.run
-      puts resource
+      data = YAML.load(resource)
+      expect(data['spec']['replicas']).to eq 3
     end
   end
 

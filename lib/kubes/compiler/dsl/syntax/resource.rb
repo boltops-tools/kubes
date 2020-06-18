@@ -1,10 +1,10 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
+    include Kubes::Compiler::Shared::Helpers # name
     attribute_methods :apiVersion,
                       :kind,
                       :labels,
                       :metadata,
-                      :name,
                       :namespace,
                       :resource,
                       :spec
@@ -33,10 +33,5 @@ module Kubes::Compiler::Dsl::Syntax
       self.class.to_s.split('::').last # IE: Deployment
     end
 
-    # Override to account for KUBES_EXTRA feature
-    def name!(value)
-      extra = ENV['KUBES_EXTRA']
-      @name = extra ? "#{value}-#{extra}" : value
-    end
   end
 end

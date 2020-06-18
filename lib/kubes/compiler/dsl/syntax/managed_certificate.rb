@@ -8,9 +8,7 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_spec
-      {
-        domains: domains,
-      }
+      { domains: domains }
     end
 
     def default_domains

@@ -5,15 +5,15 @@ Here's an example of a service.
 .kubes/resources/demo-web/service.rb
 
 ```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "demo"
-@ports = [
+name "demo-web"
+labels(app: name)
+namespace "demo"
+ports [
   port: 80,
   protocol: "TCP",
   targetPort: 8080,
 ]
-@type = "NodePort"
+type "NodePort"
 ```
 
 Running the `kubes compile` command:

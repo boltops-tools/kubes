@@ -5,8 +5,8 @@ Here's an example of an BackendConfig.
 .kubes/resources/demo-web/backend-config.rb
 
 ```ruby
-@name = "backendconfig"
-@spec = {
+name "backendconfig"
+spec(
   timeoutSec: 40,
   connectionDraining: {
     drainingTimeoutSec: 60,
@@ -14,7 +14,7 @@ Here's an example of an BackendConfig.
   sessionAffinity: {
     affinityType: "CLIENT_IP",
   }
-}
+)
 ```
 
 Running the `kubes compile` command:

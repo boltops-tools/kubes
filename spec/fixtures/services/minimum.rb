@@ -1,3 +1,3 @@
-@name = "demo-web"
-@port = 81
-@targetPort = 3001
+name "demo-web"
+port 81
+targetPort 3001

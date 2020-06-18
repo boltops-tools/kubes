@@ -1,4 +1,4 @@
-describe Kubes::Compile do
+describe Kubes::Compiler do
   let(:generate) { described_class.new(options) }
   let(:options) { {path: "spec/fixtures/project/.kubes/deployment.rb" } }
 

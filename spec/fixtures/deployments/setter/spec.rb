@@ -1,10 +1,10 @@
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
+name "demo-web"
+labels(app: name)
+namespace "default"
 
-spec!(
+spec(
   replicas: 3,
-  selector: {matchLabels: @labels},
+  selector: {matchLabels: labels},
   strategy: strategy,
   template: template,
 )

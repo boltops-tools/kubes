@@ -7,11 +7,11 @@ Here's an example of an ingress.
 .kubes/resources/demo-web/ingress.rb
 
 ```ruby
-@name = "demo-web-ingress"
-@namespace = "demo"
+name "demo-web-ingress"
+namespace "demo"
 
-@serviceName = "demo-web"
-@servicePort = 80
+serviceName "demo-web"
+servicePort 80
 ```
 
 Produces:
@@ -40,9 +40,9 @@ spec:
 .kubes/resources/demo-web/ingress.rb
 
 ```ruby
-@name = "demo-web-ingress"
+name "demo-web-ingress"
 
-paths!([{
+paths([{
   path: "/*",
   backend: {
     serviceName: "hello-world",
