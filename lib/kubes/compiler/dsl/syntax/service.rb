@@ -1,30 +1,27 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
-    attribute_methods :selector, :type, :clusterIP
+    attribute_methods :clusterIP,
+                      :ports,
+                      :selector,
+                      :type
 
-    def default_api_version
+    def default_apiVersion
       "v1"
     end
 
-    def selector
-      @selector || labels
+    def default_selector
+      labels
     end
 
-    def spec
-      @spec || {
+    def default_spec
+      {
         ports: ports,
         selector: selector,
         type: @type || "ClusterIP",
       }
     end
 
-    def selector
-      @selector || labels
-    end
-
-    def ports
-      return @ports if @ports
-
+    def default_ports
       port = @port || 80
       protocol = @protocol || "TCP"
       targetPort = @targetPort || 80

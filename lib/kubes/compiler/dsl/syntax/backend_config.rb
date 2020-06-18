@@ -1,8 +1,9 @@
 module Kubes::Compiler::Dsl::Syntax
   class BackendConfig < Resource
-    attribute_methods :domains, :domain
+    attribute_methods :domain,
+                      :domains
 
-    def default_api_version
+    def default_apiVersion
       "cloud.google.com/v1"
     end
   end

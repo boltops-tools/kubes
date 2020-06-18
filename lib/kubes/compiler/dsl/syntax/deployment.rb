@@ -1,13 +1,23 @@
 module Kubes::Compiler::Dsl::Syntax
   class Deployment < Resource
-    attribute_methods :container, :containers, :matchLabels, :selector, :sidecar, :strategy, :template, :templateMetadata
+    attribute_methods :command,
+                      :container,
+                      :containers,
+                      :matchLabels,
+                      :replicas,
+                      :selector,
+                      :sidecar,
+                      :strategy,
+                      :template,
+                      :templateMetadata,
+                      :templateSpec
 
-    def default_api_version
+    def default_apiVersion
       "apps/v1"
     end
 
-    def spec
-      @spec || {
+    def default_spec
+      {
         replicas: replicas,
         selector: selector,
         strategy: strategy,
@@ -15,20 +25,20 @@ module Kubes::Compiler::Dsl::Syntax
       }
     end
 
-    def replicas
-      @replicas || 1
+    def default_replicas
+      1
     end
 
-    def selector
-      @selector || {matchLabels: matchLabels}
+    def default_selector
+      {matchLabels: matchLabels}
     end
 
-    def matchLabels
-      @matchLabels || labels
+    def default_matchLabels
+      labels
     end
 
-    def strategy
-      @strategy || {
+    def default_strategy
+      {
         rollingUpdate: {
           maxSurge: @maxSurge || 25,
           maxUnavailable: @maxUnavailable || 25
@@ -37,29 +47,25 @@ module Kubes::Compiler::Dsl::Syntax
       }
     end
 
-    def template
-      @template || {
-        metadata: templateMetdata,
-        spec: template_spec,
+    def default_template
+      {
+        metadata: templateMetadata,
+        spec: templateSpec,
       }
     end
 
-    def template_spec
+    def default_templateSpec
       {
         containers: containers,
       }
     end
 
-    def templateMetdata
-      @templateMetdata || {labels: labels}
+    def default_templateMetadata
+      {labels: labels}
     end
 
-    def containers
-      @containers || [container, sidecar].compact
-    end
-
-    def container
-      @container || default_container
+    def default_containers
+      [container, sidecar].compact
     end
 
     def default_container
@@ -70,8 +76,8 @@ module Kubes::Compiler::Dsl::Syntax
       }
     end
 
+    # Override command instead of default_command since we want to change a String to an Array
     def command
-      return unless @command
       @command.is_a?(String) ? @command.split(' ') : @command # else assume Array
     end
   end

@@ -1,19 +1,20 @@
 module Kubes::Compiler::Dsl::Syntax
   class ManagedCertificate < Resource
-    attribute_methods :domains, :domain
+    attribute_methods :domain,
+                      :domains
 
-    def default_api_version
+    def default_apiVersion
       "networking.gke.io/v1beta2"
     end
 
-    def spec
-      @spec || {
+    def default_spec
+      {
         domains: domains,
       }
     end
 
-    def domains
-      @domains ||= [domain]
+    def default_domains
+      [domain]
     end
   end
 end
