@@ -1,4 +1,4 @@
-describe Kubes::Dsl::Service do
+describe Kubes::Compiler::Dsl::Syntax::Service do
   let(:evaluator) { described_class.new(options) }
   let(:options) { {path: fixture("services/#{deployment_name}") } }
 
@@ -6,7 +6,8 @@ describe Kubes::Dsl::Service do
     let(:deployment_name) { "minimum" }
     it "run" do
       resource = evaluator.run
-      puts resource
+      data = YAML.load(resource)
+      expect(data['spec']['type']).to eq "ClusterIP"
     end
   end
 end

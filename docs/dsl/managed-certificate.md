@@ -5,10 +5,8 @@ Here's an example of an managed_certificate.
 .kubes/resources/demo-web/managed_certificate.rb
 
 ```ruby
-@name = "cert1"
-@domains = [
-  "cert1.example.com"
-]
+name "cert1"
+domains(["cert1.example.com"])
 ```
 
 Running the `kubes compile` command:

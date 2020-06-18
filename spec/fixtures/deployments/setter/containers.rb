@@ -1,9 +1,9 @@
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
+name "demo-web"
+labels(app: name)
+namespace "default"
 
-containers!([{
-  name: @name,
+containers([{
+  name: name,
   image: "nginx",
   ports: [
     containerPort: 88

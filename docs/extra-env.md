@@ -1,4 +1,4 @@
-## Extra Env
+# Extra Env
 
 Kubes adds the concept of extra environments.  Let say, you deploy a demo-web app with a deployment, service, and ingress.
 
@@ -8,57 +8,20 @@ Kubes adds the concept of extra environments.  Let say, you deploy a demo-web ap
         ├── ingress.rb
         └── service.rb
 
-With just a slight adjustment to the way you set `@name`, you can create additional environments like this easily.
+You can create additional environments using the same resource files.
 
-## Adjustment
-
-Use the `name_with_extra` helper to adjust the name to allow the creation of extra environments. Here are some examples with the DSL:
-
-.kubes/resources/demo-web/deployment.rb
-
-```ruby
-@name = name_with_extra("demo-web")
-@labels = {app: name, extra: ENV['KUBES_EXTRA']}
-@namespace = "demo"
-
-@replicas = 1
-@image = built_image # IE: tongueroo/demo-web:kubes-2020-06-13T19-55-16-43afc6e
-```
-
-.kubes/resources/demo-web/service.rb
-
-```ruby
-@name = name_with_extra("demo-web")
-@labels = {app: @name, extra: ENV['KUBES_EXTRA']}
-@namespace = "demo"
-@ports = [
-  port: 80,
-  protocol: "TCP",
-  targetPort: 8080,
-]
-@type = "NodePort"
-```
-
-.kubes/resources/demo-web/ingress.rb
-
-```ruby
-@name = name_with_extra("demo-web-ingress")
-@labels = {app: @name, extra: ENV['KUBES_EXTRA']}
-@namespace = "demo"
-
-@serviceName = name_with_extra("demo-web")
-@servicePort = 80
-```
+* [DSL Example](extra-env/dsl.md)
+* [YAML Example](extra-env/yaml.md)
 
 ## Deploy
 
-Now, to create additional environment, it's simple:
+To create additional environment, it's simple:
 
     KUBES_EXTRA=2 kubes deploy
     KUBES_EXTRA=3 kubes deploy
     # etc
 
-The label with the `extra` key is optional but helps with filtering the resources.
+Adding a label with the `extra` key is optional but helps with filtering the resources.
 
     kubectl get all,ing -l extra=2
     kubectl get all,ing -l extra=3
@@ -82,3 +45,4 @@ Example:
     NAME                                    HOSTS   ADDRESS         PORTS   AGE
     ingress.extensions/demo-web-ingress-2   *       34.120.11.136   80      79s
     $
+

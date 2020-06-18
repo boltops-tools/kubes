@@ -7,11 +7,11 @@ DSL builds Kubenetes YAML files with a reasonable default structure.  Each part 
 .kubes/resources/demo-web/deployment.rb:
 
 ```ruby
-@name = "demo-web"
-@labels = {app: "demo-web"}
-@namespace = "default"
-@replicas = 2
-@image = "nginx"
+name "demo-web"
+labels(app: name)
+namespace "default"
+replicas 2
+image "nginx"
 ```
 
 Running the `kubes compile` command:

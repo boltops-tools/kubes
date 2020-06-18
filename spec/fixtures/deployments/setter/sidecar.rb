@@ -1,9 +1,9 @@
-@name = "demo-web"
-@labels = {app: "demo-web"}
+name "demo-web"
+labels(app: name)
 
-@image = "nginx"
+image "nginx"
 
-sidecar!(
+sidecar(
   name: "sidecar",
   image: "tongueroo/sinatra",
   ports: [
