@@ -1,0 +1,32 @@
+---
+title: New Project
+---
+
+If you already a project with a Dockerfile, you can use that project, and the Dockerfile will be used. If you do not have an existing Dockerfile, kubes generates a starter Dockerfile that runs nginx.
+
+We'll start with an empty folder for this tutorial.
+
+    mkdir demo
+    cd demo
+
+For this tutorial, we'll use an ECR repo, though any repo will work.
+
+Let's generate a starter project:
+
+    $ REPO=$(aws ecr describe-repositories --repository-name demo | jq -r '.repositories[].repositoryUri')
+    $ kubes init --app demo-web --repo $REPO
+          create  Dockerfile
+          create  .kubes/config.rb
+          create  .kubes/config/env/dev.rb
+          create  .kubes/config/env/prod.rb
+          create  .kubes/resources/demo-web/deployment.yaml
+          create  .kubes/resources/demo-web/deployment/dev.yaml
+          create  .kubes/resources/demo-web/deployment/prod.yaml
+          create  .kubes/resources/demo-web/service.yaml
+    Initialized .kubes folder
+    Updated .gitignore
+    $
+
+To learn more about the generated structure, here are the [Structure Docs]({% link _docs/intro/structure.md %}).
+
+Next, we'll review the files.

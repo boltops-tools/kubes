@@ -6,13 +6,20 @@ module Kubes::Compiler::Dsl::Syntax
                       :matchLabels,
                       :maxSurge,
                       :maxUnavailable,
-                      :replicas,
-                      :selector,
                       :sidecar,
-                      :strategy,
-                      :template,
                       :templateMetadata,
                       :templateSpec
+
+
+    # kubectl explain deployment.spec
+    attribute_methods :minReadySeconds,         # <integer>
+                      :paused,                  # <boolean>
+                      :progressDeadlineSeconds, # <integer>
+                      :replicas,                # <integer>
+                      :revisionHistoryLimit,    # <integer>
+                      :selector,                # <Object> -required-
+                      :strategy,                # <Object>
+                      :template                 # <Object> -required-
 
     # kubectl explain deployment.spec.template.spec.containers
     attribute_methods :args,                     # <[]string>
@@ -51,7 +58,11 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_spec
       {
+        minReadySeconds: minReadySeconds,
+        paused: paused,
+        progressDeadlineSeconds: progressDeadlineSeconds,
         replicas: replicas,
+        revisionHistoryLimit: revisionHistoryLimit,
         selector: selector,
         strategy: strategy,
         template: template,

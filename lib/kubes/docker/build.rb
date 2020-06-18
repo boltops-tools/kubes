@@ -1,3 +1,5 @@
+require 'open4'
+
 module Kubes::Docker
   class Build < Base
     def run
@@ -15,8 +17,17 @@ module Kubes::Docker
       params = args.flatten.join(' ')
       command = "docker build #{params}"
       run_hooks "build" do
-        sh(command)
+        # sh(command)
+        spawn(command)
       end
+    end
+
+    def spawn(command, stdin: '', stdout: STDOUT, stderr: STDERR)
+      Open4::spawn(
+          command,
+          stdin: stdin,
+          stdout: stdout,
+          stderr: stderr)
     end
   end
 end

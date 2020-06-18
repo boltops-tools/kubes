@@ -7,10 +7,10 @@ module Kubes
     end
 
     def run
-      puts "Compiling .kubes/resources files"
       each_resource do |result|
         write(result.filename, result.yaml)
       end
+      puts "Compiled  .kubes/resources files"
     end
 
     def each_resource
@@ -39,7 +39,7 @@ module Kubes
       FileUtils.mkdir_p(File.dirname(dest))
       IO.write(dest, yaml)
       pretty_dest = dest.sub("#{Kubes.root}/",'')
-      logger.info "Compiled  #{pretty_dest}"
+      logger.debug "Compiled  #{pretty_dest}"
     end
   end
 end

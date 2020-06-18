@@ -3,15 +3,10 @@ module Kubes::Compiler::Shared
     extend Kubes::Compiler::Dsl::Core::AttributeMethods
     attribute_methods :name
 
-    # Override to account for KUBES_EXTRA feature
-    def name_writer(value)
-      @name = extra ? "#{value}-#{extra}" : value
-    end
-
     def built_image
       return @options[:image] if @options[:image] # override
 
-      path = Kubes.config.docker_image_state_path
+      path = Kubes.config.state.docker_image_path
       unless File.exist?(path)
         raise "Missing file with docker image built by kubes: #{path}"
       end
@@ -19,7 +14,7 @@ module Kubes::Compiler::Shared
     end
 
     def with_extra(value)
-      extra ? "#{value}-#{extra}" : value
+      [value, extra].compact.join('-')
     end
 
     def extra

@@ -10,8 +10,26 @@ module Kubes
     def run
       params = args.flatten.join(' ')
       command = "kubectl #{@name} #{params}"
-      run_hooks(@name) do
-        sh(command)
+      switch_context do
+        run_hooks(@name) do
+          sh(command)
+        end
+      end
+    end
+
+    def switch_context(&block)
+      kubectl = Kubes.config.kubectl
+      context = kubectl.context # intentional assignment
+      if context
+        previous_context = capture("kubectl config current-context")
+        sh("kubectl config use-context #{context}", mute: true)
+        result = block.call
+        if previous_context != "" && !kubectl.context_keep
+          sh("kubectl config use-context #{previous_context}", mute: true)
+        end
+        result
+      else
+        block.call
       end
     end
 

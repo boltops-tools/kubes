@@ -1,12 +1,31 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
-    attribute_methods :clusterIP,
-                      :port,
-                      :ports,
+    attribute_methods :port,
                       :protocol,
-                      :selector,
-                      :targetPort,
-                      :type
+                      :targetPort
+
+    # kubectl explain service.spec
+    attribute_methods :clusterIP,                # <string>
+                      :externalIPs,              # <[]string>
+                      :externalName,             # <string>
+                      :externalTrafficPolicy,    # <string>
+                      :healthCheckNodePort,      # <integer>
+                      :ipFamily,                 # <string>
+                      :loadBalancerIP,           # <string>
+                      :loadBalancerSourceRanges, # <[]string>
+                      :ports,                    # <[]Object>
+                      :publishNotReadyAddresses, # <boolean>
+                      :selector,                 # <map[string]string>
+                      :sessionAffinity,          # <string>
+                      :sessionAffinityConfig,    # <Object>
+                      :type                      # <string>
+
+    # kubectl explain service.spec.ports
+    attribute_methods :nodePort,   # <integer>
+                      :port,       # <integer> -required-
+                      :port_name,  # <string>  (originally named port)
+                      :protocol,   # <string>
+                      :targetPort  # <string>
 
     def default_apiVersion
       "v1"
@@ -30,9 +49,11 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_ports
       [
-        port: port,
-        protocol: protocol,
-        targetPort: targetPort
+        nodePort: nodePort,    # <integer>
+        port: port,            # <integer> -required-
+        port_name: port_name,  # <string>  (originally named port)
+        protocol: protocol,    # <string>
+        targetPort: targetPort # <string>
       ]
     end
 

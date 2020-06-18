@@ -1,1 +1,6 @@
-# here is where you override config.rb with prod settings
+# Here is where you override config.rb with prod settings
+#
+# Example:
+# Kubes.configure do |config|
+#   config.kubectl.context = "prod-services"
+# end

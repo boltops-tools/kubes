@@ -15,7 +15,7 @@ Kubes will:
 Features:
 
 * Automation: [Builds the Docker image](docs/docker.md) and updates the compiled YAML files
-* Syntactic Sugar: Use an optional [ERB/YAML](docs/yaml.md) or [DSL](docs/dsl.md) to write your Kubneretes YAML files. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
+* Syntactic Sugar: Use an optional [ERB/YAML](docs/yaml.md) or [DSL](docs/dsl.md) to write your Kubernetes YAML files. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
 * Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod with [layering](docs/layering.md).
 * CLI Customizations: You can customize the [cli args](docs/kubectl.md). You can also run hooks before and after kubectl commands.
 
