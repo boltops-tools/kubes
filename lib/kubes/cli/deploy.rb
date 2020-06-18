@@ -6,7 +6,7 @@ class Kubes::CLI
     end
 
     def build?
-      return false if @options[:build] == false
+      return false if @options[:build] == false || @options[:image]
       @options[:resource].nil? || @options[:resource] == "deployment"
     end
   end
