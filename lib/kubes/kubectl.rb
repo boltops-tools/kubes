@@ -20,18 +20,19 @@ module Kubes
     end
 
     def exit_on_fail
-      exit_on_fail = Kubes.config.kubectl.send("exit_on_fail_for_#{@name}")
-      exit_on_fail.nil? ? Kubes.config.kubectl.exit_on_fail : exit_on_fail
+      kubectl = Kubes.config.kubectl
+      exit_on_fail = kubectl.send("exit_on_fail_for_#{@name}")
+      exit_on_fail.nil? ? kubectl.exit_on_fail : exit_on_fail
     end
 
     def switch_context(&block)
       kubectl = Kubes.config.kubectl
-      context = kubectl.context # intentional assignment
+      context = kubectl.context
       if context
         previous_context = capture("kubectl config current-context")
         sh("kubectl config use-context #{context}", mute: true)
         result = block.call
-        if previous_context != "" && !kubectl.context_keep
+        if !previous_context.blank? && !kubectl.context_keep
           sh("kubectl config use-context #{previous_context}", mute: true)
         end
         result
