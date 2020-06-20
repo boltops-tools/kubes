@@ -9,12 +9,19 @@ module Kubes
 
     def run
       params = args.flatten.join(' ')
-      command = "kubectl #{@name} #{params}"
+      command = "kubectl #{@name} #{params}" # @name: apply or delete
+      options = {}
+      options[:exit_on_fail] = exit_on_fail unless exit_on_fail.nil?
       switch_context do
         run_hooks(@name) do
-          sh(command)
+          sh(command, options)
         end
       end
+    end
+
+    def exit_on_fail
+      exit_on_fail = Kubes.config.kubectl.send("exit_on_fail_for_#{@name}")
+      exit_on_fail.nil? ? Kubes.config.kubectl.exit_on_fail : exit_on_fail
     end
 
     def switch_context(&block)

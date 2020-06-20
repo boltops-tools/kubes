@@ -1,6 +1,6 @@
 module Kubes::Compiler::Dsl::Core
   module FieldMethods
-    # Defines methods attribute methods. Example:
+    # Defines field methods. Example:
     #
     #    field_method :spec
     #

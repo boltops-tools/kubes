@@ -21,6 +21,11 @@ module Kubes
       config.kubectl = ActiveSupport::OrderedOptions.new
       config.kubectl.context = nil
       config.kubectl.context_keep = true # after switching context keep it
+      config.kubectl.exit_on_fail = nil # whether or not continue if the kubectl command fails
+
+      config.kubectl.exit_on_fail_for_apply  = true # whether or not continue if the kubectl apply command fails
+      config.kubectl.exit_on_fail_for_delete = false # whether or not continue if the kubectl delete command fails
+      # Note: not using config.kubectl.delete.exit_on_fail because delete a method internal to ActiveSupport::OrderedOptions
 
       config.repo = nil # expected to be set by .kubes/config.rb
 
