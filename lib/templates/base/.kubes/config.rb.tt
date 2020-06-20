@@ -1,1 +1,7 @@
-repo "<%= @options[:repo] %>"
+Kubes.configure do |config|
+  config.repo = "<%= @options[:repo] %>"
+  config.logger.level = "info"
+  # auto-switching
+  # config.kubectl.context = "dev-services"
+  # config.kubectl.context_keep = true # keep context after switching
+end

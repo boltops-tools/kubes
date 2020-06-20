@@ -2,31 +2,27 @@ module Kubes
   module Core
     extend Memoist
 
-    def config
-      config = Config.new
-      config.evaluate
-      config
+    def env
+      ENV['KUBES_ENV'] || "dev"
     end
-    memoize :config
 
     def root
       ENV['KUBES_ROOT'] || Dir.pwd
     end
 
-    def env
-      ENV['KUBES_ENV'] || "dev"
+    def configure(&block)
+      Config.instance.configure(&block)
     end
 
-    @@logger = nil
+    def config
+      Config.instance.load_configs
+      Config.instance.config
+    end
+    memoize :config
+
     def logger
-      return @@logger if @@logger
-      @@logger = Logger.new($stdout)
-      @@logger.level = ENV['KUBES_LOG_LEVEL'] || 'info'
-      @@logger
+      config.logger
     end
-
-    def logger=(v)
-      @@logger = v
-    end
+    memoize :logger
   end
 end

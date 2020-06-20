@@ -1,1 +1,1 @@
-@replicas = 1
+replicas 1

@@ -48,7 +48,7 @@ module Kubes::Docker
 
     # output can get entirely wiped so dont use that folder
     def image_state_path
-      Kubes.config.docker_image_state_path
+      Kubes.config.state.docker_image_path
     end
 
     # full_image - Includes the tag. Examples:

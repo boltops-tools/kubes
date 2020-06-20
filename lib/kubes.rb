@@ -1,5 +1,8 @@
 $:.unshift(File.expand_path("../", __FILE__))
+require "active_support/core_ext/class"
 require "active_support/core_ext/hash"
+require "active_support/core_ext/string"
+require "active_support/ordered_options"
 require "dsl_evaluator"
 require "fileutils"
 require "hash_squeezer"

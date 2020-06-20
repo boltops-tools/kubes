@@ -18,6 +18,12 @@ class Kubes::CLI
     end
 
   public
+    def create_dockefile
+      return if File.exist?("Dockerfile")
+      set_source("docker")
+      directory ".", "."
+    end
+
     def create_base_files
       set_source("base")
       directory ".", "."
