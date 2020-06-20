@@ -1,0 +1,22 @@
+---
+title: kubes compile
+reference: true
+---
+
+## Usage
+
+    kubes compile
+
+## Description
+
+Compile Kubenetes YAML files from DSL
+
+
+## Options
+
+```
+[--image=IMAGE]              # override image
+[--verbose], [--no-verbose]  
+[--noop], [--no-noop]        
+```
+
