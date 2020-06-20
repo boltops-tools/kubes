@@ -11,9 +11,10 @@ You will be prompted to confirm before deletion. Here's out the output looks lik
     $ kubes delete
     This will delete resources. Are you sure? (y/N) y
     Compiled  .kubes/resources files
-    => kubectl delete --recursive -f .kubes/output
-    deployment.apps "demo-web" deleted
+    => kubectl delete -f .kubes/output/demo-web/service.yaml
     service "demo-web" deleted
+    => kubectl delete -f .kubes/output/demo-web/deployment.yaml
+    deployment.apps "demo-web" deleted
     $
 
 Let's double-check that the resources have been deleted:

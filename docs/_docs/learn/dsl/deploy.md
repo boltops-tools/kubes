@@ -14,8 +14,9 @@ You'll see output like this:
     Pushed 111111111111.dkr.ecr.us-west-2.amazonaws.com/demo:kubes-2020-06-19T04-19-13 docker image.
     Docker push took 15s.
     Compiled  .kubes/resources files
-    => kubectl apply --recursive -f .kubes/output
+    => kubectl apply -f .kubes/output/demo-web/deployment.yaml
     deployment.apps/demo-web created
+    => kubectl apply -f .kubes/output/demo-web/service.yaml
     service/demo-web created
     $
 
