@@ -1,8 +1,8 @@
-describe Kubes::Applier do
-  let(:applier) { described_class.new(options) }
+describe Kubes::Kubectl::Batch do
+  let(:batch) { described_class.new(options) }
   let(:options) { {} }
 
-  describe "applier" do
+  describe "batch" do
     let(:files) do
       %w[
         .kubes/output/demo-clock/deployment.yaml
@@ -13,8 +13,8 @@ describe Kubes::Applier do
     end
 
     it "sorted_files" do
-      allow(applier).to receive(:files).and_return(files)
-      expect(applier.sorted_files).to eq(
+      allow(batch).to receive(:files).and_return(files)
+      expect(batch.sorted_files).to eq(
         [".kubes/output/demo-clock/deployment.yaml",
          ".kubes/output/demo-web/deployment.yaml",
          ".kubes/output/demo-web/service.yaml",
