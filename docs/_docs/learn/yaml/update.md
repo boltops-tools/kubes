@@ -10,8 +10,9 @@ Here's out the output looks like:
 
     $ kubes apply
     Compiled  .kubes/resources files
-    => kubectl apply --recursive -f .kubes/output
+    => kubectl apply -f .kubes/output/demo-web/deployment.yaml
     deployment.apps/demo-web configured
+    => kubectl apply -f .kubes/output/demo-web/service.yaml
     service/demo-web unchanged
     $
 

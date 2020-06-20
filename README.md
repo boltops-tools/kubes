@@ -6,6 +6,8 @@
 
 Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, and apply them.
 
+Official Docs Site: [kubes.guru](https://kubes.guru)
+
 Kubes will:
 
 1. Build the docker image and push it to repo
@@ -52,82 +54,10 @@ The deploy command, does all 3 steps: builds the docker image, compiles the `.ku
 
     kubes deploy
 
-## Commands
-
-    kubes apply [APP] [RESOURCE]      # Apply the Kubenetes YAML files without changing them
-    kubes compile                     # Compile Kubenetes YAML files from DSL
-    kubes delete [APP] [RESOURCE]     # Delete Kubenetes resources within the app folder
-    kubes deploy [APP] [RESOURCE]     # Deploy to Kubenetes: docker build/push, kubes compile...
-    kubes docker build                # Build docker image.
-    kubes init --app=APP --repo=REPO  # Init project
-
-## Init
-
-The `init` command generates starter `.kubes` [structure](docs/structure.md). Refer to the structure docs for a complete explanation. Here's the resources part of the structure.
-
-    .kubes
-    └── resources
-        └── demo-web
-            ├── deployment.rb
-            └── service.rb
-
-Use YAML with templating:
-
-    kubes init --app demo-web --image "user/demo" --type yaml
-
-Use DSL:
-
-    kubes init --app demo-web --image "user/demo" --type dsl
-
-Different repos:
-
-    kubes init --app demo-web --image "user/demo" # DockerHub
-    kubes init --app demo-web --image "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo/sinatra" # ECR
-    kubes init --app demo-web --image "gcr.io/#{ENV['GOOGLE_PROJECT']}/demo-web" # GCR
-
-## Deploy
-
-Edit the files in the `.kubes/resources/demo-web` folder to your needs.
-
-Deploy all app resources in .kubes/resources/demo-web
-
-    kubes deploy demo-web
-
-Deploy specific resource, like .kubes/resources/demo-web/deployment.rb
-
-    kubes deploy demo-web deployment
-    kubes deploy demo-web service
-
-## Deploy: Web, Worker, Clock Pattern
-
-A common pattern is to use the same app code for different purposes like clock, worker, and web processes.
-
-    .kubes
-    └── resources
-        ├── demo-clock
-        │   └── deployment.rb
-        ├── demo-worker
-        │   └── deployment.rb
-        └── demo-web
-            ├── deployment.rb
-            └── service.rb
-
-You can deploy them all at once with:
-
-    kubes deploy
-
-## DSL or YAML
-
-You can define your Kubernetes resources in a [DSL](docs/dsl.md) or [YAML](docs/yaml.md)
-
-## Layering Support
-
-Kubes supports layering files together so you can use the same Kubernetes files to build multiple environments like dev and prod.
-
-See [Layering Docs](docs/layering.md).
-
 ## Installation
 
 Install with:
 
     gem install kubes
+
+For more info: [kubes.guru](https://kubes.guru)

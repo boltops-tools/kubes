@@ -67,14 +67,14 @@ $ kubes deploy
 => docker build -t user/demo-web:kubes-2020-06-19T00-20-28-1ef4db6 -f Dockerfile .
 Successfully built 1c5b10652c36
 => docker push user/demo-web:kubes-2020-06-19T00-20-28-1ef4db6
-Compiling .kubes/resources files
-Compiled  .kubes/output/demo-web/deployment.yaml
-Compiled  .kubes/output/demo-web/ingress.yaml
-Compiled  .kubes/output/demo-web/service.yaml
-=> kubectl apply --recursive -f .kubes/output
+Compiled  .kubes/resources files
+Deploying kubes files
+=> kubectl apply -f .kubes/output/demo-web/deployment.yaml
 deployment.apps/demo-web created
-ingress.networking.k8s.io/demo-web created
+=> kubectl apply -f .kubes/output/demo-web/service.yaml
 service/demo-web created
+=> kubectl apply -f .kubes/output/demo-web/ingress.yaml
+ingress.networking.k8s.io/demo-web created
 $
 {% endhighlight %}
               </div>
@@ -114,7 +114,7 @@ spec:
               <div class="commands">
 {% highlight ruby %}
 name "demo-web"
-namespace "demo"
+namespace "default"
 labels(app: name, extra: extra)
 
 replicas 1
