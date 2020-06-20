@@ -49,7 +49,7 @@ image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 ```ruby
 name "demo-worker"
 namespace "default"
-labels(app: name, extra: extra)
+labels(app: name)
 
 replicas 2
 image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e

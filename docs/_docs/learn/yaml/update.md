@@ -2,11 +2,11 @@
 title: Update App
 ---
 
-Let's update the app. In this case, we don't need to update the Docker image so we can use the `apply` command, which does not run the Docker build phase.
+Let's update the app. In this case, we don't need to update the Docker image, so we'll use the `apply` command, which does not run the Docker build phase.
 
     kubes apply
 
-Here's out the output looks like:
+Here's what the output looks like:
 
     $ kubes apply
     Compiled  .kubes/resources files

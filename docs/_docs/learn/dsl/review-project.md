@@ -33,11 +33,11 @@ replicas 1
 image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 ```
 
-The DSL form is much more concise than the YAML form.  Notice also the use of the `built_image` helper. The `built_image` is a kubes helper method that refers to the latest Docker image built by Kubes. This spares you from having to update the image manually.
+The DSL form is more concise than the YAML form.  Also, notice the use of the `built_image` helper. The `built_image` is a kubes helper method that refers to the latest Docker image built. This spares you from updating the image manually.
 
-Though the DSL many seem simple, it allows you to control the generated YAML fully. You can learn more about the DSL form at: [Deployment DSL Docs]({% link _docs/dsl/deployment.md %})
+Though the DSL may seem simple, it allows you to fully control the generated YAML. You can learn more about the DSL form at: [Deployment DSL Docs]({% link _docs/dsl/deployment.md %})
 
-Next let's look at `service.rb`
+Next, let's look at `service.rb`
 
 .kubes/resources/demo-web/service.rb
 

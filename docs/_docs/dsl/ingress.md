@@ -82,3 +82,21 @@ spec:
           serviceName: hello-kubernetes
           servicePort: 80
 ```
+
+## DSL Methods
+
+Here's a list of more common methods:
+
+Top-level and special fields:
+
+* paths
+* serviceName
+* servicePort
+
+ingress.spec fields
+
+* backend
+* rules
+* tls
+
+{% include dsl/methods.md name="ingress" %}

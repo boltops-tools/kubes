@@ -42,3 +42,7 @@ spec:
   sessionAffinity:
     affinityType: CLIENT_IP
 ```
+
+## DSL Methods
+
+{% include dsl/methods.md name="backend_config" %}

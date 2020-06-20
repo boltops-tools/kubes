@@ -1,8 +1,8 @@
 module Kubes::Compiler::Dsl::Core
-  module AttributeMethods
+  module FieldMethods
     # Defines methods attribute methods. Example:
     #
-    #    attribute_method :spec
+    #    field_method :spec
     #
     # Results in:
     #
@@ -19,7 +19,7 @@ module Kubes::Compiler::Dsl::Core
     #      @spec = value
     #    end
     #
-    def attribute_method(name)
+    def field_method(name)
       reader = "#{name}_reader"
       writer = "#{name}_writer"
 
@@ -38,9 +38,9 @@ module Kubes::Compiler::Dsl::Core
       end
     end
 
-    def attribute_methods(*names)
+    def field_methods(*names)
       names.each do |name|
-        attribute_method(name)
+        field_method(name)
       end
     end
   end

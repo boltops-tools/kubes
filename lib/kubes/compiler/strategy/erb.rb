@@ -3,7 +3,7 @@ require "render_me_pretty"
 
 class Kubes::Compiler::Strategy
   class Erb < Base
-    extend Kubes::Compiler::Dsl::Core::AttributeMethods
+    extend Kubes::Compiler::Dsl::Core::FieldMethods
     include Kubes::Compiler::Dsl::Core::Helpers
     include Kubes::Compiler::Shared::Helpers
 

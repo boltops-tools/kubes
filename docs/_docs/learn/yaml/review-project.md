@@ -53,7 +53,7 @@ spec:
         image: <%= built_image %>
 ```
 
-Notice the `<%= built_image %>`.  Kubes will process the YAML files with ERB templating and replace these tags.  The `built_image` is a kubes helper method that refers to the latest Docker image built by Kubes. This spares you from having to update the image manually.
+Notice the `<%= built_image %>`.  Kubes processes the YAML files with ERB templating and replaces these tags.  The `built_image` is a kubes helper method that refers to the latest Docker image built by Kubes. This spares you updating the image manually.
 
 Next, let's look at `service.yaml`
 

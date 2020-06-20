@@ -1,31 +1,27 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
-    attribute_methods :port,
-                      :protocol,
-                      :targetPort
-
     # kubectl explain service.spec
-    attribute_methods :clusterIP,                # <string>
-                      :externalIPs,              # <[]string>
-                      :externalName,             # <string>
-                      :externalTrafficPolicy,    # <string>
-                      :healthCheckNodePort,      # <integer>
-                      :ipFamily,                 # <string>
-                      :loadBalancerIP,           # <string>
-                      :loadBalancerSourceRanges, # <[]string>
-                      :ports,                    # <[]Object>
-                      :publishNotReadyAddresses, # <boolean>
-                      :selector,                 # <map[string]string>
-                      :sessionAffinity,          # <string>
-                      :sessionAffinityConfig,    # <Object>
-                      :type                      # <string>
+    field_methods :clusterIP,                # <string>
+                  :externalIPs,              # <[]string>
+                  :externalName,             # <string>
+                  :externalTrafficPolicy,    # <string>
+                  :healthCheckNodePort,      # <integer>
+                  :ipFamily,                 # <string>
+                  :loadBalancerIP,           # <string>
+                  :loadBalancerSourceRanges, # <[]string>
+                  :ports,                    # <[]Object>
+                  :publishNotReadyAddresses, # <boolean>
+                  :selector,                 # <map[string]string>
+                  :sessionAffinity,          # <string>
+                  :sessionAffinityConfig,    # <Object>
+                  :type                      # <string>
 
     # kubectl explain service.spec.ports
-    attribute_methods :nodePort,   # <integer>
-                      :port,       # <integer> -required-
-                      :port_name,  # <string>  (originally named port)
-                      :protocol,   # <string>
-                      :targetPort  # <string>
+    field_methods :nodePort,   # <integer>
+                  :port,       # <integer> -required-
+                  :portName,  # <string>  (originally named port)
+                  :protocol,   # <string>
+                  :targetPort  # <string>
 
     def default_apiVersion
       "v1"
@@ -51,7 +47,7 @@ module Kubes::Compiler::Dsl::Syntax
       [
         nodePort: nodePort,    # <integer>
         port: port,            # <integer> -required-
-        port_name: port_name,  # <string>  (originally named port)
+        name: portName,        # <string>  (originally named port)
         protocol: protocol,    # <string>
         targetPort: targetPort # <string>
       ]

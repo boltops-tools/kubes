@@ -1,0 +1,1 @@
+For a full list of the available methods, refer to the source itself [syntax/{{ include.name }}.rb](https://github.com/boltops-tools/kubes/blob/master/lib/kubes/compiler/dsl/syntax/{{ include.name }}.rb).

@@ -2,11 +2,11 @@
 title: Auto Context
 ---
 
-Kubernetes contexts are composed of three things: cluster, namespace, and user. Kubes supports automatically switching the kubectl context based on the `KUBES_ENV`.  This feature allows you to switch KUBES_ENV and target the right cluster, namespace, etc.
+Kubes supports automatically switching the kubectl context based on the `KUBES_ENV`.  Since Kubernetes contexts are composed of three things: cluster, namespace, and user; this feature allows you to target any of them on a per `KUBES_ENV` basis.
 
 ## Auto Context
 
-So dev and prod can use different kubectl contexts based on what is configured by:
+The dev and prod environments can use different kubectl contexts based on what is configured by the Kubes config.rb:
 
 ```ruby
 Kubes.configure do |config|
@@ -37,7 +37,7 @@ end
 
 ## Deploy
 
-Now when we deploy with kubes, it will automatically switch the kubectl context based on `KUBES_ENV`.  Example:
+With this setup, when you deploy with kubes, it will automatically switch the kubectl context based on `KUBES_ENV`.  Example:
 
     KUBES_ENV=dev  kubes deploy # to dev-services context
     KUBES_ENV=prod kubes deploy # to prod-services context

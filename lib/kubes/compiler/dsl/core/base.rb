@@ -1,6 +1,6 @@
 module Kubes::Compiler::Dsl::Core
   class Base
-    extend AttributeMethods
+    extend FieldMethods
     include DslEvaluator
     include Helpers
     include Kubes::Compiler::Layering

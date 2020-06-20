@@ -1,56 +1,55 @@
 module Kubes::Compiler::Dsl::Syntax
   class Deployment < Resource
-    attribute_methods :command,
-                      :container,
-                      :containers,
-                      :matchLabels,
-                      :maxSurge,
-                      :maxUnavailable,
-                      :sidecar,
-                      :templateMetadata,
-                      :templateSpec
+    field_methods :container,
+                  :containers,
+                  :matchLabels,
+                  :maxSurge,
+                  :maxUnavailable,
+                  :sidecar,
+                  :templateMetadata,
+                  :templateSpec
 
 
     # kubectl explain deployment.spec
-    attribute_methods :minReadySeconds,         # <integer>
-                      :paused,                  # <boolean>
-                      :progressDeadlineSeconds, # <integer>
-                      :replicas,                # <integer>
-                      :revisionHistoryLimit,    # <integer>
-                      :selector,                # <Object> -required-
-                      :strategy,                # <Object>
-                      :template                 # <Object> -required-
+    field_methods :minReadySeconds,         # <integer>
+                  :paused,                  # <boolean>
+                  :progressDeadlineSeconds, # <integer>
+                  :replicas,                # <integer>
+                  :revisionHistoryLimit,    # <integer>
+                  :selector,                # <Object> -required-
+                  :strategy,                # <Object>
+                  :template                 # <Object> -required-
 
     # kubectl explain deployment.spec.template.spec.containers
-    attribute_methods :args,                     # <[]string>
-                      :command,                  # <[]string>
-                      :env,                      # <[]Object>
-                      :envFrom,                  # <[]Object>
-                      :image,                    # <string>
-                      :imagePullPolicy,          # <string>
-                      :lifecycle,                # <Object>
-                      :livenessProbe,            # <Object>
-                      :container_name,           # <string> -required- (originally called name)
-                      :ports,                    # <[]Object>
-                      :readinessProbe,           # <Object>
-                      :resources,                # <Object>
-                      :securityContext,          # <Object>
-                      :startupProbe,             # <Object>
-                      :stdin,                    # <boolean>
-                      :stdinOnce,                # <boolean>
-                      :terminationMessagePath,   # <string>
-                      :terminationMessagePolicy, # <string>
-                      :tty,                      # <boolean>
-                      :volumeDevices,            # <[]Object>
-                      :volumeMounts,             # <[]Object>
-                      :workingDir                # <string>
+    field_methods :args,                     # <[]string>
+                  :command,                  # <[]string>
+                  :env,                      # <[]Object>
+                  :envFrom,                  # <[]Object>
+                  :image,                    # <string>
+                  :imagePullPolicy,          # <string>
+                  :lifecycle,                # <Object>
+                  :livenessProbe,            # <Object>
+                  :containerName,           # <string> -required- (originally called name)
+                  :ports,                    # <[]Object>
+                  :readinessProbe,           # <Object>
+                  :resources,                # <Object>
+                  :securityContext,          # <Object>
+                  :startupProbe,             # <Object>
+                  :stdin,                    # <boolean>
+                  :stdinOnce,                # <boolean>
+                  :terminationMessagePath,   # <string>
+                  :terminationMessagePolicy, # <string>
+                  :tty,                      # <boolean>
+                  :volumeDevices,            # <[]Object>
+                  :volumeMounts,             # <[]Object>
+                  :workingDir                # <string>
 
     # kubectl explain deployment.spec.template.spec.containers.ports
-   attribute_methods :containerPort, # <integer> -required-
-                     :hostIP,        # <string>
-                     :hostPort,      # <integer>
-                     :port_name,     # <string> (originally called name)
-                     :protocol       # <string>
+   field_methods :containerPort, # <integer> -required-
+                 :hostIP,        # <string>
+                 :hostPort,      # <integer>
+                 :portName,      # <string> (originally called name)
+                 :protocol       # <string>
 
     def default_apiVersion
       "apps/v1"
@@ -128,7 +127,7 @@ module Kubes::Compiler::Dsl::Syntax
         imagePullPolicy: imagePullPolicy,
         lifecycle: lifecycle,
         livenessProbe: livenessProbe,
-        name: container_name || name,
+        name: containerName || name,
         ports: ports,
         readinessProbe: readinessProbe,
         resources: resources,
@@ -150,7 +149,7 @@ module Kubes::Compiler::Dsl::Syntax
         containerPort: containerPort,
         hostIP: hostIP,
         hostPort: hostPort,
-        port_name: port_name,
+        name: portName,
         protocol: protocol,
       ]
     end

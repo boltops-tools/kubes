@@ -1,7 +1,7 @@
 module Kubes::Compiler::Shared
   module Helpers
-    extend Kubes::Compiler::Dsl::Core::AttributeMethods
-    attribute_methods :name
+    extend Kubes::Compiler::Dsl::Core::FieldMethods
+    field_methods :name
 
     def built_image
       return @options[:image] if @options[:image] # override

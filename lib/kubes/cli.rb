@@ -11,7 +11,7 @@ module Kubes
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
-    desc "apply [APP] [RESOURCE]", "Apply the Kubenetes YAML files without changing them"
+    desc "apply [APP] [RESOURCE]", "Apply the Kubenetes YAML files without building docker image"
     long_desc Help.text(:apply)
     image_option.call
     option :compile, type: :boolean, default: true, desc: "whether or not to compile the .kube/resources"

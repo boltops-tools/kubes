@@ -2,9 +2,7 @@
 title: New Project
 ---
 
-If you already a project with a Dockerfile, you can use that project, and the Dockerfile will be used. If you do not have an existing Dockerfile, kubes generates a starter Dockerfile that runs nginx.
-
-We'll start with an empty folder for this tutorial.
+If you already a project with an existing Dockerfile, you can use that. If you do not, kubes generates a starter Dockerfile that runs nginx. For this tutorial, we'll start with an empty folder.
 
     mkdir demo
     cd demo

@@ -2,6 +2,8 @@
 title: Service DSL
 ---
 
+## Example
+
 Here's an example of a Service.
 
 .kubes/resources/demo-web/service.rb
@@ -10,12 +12,12 @@ Here's an example of a Service.
 name "demo-web"
 labels(app: name)
 namespace "default"
-ports [
-  port: 80,
-  protocol: "TCP",
-  targetPort: 8080,
-]
-type "NodePort"
+
+# Optional since these are the defaults
+# port 80
+# targetPort 80
+#
+# type "NodePort"
 ```
 
 Running the `kubes compile` command:
@@ -46,3 +48,18 @@ spec:
     app: demo-web
   type: NodePort
 ```
+
+## DSL Methods
+
+Here's a list of more common methods:
+
+* nodePort
+* port
+* portName: Note this field doesn't match the original field name. It's more qualified.
+* ports
+* protocol
+* selector
+* targetPort
+* type
+
+{% include dsl/methods.md name="service" %}

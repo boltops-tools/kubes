@@ -4,7 +4,7 @@ title: Kubes Concepts
 
 ## Resources Files
 
-The `.kubes/resources` where you organized Kubernetes resources. Within folder you create different app subfolder. Example:
+The `.kubes/resources` where you organized Kubernetes resources. Different subfolders within the resources folder represent your app. Example:
 
     .kubes
     └── resources
@@ -30,7 +30,7 @@ Or you can deploy all 3 with:
 
     kubes deploy
 
-The deploy command automatically builds the Docker image and replaces the image in the YAML file with the built image.
+The deploy command automatically builds the Docker image and replaces the image in the YAML file with the latest built image.
 
 ## Layering
 

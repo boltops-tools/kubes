@@ -31,6 +31,4 @@ Kubes will delete in the reverse order.
     service "demo-web" deleted
     => kubectl delete -f .kubes/output/demo-web/deployment.yaml
     deployment.apps "demo-web" deleted
-    => kubectl delete -f .kubes/output/demo-clock/deployment.yaml
-    deployment.apps "demo-clock" deleted
     $

@@ -31,3 +31,14 @@ spec:
   domains:
   - cert1.example.com
 ```
+
+## DSL Methods
+
+Here's a list of more common methods:
+
+Top-level and special fields:
+
+* domain
+* domains
+
+{% include dsl/methods.md name="managed_certificate" %}

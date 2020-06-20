@@ -1,7 +1,7 @@
 module Kubes::Compiler::Dsl::Syntax
   class ManagedCertificate < Resource
-    attribute_methods :domain,
-                      :domains
+    field_methods :domain,
+                  :domains
 
     def default_apiVersion
       "networking.gke.io/v1beta2"

@@ -93,3 +93,55 @@ containers([
 ```
 
 Refer to the source code [syntax/deployment.rb](https://github.com/boltops-tools/kubes/blob/master/lib/kubes/compiler/dsl/syntax/deployment.rb) for more methods available.
+
+## DSL Methods
+
+Here's a list of more common methods:
+
+Top-level and special fields:
+
+* container
+* containers
+* matchLabels
+* maxSurge
+* maxUnavailable
+* sidecar
+* templateMetadata
+* templateSpec
+
+deployment.spec fields:
+
+* minReadySeconds
+* progressDeadlineSeconds
+* replicas
+* revisionHistoryLimit
+* selector
+* strategy
+* template
+
+deployment.spec.template.spec.containers fields:
+
+* args
+* command
+* env
+* envFrom
+* image
+* imagePullPolicy
+* lifecycle
+* livenessProbe
+* containerName
+* ports
+* readinessProbe
+* volumeDevices
+* volumeMounts
+* workingDir
+
+deployment.spec.template.spec.containers.ports fields:
+
+* containerPort
+* hostIP
+* hostPort
+* portName: Note this field doesn't match the original field name. It's more qualified.
+* protocol
+
+{% include dsl/methods.md name="deployment" %}

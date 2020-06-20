@@ -115,7 +115,7 @@ spec:
 {% highlight ruby %}
 name "demo-web"
 namespace "default"
-labels(app: name, extra: extra)
+labels(app: name)
 
 replicas 1
 image built_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
