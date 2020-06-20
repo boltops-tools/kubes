@@ -3,7 +3,7 @@ class Kubes::CLI
     def run
       Compile.new(@options).run unless @options[:compile] == false
       logger.info "Deploying kubes files"
-      Kubes::Kubectl.run(:apply, @options)
+      Kubes::Applier.new(@options).run
     end
   end
 end

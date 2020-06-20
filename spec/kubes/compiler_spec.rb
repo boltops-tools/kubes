@@ -1,10 +1,10 @@
 describe Kubes::Compiler do
-  let(:generate) { described_class.new(options) }
+  let(:compiler) { described_class.new(options) }
   let(:options) { {path: "spec/fixtures/project/.kubes/deployment.rb" } }
 
-  describe "generate" do
+  describe "compiler" do
     it "run" do
-      generate.run
+      compiler.run
     end
   end
 end

@@ -6,7 +6,6 @@ module Kubes::Kubectl::Args
 
     def args
       if %w[apply delete].include?(@name)
-        %w[--recursive -f]
         meth = "#{@name}_args"
         send(meth)
       else
@@ -28,11 +27,15 @@ module Kubes::Kubectl::Args
 
   private
     def common_args
-      %w[--recursive -f]
+      ["-f"]
     end
 
     def resource_path
-      [".kubes/output", @options[:app], resource].compact.join('/')
+      if @options[:file]
+        @options[:file]
+      else
+        [".kubes/output", @options[:app], resource].compact.join('/')
+      end
     end
 
     def resource

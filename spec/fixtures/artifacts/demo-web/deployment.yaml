@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-web
+  labels:
+    app: demo-web
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: demo-web
+  strategy:
+    rollingUpdate:
+      maxSurge: 25
+      maxUnavailable: 25
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: demo-web
+    spec:
+      containers:
+      - image: 111111111111.dkr.ecr.us-west-2.amazonaws.com/demo:kubes-2020-06-20T03-55-34
+        name: demo-web

@@ -9,7 +9,7 @@ Here's an example of a Service.
 ```ruby
 name "demo-web"
 labels(app: name)
-namespace "demo"
+namespace "default"
 ports [
   port: 80,
   protocol: "TCP",

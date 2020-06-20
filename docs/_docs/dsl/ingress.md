@@ -10,7 +10,7 @@ Here's an example of an ingress.
 
 ```ruby
 name "demo-web-ingress"
-namespace "demo"
+namespace "default"
 
 serviceName "demo-web"
 servicePort 80
