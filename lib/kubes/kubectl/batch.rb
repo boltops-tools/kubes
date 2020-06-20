@@ -1,20 +1,17 @@
-module Kubes
-  class Applier
-    extend Memoist
-    include Kubes::Util::Sh
-
-    def initialize(options={})
-      @options = options
+class Kubes::Kubectl
+  class Batch
+    def initialize(name, options={})
+      @name, @options = name.to_s, options
     end
 
     def run
       sorted_files.each do |file|
-        Kubes::Kubectl.run(:apply, @options.merge(file: file))
+        Kubes::Kubectl.run(@name, @options.merge(file: file))
       end
     end
 
     def sorted_files
-      files.sort_by do |file|
+      sorted = files.sort_by do |file|
         # .kubes/output/demo-web/service.yaml
         words = file.split('/')
         app, resource = words[2], words[3] # demo-web, service
@@ -23,6 +20,7 @@ module Kubes
         index = index.to_s.rjust(3, "0") # pad with 0
         "#{app}/#{index}"
       end
+      @name == "delete" ? sorted.reverse : sorted
     end
 
     # kubes apply                        # {app: nil, resource: nil}
