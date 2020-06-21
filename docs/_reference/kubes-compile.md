@@ -9,7 +9,7 @@ reference: true
 
 ## Description
 
-Compile Kubenetes YAML files from DSL
+Compile Kubernetes YAML files from DSL
 
 
 ## Options

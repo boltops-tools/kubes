@@ -9,7 +9,7 @@ reference: true
 
 ## Description
 
-Deploy to Kubenetes: docker build/push, kubes compile, and kubectl apply
+Deploy to Kubernetes: docker build/push, kubes compile, and kubectl apply
 
 ## Examples
 

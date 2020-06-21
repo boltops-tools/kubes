@@ -9,7 +9,7 @@ reference: true
 
 ## Description
 
-Apply the Kubenetes YAML files without changing them
+Apply the Kubernetes YAML files without changing them
 
 
 ## Options

@@ -5,7 +5,7 @@ module Kubes::Kubectl::Args
     end
 
     def args
-      if %w[apply delete].include?(@name)
+      if %w[apply delete get].include?(@name)
         meth = "#{@name}_args"
         send(meth)
       else
@@ -14,21 +14,19 @@ module Kubes::Kubectl::Args
     end
 
     def apply_args
-      args = common_args
+      args = ["-f"]
       args << resource_path
       args
     end
+    alias_method :delete_args, :apply_args
 
-    def delete_args
-      args = common_args
+    def get_args
+      args = ["--recursive -f"]
       args << resource_path
       args
     end
 
   private
-    def common_args
-      ["-f"]
-    end
 
     def resource_path
       if @options[:file]
