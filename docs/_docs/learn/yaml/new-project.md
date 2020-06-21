@@ -12,15 +12,17 @@ For this tutorial, we'll use an ECR repo, though any repo will work.
 Let's generate a starter project:
 
     $ REPO=$(aws ecr describe-repositories --repository-name demo | jq -r '.repositories[].repositoryUri')
-    $ kubes init --app demo-web --repo $REPO
+    $ kubes init --app demo --repo $REPO
           create  Dockerfile
           create  .kubes/config.rb
           create  .kubes/config/env/dev.rb
           create  .kubes/config/env/prod.rb
-          create  .kubes/resources/demo-web/deployment.yaml
-          create  .kubes/resources/demo-web/deployment/dev.yaml
-          create  .kubes/resources/demo-web/deployment/prod.yaml
-          create  .kubes/resources/demo-web/service.yaml
+          create  .kubes/resources/base/all.yaml
+          create  .kubes/resources/base/deployment.yaml
+          create  .kubes/resources/web/deployment.yaml
+          create  .kubes/resources/web/deployment/dev.yaml
+          create  .kubes/resources/web/deployment/prod.yaml
+          create  .kubes/resources/web/service.yaml
     Initialized .kubes folder
     Updated .gitignore
     $

@@ -30,11 +30,11 @@ kubes delete -y
 {% highlight sh %}
 .kubes
 └── resources
-    ├── demo-clock
+    ├── clock
     │   └── deployment.yaml
-    ├── demo-worker
+    ├── worker
     │   └── deployment.yaml
-    └── demo-web
+    └── web
         ├── deployment.yaml
         └── service.yaml
 {% endhighlight %}
@@ -70,11 +70,11 @@ Successfully built 1c5b10652c36
 => docker push user/demo-web:kubes-2020-06-19T00-20-28-1ef4db6
 Compiled  .kubes/resources files
 Deploying kubes files
-=> kubectl apply -f .kubes/output/demo-web/service.yaml
-service/demo-web created
-=> kubectl apply -f .kubes/output/demo-web/deployment.yaml
-deployment.apps/demo-web created
-=> kubectl apply -f .kubes/output/demo-web/ingress.yaml
+=> kubectl apply -f .kubes/output/web/service.yaml
+service/web created
+=> kubectl apply -f .kubes/output/web/deployment.yaml
+deployment.apps/web created
+=> kubectl apply -f .kubes/output/web/ingress.yaml
 ingress.networking.k8s.io/demo-web created
 $
 {% endhighlight %}
@@ -92,17 +92,17 @@ kind: Deployment
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: demo-web
+      app: demo
   template:
     metadata:
       labels:
-        app: demo-web
+        app: demo
     spec:
       containers:
       - name: demo-web
@@ -116,7 +116,7 @@ spec:
 {% highlight ruby %}
 name "demo-web"
 namespace "default"
-labels(app: name)
+labels(role: "web")
 
 replicas 1
 image built_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e

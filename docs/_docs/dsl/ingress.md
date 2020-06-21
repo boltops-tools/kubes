@@ -6,7 +6,7 @@ title: Ingress DSL
 
 Here's an example of an ingress.
 
-.kubes/resources/demo-web/ingress.rb
+.kubes/resources/web/ingress.rb
 
 ```ruby
 name "demo-web-ingress"
@@ -18,7 +18,7 @@ servicePort 80
 
 Produces:
 
-.kubes/output/demo-web/ingress.yaml
+.kubes/output/web/ingress.yaml
 
 ```yaml
 ---
@@ -39,7 +39,7 @@ spec:
 
 ## Example 2
 
-.kubes/resources/demo-web/ingress.rb
+.kubes/resources/web/ingress.rb
 
 ```ruby
 name "demo-web-ingress"
@@ -61,7 +61,7 @@ paths([{
 
 Produces:
 
-.kubes/output/demo-web/ingress.yaml
+.kubes/output/web/ingress.yaml
 
 ```yaml
 ---

@@ -1,27 +1,27 @@
 module Kubes::Compiler::Dsl::Syntax
   class Service < Resource
     # kubectl explain service.spec
-    field_methods :clusterIP,                # <string>
-                  :externalIPs,              # <[]string>
-                  :externalName,             # <string>
-                  :externalTrafficPolicy,    # <string>
-                  :healthCheckNodePort,      # <integer>
-                  :ipFamily,                 # <string>
-                  :loadBalancerIP,           # <string>
-                  :loadBalancerSourceRanges, # <[]string>
-                  :ports,                    # <[]Object>
-                  :publishNotReadyAddresses, # <boolean>
-                  :selector,                 # <map[string]string>
-                  :sessionAffinity,          # <string>
-                  :sessionAffinityConfig,    # <Object>
-                  :type                      # <string>
+    fields :clusterIP,                 # <string>
+           :externalIPs,               # <[]string>
+           :externalName,              # <string>
+           :externalTrafficPolicy,     # <string>
+           :healthCheckNodePort,       # <integer>
+           :ipFamily,                  # <string>
+           :loadBalancerIP,            # <string>
+           :loadBalancerSourceRanges,  # <[]string>
+           :ports,                     # <[]Object>
+           :publishNotReadyAddresses,  # <boolean>
+           "selector:hash",            # <map[string]string>
+           :sessionAffinity,           # <string>
+           :sessionAffinityConfig,     # <Object>
+           :type                       # <string>
 
     # kubectl explain service.spec.ports
-    field_methods :nodePort,   # <integer>
-                  :port,       # <integer> -required-
-                  :portName,  # <string>  (originally named port)
-                  :protocol,   # <string>
-                  :targetPort  # <string>
+    fields :nodePort,   # <integer>
+           :port,       # <integer> -required-
+           :portName,   # <string>  (originally named port)
+           :protocol,   # <string>
+           :targetPort  # <string>
 
     def default_apiVersion
       "v1"

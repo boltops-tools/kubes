@@ -2,7 +2,7 @@ class Kubes::CLI
   class Init < Sequence
     def self.options
       [
-        [:app, aliases: ["a"], required: true, desc: "Docker repo name. Example: demo-web. Generates .kubes/APP/resources folder"],
+        [:app, aliases: ["a"], required: true, desc: "Docker repo name. Example: web. Generates .kubes/APP/resources folder"],
         [:force, type: :boolean, desc: "Bypass overwrite are you sure prompt for existing files"],
         [:type, aliases: ["t"], default: "yaml", desc: "Type: dsl or yaml"],
         [:repo, required: true, desc: "Docker repo name. Example: user/repo. Configures .kubes/config.rb"],

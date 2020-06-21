@@ -27,9 +27,45 @@ module Kubes
       config.kubectl.exit_on_fail_for_delete = false # whether or not continue if the kubectl delete command fails
       # Note: not using config.kubectl.delete.exit_on_fail because delete a method internal to ActiveSupport::OrderedOptions
 
+      config.kubectl.order = ActiveSupport::OrderedOptions.new
+      config.kubectl.order.roles = role_order
+      config.kubectl.order.kinds = kind_order
+
       config.repo = nil # expected to be set by .kubes/config.rb
 
       config
+    end
+
+    # Create shared resources first
+    def role_order
+      %w[
+        common
+        shared
+      ]
+    end
+
+    # Create resources in specific order so dependent resources are available
+    def kind_order
+      %w[
+        Namespace
+        StorageClass
+        CustomResourceDefinition
+        MutatingWebhookConfiguration
+        ServiceAccount
+        PodSecurityPolicy
+        Role
+        ClusterRole
+        RoleBinding
+        ClusterRoleBinding
+        ConfigMap
+        Secret
+        Service
+        LimitRange
+        Deployment
+        StatefulSet
+        CronJob
+        PodDisruptionBudget
+      ]
     end
 
     def configure

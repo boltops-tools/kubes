@@ -1,15 +1,30 @@
 class Kubes::Compiler
   module Layering
-    def layers
+    def pre_layers
       ext = File.extname(@path)
-      resource_folder = @path.sub(ext,'')
-      layer_names.map do |name|
-        "#{resource_folder}/#{name}#{ext}"
+      kind = File.basename(@path).sub(ext,'') # IE: deployment
+      layers = [
+        "all#{ext}",
+        "all/#{Kubes.env}/#{ext}",
+        "#{kind}#{ext}",
+        "#{kind}/#{Kubes.env}#{ext}",
+      ]
+      layers.map do |layer|
+        "#{Kubes.root}/.kubes/resources/base/#{layer}"
       end
     end
 
-    def layer_names
-      ["base", Kubes.env.to_s]
+    def post_layers
+      ext = File.extname(@path)
+      kind_path = @path.sub(ext,'')
+
+      layers = [
+        "base",
+        Kubes.env.to_s
+      ]
+      layers.map do |layer|
+        "#{kind_path}/#{layer}#{ext}"
+      end
     end
   end
 end

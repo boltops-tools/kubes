@@ -12,17 +12,16 @@ For this tutorial, we'll use an ECR repo, though any repo will work.
 Let's generate a starter project:
 
     $ REPO=$(aws ecr describe-repositories --repository-name demo | jq -r '.repositories[].repositoryUri')
-    $ kubes init --app demo-web --repo $REPO --type dsl
-          create  Dockerfile
+    $ kubes init --app demo --repo $REPO --type dsl
           create  .kubes/config.rb
           create  .kubes/config/env/dev.rb
           create  .kubes/config/env/prod.rb
-          create  .kubes/resources/demo-web/deployment.rb
-          create  .kubes/resources/demo-web/deployment/dev.rb
-          create  .kubes/resources/demo-web/deployment/prod.rb
-          create  .kubes/resources/demo-web/service.rb
+          create  .kubes/resources/base/all.rb
+          create  .kubes/resources/web/deployment.rb
+          create  .kubes/resources/web/deployment/dev.rb
+          create  .kubes/resources/web/deployment/prod.rb
+          create  .kubes/resources/web/service.rb
     Initialized .kubes folder
-    Updated .gitignore
     $
 
 The `--type=dsl` option tells Kubes to generate DSL format files.

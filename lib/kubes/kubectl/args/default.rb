@@ -23,6 +23,7 @@ module Kubes::Kubectl::Args
     def get_args
       args = ["--recursive -f"]
       args << resource_path
+      args += ["-o #{@options[:output]}"] if @options[:output]
       args
     end
     alias_method :describe_args, :get_args

@@ -8,11 +8,11 @@ The `.kubes/resources` where you organized Kubernetes resources. Different subfo
 
     .kubes
     └── resources
-        ├── demo-clock
+        ├── clock
         │   └── deployment.yaml
-        ├── demo-worker
+        ├── worker
         │   └── deployment.yaml
-        └── demo-web
+        └── web
             ├── deployment.yaml
             └── service.yaml
 
@@ -24,7 +24,7 @@ Kubes uses Conventions Over Configuration structure to remove boilerplate setup 
 
 You can deploy just the demo-web app
 
-    kubes deploy demo-web
+    kubes deploy web
 
 Or you can deploy all 3 with:
 

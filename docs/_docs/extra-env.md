@@ -5,7 +5,7 @@ title: Extra Environments
 Kubes adds the concept of extra environments.  Let say, you have a demo-web app with a deployment and service.
 
     .kubes/resources
-    └── demo-web
+    └── web
         ├── deployment.rb
         └── service.rb
 

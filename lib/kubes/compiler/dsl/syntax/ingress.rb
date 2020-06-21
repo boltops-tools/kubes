@@ -1,13 +1,16 @@
 module Kubes::Compiler::Dsl::Syntax
   class Ingress < Resource
-    field_methods :paths,
-                  :serviceName,
-                  :servicePort
-
     # kubectl explain ingress.spec
-    field_methods :backend, # <Object>
-                  :rules,   # <[]Object>
-                  :tls      # <[]Object>
+    fields :backend, # <Object>
+           :rules,   # <[]Object>
+           :tls      # <[]Object>
+
+    # kubectl explain ingress.spec.rules.http
+    fields :paths       # <[]Object> -required-
+
+    # kubectl explain ingress.spec.rules.http.paths.backend
+    fields :serviceName, # <string> -required-
+           :servicePort  # <string> -required-
 
     def default_apiVersion
       "networking.k8s.io/v1beta1"

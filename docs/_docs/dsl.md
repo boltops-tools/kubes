@@ -18,11 +18,11 @@ Sometimes the methods may not exactly match to avoid field names collisions.  Th
 
 Here's a simple example:
 
-.kubes/resources/demo-web/service.rb
+.kubes/resources/web/service.rb
 
 ```ruby
 name "demo-web"
-labels(app: name)
+labels(role: "web")
 namespace "default"
 
 port 80
@@ -31,7 +31,7 @@ targetPort 80
 
 Results in:
 
-.kubes/output/demo-web/service.yaml
+.kubes/output/web/service.yaml
 
 ```yaml
 ---
@@ -40,7 +40,7 @@ kind: Service
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: demo
 spec:
   ports:
@@ -48,7 +48,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: demo-web
+    app: demo
   type: NodePort
 ```
 
@@ -61,12 +61,18 @@ In general:
 * The DSL methods behave as reader methods when no arguments are passed to it. IE: `name "demo-web"` sets the value.
 * The DSL methods behave as writer methods when arguments are passed to it. IE: `name` returns the value.
 
+## Merge Behavior
+
+Generally, the merge should behave as expected. For example, map or Hash fields are merged together from multiple layers. Strings are simply replaced. See more details at [Layering Merge Behavior]({% link _docs/layering/merge.md %})
+
 ## Support Resources
 
 * [BackendConfig]({% link _docs/dsl/backend-config.md %})
+* [ConfigMap]({% link _docs/dsl/config-map.md %})
 * [Deployment]({% link _docs/dsl/deployment.md %})
-* [Service]({% link _docs/dsl/service.md %})
 * [Ingress]({% link _docs/dsl/ingress.md %})
 * [ManagedCertificate]({% link _docs/dsl/managed-certificate.md %})
+* [Secret]({% link _docs/dsl/secret.md %})
+* [Service]({% link _docs/dsl/service.md %})
 
 For resources, that are not supported, use [YAML]({% link _docs/yaml.md %}) instead. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.

@@ -1,10 +1,10 @@
 ## Examples
 
-Deploy all resources in .kubes/resources/demo-web
+Deploy all resources in .kubes/resources/web
 
-    kubes deploy demo-web
+    kubes deploy web
 
-Deploy specific resource, like .kubes/resources/demo-web/deployment.rb
+Deploy specific resource, like .kubes/resources/web/deployment.rb
 
-    kubes deploy demo-web deployment
-    kubes deploy demo-web service
+    kubes deploy web deployment
+    kubes deploy web service

@@ -4,7 +4,7 @@ title: Change Project
 
 Let's make a simple change. We'll adjust the number of replicas to 3.  We do this in `deployment/dev.yaml`.
 
-.kubes/resources/demo-web/deployment/dev.yaml
+.kubes/resources/web/deployment/dev.yaml
 
 ```yaml
 ---

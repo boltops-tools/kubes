@@ -4,7 +4,7 @@ title: Change Project
 
 Let's make a simple change. We'll adjust the number of replicas to 3.  We do this in `deployment/dev.rb`.
 
-.kubes/resources/demo-web/deployment/dev.rb
+.kubes/resources/web/deployment/dev.rb
 
 ```ruby
 ---

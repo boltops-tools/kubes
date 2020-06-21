@@ -1,16 +1,17 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
     include Kubes::Compiler::Shared::Helpers
-    field_methods :apiVersion,
-                  :kind,
-                  :metadata,
-                  :resource,
-                  :spec
+    include Kubes::Util::YamlDump
+    fields :apiVersion,  # <string>
+           :kind,        # <string>
+           :metadata,    # <Object>
+           :resource,    # <Object>
+           :spec         # <Object>
 
     # kubectl explain deployment.metadata
-    field_methods :annotations, # <map[string]string>
-                  :labels,      # <map[string]string>
-                  :namespace    # <string>
+    fields "annotations:hash",  # <map[string]string>
+           "labels:hash",       # <map[string]string>
+           :namespace           # <string>
 
     # top-level of resource is quite common
     def default_resource
@@ -19,13 +20,21 @@ module Kubes::Compiler::Dsl::Syntax
         kind: kind,
         metadata: metadata,
         spec: spec,
-      }.deep_stringify_keys
+      }
+      data.merge!(default_resource_append)
+      data.deep_stringify_keys!
       data = HashSqueezer.squeeze(data)
-      YAML.dump(data)
+      yaml_dump(data)
+    end
+
+    # can be overridden by subclasses. IE: secret
+    def default_resource_append
+      {}
     end
 
     def default_metadata
       {
+        annotations: annotations,
         name: name,
         labels: labels,
         namespace: namespace,
@@ -35,6 +44,6 @@ module Kubes::Compiler::Dsl::Syntax
     def default_kind
       self.class.to_s.split('::').last # IE: Deployment
     end
-
+    alias_method :resource_kind, :default_kind
   end
 end

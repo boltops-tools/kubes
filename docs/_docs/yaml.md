@@ -6,7 +6,7 @@ You can write your Kubernetes resources in YAML format.
 
     .kubes
     └── resources
-        └── demo-web
+        └── web
             ├── deployment.yaml
             └── service.yaml
 
@@ -14,7 +14,7 @@ You can write your Kubernetes resources in YAML format.
 
 Kubes provides a little extra power for the YAML format. The YAML files are processed through an ERB templating language.  So you have dynamic control. Here's an example with `Kubes.env` and the `built_image` helper.
 
-.kubes/resources/demo-web/deployment.yaml
+.kubes/resources/web/deployment.yaml
 
 ```yaml
 ---
@@ -23,13 +23,13 @@ kind: Deployment
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: default
 spec:
   replicas: <%= Kubes.env == "prod" ? 2 : 1 %>
   selector:
     matchLabels:
-      app: demo-web
+      app: demo
   strategy:
     rollingUpdate:
       maxSurge: 25
@@ -38,7 +38,7 @@ spec:
   template:
     metadata:
       labels:
-        app: demo-web
+        app: demo
     spec:
       containers:
       - name: demo-web
