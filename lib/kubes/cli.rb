@@ -52,6 +52,14 @@ module Kubes
       Deploy.new(options.merge(app: app, resource: resource)).run
     end
 
+    desc "describe [APP] [RESOURCE]", "Describe Kubernetes resource using the compiled YAML files"
+    long_desc Help.text(:describe)
+    image_option.call
+    compile_option.call
+    def describe(app=nil, resource=nil)
+      Describe.new(options.merge(app: app, resource: resource)).run
+    end
+
     desc "get [APP] [RESOURCE]", "Get Kubernetes resource using the compiled YAML files"
     long_desc Help.text(:get)
     image_option.call

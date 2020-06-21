@@ -5,7 +5,7 @@ module Kubes::Kubectl::Args
     end
 
     def args
-      if %w[apply delete get].include?(@name)
+      if %w[apply delete get describe].include?(@name)
         meth = "#{@name}_args"
         send(meth)
       else
@@ -25,6 +25,7 @@ module Kubes::Kubectl::Args
       args << resource_path
       args
     end
+    alias_method :describe_args, :get_args
 
   private
 
