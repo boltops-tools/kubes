@@ -10,10 +10,10 @@ Here's what the output looks like:
 
     $ kubes apply
     Compiled  .kubes/resources files
-    => kubectl apply -f .kubes/output/demo-web/deployment.yaml
-    deployment.apps/demo-web configured
     => kubectl apply -f .kubes/output/demo-web/service.yaml
     service/demo-web unchanged
+    => kubectl apply -f .kubes/output/demo-web/deployment.yaml
+    deployment.apps/demo-web configured
     $
 
 The change has been deployed. Let's double check it:

@@ -61,9 +61,9 @@ class Kubes::Kubectl
       ClusterRoleBinding
       ConfigMap
       Secret
+      Service
       LimitRange
       Deployment
-      Service
       StatefulSet
       CronJob
       PodDisruptionBudget

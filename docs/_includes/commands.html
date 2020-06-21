@@ -70,10 +70,10 @@ Successfully built 1c5b10652c36
 => docker push user/demo-web:kubes-2020-06-19T00-20-28-1ef4db6
 Compiled  .kubes/resources files
 Deploying kubes files
-=> kubectl apply -f .kubes/output/demo-web/deployment.yaml
-deployment.apps/demo-web created
 => kubectl apply -f .kubes/output/demo-web/service.yaml
 service/demo-web created
+=> kubectl apply -f .kubes/output/demo-web/deployment.yaml
+deployment.apps/demo-web created
 => kubectl apply -f .kubes/output/demo-web/ingress.yaml
 ingress.networking.k8s.io/demo-web created
 $
