@@ -29,9 +29,9 @@ module Kubes::Kubectl::Args
   private
 
     def resource_path
-      if @options[:file]
+      if @options[:file] # batch: apply and delete
         @options[:file]
-      else
+      else # get
         [".kubes/output", @options[:app], resource].compact.join('/')
       end
     end
@@ -40,6 +40,5 @@ module Kubes::Kubectl::Args
       return unless r = @options[:resource] # intentional assignment
       r.include?(".yaml") ? r : "#{r}.yaml"
     end
-
   end
 end
