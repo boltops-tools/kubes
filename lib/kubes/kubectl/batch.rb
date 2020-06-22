@@ -13,15 +13,15 @@ class Kubes::Kubectl
       end
     end
 
-    # kubes apply                        # {app: nil, resource: nil}
-    # kubes apply demo-clock             # {app: "demo-clock", resource: nil}
-    # kubes apply demo-clock deployment  # {app: "demo-clock", resource: "deployment"}
+    # kubes apply                   # {role: nil, resource: nil}
+    # kubes apply clock             # {role: "clock", resource: nil}
+    # kubes apply clock deployment  # {role: "clock", resource: "deployment"}
     def search_expr
-      app, resource = @options[:app], @options[:resource]
-      if app && resource
-        "#{Kubes.root}/.kubes/output/#{app}/#{resource}.yaml"
-      elsif app
-        "#{Kubes.root}/.kubes/output/#{app}/*"
+      role, resource = @options[:role], @options[:resource]
+      if role && resource
+        "#{Kubes.root}/.kubes/output/#{role}/#{resource}.yaml"
+      elsif role
+        "#{Kubes.root}/.kubes/output/#{role}/*"
       else
         "#{Kubes.root}/.kubes/output/**/*"
       end

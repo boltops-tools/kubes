@@ -8,6 +8,7 @@ module Kubes
     end
 
     def run
+      validate!
       params = args.flatten.join(' ')
       command = "kubectl #{@name} #{params}" # @name: apply or delete
       options = {}
@@ -16,6 +17,17 @@ module Kubes
         run_hooks(@name) do
           sh(command, options)
         end
+      end
+    end
+
+    # Useful for kustomize mode
+    def validate!
+      return true unless Kubes.kustomize?
+
+      unless @options[:role]
+        logger.error "Missing argument: A folder must be provided when using kustomization.yaml files".color(:red)
+        logger.info "Please provide a folder"
+        exit 1
       end
     end
 
@@ -60,7 +72,8 @@ module Kubes
     memoize :custom
 
     def default
-      Args::Default.new(@name, @options)
+      klass = Kubes.kustomize? ? Args::Kustomize : Args::Standard
+      klass.new(@name, @options)
     end
     memoize :default
 

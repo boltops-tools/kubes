@@ -27,7 +27,7 @@ module Kubes::Docker::Args
     end
 
     def resource_path
-      [".kubes/output", @options[:app], resource].compact.join('/')
+      [".kubes/output", @options[:role], resource].compact.join('/')
     end
 
     def resource

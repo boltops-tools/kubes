@@ -14,12 +14,12 @@ module Kubes
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
-    desc "apply [APP] [RESOURCE]", "Apply the Kubernetes YAML files without building docker image"
+    desc "apply [ROLE] [RESOURCE]", "Apply the Kubernetes YAML files without building docker image"
     long_desc Help.text(:apply)
     image_option.call
     compile_option.call
-    def apply(app=nil, resource=nil)
-      Apply.new(options.merge(app: app, resource: resource)).run
+    def apply(role=nil, resource=nil)
+      Apply.new(options.merge(role: role, resource: resource)).run
     end
 
     desc "clean", "Remove .kubes/output files"
@@ -36,37 +36,37 @@ module Kubes
       Compile.new(options).run
     end
 
-    desc "delete [APP] [RESOURCE]", "Delete Kubernetes resources within the app folder"
+    desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources within the app folder"
     long_desc Help.text(:delete)
     image_option.call
     option :yes, aliases: %w[y], type: :boolean, desc: "Skip are you sure prompt"
-    def delete(app=nil, resource=nil)
-      Delete.new(options.merge(app: app, resource: resource)).run
+    def delete(role=nil, resource=nil)
+      Delete.new(options.merge(role: role, resource: resource)).run
     end
 
-    desc "deploy [APP] [RESOURCE]", "Deploy to Kubernetes: docker build/push, kubes compile, and kubectl apply"
+    desc "deploy [ROLE] [RESOURCE]", "Deploy to Kubernetes: docker build/push, kubes compile, and kubectl apply"
     long_desc Help.text(:deploy)
     image_option.call
     option :build, type: :boolean, default: true, desc: "whether or not to build docker image"
-    def deploy(app=nil, resource=nil)
-      Deploy.new(options.merge(app: app, resource: resource)).run
+    def deploy(role=nil, resource=nil)
+      Deploy.new(options.merge(role: role, resource: resource)).run
     end
 
-    desc "describe [APP] [RESOURCE]", "Describe Kubernetes resource using the compiled YAML files"
+    desc "describe [ROLE] [RESOURCE]", "Describe Kubernetes resource using the compiled YAML files"
     long_desc Help.text(:describe)
     image_option.call
     compile_option.call
-    def describe(app=nil, resource=nil)
-      Describe.new(options.merge(app: app, resource: resource)).run
+    def describe(role=nil, resource=nil)
+      Describe.new(options.merge(role: role, resource: resource)).run
     end
 
-    desc "get [APP] [RESOURCE]", "Get Kubernetes resource using the compiled YAML files"
+    desc "get [ROLE] [RESOURCE]", "Get Kubernetes resource using the compiled YAML files"
     long_desc Help.text(:get)
     image_option.call
     compile_option.call
     option :output, aliases: %w[o], desc: "Output format: json|yaml|wide|name"
-    def get(app=nil, resource=nil)
-      Get.new(options.merge(app: app, resource: resource)).run
+    def get(role=nil, resource=nil)
+      Get.new(options.merge(role: role, resource: resource)).run
     end
 
     long_desc Help.text(:init)
