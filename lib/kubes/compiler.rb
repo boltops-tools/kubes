@@ -8,20 +8,22 @@ module Kubes
     end
 
     def run
-      each_resource do |result|
-        write(result.filename, result.yaml)
+      resources.each do |path|
+        strategy = Strategy.new(@options.merge(path: path))
+        result = strategy.compile
+        write(result.filename, result.yaml) if result
       end
       puts "Compiled  .kubes/resources files" if show_compiled_message?
     end
 
-    def each_resource
+    def resources
+      paths = []
       expr = "#{Kubes.root}/.kubes/resources/**/*.{rb,yaml}"
       Dir.glob(expr).each do |path|
         next unless process?(path)
-        strategy = Strategy.new(@options.merge(path: path))
-        result = strategy.compile
-        yield(result) if result
+        paths << path
       end
+      paths
     end
 
     # Only considering files 2 layers deep. So:
@@ -30,6 +32,14 @@ module Kubes
     #    No = web/deployment/dev.yaml
     #
     def process?(path)
+      if Kubes.kustomize?
+        File.file?(path)
+      else
+        process_standard?(path)
+      end
+    end
+
+    def process_standard?(path)
       rel_path = path.sub(%r{.*\.kubes/resources/},'')
       two_levels_deep = rel_path.split('/').size <= 2
       two_levels_deep && consider?(path)

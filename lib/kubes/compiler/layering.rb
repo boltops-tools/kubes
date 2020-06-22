@@ -1,6 +1,8 @@
 class Kubes::Compiler
   module Layering
     def pre_layers
+      return [] if Kubes.kustomize?
+
       ext = File.extname(@path)
       kind = File.basename(@path).sub(ext,'') # IE: deployment
       layers = [
@@ -15,6 +17,8 @@ class Kubes::Compiler
     end
 
     def post_layers
+      return [] if Kubes.kustomize?
+
       ext = File.extname(@path)
       kind_path = @path.sub(ext,'')
 

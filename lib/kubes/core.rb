@@ -24,5 +24,9 @@ module Kubes
       config.logger
     end
     memoize :logger
+
+    def kustomize?
+      Kubectl::Kustomize.detect?
+    end
   end
 end
