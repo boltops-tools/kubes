@@ -12,9 +12,9 @@ Here's an example that shows it creating the deployment first, then the service,
     Compiled  .kubes/resources files
     Deploying kubes files
     => kubectl apply -f .kubes/output/web/service.yaml
-    service/web created
+    service/demo-web created
     => kubectl apply -f .kubes/output/web/deployment.yaml
-    deployment.apps/web created
+    deployment.apps/demo-web created
     => kubectl apply -f .kubes/output/web/ingress.yaml
     ingress.networking.k8s.io/demo-web created
     $

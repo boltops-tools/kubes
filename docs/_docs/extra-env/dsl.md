@@ -70,17 +70,17 @@ Example:
 
     $ kubectl get all -l extra=2
     NAME                              READY   STATUS    RESTARTS   AGE
-    pod/web-2-5f8b8cbcdc-dmbjj   1/1     Running   0          78s
-    pod/web-2-5f8b8cbcdc-kg8hf   1/1     Running   0          78s
+    pod/demo-web-2-5f8b8cbcdc-dmbjj   1/1     Running   0          78s
+    pod/demo-web-2-5f8b8cbcdc-kg8hf   1/1     Running   0          78s
 
     NAME                 TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-    service/web-2   NodePort   172.16.158.166   <none>        80:30148/TCP   78s
+    service/demo-web-2   NodePort   172.16.158.166   <none>        80:30148/TCP   78s
 
     NAME                         READY   UP-TO-DATE   AVAILABLE   AGE
-    deployment.apps/web-2   2/2     2            2           78s
+    deployment.apps/demo-web-2   2/2     2            2           78s
 
     NAME                                    DESIRED   CURRENT   READY   AGE
-    replicaset.apps/web-2-5f8b8cbcdc   2         2         2       79s
+    replicaset.apps/demo-web-2-5f8b8cbcdc   2         2         2       79s
     $
 
 The `extra` and `with_extra` helper methods provide flexibility to create these extra environments with either approach.

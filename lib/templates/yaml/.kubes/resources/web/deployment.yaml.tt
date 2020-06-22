@@ -20,5 +20,5 @@ spec:
         role: web
     spec:
       containers:
-      - name: <%= app %>
+      - name: <%= app %>-web
         image: <%%= built_image %>

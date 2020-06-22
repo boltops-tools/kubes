@@ -11,27 +11,43 @@ Here's what the output looks like:
     $ kubes apply
     Compiled  .kubes/resources files
     => kubectl apply -f .kubes/output/web/service.yaml
-    service/web unchanged
+    service/demo-web unchanged
     => kubectl apply -f .kubes/output/web/deployment.yaml
-    deployment.apps/web configured
+    deployment.apps/demo-web configured
     $
 
 The change has been deployed. Let's double check it:
 
+    kubes get
+
+Example output:
+
+    $ kubes get
+    => kubectl get --recursive -f .kubes/output
+    NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/demo-web   3/3     3            3           6m5s
+
+    NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    service/demo-web   ClusterIP   172.16.201.77   <none>        80/TCP    6m5s
+    $
+
+Let's also use the `kubectl get` command:
+
     $ kubectl get all
     NAME                            READY   STATUS    RESTARTS   AGE
-    pod/web-58d9585f6c-7g2dh   1/1     Running   0          84s
-    pod/web-58d9585f6c-8glcm   1/1     Running   0          36s
-    pod/web-58d9585f6c-tncnp   1/1     Running   0          84s
+    pod/demo-web-5cb4f9fb77-6c7vc   1/1     Running   0          3s
+    pod/demo-web-5cb4f9fb77-lgczj   1/1     Running   0          5m25s
+    pod/demo-web-5cb4f9fb77-ls28f   1/1     Running   0          3s
 
-    NAME               TYPE       CLUSTER-IP       EXTERNAL-IP   PORT(S)        AGE
-    service/web   NodePort   172.16.137.193   <none>        80:32126/TCP   83s
+    NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    service/demo-web     ClusterIP   172.16.201.77   <none>        80/TCP    5m26s
 
     NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
-    deployment.apps/web   3/3     3            3           85s
+    deployment.apps/demo-web   3/3     3            3           5m26s
 
     NAME                                  DESIRED   CURRENT   READY   AGE
-    replicaset.apps/web-58d9585f6c   3         3         3       85s
+    replicaset.apps/demo-web-5cb4f9fb77   3         3         3       5m26s
+    $
 
 We can see that there are now 3 replicas running.
 

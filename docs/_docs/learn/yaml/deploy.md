@@ -15,9 +15,9 @@ You'll see output like this:
     Docker push took 15s.
     Compiled  .kubes/resources files
     => kubectl apply -f .kubes/output/web/service.yaml
-    service/web created
+    service/demo-web created
     => kubectl apply -f .kubes/output/web/deployment.yaml
-    deployment.apps/web created
+    deployment.apps/demo-web created
     $
 
 What did Kubes do?
@@ -28,18 +28,33 @@ What did Kubes do?
 
 Let's check for the created resource on the Kubernetes cluster:
 
+    kubes get
+
+Example output:
+
+    $ kubes get
+    => kubectl get --recursive -f .kubes/output
+    NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
+    deployment.apps/demo-web   1/1     1            1           7s
+
+    NAME               TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    service/demo-web   ClusterIP   172.16.201.77   <none>        80/TCP    7s
+    $
+
+Let's also use the `kubectl get` command:
+
     $ kubectl get all
     NAME                            READY   STATUS    RESTARTS   AGE
-    pod/web-7fd7b7b6b4-kv46r   1/1     Running   0          33s
+    pod/demo-web-5cb4f9fb77-lgczj   1/1     Running   0          3m48s
 
-    NAME                 TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-    service/web     ClusterIP   10.100.160.248   <none>        80/TCP    33s
+    NAME                 TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+    service/demo-web     ClusterIP   172.16.201.77   <none>        80/TCP    3m49s
 
     NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
-    deployment.apps/web   1/1     1            1           33s
+    deployment.apps/demo-web   1/1     1            1           3m49s
 
     NAME                                  DESIRED   CURRENT   READY   AGE
-    replicaset.apps/web-7fd7b7b6b4   1         1         1       33s
+    replicaset.apps/demo-web-5cb4f9fb77   1         1         1       3m49s
     $
 
 We can see that the deployment and service got created.
