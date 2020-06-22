@@ -6,11 +6,11 @@ DSL builds Kubernetes YAML files with a reasonable default structure.  Each part
 
 ## Basics
 
-.kubes/resources/demo-web/deployment.rb:
+.kubes/resources/web/deployment.rb:
 
 ```ruby
 name "demo-web"
-labels(app: name)
+labels(role: "web")
 namespace "default"
 replicas 2
 image "nginx"
@@ -19,12 +19,12 @@ image "nginx"
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/demo-web/deployment.yaml
+    Generated .kubes/output/web/deployment.yaml
     $
 
 Produces:
 
-.kubes/output/demo-web/deployment.yaml:
+.kubes/output/web/deployment.yaml:
 
 ```yaml
 apiVersion: apps/v1
@@ -32,13 +32,13 @@ kind: Deployment
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: default
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: demo-web
+      app: demo
   strategy:
     rollingUpdate:
       maxSurge: 25
@@ -47,7 +47,7 @@ spec:
   template:
     metadata:
       labels:
-        app: demo-web
+        app: demo
     containers:
     - name: demo-web
       image: nginx

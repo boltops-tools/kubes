@@ -6,7 +6,7 @@ Kubes provides helper methods to make creating extra environments easy: `with_ex
 
 Here's how you achieve extra environments with the YAML form:
 
-.kubes/resources/demo-web/deployment.rb
+.kubes/resources/web/deployment.rb
 
 ```ruby
 ---
@@ -15,24 +15,24 @@ kind: Deployment
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: <%= with_extra("default") %>
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: demo-web
+      app: demo
   template:
     metadata:
       labels:
-        app: demo-web
+        app: demo
     spec:
       containers:
       - image: <%= built_image %>
         name: demo-web
 ```
 
-.kubes/resources/demo-web/service.rb
+.kubes/resources/web/service.rb
 
 ```ruby
 ---
@@ -41,7 +41,7 @@ kind: Service
 metadata:
   name: demo-web
   labels:
-    app: demo-web
+    app: demo
   namespace: <%= with_extra("default") %>
 spec:
   ports:
@@ -49,7 +49,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: demo-web
+    app: demo
   type: NodePort
 ```
 

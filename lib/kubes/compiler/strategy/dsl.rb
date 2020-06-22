@@ -13,14 +13,9 @@ class Kubes::Compiler::Strategy
       klass_name = klass_map(klass_name)
       "Kubes::Compiler::Dsl::Syntax::#{klass_name}".constantize
     rescue NameError => e
-      file = ".kubes/resources/#{klass_name.underscore}"
       logger.debug "#{e.class}: #{e.message}"
-      logger.error "ERROR: DSL syntax is not supported for this resource type: #{klass_name}".color(:red)
-      logger.error <<~EOL
-        The DSL does not support: #{file}.rb
-        Try using YAML instead: #{file}.yaml
-      EOL
-      exit 1
+      logger.warn "WARN: Using default resource: #{klass_name}".color(:red)
+      Kubes::Compiler::Dsl::Syntax::Resource # default
     end
 
     # Allows user to name the files:

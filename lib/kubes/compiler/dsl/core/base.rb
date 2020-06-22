@@ -1,6 +1,6 @@
 module Kubes::Compiler::Dsl::Core
   class Base
-    extend FieldMethods
+    extend Fields
     include DslEvaluator
     include Helpers
     include Kubes::Compiler::Layering
@@ -11,11 +11,16 @@ module Kubes::Compiler::Dsl::Core
     end
 
     def run
-      evaluate_file(@path)
-      layers.each do |path|
+      evaluate_files(pre_layers)
+      evaluate_file(@path) # main resource definition
+      evaluate_files(post_layers)
+      resource
+    end
+
+    def evaluate_files(paths)
+      paths.each do |path|
         evaluate_file(path)
       end
-      resource
     end
   end
 end

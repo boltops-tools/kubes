@@ -1,0 +1,11 @@
+metadata:
+  labels:
+    app: <%= app %>
+spec:
+  selector:
+    matchLabels:
+      app: <%= app %>
+  template:
+    metadata:
+      labels:
+        app: <%= app %>

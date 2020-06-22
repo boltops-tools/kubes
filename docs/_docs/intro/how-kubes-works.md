@@ -16,8 +16,8 @@ Now, use `kubectl` directly. This will apply all the files:
 
 You can also selectively apply specific files:
 
-    kubectl apply -f .kubes/output/demo-web/deployment.yaml
-    kubectl apply -f .kubes/output/demo-web/service.yaml
+    kubectl apply -f .kubes/output/web/deployment.yaml
+    kubectl apply -f .kubes/output/web/service.yaml
 
 You can also apply with kubes. This will compile the files automatically also.
 

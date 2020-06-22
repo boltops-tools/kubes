@@ -18,17 +18,20 @@ Here's what a .kubes folder structure can look like this:
     ├── config.rb
     ├── output
     ├── resources
-    │   ├── demo-clock
+    │   ├── base
+    │   │   └── all.yaml
+    │   ├── clock
     │   │   └── deployment.yaml
-    │   ├── demo-web
+    │   ├── web
     │   │   ├── deployment.yaml
     │   │   └── service.yaml
-    │   └── demo-worker
+    │   └── worker
     │       └── deployment.yaml
     └── state
 
 Name | Description
 --- | ---
+base | The base folder is processed first and can be used to define common fields and resources. Learn more on the [Layering Docs]({% link _docs/layering.md %}).
 config | The config folder can be used to configure behavior of Kubes.  The [docker]({% link _docs/config/docker.md %}) config is used to customize the docker command. The [env]({% link _docs/config/env.md %}) config is used to override `config.rb` settings on a `KUBES_ENV` basis. The [kubectl]({% link _docs/config/kubectl.md %}) config is used to customize the kubectl command.
 config.rb | The main thing to configure here is the repo to push the docker image to.
 output | Where kubes builds and writes the Kubernetes YAML to.

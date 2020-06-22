@@ -36,7 +36,11 @@
           <li><a href="{% link _docs/intro/how-kubes-works.md %}">How Kubes Works</a></li>
           <li><a href="{% link _docs/intro/concepts.md %}">Concepts</a></li>
           <li><a href="{% link _docs/intro/structure.md %}">Structure</a></li>
-          <li><a href="{% link _docs/intro/ordering.md %}">Ordering</a></li>
+          <li><a href="{% link _docs/intro/ordering.md %}">Ordering</a>
+            <ul>
+              <li><a href="{% link _docs/intro/ordering/custom.md %}">Custom Order</a></li>
+            </ul>
+          </li>
           <li><a href="{% link _docs/intro/install.md %}">Install</a></li>
         </ul>
       </li>
@@ -47,10 +51,18 @@
           <li><a href="{% link _docs/config/kubectl.md %}">Kubectl</a></li>
         </ul>
       </li>
+      <li><a href="{% link _docs/resources.md %}">Resources</a>
+        <ul>
+          <li><a href="{% link _docs/resources/role.md %}">Role</a></li>
+          <li><a href="{% link _docs/resources/base.md %}">Base</a></li>
+          <li><a href="{% link _docs/resources/shared.md %}">Shared</a></li>
+        </ul>
+      </li>
       <li><a href="{% link _docs/layering.md %}">Layering</a>
         <ul>
           <li><a href="{% link _docs/layering/yaml.md %}">YAML</a></li>
           <li><a href="{% link _docs/layering/dsl.md %}">DSL</a></li>
+          <li><a href="{% link _docs/layering/merge.md %}">Merge Behavior</a></li>
         </ul>
       </li>
       <li><a href="{% link _docs/yaml.md %}">YAML</a></li>
@@ -58,9 +70,11 @@
       <li><a href="{% link _docs/dsl.md %}">DSL</a>
         <ul>
           <li><a href="{% link _docs/dsl/backend-config.md %}">BackendConfig</a></li>
+          <li><a href="{% link _docs/dsl/config-map.md %}">ConfigMap</a></li>
           <li><a href="{% link _docs/dsl/deployment.md %}">Deployment</a></li>
           <li><a href="{% link _docs/dsl/ingress.md %}">Ingress</a></li>
           <li><a href="{% link _docs/dsl/managed-certificate.md %}">ManagedCertificate</a></li>
+          <li><a href="{% link _docs/dsl/secret.md %}">Secret</a></li>
           <li><a href="{% link _docs/dsl/service.md %}">Service</a></li>
         </ul>
       </li>

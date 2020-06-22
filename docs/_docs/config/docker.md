@@ -16,15 +16,15 @@ To push:
 
 While building the docker image as a separate step can be useful, you can just use the deploy command, and kubes will automatically build the Docker image for you. Example:
 
-    kubes deploy demo-web
+    kubes deploy web
 
 If you want to skip the `docker build` phase of the deploy, you can run:
 
-    kubes deploy demo-web --no-build
+    kubes deploy web --no-build
 
 Also, kubes apply another way to skip the docker build:
 
-    kubes apply demo-web
+    kubes apply web
 
 ## Customizing Args
 

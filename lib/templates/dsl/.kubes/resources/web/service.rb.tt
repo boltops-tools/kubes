@@ -1,6 +1,5 @@
-name "demo-web"
-namespace "default"
-labels(app: name)
+name "<%= app %>-web"
+labels(role: "web")
 
 # Optional since default port is 80
 # port 80

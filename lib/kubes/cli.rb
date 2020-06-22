@@ -64,6 +64,7 @@ module Kubes
     long_desc Help.text(:get)
     image_option.call
     compile_option.call
+    option :output, aliases: %w[o], desc: "Output format: json|yaml|wide|name"
     def get(app=nil, resource=nil)
       Get.new(options.merge(app: app, resource: resource)).run
     end

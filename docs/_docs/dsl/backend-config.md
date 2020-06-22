@@ -4,7 +4,7 @@ title: BackendConfig DSL
 
 Here's an example of a BackendConfig.
 
-.kubes/resources/demo-web/backend-config.rb
+.kubes/resources/web/backend-config.rb
 
 ```ruby
 name "backendconfig"
@@ -22,12 +22,12 @@ spec(
 Running the `kubes compile` command:
 
     $ kubes compile
-    Generated .kubes/output/demo-web/backend-config.yaml
+    Generated .kubes/output/web/backend-config.yaml
     $
 
 Produces:
 
-.kubes/output/demo-web/backend-config.yaml
+.kubes/output/web/backend-config.yaml
 
 ```yaml
 ---

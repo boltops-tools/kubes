@@ -1,0 +1,7 @@
+name "<%= app %>-web"
+labels(role: "web")
+
+replicas 1
+image built_image # IE: user/<%= app %>:kubes-2020-06-13T19-55-16-43afc6e
+
+# More docs: kubes.guru/docs/dsl/deployment/

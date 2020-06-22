@@ -1,0 +1,2 @@
+namespace "default"
+labels(app: "<%= app %>")

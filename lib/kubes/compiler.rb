@@ -1,6 +1,7 @@
 module Kubes
   class Compiler
     include Kubes::Logging
+    include Kubes::Util::Consider
 
     def initialize(options={})
       @options = options
@@ -10,13 +11,13 @@ module Kubes
       each_resource do |result|
         write(result.filename, result.yaml)
       end
-      puts "Compiled  .kubes/resources files"
+      puts "Compiled  .kubes/resources files" if show_compiled_message?
     end
 
     def each_resource
       expr = "#{Kubes.root}/.kubes/resources/**/*.{rb,yaml}"
       Dir.glob(expr).each do |path|
-        next unless consider?(path)
+        next unless process?(path)
         strategy = Strategy.new(@options.merge(path: path))
         result = strategy.compile
         yield(result) if result
@@ -25,13 +26,13 @@ module Kubes
 
     # Only considering files 2 layers deep. So:
     #
-    #    Yes = demo-web/deployment.yaml
-    #    No = demo-web/deployment/dev.yaml
+    #    Yes = web/deployment.yaml
+    #    No = web/deployment/dev.yaml
     #
-    def consider?(path)
+    def process?(path)
       rel_path = path.sub(%r{.*\.kubes/resources/},'')
       two_levels_deep = rel_path.split('/').size <= 2
-      two_levels_deep && File.file?(path)
+      two_levels_deep && consider?(path)
     end
 
     def write(filename, yaml)
@@ -40,6 +41,10 @@ module Kubes
       IO.write(dest, yaml)
       pretty_dest = dest.sub("#{Kubes.root}/",'')
       logger.debug "Compiled  #{pretty_dest}"
+    end
+
+    def show_compiled_message?
+      !%w[g ge get].include?(ARGV.first)
     end
   end
 end

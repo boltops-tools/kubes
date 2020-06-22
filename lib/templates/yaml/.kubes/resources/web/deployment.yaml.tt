@@ -1,16 +1,14 @@
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: demo-web
+  name: <%= app %>-web
   labels:
-    app: demo-web
-  namespace: default
+    role: web
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: demo-web
+      role: web
   strategy:
     rollingUpdate:
       maxSurge: 25
@@ -19,8 +17,8 @@ spec:
   template:
     metadata:
       labels:
-        app: demo-web
+        role: web
     spec:
       containers:
-      - name: demo-web
-        image: <%= built_image %>
+      - name: <%= app %>
+        image: <%%= built_image %>

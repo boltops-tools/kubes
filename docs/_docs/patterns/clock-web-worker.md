@@ -11,12 +11,12 @@ Note, often the clock process is also called a scheduler.
 Here's a structure that achieves this pattern with Kubes:
 
     .kubes/resources
-    ├── demo-clock
+    ├── clock
     │   └── deployment.rb
-    ├── demo-web
+    ├── web
     │   ├── deployment.rb
     │   └── service.rb
-    └── demo-worker
+    └── worker
         └── deployment.rb
 
 ## Source Code
@@ -26,19 +26,19 @@ Here's a structure that achieves this pattern with Kubes:
 ```ruby
 name "demo-clock"
 namespace "default"
-labels(app: name)
+labels(role: "web")
 
 replicas 1
 image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 command "bin/clock"
 ```
 
-.kubes/resources/demo-web/deployment.rb
+.kubes/resources/web/deployment.rb
 
 ```ruby
 name "demo-web"
 namespace "default"
-labels(app: name)
+labels(role: "web")
 
 replicas 1
 image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
@@ -49,7 +49,7 @@ image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 ```ruby
 name "demo-worker"
 namespace "default"
-labels(app: name)
+labels(role: "web")
 
 replicas 2
 image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
@@ -66,6 +66,6 @@ To deploy all 3 process types:
 
 To deploy selectively:
 
-    kubes deploy demo-clock
-    kubes deploy demo-web
-    kubes deploy demo-worker
+    kubes deploy clock
+    kubes deploy web
+    kubes deploy worker
