@@ -14,7 +14,7 @@ class Kubes::CLI
   private
     # Needs to be a method to its available for templates/.kubes/resources/%app%
     def app
-      @options[:role]
+      @options[:app]
     end
 
   public
