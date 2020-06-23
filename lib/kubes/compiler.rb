@@ -11,14 +11,14 @@ module Kubes
       resources.each do |path|
         strategy = Strategy.new(@options.merge(path: path))
         result = strategy.compile
-        write(result.filename, result.yaml) if result
+        write(result) if result
       end
       puts "Compiled  .kubes/resources files" if show_compiled_message?
     end
 
     def resources
       paths = []
-      expr = "#{Kubes.root}/.kubes/resources/**/*.{rb,yaml}"
+      expr = "#{Kubes.root}/.kubes/resources/**/*"
       Dir.glob(expr).each do |path|
         next unless process?(path)
         paths << path
@@ -45,10 +45,17 @@ module Kubes
       two_levels_deep && consider?(path)
     end
 
-    def write(filename, yaml)
+    def write(result)
+      filename, content = result.filename, result.content
       dest = "#{Kubes.root}/.kubes/output/#{filename}"
-      FileUtils.mkdir_p(File.dirname(dest))
-      IO.write(dest, yaml)
+
+      if result.io?
+        FileUtils.cp(filename, dest_path) # preserves permission
+      else
+        FileUtils.mkdir_p(File.dirname(dest))
+        IO.write(dest, content)
+      end
+
       pretty_dest = dest.sub("#{Kubes.root}/",'')
       logger.debug "Compiled  #{pretty_dest}"
     end

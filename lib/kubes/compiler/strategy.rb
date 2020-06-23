@@ -16,12 +16,9 @@ class Kubes::Compiler
     def strategy_class
       ext = File.extname(@path)
       case ext
-      when '.rb'
-        Dsl
-      when '.yaml'
-        Erb
-      else
-        raise "Non-supported strategy for extension #{ext}"
+      when '.rb'   then Dsl
+      when '.yaml' then Erb
+      else Pass
       end
     end
   end
