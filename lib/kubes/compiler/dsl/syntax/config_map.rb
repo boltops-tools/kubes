@@ -1,5 +1,7 @@
 module Kubes::Compiler::Dsl::Syntax
   class ConfigMap < Resource
+    include Kubes::Compiler::Dsl::Core::Files
+
     # kubectl explain secret
     fields "data:hash",        # <map[string]string>
            "binaryData:hash"   # <map[string]string>

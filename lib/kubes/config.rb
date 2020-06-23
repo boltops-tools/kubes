@@ -31,6 +31,8 @@ module Kubes
       config.kubectl.order.roles = role_order
       config.kubectl.order.kinds = kind_order
 
+      config.suffix_hash = true # append suffix has to ConfigMap and Secret
+
       config.repo = nil # expected to be set by .kubes/config.rb
 
       config

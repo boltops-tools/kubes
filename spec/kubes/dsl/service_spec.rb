@@ -5,8 +5,7 @@ describe Kubes::Compiler::Dsl::Syntax::Service do
   context "minimum" do
     let(:deployment_name) { "minimum" }
     it "run" do
-      resource = evaluator.run
-      data = YAML.load(resource)
+      data = evaluator.run
       expect(data['spec']['type']).to eq "ClusterIP"
     end
   end

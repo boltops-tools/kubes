@@ -53,11 +53,11 @@ Results in:
     $ kubes apply                                                                                      ⎈ (gke-dev/default)
     => kubectl apply -f .kubes/output/shared/secret.yaml
     secret/demo-secret created
+    => kubectl apply -f .kubes/output/clock/deployment.yaml
+    deployment.apps/demo-clock created
     => kubectl apply -f .kubes/output/web/service.yaml
     service/demo-web created
     => kubectl apply -f .kubes/output/web/deployment.yaml
     deployment.apps/demo-web created
-    => kubectl apply -f .kubes/output/clock/deployment.yaml
-    deployment.apps/demo-clock created
     $
 

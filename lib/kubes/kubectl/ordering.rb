@@ -5,7 +5,7 @@ class Kubes::Kubectl
         # .kubes/output/web/service.yaml
         words = file.split('/')
         role, kind = words[2], words[3] # web, deployment
-        kind = kind.sub('.yaml','').underscore.camelize
+        kind = kind.sub('.yaml','').underscore.camelize if kind
 
         kind_i = index_for(:kinds, kind)
         role_i = index_for(:roles, role)

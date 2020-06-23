@@ -22,6 +22,9 @@ Here's what a .kubes folder structure can look like this:
     │   │   └── all.yaml
     │   ├── clock
     │   │   └── deployment.yaml
+    │   ├── shared
+    │   │   ├── config_map.yaml
+    │   │   └── secret.yaml
     │   ├── web
     │   │   ├── deployment.yaml
     │   │   └── service.yaml
@@ -36,4 +39,5 @@ config | The config folder can be used to configure behavior of Kubes.  The [doc
 config.rb | The main thing to configure here is the repo to push the docker image to.
 output | Where kubes builds and writes the Kubernetes YAML to.
 resources | Where you define your Kubernetes resources.
+shared | The shared folder is where you can put shared resources. This folder gets applied first. More info: [Ordering]({% link _docs/intro/ordering.md %}).
 state | Temporary state info that stores the built Docker image name.

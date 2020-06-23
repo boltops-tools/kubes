@@ -1,7 +1,7 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
     include Kubes::Compiler::Shared::Helpers
-    include Kubes::Util::YamlDump
+
     fields :apiVersion,  # <string>
            :kind,        # <string>
            :metadata,    # <Object>
@@ -23,8 +23,7 @@ module Kubes::Compiler::Dsl::Syntax
       }
       data.merge!(default_resource_append)
       data.deep_stringify_keys!
-      data = HashSqueezer.squeeze(data)
-      yaml_dump(data)
+      HashSqueezer.squeeze(data)
     end
 
     # can be overridden by subclasses. IE: secret

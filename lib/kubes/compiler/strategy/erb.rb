@@ -6,7 +6,6 @@ class Kubes::Compiler::Strategy
     include Kubes::Compiler::Dsl::Core::Helpers
     include Kubes::Compiler::Shared::Helpers
     include Kubes::Compiler::Layering
-    include Kubes::Util::YamlDump
 
     def run
       @data = {}
@@ -15,8 +14,7 @@ class Kubes::Compiler::Strategy
       render(@path) # main resource definition
       render_files(post_layers)
 
-      yaml = yaml_dump(@data)
-      Result.new(@save_file, yaml)
+      Result.new(@save_file, @data)
     end
 
     def render_files(paths)

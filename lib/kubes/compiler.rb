@@ -8,11 +8,15 @@ module Kubes
     end
 
     def run
-      resources.each do |path|
+      results = resources.map do |path|
         strategy = Strategy.new(@options.merge(path: path))
-        result = strategy.compile
-        write(result) if result
+        strategy.compile
+      end.compact
+
+      results.each do |result|
+        write(result)
       end
+
       puts "Compiled  .kubes/resources files" if show_compiled_message?
     end
 
@@ -35,22 +39,22 @@ module Kubes
       if Kubes.kustomize?
         File.file?(path)
       else
-        process_standard?(path)
+        consider?(path) && two_levels_deep?(path)
       end
     end
 
-    def process_standard?(path)
+    def two_levels_deep?(path)
       rel_path = path.sub(%r{.*\.kubes/resources/},'')
-      two_levels_deep = rel_path.split('/').size <= 2
-      two_levels_deep && consider?(path)
+      rel_path.split('/').size == 2
     end
 
     def write(result)
+      result.write_decorate!
       filename, content = result.filename, result.content
       dest = "#{Kubes.root}/.kubes/output/#{filename}"
 
       if result.io?
-        FileUtils.cp(filename, dest_path) # preserves permission
+        FileUtils.cp(filename, dest) # preserve permissions
       else
         FileUtils.mkdir_p(File.dirname(dest))
         IO.write(dest, content)

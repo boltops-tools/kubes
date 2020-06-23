@@ -1,0 +1,1 @@
+A suffix hash based on the contents of the {{ include.kind }} is automatically appended to the {{ include.kind }} name. {{ include.kind }}s used in Deployment and Pod containers fields that use the same name will also have the suffix automatically appended. This is done to trigger a rolling deployment. Here's an example an deployment output with the hashed name.
