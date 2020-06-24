@@ -1,12 +1,26 @@
 class Kubes::Compiler::Strategy
   class Result
-    attr_reader :filename, :content
-    def initialize(filename, content)
-      @filename, @content = filename, content
+    include Kubes::Util::YamlDump
+
+    attr_reader :filename
+    def initialize(filename, data)
+      @filename, @data = filename, data
     end
 
     def io?
-      @content.respond_to?(:read)
+      @data.respond_to?(:read)
+    end
+
+    def compile_decorate!
+      @data = Kubes::Compiler::Decorator::Compile.new(@data).result
+    end
+
+    def write_decorate!
+      @data = Kubes::Compiler::Decorator::Write.new(@data).result
+    end
+
+    def content
+      yaml_dump(@data)
     end
   end
 end

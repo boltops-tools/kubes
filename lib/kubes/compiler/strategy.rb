@@ -10,7 +10,9 @@ class Kubes::Compiler
       return false unless klass
 
       strategy = klass.new(@options.merge(path: @path)) # Dsl or Erb
-      strategy.run
+      result = strategy.run
+      result.compile_decorate! # compile phase decoration
+      result
     end
 
     def strategy_class

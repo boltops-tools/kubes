@@ -3,8 +3,8 @@ class Kubes::Compiler::Strategy
     def run
       klass = syntax_class
       syntax = klass.new(@options) # Deployment, Service, etc
-      yaml = syntax.run
-      Result.new(@save_file, yaml)
+      data = syntax.run
+      Result.new(@save_file, data)
     end
 
     def syntax_class

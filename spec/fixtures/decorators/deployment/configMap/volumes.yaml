@@ -1,0 +1,34 @@
+---
+metadata:
+  namespace: default
+  labels:
+    app: demo
+    role: web
+  name: demo-web
+spec:
+  selector:
+    matchLabels:
+      app: demo
+      role: web
+  template:
+    metadata:
+      labels:
+        app: demo
+        role: web
+    spec:
+      containers:
+      - name: demo-web
+        image: gcr.io/project/demo-web:kubes-2020-06-23T00-07-54
+        volumeMounts:
+        - mountPath: /config-map
+          name: config-map-volume
+      volumes:
+      - configMap:
+          name: demo-config-map
+          items:
+          - key: k1
+            path: config-map.conf
+        name: config-map-volume
+  replicas: 1
+apiVersion: apps/v1
+kind: Pod

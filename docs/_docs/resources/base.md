@@ -20,7 +20,7 @@ Here's an example structure, so we can understand how layering works with the ba
 
 Kubes process the files in the `base` folder first, then it process your [role-based resources]({% link _docs/resources/role.md %}) like web. So:
 
-    kubes deploy service deployment
+    kubes deploy web deployment
 
 Will layer:
 
@@ -30,4 +30,4 @@ Will layer:
 
 More details on layering can be found in the [Layering Docs]({% link _docs/layering.md %}).
 
-Remmeber files in the base are used just for layering.
+Remember files in the base are used just for layering.

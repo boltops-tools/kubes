@@ -1,0 +1,16 @@
+---
+metadata:
+  namespace: default
+  name: demo-web
+spec:
+  containers:
+  - name: demo-web
+    image: gcr.io/project/demo-web:kubes-2020-06-23T00-07-54
+    env:
+    - name: MYSQL_ROOT_PASSWORD
+      valueFrom:
+        configMapKeyRef:
+          name: demo-config-map
+          key: password
+apiVersion: apps/v1
+kind: Pod

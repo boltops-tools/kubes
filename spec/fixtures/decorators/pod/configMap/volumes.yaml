@@ -1,0 +1,19 @@
+---
+metadata:
+  name: demo-pod
+spec:
+  containers:
+  - name: demo-pod
+    image: gcr.io/project/demo-pod:kubes-2020-06-23T00-07-54
+    volumeMounts:
+    - mountPath: /config-map
+      name: config-map-volume
+  volumes:
+  - configMap:
+      name: demo-config-map
+      items:
+      - key: k1
+        path: config-map.conf
+    name: config-map-volume
+apiVersion: apps/v1
+kind: Deployment
