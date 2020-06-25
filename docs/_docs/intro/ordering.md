@@ -2,7 +2,7 @@
 title: Ordering
 ---
 
-Generally, Kubes will apply resources in order so dependent resources are created first.
+Generally, Kubes will apply resources in order so dependent resources are created first. If needed, you can completely customize the order: [Custom Ordering]({% link _docs/intro/ordering/custom.md %}).
 
 ## Apply
 
