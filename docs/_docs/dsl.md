@@ -76,4 +76,4 @@ Generally, the merge should behave as expected. For example, map or Hash fields 
 * [Secret]({% link _docs/dsl/secret.md %})
 * [Service]({% link _docs/dsl/service.md %})
 
-For resources, that are not supported, use [YAML]({% link _docs/yaml.md %}) instead. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
+For resources, that are not supported, you can use the [Generic resource]({% link _docs/dsl/generic.md %}) or use [YAML]({% link _docs/yaml.md %}) instead. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
