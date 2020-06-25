@@ -6,7 +6,7 @@ Generally, Kubes will apply resources in order so dependent resources are create
 
 ## Apply
 
-Here's an example that shows it creating the deployment first, then the service, and last the ingress.
+Here's an example that shows it creating the service and deployment first, and then the ingress last.
 
     $ kubes apply
     Compiled  .kubes/resources files
@@ -50,7 +50,7 @@ Resources in the `shared` folder will be applied first.  Example:
 
 Results in:
 
-    $ kubes apply                                                                                      ⎈ (gke-dev/default)
+    $ kubes apply
     => kubectl apply -f .kubes/output/shared/secret.yaml
     secret/demo-secret created
     => kubectl apply -f .kubes/output/clock/deployment.yaml

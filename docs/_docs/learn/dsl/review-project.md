@@ -2,21 +2,7 @@
 title: Review Project
 ---
 
-Let's explore some of the generated files.
-
-    .
-    ├── Dockerfile
-    └── .kubes
-        ├── config.rb
-        └── resources
-            ├── base
-            │   └── all.rb
-            └── web
-                ├── deployment
-                │   ├── dev.rb
-                │   └── prod.rb
-                ├── deployment.rb
-                └── service.rb
+Let's review the resources.
 
 ## Deployment Resource
 

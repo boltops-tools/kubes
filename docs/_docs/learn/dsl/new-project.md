@@ -24,8 +24,10 @@ Let's generate a starter project:
     Initialized .kubes folder
     $
 
-The `--type=dsl` option tells Kubes to generate DSL format files.
+The `--type=dsl` option tells Kubes to generate DSL format files. To learn more about the generated structure, here are the [Structure Docs]({% link _docs/intro/structure.md %}).
 
-To learn more about the generated structure, here are the [Structure Docs]({% link _docs/intro/structure.md %}).
+Let's explore some of the generated files.
 
-Next, we'll review the files.
+{% include learn/review.md %}
+
+Next, we'll review the resources.

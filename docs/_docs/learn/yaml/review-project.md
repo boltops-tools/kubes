@@ -2,25 +2,7 @@
 title: Review Project
 ---
 
-Let's explore some of the generated files.
-
-    .
-    ├── Dockerfile
-    ├── .gitignore
-    └── .kubes
-        ├── config.rb
-        └── resources
-            ├── base
-            │   ├── all.yaml
-            │   └── deployment.yaml
-            └── web
-                ├── deployment
-                │   ├── dev.yaml
-                │   └── prod.yaml
-                ├── deployment.yaml
-                └── service.yaml
-
-{% include learn/review.md %}
+Let's review the resources.
 
 ## Deployment Resource
 

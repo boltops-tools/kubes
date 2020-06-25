@@ -29,4 +29,8 @@ Let's generate a starter project:
 
 To learn more about the generated structure, here are the [Structure Docs]({% link _docs/intro/structure.md %}).
 
-Next, we'll review the files.
+Let's explore some of the generated files.
+
+{% include learn/review.md %}
+
+Next, we'll review the resources.
