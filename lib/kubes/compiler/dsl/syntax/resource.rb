@@ -15,15 +15,20 @@ module Kubes::Compiler::Dsl::Syntax
 
     # top-level of resource is quite common
     def default_resource
-      data = {
+      data = top.merge(
         apiVersion: apiVersion,
         kind: kind,
         metadata: metadata,
         spec: spec,
-      }
-      data.merge!(default_resource_append)
+      )
+      data.deeper_merge!(default_resource_append)
       data.deep_stringify_keys!
       HashSqueezer.squeeze(data)
+    end
+
+    # Where to set fields for generic kind
+    def top
+      @top ||= {}
     end
 
     # can be overridden by subclasses. IE: secret
@@ -41,8 +46,14 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_kind
-      self.class.to_s.split('::').last # IE: Deployment
+      ext = File.extname(@path)
+      File.basename(@path).sub(ext, '').camelize
     end
     alias_method :resource_kind, :default_kind
+
+    # For generic kind
+    def field(name, data)
+      top.deeper_merge!(name => data)
+    end
   end
 end

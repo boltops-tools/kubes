@@ -70,6 +70,7 @@ Generally, the merge should behave as expected. For example, map or Hash fields 
 * [BackendConfig]({% link _docs/dsl/backend-config.md %})
 * [ConfigMap]({% link _docs/dsl/config-map.md %})
 * [Deployment]({% link _docs/dsl/deployment.md %})
+* [Generic]({% link _docs/dsl/generic.md %})
 * [Ingress]({% link _docs/dsl/ingress.md %})
 * [ManagedCertificate]({% link _docs/dsl/managed-certificate.md %})
 * [Secret]({% link _docs/dsl/secret.md %})

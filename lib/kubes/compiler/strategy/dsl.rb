@@ -12,9 +12,8 @@ class Kubes::Compiler::Strategy
       klass_name = File.basename(@filename).sub('.rb','').underscore.camelize # Deployment, Service, Ingress, ManagedCertificate, etc
       klass_name = klass_map(klass_name)
       "Kubes::Compiler::Dsl::Syntax::#{klass_name}".constantize
-    rescue NameError => e
-      logger.debug "#{e.class}: #{e.message}"
-      logger.warn "WARN: Using default resource: #{klass_name}".color(:red)
+    rescue NameError
+      logger.debug "Using default resource for: #{klass_name}"
       Kubes::Compiler::Dsl::Syntax::Resource # default
     end
 
