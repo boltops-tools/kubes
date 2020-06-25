@@ -2,7 +2,7 @@
 title: Clock Web Worker Pattern
 ---
 
-A common pattern is to use the same code to run different types of processes like clock, web, worker. Kubes easily supports this pattern.
+A common pattern is to use the same code to run different types of processes like clock, web, worker. Kubes is flexible enough to support this pattern.
 
 Note, often the clock process is also called a scheduler.
 
