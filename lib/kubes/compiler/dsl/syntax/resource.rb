@@ -1,11 +1,12 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
+    include Kubes::Compiler::Util::Normalize
     include Kubes::Compiler::Shared::Helpers
 
     fields :apiVersion,  # <string>
            :kind,        # <string>
            :metadata,    # <Object>
-           :resource,    # <Object>
+           :result,      # <Object>
            :spec         # <Object>
 
     # kubectl explain deployment.metadata
@@ -13,15 +14,17 @@ module Kubes::Compiler::Dsl::Syntax
            "labels:hash",       # <map[string]string>
            :namespace           # <string>
 
+    attr_accessor :kind_from_block
+
     # top-level of resource is quite common
-    def default_resource
+    def default_result
       data = top.merge(
         apiVersion: apiVersion,
         kind: kind,
         metadata: metadata,
         spec: spec,
       )
-      data.deeper_merge!(default_resource_append)
+      data.deeper_merge!(default_result_append)
       data.deep_stringify_keys!
       HashSqueezer.squeeze(data)
     end
@@ -32,7 +35,7 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     # can be overridden by subclasses. IE: secret
-    def default_resource_append
+    def default_result_append
       {}
     end
 
@@ -46,8 +49,8 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_kind
-      ext = File.extname(@path)
-      File.basename(@path).sub(ext, '').camelize
+      return @kind_from_block if @kind_from_block
+      normalize_kind(@path)
     end
     alias_method :resource_kind, :default_kind
 

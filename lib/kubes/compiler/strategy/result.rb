@@ -1,6 +1,6 @@
 class Kubes::Compiler::Strategy
   class Result
-    include Kubes::Util::YamlDump
+    include Kubes::Compiler::Util::YamlDump
 
     attr_reader :filename
     def initialize(filename, data)

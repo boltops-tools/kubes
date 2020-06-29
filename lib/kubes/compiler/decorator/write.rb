@@ -1,17 +1,13 @@
 module Kubes::Compiler::Decorator
-  class Write
-    def initialize(data)
-      @data = data
-    end
-
-    def result
-      case @data['kind']
+  class Write < Base
+    def process(item)
+      case item['kind']
       when "Deployment"
-        Resources::Deployment.new(@data).run
+        Resources::Deployment.new(item).run
       when "Pod"
-        Resources::Pod.new(@data).run
+        Resources::Pod.new(item).run
       else
-        @data # pass through
+        item # pass through
       end
     end
   end

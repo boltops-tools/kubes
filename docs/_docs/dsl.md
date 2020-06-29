@@ -64,16 +64,3 @@ In general:
 ## Merge Behavior
 
 Generally, the merge should behave as expected. For example, map or Hash fields are merged together from multiple layers. Strings are simply replaced. See more details at [Layering Merge Behavior]({% link _docs/layering/merge.md %})
-
-## Support Resources
-
-* [BackendConfig]({% link _docs/dsl/backend-config.md %})
-* [ConfigMap]({% link _docs/dsl/config-map.md %})
-* [Deployment]({% link _docs/dsl/deployment.md %})
-* [Generic]({% link _docs/dsl/generic.md %})
-* [Ingress]({% link _docs/dsl/ingress.md %})
-* [ManagedCertificate]({% link _docs/dsl/managed-certificate.md %})
-* [Secret]({% link _docs/dsl/secret.md %})
-* [Service]({% link _docs/dsl/service.md %})
-
-For resources, that are not supported, you can use the [Generic resource]({% link _docs/dsl/generic.md %}) or use [YAML]({% link _docs/yaml.md %}) instead. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.

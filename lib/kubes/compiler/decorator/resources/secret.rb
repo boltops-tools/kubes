@@ -2,7 +2,7 @@ require 'digest'
 
 module Kubes::Compiler::Decorator::Resources
   class Secret < Base
-    include Kubes::Util::YamlDump
+    include Kubes::Compiler::Util::YamlDump
 
     def perform
       # even though name is required, will allow logic to get the kubectl apply and kubectl to surface the required name error

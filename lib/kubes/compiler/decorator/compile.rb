@@ -1,15 +1,11 @@
 module Kubes::Compiler::Decorator
-  class Compile
-    def initialize(data)
-      @data = data
-    end
-
-    def result
-      case @data['kind']
+  class Compile < Base
+    def process(item)
+      case item['kind']
       when "ConfigMap", "Secret"
-        Resources::Secret.new(@data).run
+        Resources::Secret.new(item).run
       else
-        @data # pass through
+        item # pass through
       end
     end
   end
