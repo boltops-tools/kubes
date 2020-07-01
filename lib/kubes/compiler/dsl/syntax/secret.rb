@@ -11,7 +11,7 @@ module Kubes::Compiler::Dsl::Syntax
       "v1"
     end
 
-    def default_resource_append
+    def default_result_append
       {
         data: data,
         stringData: stringData,

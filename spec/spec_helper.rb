@@ -1,4 +1,5 @@
 ENV["KUBES_TEST"] = "1"
+ENV['KUBES_ROOT'] = "spec/fixtures/project"
 
 # CodeClimate test coverage: https://docs.codeclimate.com/docs/configuring-test-coverage
 # require 'simplecov'

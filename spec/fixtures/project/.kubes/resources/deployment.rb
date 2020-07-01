@@ -4,7 +4,7 @@ namespace "default"
 
 replicas 2
 image "nginx"
-container_port 80
+containerPort 80
 
 # More examples:
 # container([

@@ -7,7 +7,7 @@ class Kubes::Compiler
       kind = File.basename(@path).sub(ext,'') # IE: deployment
       layers = [
         "all#{ext}",
-        "all/#{Kubes.env}/#{ext}",
+        "all/#{Kubes.env}#{ext}",
         "#{kind}#{ext}",
         "#{kind}/#{Kubes.env}#{ext}",
       ]

@@ -47,6 +47,6 @@ labels(role: "web")
 # targetPort 80
 ```
 
-Service is also pretty simple.  Though the DSL may seem simple, it allows you to fully control the generated YAML. You can learn more about the DSL form at: [Deployment DSL Docs]({% link _docs/dsl/deployment.md %})
+Service is also pretty simple.  Though the DSL may seem simple, it allows you to fully control the generated YAML. You can learn more about the DSL form at: [Deployment DSL Docs]({% link _docs/dsl/resources/deployment.md %})
 
 Next, we'll deploy the app.

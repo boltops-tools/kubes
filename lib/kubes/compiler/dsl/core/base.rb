@@ -5,8 +5,9 @@ module Kubes::Compiler::Dsl::Core
     include Helpers
     include Kubes::Compiler::Layering
 
-    def initialize(options)
+    def initialize(options={})
       @options = options
+      @name = options[:name]
       @path = options[:path]
     end
 
@@ -14,7 +15,7 @@ module Kubes::Compiler::Dsl::Core
       evaluate_files(pre_layers)
       evaluate_file(@path) # main resource definition
       evaluate_files(post_layers)
-      resource
+      result if respond_to?(:result) # block form doesnt have result
     end
 
     def evaluate_files(paths)
