@@ -39,6 +39,10 @@ module Kubes::Compiler::Dsl::Syntax
       {}
     end
 
+    def default_apiVersion
+      "v1"
+    end
+
     def default_metadata
       {
         annotations: annotations,
