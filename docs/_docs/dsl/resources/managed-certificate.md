@@ -1,5 +1,6 @@
 ---
-title: ManagedCertificate DSL
+title: ManagedCertificate
+categories: dsl
 ---
 
 Here's an example of a ManagedCertificate.

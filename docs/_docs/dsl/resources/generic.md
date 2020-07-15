@@ -1,5 +1,6 @@
 ---
-title: Generic DSL
+title: Generic
+categories: dsl
 ---
 
 The generic DSL allows you to create any Kubernetes resource kind with the Kubes DSL. It is useful for resources with no pretty Kubes DSL wrappers yet.  It still has some pretty powerful helper methods.

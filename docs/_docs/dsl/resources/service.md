@@ -1,5 +1,6 @@
 ---
-title: Service DSL
+title: Service
+categories: dsl
 ---
 
 ## Example

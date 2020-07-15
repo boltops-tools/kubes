@@ -63,17 +63,10 @@
         <ul>
           <li><a href="{% link _docs/dsl/resources.md %}">Resources</a>
             <ul>
-              <li><a href="{% link _docs/dsl/resources/backend-config.md %}">BackendConfig</a></li>
-              <li><a href="{% link _docs/dsl/resources/config-map.md %}">ConfigMap</a></li>
-              <li><a href="{% link _docs/dsl/resources/daemon-set.md %}">DaemonSet</a></li>
-              <li><a href="{% link _docs/dsl/resources/deployment.md %}">Deployment</a></li>
-              <li><a href="{% link _docs/dsl/resources/generic.md %}">Generic</a></li>
-              <li><a href="{% link _docs/dsl/resources/ingress.md %}">Ingress</a></li>
-              <li><a href="{% link _docs/dsl/resources/managed-certificate.md %}">ManagedCertificate</a></li>
-              <li><a href="{% link _docs/dsl/resources/network-policy.md %}">NetworkPolicy</a></li>
-              <li><a href="{% link _docs/dsl/resources/pod.md %}">Pod</a></li>
-              <li><a href="{% link _docs/dsl/resources/secret.md %}">Secret</a></li>
-              <li><a href="{% link _docs/dsl/resources/service.md %}">Service</a></li>
+            {% assign docs = site.docs | where: "categories","dsl" %}
+            {% for doc in docs -%}
+              <li><a href="{{ doc.url }}">{{ doc.title }}</a></li>
+            {% endfor %}
             </ul>
           </li>
           <li><a href="{% link _docs/dsl/multiple-resources.md %}">Multiple Resources</a>

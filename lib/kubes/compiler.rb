@@ -17,7 +17,7 @@ module Kubes
         write(result)
       end
 
-      puts "Compiled  .kubes/resources files" if show_compiled_message?
+      puts "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
     end
 
     def resources

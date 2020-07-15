@@ -1,5 +1,6 @@
 ---
-title: Deployment DSL
+title: Deployment
+categories: dsl
 ---
 
 DSL builds Kubernetes YAML files with a reasonable default structure.  Each part of the structure can be customized and overridden.

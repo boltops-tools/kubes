@@ -1,5 +1,6 @@
 ---
-title: ConfigMap DSL
+title: ConfigMap
+categories: dsl
 ---
 
 ## Example

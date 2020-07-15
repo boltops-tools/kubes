@@ -3,7 +3,8 @@ module Kubes::Compiler::Dsl::Core
     attr_reader :results
     def run
       @results = {} # Hash key is the name of resource, using it so we can keep a map to handle layering
-      super # handles layering and evaluation the main DSL file
+      @block_form = true # pluralizes the layer names
+      super # handles layering and evaluating the main DSL file
       self
     end
 

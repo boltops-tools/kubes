@@ -1,5 +1,6 @@
 ---
 title: Pod
+categories: dsl
 ---
 
 ## Example

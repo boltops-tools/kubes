@@ -1,5 +1,6 @@
 ---
-title: Ingress DSL
+title: Ingress
+categories: dsl
 ---
 
 ## Example 1

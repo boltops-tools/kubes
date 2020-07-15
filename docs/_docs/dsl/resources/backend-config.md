@@ -1,5 +1,6 @@
 ---
-title: BackendConfig DSL
+title: BackendConfig
+categories: dsl
 ---
 
 Here's an example of a BackendConfig.
