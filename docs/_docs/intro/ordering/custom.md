@@ -22,4 +22,4 @@ Kubes.configure do |config|
 end
 ```
 
-Items not listed in the list are sorted at the end and in alphabetical order. Refer to the source [ordering.rb](https://github.com/boltops-tools/kubes/blob/master/lib/kubes/kubectl/ordering.rb) for the default ordering.
+Items not listed in the list are sorted at the end and in alphabetical order. Refer to the source [ordering.rb](https://github.com/boltops-tools/kubes/blob/master/lib/kubes/config.rb#L50) for the default ordering.

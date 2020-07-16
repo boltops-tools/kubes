@@ -81,4 +81,4 @@ Here's a list of more common methods:
 * data
 * binaryData
 
-{% include dsl/methods.md name="config-map" %}
+{% include dsl/methods.md name="config_map" %}

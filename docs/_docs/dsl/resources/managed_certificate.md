@@ -12,12 +12,6 @@ name "cert1"
 domains(["cert1.example.com"])
 ```
 
-Running the `kubes compile` command:
-
-    $ kubes compile
-    Generated .kubes/output/web/managed_certificate.yaml
-    $
-
 Produces:
 
 .kubes/output/web/managed_certificate.yaml

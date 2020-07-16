@@ -3,6 +3,8 @@ title: BackendConfig
 categories: dsl
 ---
 
+A BackendConfig is [custom resource definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) that allow you to further customize the load balancer.
+
 Here's an example of a BackendConfig.
 
 .kubes/resources/web/backend-config.rb
@@ -19,12 +21,6 @@ spec(
   }
 )
 ```
-
-Running the `kubes compile` command:
-
-    $ kubes compile
-    Generated .kubes/output/web/backend-config.yaml
-    $
 
 Produces:
 

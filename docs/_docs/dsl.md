@@ -23,7 +23,7 @@ Here's a simple example:
 ```ruby
 name "demo-web"
 labels(role: "web")
-namespace "default"
+namespace "demo"
 
 port 80
 targetPort 80

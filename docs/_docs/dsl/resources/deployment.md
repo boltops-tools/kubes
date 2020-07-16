@@ -17,12 +17,6 @@ replicas 2
 image "nginx"
 ```
 
-Running the `kubes compile` command:
-
-    $ kubes compile
-    Generated .kubes/output/web/deployment.yaml
-    $
-
 Produces:
 
 .kubes/output/web/deployment.yaml:

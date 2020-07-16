@@ -38,7 +38,7 @@ rules:
 
 ## DSL Methods
 
-Here's the source of the role resource.
+Here's the source of the Role resource.
 
 {% include dsl/methods.md name="role" %}
 

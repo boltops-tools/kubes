@@ -21,12 +21,6 @@ namespace "default"
 # type "NodePort"
 ```
 
-Running the `kubes compile` command:
-
-    $ kubes compile
-    Generated .kubes/output/web/service.yaml
-    $
-
 Produces:
 
 .kubes/output/web/service.yaml

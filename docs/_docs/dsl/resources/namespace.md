@@ -22,9 +22,9 @@ Produces:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: backend
+  name: demo
   labels:
-    app: backend
+    app: demo
 ```
 
 ## DSL Methods
