@@ -1,5 +1,6 @@
 ---
 title: DaemonSet
+categories: dsl
 ---
 
 ## Example

@@ -1,5 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Namespace < Resource
+    # override
     def default_metadata
       {
         annotations: annotations,

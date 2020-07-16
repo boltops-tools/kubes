@@ -5,9 +5,14 @@ class Kubes::Compiler
 
       ext = File.extname(@path)
       kind = File.basename(@path).sub(ext,'') # IE: deployment
+      all = "all"
+      if @block_form
+        kind = kind.pluralize
+        all = all.pluralize
+      end
       layers = [
-        "all#{ext}",
-        "all/#{Kubes.env}#{ext}",
+        "#{all}#{ext}",
+        "#{all}/#{Kubes.env}#{ext}",
         "#{kind}#{ext}",
         "#{kind}/#{Kubes.env}#{ext}",
       ]

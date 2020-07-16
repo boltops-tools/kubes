@@ -1,5 +1,6 @@
 ---
-title: Secret DSL
+title: Secret
+categories: dsl
 ---
 
 ## Example

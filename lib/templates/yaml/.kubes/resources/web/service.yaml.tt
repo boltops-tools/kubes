@@ -4,7 +4,6 @@ metadata:
   name: <%= app %>-web
   labels:
     role: web
-  namespace: default
 spec:
   ports:
   - port: 80

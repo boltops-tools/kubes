@@ -18,12 +18,7 @@ module Kubes::Compiler::Dsl::Syntax
 
     # top-level of resource is quite common
     def default_result
-      data = top.merge(
-        apiVersion: apiVersion,
-        kind: kind,
-        metadata: metadata,
-        spec: spec,
-      )
+      data = top.merge(default_top)
       data.deeper_merge!(default_result_append)
       data.deep_stringify_keys!
       HashSqueezer.squeeze(data)
@@ -32,6 +27,15 @@ module Kubes::Compiler::Dsl::Syntax
     # Where to set fields for generic kind
     def top
       @top ||= {}
+    end
+
+    def default_top
+      {
+        apiVersion: apiVersion,
+        kind: kind,
+        metadata: metadata,
+        spec: spec,
+      }
     end
 
     # can be overridden by subclasses. IE: secret

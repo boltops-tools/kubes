@@ -1,5 +1,6 @@
 ---
-title: NetworkPolicy DSL
+title: NetworkPolicy
+categories: dsl
 ---
 
 ## Example

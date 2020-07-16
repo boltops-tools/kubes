@@ -25,12 +25,8 @@ class Kubes::Compiler::Strategy
     end
 
     def block_form?
-      lines = IO.readlines(@path)
-      meths = Kubes::Compiler::Dsl::Core::Blocks.discovered_methods
-      regexp = Regexp.new('('+meths.join('|')+').*({|do)')
-      lines.detect do |line|
-        line.match(regexp)
-      end
+      type = extract_type(@filename)
+      type.pluralize == type
     end
   end
 end

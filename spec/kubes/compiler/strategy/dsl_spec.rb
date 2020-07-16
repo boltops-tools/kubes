@@ -13,7 +13,7 @@ describe Kubes::Compiler::Strategy::Dsl do
   end
 
   context "blocks" do
-    let(:resource) { "blocks/deployment" }
+    let(:resource) { "blocks/deployments" }
     it "run" do
       result = dsl.run
       expect(dsl.dsl_class).to eq(Kubes::Compiler::Dsl::Core::Blocks)
