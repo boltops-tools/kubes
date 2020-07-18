@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: <%= app %>-web
+  name: web
   labels:
     role: web
 spec:
@@ -20,5 +20,5 @@ spec:
         role: web
     spec:
       containers:
-      - name: <%= app %>-web
+      - name: web
         image: <%%= built_image %>
