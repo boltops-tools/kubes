@@ -15,7 +15,7 @@ This is where the `--repo` from `kubes init` got saved.  The other options are c
 
 ## Dockerfie
 
-The `Dockerfile` is a simple starter example that just runs nginx.
+The `Dockerfile` is a simple starter example that just runs nginx
 
 Dockerfile:
 
@@ -23,3 +23,5 @@ Dockerfile:
     FROM nginx
     EXPOSE 80
     CMD ["nginx", "-g", "daemon off;"]
+
+Note: If your project already has a Dockerfile, kubes will use that instead of generating a starter one.

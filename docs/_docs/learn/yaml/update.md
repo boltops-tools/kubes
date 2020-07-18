@@ -6,7 +6,7 @@ Let's update the app. In this case, we don't need to update the Docker image, so
 
     kubes apply
 
-Here's what the output looks like:
+Here's what the output looks like. Note, the namespace is not shown for conciseness.
 
     $ kubes apply
     Compiled  .kubes/resources files

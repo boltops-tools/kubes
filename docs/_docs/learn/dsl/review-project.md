@@ -4,7 +4,18 @@ title: Review Project
 
 Let's review the resources.
 
-## Deployment Resource
+## Namespace
+
+We'll create a namespace for the app resources:
+
+.kubes/resources/shared/namespace.rb
+
+```ruby
+name "demo"
+labels(app: "demo")
+```
+
+## Deployment
 
 The `web/deployment.rb` file is a little more interesting:
 
@@ -21,7 +32,7 @@ image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 
 The DSL form is more concise than the YAML form.  Also, notice the use of the `built_image` helper. The `built_image` is a kubes helper method that refers to the latest Docker image built. This spares you from updating the image manually.
 
-## Base Resource
+## Base Folder
 
 Also let's check the files in the base folder.
 

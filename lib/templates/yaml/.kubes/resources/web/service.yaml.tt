@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: <%= app %>-web
+  name: web
   labels:
     role: web
 spec:
   ports:
   - port: 80
     protocol: TCP
-    targetPort: 80
+    targetPort: <%%= dockerfile_port %>
   selector:
     role: web
   type: ClusterIP

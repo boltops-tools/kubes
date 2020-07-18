@@ -19,6 +19,7 @@ Let's generate a starter project:
           create  .kubes/config/env/prod.rb
           create  .kubes/resources/base/all.yaml
           create  .kubes/resources/base/deployment.yaml
+          create  .kubes/resources/shared/namespace.yaml
           create  .kubes/resources/web/deployment.yaml
           create  .kubes/resources/web/deployment/dev.yaml
           create  .kubes/resources/web/deployment/prod.yaml
