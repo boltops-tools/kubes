@@ -15,6 +15,8 @@ You will be prompted to confirm before deletion. Here's out the output looks lik
     service "demo-web" deleted
     => kubectl delete -f .kubes/output/web/deployment.yaml
     deployment.apps "demo-web" deleted
+    => kubectl delete -f .kubes/output/shared/namespace.yaml
+    namespace "demo" deleted
     $
 
 Let's double-check that the resources have been deleted:

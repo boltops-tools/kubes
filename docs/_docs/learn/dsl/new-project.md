@@ -17,6 +17,7 @@ Let's generate a starter project:
           create  .kubes/config/env/dev.rb
           create  .kubes/config/env/prod.rb
           create  .kubes/resources/base/all.rb
+          create  .kubes/resources/shared/namespace.rb
           create  .kubes/resources/web/deployment.rb
           create  .kubes/resources/web/deployment/dev.rb
           create  .kubes/resources/web/deployment/prod.rb

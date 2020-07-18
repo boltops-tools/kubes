@@ -14,6 +14,8 @@ You'll see output like this:
     Pushed 111111111111.dkr.ecr.us-west-2.amazonaws.com/demo:kubes-2020-06-19T04-19-13 docker image.
     Docker push took 15s.
     Compiled  .kubes/resources files
+    => kubectl apply -f .kubes/output/shared/namespace.yaml
+    namespace/demo created
     => kubectl apply -f .kubes/output/web/service.yaml
     service/demo-web created
     => kubectl apply -f .kubes/output/web/deployment.yaml
@@ -34,6 +36,9 @@ Example output:
 
     $ kubes get
     => kubectl get --recursive -f .kubes/output
+    NAME             STATUS   AGE
+    namespace/demo   Active   10s
+
     NAME                       READY   UP-TO-DATE   AVAILABLE   AGE
     deployment.apps/demo-web   1/1     1            1           10s
 
