@@ -8,8 +8,8 @@ Helper | Description
 --- | ---
 built_image | Method refers to the latest Docker image built by Kubes. This spares you from having to update the image manually in the deployment resource.
 dockerfile_port	| Exposed port extracted from the Dockerfile of the project.
-extra | The `KUBES_ENV` value.
-with_extra | Appends the `KUBES_ENV` value to a string if it's set. It's covered in the [Extra Env Docs]({% link _docs/extra-env.md %}).
+extra | The `KUBES_EXTRA` value.
+with_extra | Appends the `KUBES_EXTRA` value to a string if it's set. It's covered in the [Extra Env Docs]({% link _docs/extra-env.md %}).
 
 Here's also the source code with the helpers: [helpers.rb](https://github.com/boltops-tools/kubes/blob/master/lib/kubes/compiler/shared/helpers.rb).
 

@@ -50,7 +50,7 @@ Note, the behavior of the from is an *or* since the namespaceSelector and podSel
 
 ## Example 2
 
-If you need more control over the ingress selectors you can use the from method. He's an example:
+If you need more control over the ingress selectors, you can use the `from` method. Here's an example:
 
 .kubes/resources/web/network_policy.rb
 
