@@ -1,7 +1,10 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
+
+## [0.2.3]
+- #15 use kubernetes default deployment strategy instead
 
 ## [0.2.2]
 - #14 init template updates, dockerfile_port helper
