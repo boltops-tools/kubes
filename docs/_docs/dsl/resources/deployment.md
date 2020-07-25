@@ -34,11 +34,6 @@ spec:
   selector:
     matchLabels:
       app: demo
-  strategy:
-    rollingUpdate:
-      maxSurge: 25
-      maxUnavailable: 25
-    type: RollingUpdate
   template:
     metadata:
       labels:

@@ -82,6 +82,11 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_strategy
+      return unless maxUnavailable || maxSurge
+
+      maxSurge = maxUnavailable if maxUnavailable && !maxSurge
+      maxUnavailable = maxSurge if !maxUnavailable && maxSurge
+
       {
         rollingUpdate: {
           maxSurge: maxSurge,
@@ -89,14 +94,6 @@ module Kubes::Compiler::Dsl::Syntax
         },
         type: "RollingUpdate",
       }
-    end
-
-    def default_maxSurge
-      25
-    end
-
-    def default_maxUnavailable
-      25
     end
 
     def default_template
