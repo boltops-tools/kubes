@@ -20,7 +20,8 @@ module Kubes::Compiler::Shared
     end
 
     def extra
-      ENV['KUBES_EXTRA']
+      extra = ENV['KUBES_EXTRA']
+      extra&.strip&.empty? ? nil : extra # if blank string then also return nil
     end
 
     def base64(v)
