@@ -4,7 +4,7 @@ class Kubes::CLI
     long_desc Help.text("docker:build")
     option :push, type: :boolean, default: false
     def build
-      builder = Kubes::Docker::Build.new(options)
+      builder = Kubes::Docker.new(options, "build")
       builder.run
       push if options[:push]
     end
@@ -13,7 +13,7 @@ class Kubes::CLI
     long_desc Help.text("docker:push")
     option :push, type: :boolean, default: false
     def push
-      pusher = Kubes::Docker::Push.new(options)
+      pusher = Kubes::Docker.new(options, "push")
       pusher.run
     end
   end
