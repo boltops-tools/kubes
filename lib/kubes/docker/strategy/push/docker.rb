@@ -1,8 +1,5 @@
-module Kubes::Docker
-  class Push < Base
-    include Kubes::Logging
-    include Kubes::Util::Time
-
+module Kubes::Docker::Strategy::Push
+  class Docker < Base
     def run
       update_auth_token
       start_time = Time.now

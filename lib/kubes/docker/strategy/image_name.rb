@@ -1,36 +1,6 @@
-module Kubes::Docker
-  class Base
+module Kubes::Docker::Strategy
+  module ImageName
     extend Memoist
-    include Kubes::Logging
-    include Kubes::Util::Sh
-
-    def initialize(options={})
-      @options = options
-      @name = self.class.name.split('::').last.underscore
-    end
-
-    def run_hooks(name, &block)
-      hooks = Kubes::Hooks::Builder.new(name, "#{Kubes.root}/.kubes/config/docker/hooks.rb")
-      hooks.build # build hooks
-      hooks.run_hooks(&block)
-    end
-
-    def args
-      # base at end in case of redirection. IE: command > /path
-      custom.args + default.args
-    end
-
-    def custom
-      custom = Kubes::Args::Custom.new(@name, "#{Kubes.root}/.kubes/config/docker/args.rb")
-      custom.build
-      custom
-    end
-    memoize :custom
-
-    def default
-      Args::Default.new(@name, image_name, @options)
-    end
-    memoize :default
 
     @@image_name = nil
     def reserve_image_name
@@ -84,5 +54,22 @@ module Kubes::Docker
       @git_sha = `cd #{Kubes.root} && git rev-parse --short HEAD`
       @git_sha.strip!
     end
+
+    def args
+      # base at end in case of redirection. IE: command > /path
+      custom.args + default.args
+    end
+
+    def custom
+      custom = Kubes::Args::Custom.new(@name, "#{Kubes.root}/.kubes/config/docker/args.rb")
+      custom.build
+      custom
+    end
+    memoize :custom
+
+    def default
+      Kubes::Docker::Args::Default.new(@name, image_name, @options)
+    end
+    memoize :default
   end
 end

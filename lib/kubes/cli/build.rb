@@ -1,8 +1,8 @@
 class Kubes::CLI
   class Build < Base
     def run
-      Kubes::Docker::Build.new(@options).run
-      Kubes::Docker::Push.new(@options).run
+      Kubes::Docker.new(@options, "build").run
+      Kubes::Docker.new(@options, "push").run
     end
   end
 end
