@@ -2,7 +2,7 @@
 title: Build Strategy
 ---
 
-Kubes uses the `docker` to build the docker image by default. Kubes can also support an additional build strategy: gcloud.
+Kubes uses the `docker` command to build the docker image by default. Kubes can also support an additional build strategy: gcloud.
 
 ## Gcloud Build Strategy
 
