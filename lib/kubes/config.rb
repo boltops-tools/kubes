@@ -35,7 +35,7 @@ module Kubes
 
       config.repo = nil # expected to be set by .kubes/config.rb
 
-      config.build_strategy = "docker" # IE: docker or gcloud
+      config.builder = "docker" # IE: docker or gcloud
 
       config
     end

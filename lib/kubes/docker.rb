@@ -11,7 +11,7 @@ module Kubes
     end
 
     def strategy_class
-      strategy = Kubes.config.build_strategy.to_s.camelize # IE: Docker or Gcloud
+      strategy = Kubes.config.builder.to_s.camelize # IE: Docker or Gcloud
       klass_name = "Kubes::Docker::Strategy::#{@name.camelize}::#{strategy}"
       klass_name.constantize
     end
