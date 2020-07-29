@@ -4,7 +4,7 @@ The `config.rb` is where you can configure Kubes settings.
 
 ```ruby
 Kubes.configure do |config|
-  config.repo = "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo"
+  config.repo = "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo" # may be gcr.io/project-123/demo
   config.logger.level = "info"
   # auto-switching
   # config.kubectl.context = "dev-services"

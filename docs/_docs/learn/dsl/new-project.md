@@ -7,11 +7,10 @@ If you already a project with an existing Dockerfile, you can use that. If you d
     mkdir demo
     cd demo
 
-For this tutorial, we'll use an ECR repo, though any repo will work.
+{% include learn/repos.md %}
 
 Let's generate a starter project:
 
-    $ REPO=$(aws ecr describe-repositories --repository-name demo | jq -r '.repositories[].repositoryUri')
     $ kubes init --app demo --repo $REPO --type dsl
           create  .kubes/config.rb
           create  .kubes/config/env/dev.rb

@@ -22,6 +22,8 @@ You'll see output like this:
     deployment.apps/demo-web created
     $
 
+Note: Showing an AWS ECR repo, but it may be different if you're using another repo like Google GCR.
+
 What did Kubes do?
 
 {% include kubes-steps.md %}
