@@ -5,4 +5,4 @@ labels(role: "web")
 # port 80
 targetPort dockerfile_port # expose port in Dockerfile
 
-# More docs: kubes.guru/docs/dsl/service/
+# More docs: kubes.guru/docs/dsl/resources/service/

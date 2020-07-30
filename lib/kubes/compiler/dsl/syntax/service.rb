@@ -33,8 +33,19 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_spec
       {
+        clusterIP: clusterIP,
+        externalIPs: externalIPs,
+        externalName: externalName,
+        externalTrafficPolicy: externalTrafficPolicy,
+        healthCheckNodePort: healthCheckNodePort,
+        ipFamily: ipFamily,
+        loadBalancerIP: loadBalancerIP,
+        loadBalancerSourceRanges: loadBalancerSourceRanges,
         ports: ports,
+        publishNotReadyAddresses: publishNotReadyAddresses,
         selector: selector,
+        sessionAffinity: sessionAffinity,
+        sessionAffinityConfig: sessionAffinityConfig,
         type: type,
       }
     end

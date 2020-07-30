@@ -46,15 +46,31 @@ spec:
 
 ## DSL Methods
 
-Here's a list of more common methods:
+Here's a list of some of the methods:
+
+kubectl explain service.spec
+
+* clusterIP
+* externalIPs
+* externalName
+* externalTrafficPolicy
+* healthCheckNodePort
+* ipFamily
+* loadBalancerIP
+* loadBalancerSourceRanges
+* ports
+* publishNotReadyAddresses
+* selector
+* sessionAffinity
+* sessionAffinityConfig
+* type
+
+kubectl explain service.spec.ports
 
 * nodePort
 * port
-* portName: Note this field doesn't match the original field name. It's more qualified.
-* ports
+* portName: : Note this field doesn't match the original field name. It's more qualified.
 * protocol
-* selector
 * targetPort
-* type
 
 {% include dsl/methods.md name="service" %}
