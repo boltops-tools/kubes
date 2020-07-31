@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Deployment < Resource
     fields :container,          # <Object>
-           :containers,         # <[]Object>
            "matchLabels:hash",  # <map[string]string>
            :sidecar,            # <Object>
            :templateMetadata,   # <Object>
@@ -20,6 +19,42 @@ module Kubes::Compiler::Dsl::Syntax
     # kubectl explain deployment.spec.strategy.rollingUpdate
     fields :maxSurge,         # <string>
            :maxUnavailable    # <string>
+
+    # kubectl explain deploy.spec.template.spec
+    fields :activeDeadlineSeconds,        # <integer>
+           :affinity,                     # <Object>
+           :automountServiceAccountToken, # <boolean>
+           :containers,                   # <[]Object> -required-
+           :dnsConfig,                    # <Object>
+           :dnsPolicy,                    # <string>
+           :enableServiceLinks,           # <boolean>
+           :ephemeralContainers,          # <[]Object>
+           :hostAliases,                  # <[]Object>
+           :hostIPC,                      # <boolean>
+           :hostNetwork,                  # <boolean>
+           :hostPID,                      # <boolean>
+           :hostname,                     # <string>
+           :imagePullSecrets,             # <[]Object>
+           :initContainers,               # <[]Object>
+           :nodeName,                     # <string>
+           :nodeSelector,                 # <map[string]string>
+           :overhead,                     # <map[string]string>
+           :preemptionPolicy,             # <string>
+           :priority,                     # <integer>
+           :priorityClassName,            # <string>
+           :readinessGates,               # <[]Object>
+           :restartPolicy,                # <string>
+           :runtimeClassName,             # <string>
+           :schedulerName,                # <string>
+           :securityContext,              # <Object>
+           :serviceAccount,               # <string>
+           :serviceAccountName,           # <string>
+           :shareProcessNamespace,        # <boolean>
+           :subdomain,                    # <string>
+           :terminationGracePeriodSeconds,# <integer>
+           :tolerations,                  # <[]Object>
+           :topologySpreadConstraints,    # <[]Object>
+           :volumes                       # <[]Object>
 
     # kubectl explain deployment.spec.template.spec.containers
     fields :args,                     # <[]string>
@@ -104,7 +139,42 @@ module Kubes::Compiler::Dsl::Syntax
     end
 
     def default_templateSpec
-      { containers: containers }
+      {
+        activeDeadlineSeconds: activeDeadlineSeconds,
+        affinity: affinity,
+        automountServiceAccountToken: automountServiceAccountToken,
+        containers: containers,
+        dnsConfig: dnsConfig,
+        dnsPolicy: dnsPolicy,
+        enableServiceLinks: enableServiceLinks,
+        ephemeralContainers: ephemeralContainers,
+        hostAliases: hostAliases,
+        hostIPC: hostIPC,
+        hostNetwork: hostNetwork,
+        hostPID: hostPID,
+        hostname: hostname,
+        imagePullSecrets: imagePullSecrets,
+        initContainers: initContainers,
+        nodeName: nodeName,
+        nodeSelector: nodeSelector,
+        overhead: overhead,
+        preemptionPolicy: preemptionPolicy,
+        priority: priority,
+        priorityClassName: priorityClassName,
+        readinessGates: readinessGates,
+        restartPolicy: restartPolicy,
+        runtimeClassName: runtimeClassName,
+        schedulerName: schedulerName,
+        securityContext: securityContext,
+        serviceAccount: serviceAccount,
+        serviceAccountName: serviceAccountName,
+        shareProcessNamespace: shareProcessNamespace,
+        subdomain: subdomain,
+        terminationGracePeriodSeconds: terminationGracePeriodSeconds,
+        tolerations: tolerations,
+        topologySpreadConstraints: topologySpreadConstraints,
+        volumes: volumes,
+      }
     end
 
     def default_templateMetadata
