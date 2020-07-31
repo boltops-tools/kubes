@@ -9,6 +9,9 @@ module Kubes
     compile_option = Proc.new {
       option :compile, type: :boolean, default: true, desc: "whether or not to compile the .kube/resources"
     }
+    name_option = Proc.new {
+      option :name, aliases: %w[n], desc: "deployment name to use. IE: demo-web"
+    }
 
     desc "docker SUBCOMMAND", "Docker subcommands"
     long_desc Help.text(:docker)
@@ -60,13 +63,31 @@ module Kubes
       Describe.new(options.merge(role: role, resource: resource)).run
     end
 
+    desc "exec", "Exec into the latest container from the deployment"
+    long_desc Help.text(:exec)
+    compile_option.call
+    name_option.call
+    def exec(*cmd)
+      Exec.new(options.merge(cmd: cmd)).run
+    end
+
     desc "get [ROLE] [RESOURCE]", "Get Kubernetes resource using the compiled YAML files"
     long_desc Help.text(:get)
     image_option.call
     compile_option.call
     option :output, aliases: %w[o], desc: "Output format: json|yaml|wide|name"
+    option :show_pods, type: :boolean, default: true, desc: "Also show pods from deployments"
     def get(role=nil, resource=nil)
       Get.new(options.merge(role: role, resource: resource)).run
+    end
+
+    desc "logs", "logs from all deployment pods"
+    long_desc Help.text(:logs)
+    compile_option.call
+    name_option.call
+    option :follow, aliases: %w[f], type: :boolean, default: true, desc: "Follow logs"
+    def logs(*cmd)
+      Logs.new(options.merge(cmd: cmd)).run
     end
 
     long_desc Help.text(:init)

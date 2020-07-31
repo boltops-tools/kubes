@@ -15,7 +15,7 @@ Init project
 ## Options
 
 ```
-a, --app=APP                     # Docker repo name. Example: demo-web. Generates .kubes/APP/resources folder
+a, --app=APP                     # Docker repo name. Example: web. Generates .kubes/APP/resources folder
     [--force]                    # Bypass overwrite are you sure prompt for existing files
 t, [--type=TYPE]                 # Type: dsl or yaml
                                  # Default: yaml

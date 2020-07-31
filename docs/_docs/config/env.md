@@ -11,7 +11,7 @@ Kubes.configure do |config|
   config.repo = "111111111111.dkr.ecr.us-west-2.amazonaws.com/demo"
   config.logger.level = "info"
   # auto-switching
-  # config.kubectl.context = "dev-services"
+  # config.kubectl.context = "dev-cluster"
   # config.kubectl.context_keep = false
 end
 ```
@@ -25,7 +25,7 @@ You can override configs on a per-env basis with `config/env` files. Examples:
 ```ruby
 Kubes.configure do |config|
   config.repo = "222222222222.dkr.ecr.us-west-2.amazonaws.com/demo"
-  config.kubectl.context = "dev-services"
+  config.kubectl.context = "dev-cluster"
 end
 ```
 
@@ -34,7 +34,7 @@ end
 ```ruby
 Kubes.configure do |config|
   config.repo = "333333333333.dkr.ecr.us-west-2.amazonaws.com/demo"
-  config.kubectl.context = "prod-services"
+  config.kubectl.context = "prod-cluster"
 end
 ```
 
