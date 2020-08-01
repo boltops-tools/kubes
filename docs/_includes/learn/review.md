@@ -7,7 +7,7 @@ Kubes.configure do |config|
   config.repo = "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo" # may be gcr.io/project-123/demo
   config.logger.level = "info"
   # auto-switching
-  # config.kubectl.context = "dev-services"
+  # config.kubectl.context = "dev-cluster"
 end
 ```
 

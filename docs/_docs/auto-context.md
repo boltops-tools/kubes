@@ -22,7 +22,7 @@ You can override configs on a per-env basis with `config/env` files. Examples:
 ```ruby
 Kubes.configure do |config|
   config.repo = "222222222222.dkr.ecr.us-west-2.amazonaws.com/demo"
-  config.kubectl.context = "dev-services"
+  config.kubectl.context = "dev-cluster"
 end
 ```
 
@@ -31,7 +31,7 @@ end
 ```ruby
 Kubes.configure do |config|
   config.repo = "333333333333.dkr.ecr.us-west-2.amazonaws.com/demo"
-  config.kubectl.context = "prod-services"
+  config.kubectl.context = "prod-cluster"
 end
 ```
 
@@ -39,8 +39,8 @@ end
 
 With this setup, when you deploy with kubes, it will automatically switch the kubectl context based on `KUBES_ENV`.  Example:
 
-    KUBES_ENV=dev  kubes deploy # to dev-services context
-    KUBES_ENV=prod kubes deploy # to prod-services context
+    KUBES_ENV=dev  kubes deploy # to dev-cluster context
+    KUBES_ENV=prod kubes deploy # to prod-cluster context
 
 ## context_keep Option
 

@@ -3,9 +3,14 @@ class Kubes::CLI
     include Kubes::Util::Sure
 
     def run
+      compile
+      perform(preview: true) unless @options[:yes]
       sure?("This will delete resources. Are you sure?")
-      Compile.new(@options).run
-      Kubes::Kubectl::Decider.new(:delete, @options).run
+      perform(preview: false)
+    end
+
+    def perform(preview: false)
+      Kubes::Kubectl::Decider.new(:delete, @options.merge(preview: preview)).run
     end
   end
 end

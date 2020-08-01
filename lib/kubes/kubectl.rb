@@ -9,15 +9,27 @@ module Kubes
 
     def run
       validate!
+
+      options = @options.dup
+      options[:exit_on_fail] = exit_on_fail unless exit_on_fail.nil?
+
       params = args.flatten.join(' ')
       command = "kubectl #{@name} #{params}" # @name: apply or delete
-      options = {}
-      options[:exit_on_fail] = exit_on_fail unless exit_on_fail.nil?
+
       switch_context do
         run_hooks(@name) do
-          sh(command, options)
+          if options[:capture]
+            capture(command, options)
+          else
+            sh(command, options)
+          end
         end
       end
+    end
+
+    def execute(args, options={})
+      command = "kubectl #{args}"
+      capture(command)
     end
 
     # Useful for kustomize mode

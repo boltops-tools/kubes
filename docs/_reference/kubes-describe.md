@@ -1,15 +1,15 @@
 ---
-title: kubes apply
+title: kubes describe
 reference: true
 ---
 
 ## Usage
 
-    kubes apply [ROLE] [RESOURCE]
+    kubes describe [ROLE] [RESOURCE]
 
 ## Description
 
-Apply the Kubernetes YAML files without building docker image
+Describe Kubernetes resource using the compiled YAML files
 
 
 ## Options

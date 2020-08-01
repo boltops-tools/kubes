@@ -5,7 +5,7 @@ reference: true
 
 ## Usage
 
-    kubes deploy [APP] [RESOURCE]
+    kubes deploy [ROLE] [RESOURCE]
 
 ## Description
 

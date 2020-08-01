@@ -32,6 +32,7 @@ module Kubes::Util
 
     def capture(command, options={})
       exit_on_fail = options[:exit_on_fail].nil? ? true : options[:exit_on_fail]
+      logger.info "=> #{command}" if options[:show_command]
       out = `#{command}`.strip
       unless $?.success?
         logger.error "ERROR: running #{command}".color(:red)

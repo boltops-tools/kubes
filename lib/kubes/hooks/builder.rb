@@ -23,8 +23,9 @@ module Kubes::Hooks
     def run_hooks
       build
       run_hook("before")
-      yield if block_given?
+      out = yield if block_given?
       run_hook("after")
+      out
     end
 
     def run_hook(type)

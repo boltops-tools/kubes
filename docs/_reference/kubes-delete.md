@@ -5,7 +5,7 @@ reference: true
 
 ## Usage
 
-    kubes delete [APP] [RESOURCE]
+    kubes delete [ROLE] [RESOURCE]
 
 ## Description
 
