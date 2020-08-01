@@ -21,7 +21,7 @@ The exec command finds the latest pod from the deployment and runs `kubectl exec
 
 ## Multiple Deployments
 
-If you have have multiple deployments in your ``.kubes/resources` then the command will use the first deployment by default. You can specify the specfic deployment with the `--name` option.  Examples:
+If you have have multiple deployments in your `.kubes/resources` then the command will use the first deployment by default. You can specify the specfic deployment with the `--name` option.  Examples:
 
     kubes exec --name demo-web
     kubes exec --name demo-clock
