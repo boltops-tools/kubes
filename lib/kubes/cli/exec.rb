@@ -19,8 +19,9 @@ class Kubes::CLI
       end
 
       name = pod['metadata']['name']
+      container = " -c #{@options[:container]}" unless @options[:container].nil?
       cmd = @options[:cmd].empty? ? "bash" : @options[:cmd].join(' ')
-      sh("kubectl exec -n #{ns} -ti #{name} -- #{cmd}")
+      sh("kubectl exec -n #{ns} -ti #{name}#{container} -- #{cmd}")
     end
 
     # get latest running pod
