@@ -11,7 +11,7 @@ module Kubes::Kubectl::Fetch
           INFO: More than one deployment found.
           Deployment names: #{names.join(', ')}
           Using #{names.first}
-          Note: You can specify the deployment to use with --name
+          Note: You can specify the deployment to use with --name or -n
         EOL
       end
 

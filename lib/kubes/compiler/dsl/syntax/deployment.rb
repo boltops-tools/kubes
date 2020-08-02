@@ -3,6 +3,8 @@ module Kubes::Compiler::Dsl::Syntax
     fields :container,          # <Object>
            "matchLabels:hash",  # <map[string]string>
            :sidecar,            # <Object>
+           :sidecar_name,       # <string>
+           :sidecar_image,      # <string>
            :templateMetadata,   # <Object>
            :templateSpec        # <Object>
 
@@ -183,6 +185,17 @@ module Kubes::Compiler::Dsl::Syntax
 
     def default_containers
       [container, sidecar].compact
+    end
+
+    def default_sidecar
+      {
+        name:  sidecar_name,
+        image: sidecar_image,
+      }
+    end
+
+    def default_sidecar_name
+      "sidecar" if sidecar_image # othewise will create invalid sidecar field w/o image
     end
 
     def default_container

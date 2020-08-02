@@ -67,6 +67,7 @@ module Kubes
     long_desc Help.text(:exec)
     compile_option.call
     name_option.call
+    option :container, aliases: %w[c], desc: "Container name. If omitted, the first container in the pod will be chosen"
     def exec(*cmd)
       Exec.new(options.merge(cmd: cmd)).run
     end
