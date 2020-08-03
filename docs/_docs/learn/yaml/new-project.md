@@ -11,7 +11,6 @@ If you already a project with an existing Dockerfile, you can use that. If you d
 
 Let's generate a starter project:
 
-    $ REPO=$(aws ecr describe-repositories --repository-name demo | jq -r '.repositories[].repositoryUri')
     $ kubes init --app demo --repo $REPO
           create  Dockerfile
           create  .kubes/config.rb
