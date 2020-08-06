@@ -6,8 +6,10 @@ class Kubes::CLI
       compile
       metadata = Kubes::Kubectl::Fetch::Deployment.new(@options).metadata
       name = metadata['name']
+      ns = metadata['namespace']
+
       follow = " -f" if @options[:follow]
-      sh("kubectl logs deployment/#{name}#{follow}")
+      sh("kubectl logs deployment/#{name}#{follow} -n #{ns}")
     end
   end
 end
