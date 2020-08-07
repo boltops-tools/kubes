@@ -13,12 +13,13 @@
   margin: auto;
   text-align: center;
   display: block;
+  width: 80%;
   padding-bottom: 30px;
 
   @media (min-width: 575px) {
     position: absolute;
     top: 50%;
-    max-width: none;
+    width: 100%;
     margin: 0;
     transform: translateY(-50%);
   }
