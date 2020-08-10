@@ -1,6 +1,16 @@
 module Kubes::Kubectl::Fetch
   class Deployment < Base
+    extend Memoist
+
     def metadata
+      deployment['metadata']
+    end
+
+    def spec
+      deployment['spec']
+    end
+
+    def deployment
       items = fetch_items
       # Not checking if deployment exists because kubes will error on `kubes get` from missing deployments already
       deployments = items.select { |i| i['kind'] == "Deployment" }
@@ -20,8 +30,9 @@ module Kubes::Kubectl::Fetch
         logger.error "ERROR: No deployment found".color(:red)
         exit 1
       end
-      deployment['metadata']
+      deployment
     end
+    memoize :deployment
 
     def find_deployment(deployments)
       if @options[:name]

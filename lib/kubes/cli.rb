@@ -12,6 +12,9 @@ module Kubes
     name_option = Proc.new {
       option :name, aliases: %w[n], desc: "deployment name to use. IE: demo-web"
     }
+    container_option = Proc.new {
+      option :container, aliases: %w[c], desc: "Container name. If omitted, the first container in the pod will be chosen"
+    }
 
     desc "docker SUBCOMMAND", "Docker subcommands"
     long_desc Help.text(:docker)
@@ -67,7 +70,7 @@ module Kubes
     long_desc Help.text(:exec)
     compile_option.call
     name_option.call
-    option :container, aliases: %w[c], desc: "Container name. If omitted, the first container in the pod will be chosen"
+    container_option.call
     def exec(*cmd)
       Exec.new(options.merge(cmd: cmd)).run
     end
@@ -86,6 +89,7 @@ module Kubes
     long_desc Help.text(:logs)
     compile_option.call
     name_option.call
+    container_option.call
     option :follow, aliases: %w[f], type: :boolean, default: true, desc: "Follow logs"
     def logs(*cmd)
       Logs.new(options.merge(cmd: cmd)).run
