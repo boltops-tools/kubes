@@ -1,2 +1,2 @@
-name "<%= app %>"
+name "<%= namespace %>"
 labels(app: "<%= app %>")

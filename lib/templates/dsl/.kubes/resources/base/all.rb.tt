@@ -1,2 +1,7 @@
-namespace "<%= app %>"
+<%
+unless namespace == "default"
+  namespace_line = %Q|namespace "#{namespace}"|
+end
+-%>
+<%= namespace_line if namespace_line -%>
 labels(app: "<%= app %>")

@@ -6,6 +6,7 @@ class Kubes::CLI
         [:force, type: :boolean, desc: "Bypass overwrite are you sure prompt for existing files"],
         [:type, aliases: ["t"], default: "yaml", desc: "Type: dsl or yaml"],
         [:repo, required: true, desc: "Docker repo name. Example: user/repo. Configures .kubes/config.rb"],
+        [:namespace, aliases: ["n"], desc: "Namespace to use, defaults to the app option"],
       ]
     end
 
@@ -15,6 +16,37 @@ class Kubes::CLI
     # Needs to be a method to its available for templates/.kubes/resources/%app%
     def app
       @options[:app]
+    end
+
+    def namespace
+      @options[:namespace] || @options[:app]
+    end
+
+    def excludes
+      if namespace == "default"
+        case options[:type]
+        when "dsl"
+          %w[
+            namespace.rb.tt
+          ]
+        else
+          %w[
+            all.yaml.tt
+            namespace.yaml.tt
+          ]
+        end
+      else
+        []
+      end
+    end
+
+    def directory_options
+      if excludes.empty?
+        {}
+      else
+        pattern = Regexp.new(excludes.join('|'))
+        {exclude_pattern: pattern }
+      end
     end
 
   public
@@ -32,13 +64,13 @@ class Kubes::CLI
     def create_dsl_files
       return unless @options[:type] == "dsl"
       set_source("dsl")
-      directory ".", "."
+      directory ".", ".", directory_options
     end
 
     def create_yaml_files
       return if @options[:type] == "dsl"
       set_source("yaml")
-      directory ".", "."
+      directory ".", ".", directory_options
     end
 
     def message

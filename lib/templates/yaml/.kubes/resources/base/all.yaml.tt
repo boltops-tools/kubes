@@ -1,2 +1,2 @@
 metadata:
-  namespace: <%= app %>
+  namespace: <%= namespace %>
