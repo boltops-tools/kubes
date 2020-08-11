@@ -10,8 +10,9 @@ class Kubes::CLI
       ns = metadata['namespace']
 
       follow = " -f" if @options[:follow]
-      c = container(deployment)
-      sh("kubectl logs deployment/#{name}#{follow} -n #{ns} -c #{c}")
+      container = container(deployment)
+      c = " -c #{container}" if container
+      sh("kubectl logs deployment/#{name}#{follow} -n #{ns}#{c}")
     end
 
   private

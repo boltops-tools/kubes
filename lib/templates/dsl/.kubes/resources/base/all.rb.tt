@@ -1,6 +1,6 @@
 <%
 unless namespace == "default"
-  namespace_line = %Q|namespace "#{namespace}"|
+  namespace_line = %Q|namespace "#{namespace}"\n|
 end
 -%>
 <%= namespace_line if namespace_line -%>
