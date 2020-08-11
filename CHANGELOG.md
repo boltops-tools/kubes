@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.3.3]
+- #22 logs -c option. fix kubes logs for pods with multiple containers
+
 ## [0.3.2]
 - #21 add namespace to logs command
 
