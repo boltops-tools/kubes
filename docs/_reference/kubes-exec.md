@@ -21,13 +21,20 @@ The exec command finds the latest pod from the deployment and runs `kubectl exec
 
 ## Multiple Deployments
 
-If you have have multiple deployments in your `.kubes/resources` then the command will use the first deployment by default. You can specify the specfic deployment with the `--name` option.  Examples:
+If you have have multiple deployments in your `.kubes/resources` then the command will use the first deployment by default. You can specify the specfic deployment with the `--name` or `-n` option.  Examples:
 
-    kubes exec --name demo-web
-    kubes exec --name demo-clock
-    kubes exec --name demo-worker
-    kubes exec --name demo-web sh
-    kubes exec --name demo-web ls -l
+    kubes exec --name web
+    kubes exec -n web
+    kubes exec -n clock
+    kubes exec -n worker
+    kubes exec -n web sh
+    kubes exec -n web ls -l
+
+## Multiple Pod Containers
+
+If you have have multiple containers in your pod. You can specify the specfic container with the `--container` or `-c` option.  Examples:
+
+    kubes exec --name web
 
 
 ## Options
@@ -36,6 +43,7 @@ If you have have multiple deployments in your `.kubes/resources` then the comman
     [--compile], [--no-compile]  # whether or not to compile the .kube/resources
                                  # Default: true
 n, [--name=NAME]                 # deployment name to use. IE: demo-web
+c, [--container=CONTAINER]       # Container name. If omitted, the first container in the pod will be chosen
     [--verbose], [--no-verbose]  
     [--noop], [--no-noop]        
 ```

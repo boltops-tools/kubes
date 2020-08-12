@@ -20,6 +20,7 @@ a, --app=APP                     # Docker repo name. Example: web. Generates .ku
 t, [--type=TYPE]                 # Type: dsl or yaml
                                  # Default: yaml
     --repo=REPO                  # Docker repo name. Example: user/repo. Configures .kubes/config.rb
+n, [--namespace=NAMESPACE]       # Namespace to use, defaults to the app option
     [--verbose], [--no-verbose]  
     [--noop], [--no-noop]        
 ```
