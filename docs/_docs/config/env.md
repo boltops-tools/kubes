@@ -55,4 +55,4 @@ Kubes.configure do |config|
 end
 ```
 
-For more details refer to the [Auto Context Docs]({% link _docs/auto-context.md %}).
+For more details refer to the [Auto Context Docs]({% link _docs/misc/auto-context.md %}).
