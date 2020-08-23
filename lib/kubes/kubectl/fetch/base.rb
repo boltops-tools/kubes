@@ -18,7 +18,7 @@ module Kubes::Kubectl::Fetch
       kubectl = Kubes::Kubectl.new(:get, @options.merge(o)) # kubes get -f .kubes/output
       resp = kubectl.run
       data = JSON.load(resp)
-      data['items']
+      data['items'] || [] # Note: When fetching only 1 resource, items is not part of structure
     end
   end
 end
