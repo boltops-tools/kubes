@@ -1,3 +1,7 @@
+<div align="center">
+  <a href="https://kubes.guru"><img src="https://img.boltops.com/boltops/logos/kubes-black-v1.png" /></a>
+</div>
+
 # Kubes
 
 [![Gem Version](https://badge.fury.io/rb/kubes.png)](http://badge.fury.io/rb/kubes)
