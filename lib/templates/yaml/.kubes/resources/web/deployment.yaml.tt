@@ -5,7 +5,7 @@ metadata:
   labels:
     role: web
 spec:
-  replicas: 1
+  replicas: 1  # overridden on a env basis
   selector:
     matchLabels:
       role: web

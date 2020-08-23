@@ -3,7 +3,7 @@ title: BackendConfig
 categories: dsl
 ---
 
-A BackendConfig is [custom resource definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) that allow you to further customize the load balancer.
+A [BackendConfig](https://cloud.google.com/kubernetes-engine/docs/how-to/ingress-features#create_backendconfig) is [custom resource definitions (CRDs)](https://kubernetes.io/docs/concepts/extend-kubernetes/api-extension/custom-resources/) that allow you to further customize the load balancer.
 
 Here's an example of a BackendConfig.
 
