@@ -5,7 +5,7 @@ class Kubes::Kubectl
 
       def detect?
         expr = "#{Kubes.root}/.kubes/resources/**/*"
-        !!Dir.glob(expr).detect { |p| p.include?("kustomization.yaml") }
+        !!Dir.glob(expr).detect { |p| p.include?("kustomization.y") } # allow for both .yml and .yaml to work
       end
       memoize :detect?
     end

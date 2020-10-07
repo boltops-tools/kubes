@@ -17,7 +17,7 @@ module Kubes::Docker::Strategy::Push
     def push
       params = args.flatten.join(' ')
       command = "docker push #{params}"
-      run_hooks "push" do
+      run_hooks("docker.rb", name: "push") do
         sh(command)
       end
     end

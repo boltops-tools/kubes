@@ -1,0 +1,57 @@
+---
+- apiVersion: v1
+  data:
+    ca.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURLekNDQWhPZ0F3SUJBZ0lSQUw5UTRFZXFyS0t2ZXYwWFhaMCtMOFV3RFFZSktvWklodmNOQVFFTEJRQXcKTHpFdE1Dc0dBMVVFQXhNa05UUXpPVGczWXpBdE5qRTRaaTAwTlRRMkxXRTRNemt0WmpBd016WmlaR0ZrTURRMgpNQjRYRFRJd01UQXdOakl4TkRNeE5Gb1hEVEkxTVRBd05USXlORE14TkZvd0x6RXRNQ3NHQTFVRUF4TWtOVFF6Ck9UZzNZekF0TmpFNFppMDBOVFEyTFdFNE16a3RaakF3TXpaaVpHRmtNRFEyTUlJQklqQU5CZ2txaGtpRzl3MEIKQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBdGhoK2xLbTRjNm4zSjl3ZWFxQTdYRFFPSFNlOUw1VmRYOUJiem5lcQpLR21nM0pFWkVQWHJvZ3B5YmpYNFU5NXJuTUNWM2JPQkhYaFJaaGZibE5wdlVJTlZVdnl0Y1ZpMDkzU1JaUFB6CkgwTmV4Z0YxVFUrWi85VlRWWDhZNHBoaURiR0pCdnFGV1JxWTV3OGpTSUhad2lOd04vSlQ1VFIxZEJNWC9CN1cKNGNxMHRjQjNwVkxnZDJPcThSODdhdm9rZzQ5a1BHd3J1WUZJTVppTTM2VldmOWNFV3duVnp5WEV3UDhhT21kZApmaDFEL2oydk1obmg3THZjS09NbVRaQWJrSy80YjlqMjVjTU1TNTdoZDFwU0hCdFRCcmRrNnA5Tjcxd2MyeUkzCm5KektBQ1U0WG1NRzRodGlzQlFTTjRzUGxlNHZhT1FLSGtlSFY1aFVGZkhFYXdJREFRQUJvMEl3UURBT0JnTlYKSFE4QkFmOEVCQU1DQWdRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVUxiWU82S1drVnVHVgpkSTE3c3dRQkpORC9NTGN3RFFZSktvWklodmNOQVFFTEJRQURnZ0VCQUhqc1lXZUhzU2VOc01XTzl4SGxsVWpUCjBHU0I5USt2aXNQejNBVWdUNy9uQU0wRW1kREdIQjFhVzVPQ2FTTXVtRWFhMHVkQjVkbTV1c1pQUEN5cDFrckUKdS90UUxmVStPQmtmZE1keTZFREdEcHJtVmsxWW1xa2FvWjFGUWZKQXI0WGRGQVB1OWM4WVJqaUlxMFV0c1c3cQo1dDc4SjBhYmtpdGxncW5kcWI5WHpkWEI5NUZmajF2Sk9hbnFWWGlYQzBIeVExNlJWUEtCOG5tajYzL1pjeFdECkIzdGlOUG9hUmF0cVhoL293MDYxRlRGWHQzNUZnV01QeWlWWXMzTG5HNFZQRHRibFBqSXRxaC9BSTl3ZXNEbUoKdCt4TkgreHk2L3JPTmY3YldvZjM1cWxXVnVBQjdIOXk0NTFGd3VBd3ZNY3B1cHNIenNrTGNCY3UvYUxmT0prPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    namespace: Z2FyZGVu
+    token: ZXlKaGJHY2lPaUpTVXpJMU5pSXNJbXRwWkNJNkluWlNRMTlTWlhoMWVqSnRlbnBYVTNwdFRETmhXa1UxWjJsU1NGQTNVVFZ1Um5KM1dubE1TR3czUzI4aWZRLmV5SnBjM01pT2lKcmRXSmxjbTVsZEdWekwzTmxjblpwWTJWaFkyTnZkVzUwSWl3aWEzVmlaWEp1WlhSbGN5NXBieTl6WlhKMmFXTmxZV05qYjNWdWRDOXVZVzFsYzNCaFkyVWlPaUpuWVhKa1pXNGlMQ0pyZFdKbGNtNWxkR1Z6TG1sdkwzTmxjblpwWTJWaFkyTnZkVzUwTDNObFkzSmxkQzV1WVcxbElqb2laR1ZtWVhWc2RDMTBiMnRsYmkxeGR6ZHVjQ0lzSW10MVltVnlibVYwWlhNdWFXOHZjMlZ5ZG1salpXRmpZMjkxYm5RdmMyVnlkbWxqWlMxaFkyTnZkVzUwTG01aGJXVWlPaUprWldaaGRXeDBJaXdpYTNWaVpYSnVaWFJsY3k1cGJ5OXpaWEoyYVdObFlXTmpiM1Z1ZEM5elpYSjJhV05sTFdGalkyOTFiblF1ZFdsa0lqb2lZekE0T1RWalpUSXRZV00xWlMwME5HUmtMV0UxTlRZdFpEY3lOR1pqTlRkaE1qSTJJaXdpYzNWaUlqb2ljM2x6ZEdWdE9uTmxjblpwWTJWaFkyTnZkVzUwT21kaGNtUmxianBrWldaaGRXeDBJbjAuRFpFTDNFZURHa182WEhlVWJ2QWJGanZ1aDBROHdKMmFpWTI2YWk2UVdPQTVSVlV1Ulcwbkx6c2VnVVBvN0dkR1g0ejAtUGpKNGY3bzJGRjMxVHh1ZVF0MkJUMW1nZGdONVVDR1ZCY0xuVVRURzdZZVJPUzFhd3FUQ2pYWDgzTG03VDQ2R3Fmbi1tVWkxUnVNdUlvUm1KRWVTYUxaekdPNFFPOGhBVTVOaTJJNTBYblRUQXJ3TW84TS1mZjI0N3U1RmMyaFVWUndmZW9DdVAxNVJEU05DUk1rSVBYaGMxOEFxUkZLc1l5T3JJRHNWcGFuNFIwRXQwM3pUOTVjeE8wZEowd1dBeXFiVUw0M3VvaTZaa0NnNmRrb191Z1FuNWgtcEFlYjJybGNIbDNFUUdNcl9QTndVWDI0OVNyeG02MW1Pa25fMHlZMS1DQkVUWG5CUEtHRW5R
+  kind: Secret
+  metadata:
+    annotations:
+      kubernetes.io/service-account.name: default
+      kubernetes.io/service-account.uid: c0895ce2-ac5e-44dd-a556-d724fc57a226
+    creationTimestamp: '2020-10-07T19:04:11Z'
+    name: default-token-qw7np
+    namespace: garden
+    resourceVersion: '486470'
+    selfLink: "/api/v1/namespaces/garden/secrets/default-token-qw7np"
+    uid: ec42ba8b-7c03-4ab2-9e95-5a144b3f5938
+  type: kubernetes.io/service-account-token
+- apiVersion: v1
+  data:
+    foo: Zm9vCg==
+    password: cGFzcw==
+    username: dXNlcg==
+  kind: Secret
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","data":{"foo":"Zm9vCg==","password":"cGFzcw==","username":"dXNlcg=="},"kind":"Secret","metadata":{"annotations":{},"labels":{"app":"garden"},"name":"demo-secret-CURRENT111","namespace":"garden"}}
+
+'
+    creationTimestamp: '2020-10-08T19:42:41Z'
+    labels:
+      app: garden
+    name: demo-secret-CURRENT111
+    namespace: garden
+    resourceVersion: '1075012'
+    selfLink: "/api/v1/namespaces/garden/secrets/demo-secret-CURRENT111"
+    uid: 63c386ad-0069-4767-b0b8-e70dbafb7c9c
+  type: Opaque
+- apiVersion: v1
+  data:
+    password: cGFzcw==
+    username: dXNlcg==
+  kind: Secret
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","data":{"password":"cGFzcw==","username":"dXNlcg=="},"kind":"Secret","metadata":{"annotations":{},"labels":{"app":"garden"},"name":"demo-secret-OLD1111111","namespace":"garden"}}
+
+'
+    creationTimestamp: '2020-10-07T19:04:12Z'
+    labels:
+      app: garden
+    name: demo-secret-OLD1111111
+    namespace: garden
+    resourceVersion: '486474'
+    selfLink: "/api/v1/namespaces/garden/secrets/demo-secret-OLD1111111"
+    uid: a45afce3-a418-478e-8e13-b6e6041ad2e1
+  type: Opaque

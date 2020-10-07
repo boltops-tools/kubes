@@ -61,7 +61,7 @@ module Kubes::Docker::Strategy
     end
 
     def custom
-      custom = Kubes::Args::Custom.new(@name, "#{Kubes.root}/.kubes/config/docker/args.rb")
+      custom = Kubes::Args::Custom.new(@name, "#{Kubes.root}/.kubes/config/args/docker.rb")
       custom.build
       custom
     end

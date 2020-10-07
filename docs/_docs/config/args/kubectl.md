@@ -1,5 +1,7 @@
 ---
 title: Kubectl Args
+nav_text: Kubectl
+categories: args
 ---
 
 Here are some examples of customizing the kubectl args.

@@ -10,7 +10,7 @@ class Kubes::CLI
     end
 
     def perform(preview: false)
-      Kubes::Kubectl::Decider.new(:delete, @options.merge(preview: preview)).run
+      Kubes::Kubectl::Dispatcher.new(:delete, @options.merge(preview: preview)).run
     end
   end
 end

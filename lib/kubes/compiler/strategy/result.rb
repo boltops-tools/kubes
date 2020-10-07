@@ -11,12 +11,10 @@ class Kubes::Compiler::Strategy
       @data.respond_to?(:read)
     end
 
-    def compile_decorate!
-      @data = Kubes::Compiler::Decorator::Compile.new(@data).result
-    end
-
-    def write_decorate!
-      @data = Kubes::Compiler::Decorator::Write.new(@data).result
+    # decorate(:pre) or decorate(:post)
+    def decorate!(phase)
+      klass = "Kubes::Compiler::Decorator::#{phase.to_s.camelize}".constantize
+      @data = klass.new(@data).result
     end
 
     def content

@@ -13,7 +13,8 @@ module Kubes::Hooks
     end
 
     def each_hook(type, name, props={})
-      @hooks[type][name] = props
+      @hooks[type][name] ||= []
+      @hooks[type][name] << props
     end
   end
 end

@@ -4,6 +4,6 @@ module Kubes::Docker::Strategy
     include Kubes::Util::Sh
     include Kubes::Util::Time
     include Kubes::Docker::Strategy::ImageName
-    include Kubes::Docker::Strategy::Hooks
+    include Kubes::Hooks::Concern
   end
 end

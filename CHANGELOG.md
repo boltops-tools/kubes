@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.4.0 UNRELEASED]
+- hooks: kubes, kubectl, docker breaking changes.
+- hooks now in the .kubes/config/hooks folder.
+- hook for kubectl supports `on` option for more control over when to run hook.
+- generalize hasher
+- auto prune hashed resources like ConfigMap and Secret
+- kubes prune command for manual running
+- support .yml extension also
+- renamed exec `--name` to `--deployment` option.
+- add `--pod` option to `exec` and `logs` command.
+- fix md5 hash for multiple types within envFrom
+- add skip config option
+
 ## [0.3.5]
 - #25 small fixes: show pod and fetch items nil
 

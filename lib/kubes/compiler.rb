@@ -1,5 +1,6 @@
 module Kubes
   class Compiler
+    include Kubes::Hooks::Concern
     include Kubes::Logging
     include Kubes::Util::Consider
 
@@ -7,17 +8,27 @@ module Kubes
       @options = options
     end
 
+    # Separate command like prune can call compile. Apply also calls Prune.
+    # Instead of moving Compile out of Prune, will use this class variable.
+    # In case we have other cases where compile is called in another area.
+    # We only want compiled to be called once so hooks only fire once.
+    @@compiled = false
     def run
-      results = resources.map do |path|
-        strategy = Strategy.new(@options.merge(path: path))
-        strategy.compile
-      end.compact
+      return if @@compiled
+      Kubes.config # trigger config load. So can set ENV['VAR'] in config/envs/dev.rb etc
+      run_hooks("kubes.rb", name: "compile") do
+        results = resources.map do |path|
+          strategy = Strategy.new(@options.merge(path: path))
+          strategy.compile
+        end.compact
 
-      results.each do |result|
-        write(result)
+        results.each do |result|
+          write(result)
+        end
       end
 
       puts "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
+      @@compiled = true
     end
 
     def resources
@@ -49,7 +60,7 @@ module Kubes
     end
 
     def write(result)
-      result.write_decorate!
+      result.decorate!(:post)
       filename, content = result.filename, result.content
       dest = "#{Kubes.root}/.kubes/output/#{filename}"
 

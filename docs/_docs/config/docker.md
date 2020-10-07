@@ -26,45 +26,9 @@ Also, kubes apply another way to skip the docker build:
 
     kubes apply web
 
-## Customizing Args
+## Customizing Args and Hooks
 
-Here are some examples of customizing the docker args.
+See:
 
-.kubes/config/docker/args.rb
-
-```ruby
-command("build",
-  args: ["--quiet"],
-)
-
-command("push",
-  args: ["--disable-content-trust"],
-)
-```
-
-## Hooks
-
-Here are some examples of running custom hooks before and after the docker commands.
-
-.kubes/config/docker/hooks.rb
-
-```ruby
-before("build",
-  execute: "echo 'docker build before hook'",
-)
-
-after("push",
-  execute: "echo 'docker push before hook'",
-)
-```
-
-### exit on fail
-
-By default, if the hook commands fail, then terraspace will exit with the original hook error code.  You can change this behavior with the `exit_on_fail` option.
-
-```ruby
-before("build"
-  execute: "/command/will/fail/but/will/continue",
-  exit_on_fail: false,
-)
-```
+* [Docker Args Docs]({% link _docs/config/args/docker.md %})
+* [Docker Hooks Docs]({% link _docs/config/hooks/docker.md %})

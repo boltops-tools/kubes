@@ -1,11 +1,11 @@
-describe Kubes::Compiler::Decorator::Resources::Pod do
+describe Kubes::Compiler::Decorator::Post do
   let(:decorator) { described_class.new(data) }
 
   def fixture(name)
     YAML.load_file("spec/fixtures/decorators/pod/#{name}.yaml")
   end
   before(:each) do
-    allow(Kubes::Compiler::Decorator).to receive(:fetch).and_return("fakehash")
+    allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).and_return("fakehash")
   end
 
   context("secret") do
@@ -35,15 +35,6 @@ describe Kubes::Compiler::Decorator::Resources::Pod do
         decorator.run
         data = decorator.data
         name = data['spec']['volumes'][0]['secret']['secretName']
-        expect(name).to eq("demo-secret-fakehash")
-      end
-    end
-
-    describe "run" do
-      let(:data) { fixture("secret/envFrom") }
-      it "data" do
-        decorator.run
-        name = data['spec']['containers'][0]['envFrom'][0]['secretRef']['name']
         expect(name).to eq("demo-secret-fakehash")
       end
     end

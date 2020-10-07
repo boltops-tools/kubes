@@ -1,15 +1,49 @@
 class Kubes::CLI
   class Exec < Base
+    extend Memoist
+    include Kubes::Logging
     include Kubes::Util::Sh
 
     def run
       compile
-      metadata = Kubes::Kubectl::Fetch::Deployment.new(@options).metadata
+      pod = find_pod
 
+      unless pod
+        logger.info <<~EOL
+          Unable to find a pod to exec into. This means there was no deployment found.
+          You can also try using the -p option and specifying enough of the pod name. Example:
+
+              kubes exec -p web
+
+        EOL
+        exit 1
+      end
+
+      container = " -c #{@options[:container]}" unless @options[:container].nil?
+      cmd = @options[:cmd].empty? ? "bash" : @options[:cmd].join(' ')
+      sh("kubectl exec #{ns} -ti #{pod}#{container} -- #{cmd}")
+    end
+
+    def find_pod
+      pod_name || deployment_pod
+    end
+
+    def ns
+      "-n #{metadata['namespace']}" if metadata
+    end
+
+    def metadata
+      deployment = Kubes::Kubectl::Fetch::Deployment.new(@options)
+      deployment.metadata if deployment.found
+    end
+    memoize :metadata
+
+    def deployment_pod
+      return unless metadata
       labels = metadata['labels'].map { |k,v| "#{k}=#{v}" }.join(',')
       ns = metadata['namespace']
 
-      resp = capture("kubectl get pod -l #{labels} -n #{ns} -o json")
+      resp = sh_capture("kubectl get pod -l #{labels} -n #{ns} -o json")
       data = JSON.load(resp)
       pod = latest_pod(data['items'])
 
@@ -18,10 +52,7 @@ class Kubes::CLI
         exit 1
       end
 
-      name = pod['metadata']['name']
-      container = " -c #{@options[:container]}" unless @options[:container].nil?
-      cmd = @options[:cmd].empty? ? "bash" : @options[:cmd].join(' ')
-      sh("kubectl exec -n #{ns} -ti #{name}#{container} -- #{cmd}")
+      pod['metadata']['name']
     end
 
     # get latest running pod

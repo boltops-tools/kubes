@@ -1,11 +1,13 @@
-describe Kubes::Compiler::Decorator::Resources::Deployment do
+describe Kubes::Compiler::Decorator::Post do
   let(:decorator) { described_class.new(data) }
 
   def fixture(name)
     YAML.load_file("spec/fixtures/decorators/deployment/#{name}.yaml")
   end
   before(:each) do
-    allow(Kubes::Compiler::Decorator).to receive(:fetch).and_return("fakehash")
+    allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("Secret", "demo-secret").and_return("fakehash")
+    allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("ConfigMap", "demo-config-map").and_return("fakehash-config")
+    allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("ConfigMap", "demo-config-map-2").and_return("fakehash-config2")
   end
 
   context "secret" do
@@ -56,7 +58,7 @@ describe Kubes::Compiler::Decorator::Resources::Deployment do
         decorator.run
         data = decorator.data
         name = data['spec']['template']['spec']['containers'][0]['envFrom'][0]['configMapRef']['name']
-        expect(name).to eq("demo-config-map-fakehash")
+        expect(name).to eq("demo-config-map-fakehash-config")
       end
     end
 
@@ -66,7 +68,7 @@ describe Kubes::Compiler::Decorator::Resources::Deployment do
         decorator.run
         data = decorator.data
         name = data['spec']['template']['spec']['containers'][0]['env'][0]['valueFrom']['configMapKeyRef']['name']
-        expect(name).to eq("demo-config-map-fakehash")
+        expect(name).to eq("demo-config-map-fakehash-config")
       end
     end
 
@@ -76,7 +78,7 @@ describe Kubes::Compiler::Decorator::Resources::Deployment do
         decorator.run
         data = decorator.data
         name = data['spec']['template']['spec']['volumes'][0]['configMap']['name']
-        expect(name).to eq("demo-config-map-fakehash")
+        expect(name).to eq("demo-config-map-fakehash-config")
       end
     end
 
@@ -85,7 +87,24 @@ describe Kubes::Compiler::Decorator::Resources::Deployment do
       it "data" do
         decorator.run
         name = data['spec']['template']['spec']['containers'][0]['envFrom'][0]['configMapRef']['name']
-        expect(name).to eq("demo-config-map-fakehash")
+        expect(name).to eq("demo-config-map-fakehash-config")
+      end
+    end
+  end
+
+  context "both" do
+    describe "envFrom" do
+      let(:data) { fixture("both/envFrom") }
+      it "run" do
+        decorator.run
+        data = decorator.data
+        envFrom = data['spec']['template']['spec']['containers'][0]['envFrom']
+        name = envFrom[0]['secretRef']['name']
+        expect(name).to eq("demo-secret-fakehash")
+        name = envFrom[1]['configMapRef']['name']
+        expect(name).to eq("demo-config-map-fakehash-config")
+        name = envFrom[2]['configMapRef']['name']
+        expect(name).to eq("demo-config-map-2-fakehash-config2")
       end
     end
   end

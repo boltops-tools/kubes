@@ -3,7 +3,7 @@ module Kubes::Docker::Strategy::Build
     def perform
       params = args.flatten.join(' ')
       command = "docker build #{params}"
-      run_hooks "build" do
+      run_hooks("docker.rb", name: "build") do
         sh(command)
       end
     end

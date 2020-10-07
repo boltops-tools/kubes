@@ -11,7 +11,7 @@ class Kubes::Compiler
 
       strategy = klass.new(@options.merge(path: @path)) # Dsl or Erb
       result = strategy.run
-      result.compile_decorate! # compile phase decoration
+      result.decorate!(:pre) # compile pre phase decoration
       result
     end
 
@@ -19,7 +19,7 @@ class Kubes::Compiler
       ext = File.extname(@path)
       case ext
       when '.rb'   then Dsl
-      when '.yaml' then Erb
+      when '.yaml','.yml' then Erb
       else Pass
       end
     end
