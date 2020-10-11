@@ -5,6 +5,7 @@ describe Kubes::Compiler::Decorator::Post do
     YAML.load_file("spec/fixtures/decorators/deployment/#{name}.yaml")
   end
   before(:each) do
+    allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).and_return("fakehash")
     allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("Secret", "demo-secret").and_return("fakehash")
     allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("ConfigMap", "demo-config-map").and_return("fakehash-config")
     allow(Kubes::Compiler::Decorator::Hashable::Storage).to receive(:fetch).with("ConfigMap", "demo-config-map-2").and_return("fakehash-config2")
@@ -105,6 +106,32 @@ describe Kubes::Compiler::Decorator::Post do
         expect(name).to eq("demo-config-map-fakehash-config")
         name = envFrom[2]['configMapRef']['name']
         expect(name).to eq("demo-config-map-2-fakehash-config2")
+      end
+    end
+
+    describe "valueFrom" do
+      let(:data) { fixture("both/valueFrom") }
+      it "run" do
+        decorator.run
+        data = decorator.data
+        valueFrom = data['spec']['template']['spec']['containers'][0]['env'][0]['valueFrom']
+        name = valueFrom['configMapKeyRef']['name']
+        expect(name).to eq("demo-config-map-fakehash-config")
+        name = valueFrom['secretKeyRef']['name']
+        expect(name).to eq("demo-secret-fakehash")
+      end
+    end
+
+    describe "volumes" do
+      let(:data) { fixture("both/volumes") }
+      it "run" do
+        decorator.run
+        data = decorator.data
+        volumes = data['spec']['template']['spec']['volumes']
+        name = volumes[0]['configMap']['name']
+        expect(name).to eq("demo-config-map-fakehash-config")
+        name = volumes[1]['secret']['secretName']
+        expect(name).to eq("demo-secret-fakehash")
       end
     end
   end
