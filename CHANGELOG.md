@@ -3,7 +3,8 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
-## [0.4.0 UNRELEASED]
+## [0.4.0]
+- #26 features: kubes vs kubectl hooks, prune, etc
 - hooks: kubes, kubectl, docker breaking changes.
 - hooks now in the .kubes/config/hooks folder.
 - hook for kubectl supports `on` option for more control over when to run hook.
