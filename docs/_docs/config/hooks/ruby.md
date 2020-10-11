@@ -46,7 +46,7 @@ metadata:
 apiVersion: v1
 kind: Secret
 data:
-  foo: <%= ENV['SECRET_FOO']
+  foo: <%= ENV['SECRET_FOO'] %>
 ```
 
 ## Ruby Object
