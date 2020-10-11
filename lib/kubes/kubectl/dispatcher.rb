@@ -1,5 +1,5 @@
 class Kubes::Kubectl
-  class Decider
+  class Dispatcher
     def initialize(name, options={})
       @name, @options = name.to_s, options
     end

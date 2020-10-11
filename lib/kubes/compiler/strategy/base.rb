@@ -7,7 +7,7 @@ class Kubes::Compiler::Strategy
       @path = options[:path]
 
       @filename = @path.sub(%r{.*\.kubes/resources/},'') # IE: web/deployment.rb or web/deployment.yaml
-      @save_file = @filename.sub('.rb','.yaml')
+      @save_file = @filename.sub('.yml','.yaml').sub('.rb','.yaml')
     end
   end
 end

@@ -1,5 +1,6 @@
 class Kubes::Kubectl
   class Batch
+    include Kubes::Hooks::Concern
     include Kubes::Logging
     include Kubes::Util::Consider
     include Ordering
@@ -11,11 +12,13 @@ class Kubes::Kubectl
     def run
       # @options[:preview] is really only used for kubectl delete
       logger.info "Will run:" if @options[:preview]
-      sorted_files.each do |file|
-        if @options[:preview]
-          logger.info "    kubectl #{@name} -f #{file}"
-        else
-          Kubes::Kubectl.run(@name, @options.merge(file: file))
+      run_hooks("kubes.rb", name: @name) do
+        sorted_files.each do |file|
+          if @options[:preview]
+            logger.info "    kubectl #{@name} -f #{file}"
+          else
+            Kubes::Kubectl.run(@name, @options.merge(file: file))
+          end
         end
       end
     end

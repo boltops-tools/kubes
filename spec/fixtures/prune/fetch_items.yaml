@@ -1,0 +1,268 @@
+---
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: '2'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"garden","role":"clock"},"name":"clock","namespace":"garden"},"spec":{"replicas":1,"revisionHistoryLimit":0,"selector":{"matchLabels":{"app":"garden","role":"clock"}},"template":{"metadata":{"labels":{"app":"garden","role":"clock"}},"spec":{"containers":[{"envFrom":[{"secretRef":{"name":"demo-secret-OLD1111111"}}],"image":"gcr.io/PROJECT/secret:kubes-2020-10-08T19-42-34-a428e44","name":"clock"}]}}}}
+
+'
+    creationTimestamp: '2020-10-08T02:24:30Z'
+    generation: 3
+    labels:
+      app: garden
+      role: clock
+    name: clock
+    namespace: garden
+    resourceVersion: '1076690'
+    selfLink: "/apis/apps/v1/namespaces/garden/deployments/clock"
+    uid: 6c6234bd-e7e8-421c-856d-10e6f0ae18df
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 0
+    selector:
+      matchLabels:
+        app: garden
+        role: clock
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp:
+        labels:
+          app: garden
+          role: clock
+      spec:
+        containers:
+        - envFrom:
+          - secretRef:
+              name: demo-secret-OLD1111111
+          image: gcr.io/PROJECT/secret:kubes-2020-10-08T19-42-34-a428e44
+          imagePullPolicy: IfNotPresent
+          name: clock
+          resources: {}
+          terminationMessagePath: "/dev/termination-log"
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: '2020-10-08T02:24:31Z'
+      lastUpdateTime: '2020-10-08T19:42:45Z'
+      message: ReplicaSet "clock-6f9f9d47cb" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: 'True'
+      type: Progressing
+    - lastTransitionTime: '2020-10-08T19:46:34Z'
+      lastUpdateTime: '2020-10-08T19:46:34Z'
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: 'True'
+      type: Available
+    observedGeneration: 3
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: batch/v1
+  kind: Job
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"batch/v1","kind":"Job","metadata":{"annotations":{},"name":"migrate","namespace":"garden"},"spec":{"backoffLimit":4,"template":{"spec":{"containers":[{"command":["sleep","60"],"envFrom":[{"secretRef":{"name":"demo-secret-CURRENT111"}}],"image":"gcr.io/PROJECT/secret:kubes-2020-10-07T20-12-16-84dbc4e","name":"migrate"}],"restartPolicy":"Never"}}}}
+
+'
+    creationTimestamp: '2020-10-07T20:12:29Z'
+    labels:
+      controller-uid: a5dbf73c-a49f-4eca-993e-7ab6db0946c8
+      job-name: migrate
+    name: migrate
+    namespace: garden
+    resourceVersion: '514227'
+    selfLink: "/apis/batch/v1/namespaces/garden/jobs/migrate"
+    uid: a5dbf73c-a49f-4eca-993e-7ab6db0946c8
+  spec:
+    backoffLimit: 4
+    completions: 1
+    parallelism: 1
+    selector:
+      matchLabels:
+        controller-uid: a5dbf73c-a49f-4eca-993e-7ab6db0946c8
+    template:
+      metadata:
+        creationTimestamp:
+        labels:
+          controller-uid: a5dbf73c-a49f-4eca-993e-7ab6db0946c8
+          job-name: migrate
+      spec:
+        containers:
+        - command:
+          - sleep
+          - '60'
+          envFrom:
+          - secretRef:
+              name: demo-secret-CURRENT111
+          image: gcr.io/PROJECT/secret:kubes-2020-10-07T20-12-16-84dbc4e
+          imagePullPolicy: IfNotPresent
+          name: migrate
+          resources: {}
+          terminationMessagePath: "/dev/termination-log"
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Never
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    completionTime: '2020-10-07T20:13:31Z'
+    conditions:
+    - lastProbeTime: '2020-10-07T20:13:31Z'
+      lastTransitionTime: '2020-10-07T20:13:31Z'
+      status: 'True'
+      type: Complete
+    startTime: '2020-10-07T20:12:29Z'
+    succeeded: 1
+- apiVersion: v1
+  kind: Namespace
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Namespace","metadata":{"annotations":{},"labels":{"app":"garden"},"name":"garden"}}
+
+'
+    creationTimestamp: '2020-10-07T19:04:11Z'
+    labels:
+      app: garden
+    name: garden
+    resourceVersion: '486464'
+    selfLink: "/api/v1/namespaces/garden"
+    uid: 3db2c4cf-40b9-42cd-96f4-7f0aebff80e1
+  spec:
+    finalizers:
+    - kubernetes
+  status:
+    phase: Active
+- apiVersion: v1
+  data:
+    foo: Zm9vCg==
+    password: cGFzcw==
+    username: dXNlcg==
+  kind: Secret
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","data":{"foo":"Zm9vCg==","password":"cGFzcw==","username":"dXNlcg=="},"kind":"Secret","metadata":{"annotations":{},"labels":{"app":"garden"},"name":"demo-secret-OLD1111111","namespace":"garden"}}
+
+'
+    creationTimestamp: '2020-10-08T19:42:41Z'
+    labels:
+      app: garden
+    name: demo-secret-OLD1111111
+    namespace: garden
+    resourceVersion: '1075012'
+    selfLink: "/api/v1/namespaces/garden/secrets/demo-secret-OLD1111111"
+    uid: 63c386ad-0069-4767-b0b8-e70dbafb7c9c
+  type: Opaque
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: '5'
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"app":"garden","role":"web"},"name":"web","namespace":"garden"},"spec":{"replicas":1,"revisionHistoryLimit":0,"selector":{"matchLabels":{"app":"garden","role":"web"}},"template":{"metadata":{"labels":{"app":"garden","role":"web"}},"spec":{"containers":[{"envFrom":[{"secretRef":{"name":"demo-secret-OLD1111111"}}],"image":"gcr.io/PROJECT/secret:kubes-2020-10-08T19-42-34-a428e44","name":"web"}]}}}}
+
+'
+    creationTimestamp: '2020-10-07T19:04:14Z'
+    generation: 6
+    labels:
+      app: garden
+      role: web
+    name: web
+    namespace: garden
+    resourceVersion: '1076735'
+    selfLink: "/apis/apps/v1/namespaces/garden/deployments/web"
+    uid: 31b562a8-1a35-4bf6-972d-f2d44a47e149
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 0
+    selector:
+      matchLabels:
+        app: garden
+        role: web
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        creationTimestamp:
+        labels:
+          app: garden
+          role: web
+      spec:
+        containers:
+        - envFrom:
+          - secretRef:
+              name: demo-secret-OLD1111111
+          image: gcr.io/PROJECT/secret:kubes-2020-10-08T19-42-34-a428e44
+          imagePullPolicy: IfNotPresent
+          name: web
+          resources: {}
+          terminationMessagePath: "/dev/termination-log"
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: '2020-10-07T19:04:14Z'
+      lastUpdateTime: '2020-10-08T19:42:46Z'
+      message: ReplicaSet "web-9c4796f88" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: 'True'
+      type: Progressing
+    - lastTransitionTime: '2020-10-08T19:46:40Z'
+      lastUpdateTime: '2020-10-08T19:46:40Z'
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: 'True'
+      type: Available
+    observedGeneration: 6
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: '{"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"role":"web"},"name":"web","namespace":"garden"},"spec":{"ports":[{"port":80,"protocol":"TCP","targetPort":80}],"selector":{"role":"web"},"type":"ClusterIP"}}
+
+'
+    creationTimestamp: '2020-10-07T19:04:13Z'
+    labels:
+      role: web
+    name: web
+    namespace: garden
+    resourceVersion: '486485'
+    selfLink: "/api/v1/namespaces/garden/services/web"
+    uid: 51eb23f5-d107-4554-b096-a4a081dfee5d
+  spec:
+    clusterIP: 10.12.10.177
+    ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+    selector:
+      role: web
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}

@@ -12,7 +12,19 @@ class Kubes::Kubectl
 
         "#{role_i}/#{kind_i}"
       end
+
+      sorted = filter_files(sorted)
+
       @name == "delete" ? sorted.reverse : sorted
+    end
+
+    def filter_files(sorted)
+      skip = Kubes.config.skip
+      skip += ENV['KUBES_SKIP'].split(' ') if ENV['KUBES_SKIP']
+      return sorted if skip.empty?
+      sorted.reject do |file|
+        skip.detect { |text| file.include?(text) }
+      end
     end
 
     # type: kinds or roles

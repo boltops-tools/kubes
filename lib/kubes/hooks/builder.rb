@@ -4,39 +4,53 @@ module Kubes::Hooks
     include Dsl
     include DslEvaluator
     include Kubes::Logging
-    include Kubes::Util::Sh
 
     attr_accessor :name
-    def initialize(name, file)
-      @name = name.to_s
-      @file = file # IE: .kubes/config/kubectl/hooks.rb
+    def initialize(dsl_file, options={})
+      @dsl_file, @options = dsl_file, options # IE: .kubes/config/hooks/kubectl.rb
+      @output_file = options[:file] # IE: .kubes/output/web/service.yaml
+      @name = options[:name].to_s
       @hooks = {before: {}, after: {}}
     end
 
     def build
-      return @hooks unless File.exist?(@file)
-      evaluate_file(@file)
+      return @hooks unless File.exist?(@dsl_file)
+      evaluate_file(@dsl_file)
       @hooks.deep_stringify_keys!
     end
     memoize :build
 
     def run_hooks
       build
-      run_hook("before")
+      run_each_hook("before")
       out = yield if block_given?
-      run_hook("after")
+      run_each_hook("after")
       out
     end
 
-    def run_hook(type)
-      execute = @hooks.dig(type, @name.to_s, "execute")
-      return unless execute
+    def run_each_hook(type)
+      hooks = @hooks.dig(type, @name.to_s) || []
+      hooks.each do |hook|
+        run_hook(type, hook)
+      end
+    end
 
-      exit_on_fail = @hooks.dig(type, @name.to_s, "exit_on_fail")
-      exit_on_fail = exit_on_fail.nil? ? true : exit_on_fail
+    def run_hook(type, hook)
+      return unless run?(hook)
 
-      logger.info "Running #{type} hook"
-      sh(execute, exit_on_fail: exit_on_fail)
+      command = File.basename(@dsl_file).sub('.rb','') # IE: kubes, kubectl, docker
+      id = "#{command} #{type} #{@name}"
+      on = " on: #{hook["on"]}" if hook["on"]
+      label = " label: #{hook["label"]}" if hook["label"]
+      logger.info  "Running #{id} hook.#{on}#{label}"
+      logger.debug "Hook options: #{hook}"
+      Runner.new(hook).run
+    end
+
+    def run?(hook)
+      return false unless hook["execute"]
+      return true  unless hook["on"]
+      @output_file.include?(hook["on"])
     end
   end
 end

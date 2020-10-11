@@ -9,11 +9,17 @@ module Kubes
     compile_option = Proc.new {
       option :compile, type: :boolean, default: true, desc: "whether or not to compile the .kube/resources"
     }
-    name_option = Proc.new {
-      option :name, aliases: %w[n], desc: "deployment name to use. IE: demo-web"
+    pod_option = Proc.new {
+      option :pod, aliases: %w[p], desc: "pod to use. IE: web"
+    }
+    deployment_option = Proc.new {
+      option :deployment, aliases: %w[d], desc: "deployment name to use. IE: demo-web"
     }
     container_option = Proc.new {
       option :container, aliases: %w[c], desc: "Container name. If omitted, the first container in the pod will be chosen"
+    }
+    yes_option = Proc.new {
+      option :yes, aliases: %w[y], type: :boolean, desc: "Skip are you sure prompt"
     }
 
     desc "docker SUBCOMMAND", "Docker subcommands"
@@ -45,7 +51,7 @@ module Kubes
     desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources within the app folder"
     long_desc Help.text(:delete)
     image_option.call
-    option :yes, aliases: %w[y], type: :boolean, desc: "Skip are you sure prompt"
+    yes_option.call
     def delete(role=nil, resource=nil)
       Delete.new(options.merge(role: role, resource: resource)).run
     end
@@ -69,7 +75,8 @@ module Kubes
     desc "exec", "Exec into the latest container from the deployment"
     long_desc Help.text(:exec)
     compile_option.call
-    name_option.call
+    pod_option.call
+    deployment_option.call
     container_option.call
     def exec(*cmd)
       Exec.new(options.merge(cmd: cmd)).run
@@ -88,11 +95,19 @@ module Kubes
     desc "logs", "logs from all deployment pods"
     long_desc Help.text(:logs)
     compile_option.call
-    name_option.call
+    pod_option.call
+    deployment_option.call
     container_option.call
     option :follow, aliases: %w[f], type: :boolean, default: true, desc: "Follow logs"
     def logs(*cmd)
       Logs.new(options.merge(cmd: cmd)).run
+    end
+
+    desc "prune", "Prune old resources like secret and config maps"
+    long_desc Help.text(:prune)
+    yes_option.call
+    def prune
+      Prune.new(options).run
     end
 
     long_desc Help.text(:init)

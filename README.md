@@ -41,12 +41,9 @@ In fact, you can use Kubes to build the files first, and then run `kubectl` dire
     kubes docker push
     kubes compile  # compiles the .kubes/resources files to .kubes/output
 
-Now, use `kubectl` directly. This will apply all the files:
+Now, use `kubectl` directly in the proper order:
 
-    kubectl apply --recursive -f .kubes/output
-
-You can also selectively apply specific files:
-
+    kubectl apply -f .kubes/output/shared/namespace.yaml
     kubectl apply -f .kubes/output/web/deployment.yaml
     kubectl apply -f .kubes/output/web/service.yaml
 

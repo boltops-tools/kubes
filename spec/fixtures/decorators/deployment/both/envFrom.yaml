@@ -1,0 +1,31 @@
+---
+metadata:
+  namespace: default
+  labels:
+    app: demo
+    role: web
+  name: demo-web
+spec:
+  selector:
+    matchLabels:
+      app: demo
+      role: web
+  template:
+    metadata:
+      labels:
+        app: demo
+        role: web
+    spec:
+      containers:
+      - name: demo-web
+        image: gcr.io/project/demo-web:kubes-2020-06-23T00-07-54
+        envFrom:
+        - secretRef:
+            name: demo-secret
+        - configMapRef:
+            name: demo-config-map
+        - configMapRef:
+            name: demo-config-map-2
+  replicas: 1
+apiVersion: apps/v1
+kind: Deployment

@@ -53,18 +53,37 @@
       </li>
       <li><a href="{% link _docs/config.md %}">Config</a>
         <ul>
-          <li><a href="{% link _docs/config/docker.md %}">Docker</a></li>
-          <li><a href="{% link _docs/config/env.md %}">Env</a></li>
-          <li><a href="{% link _docs/config/kubectl.md %}">Kubectl</a>
+          <li><a href="{% link _docs/config/args.md %}">Args</a>
             <ul>
-              <li><a href="{% link _docs/config/kubectl/args.md %}">Args</a></li>
-              <li><a href="{% link _docs/config/kubectl/hooks.md %}">Hooks</a></li>
+            {% assign docs = site.docs | where: "categories","args" %}
+            {% for doc in docs -%}
+              <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+            {% endfor %}
             </ul>
           </li>
+          <li><a href="{% link _docs/config/hooks.md %}">Hooks</a>
+            <ul>
+            {% assign docs = site.docs | where: "categories","hooks" %}
+            {% for doc in docs -%}
+              <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+            {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{% link _docs/config/docker.md %}">Docker</a></li>
+          <li><a href="{% link _docs/config/env.md %}">Env</a></li>
           <li><a href="{% link _docs/config/builder.md %}">Builder</a></li>
+          <li><a href="{% link _docs/config/skip.md %}">Skip Option</a></li>
+          <li><a href="{% link _docs/config/reference.md %}">Reference</a></li>
         </ul>
       </li>
       <li><a href="{% link _docs/yaml.md %}">YAML</a></li>
+      <li><a href="{% link _docs/layering.md %}">Layering</a>
+        <ul>
+          <li><a href="{% link _docs/layering/yaml.md %}">YAML</a></li>
+          <li><a href="{% link _docs/layering/dsl.md %}">DSL</a></li>
+          <li><a href="{% link _docs/layering/merge.md %}">Merge Behavior</a></li>
+        </ul>
+      </li>
       <li><a href="{% link _docs/dsl.md %}">DSL</a>
         <ul>
           <li><a href="{% link _docs/dsl/resources.md %}">Resources</a>
@@ -78,16 +97,10 @@
           <li><a href="{% link _docs/dsl/multiple-resources.md %}">Multiple Resources</a>
         </ul>
       </li>
-      <li><a href="{% link _docs/layering.md %}">Layering</a>
-        <ul>
-          <li><a href="{% link _docs/layering/yaml.md %}">YAML</a></li>
-          <li><a href="{% link _docs/layering/dsl.md %}">DSL</a></li>
-          <li><a href="{% link _docs/layering/merge.md %}">Merge Behavior</a></li>
-        </ul>
-      </li>
       <li><a href="{% link _docs/helpers.md %}">Helpers</a></li>
       <li><a href="{% link _docs/patterns.md %}">Patterns</a>
         <ul>
+          <li><a href="{% link _docs/patterns/migrations.md %}">Database Migrations</a></li>
           <li><a href="{% link _docs/patterns/clock-web-worker.md %}">Clock Web Worker</a></li>
         </ul>
       </li>

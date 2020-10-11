@@ -2,6 +2,7 @@ module Kubes
   class Kubectl
     extend Memoist
     include Kubes::Util::Sh
+    include Kubes::Hooks::Concern
 
     def initialize(name, options={})
       @name, @options = name, options
@@ -14,22 +15,17 @@ module Kubes
       options[:exit_on_fail] = exit_on_fail unless exit_on_fail.nil?
 
       params = args.flatten.join(' ')
-      command = "kubectl #{@name} #{params}" # @name: apply or delete
+      args = "#{@name} #{params}" # @name: apply or delete
 
       switch_context do
-        run_hooks(@name) do
+        run_hooks("kubectl.rb", name: @name, file: @options[:file]) do
           if options[:capture]
-            capture(command, options)
+            self.class.capture(args, options) # already includes kubectl
           else
-            sh(command, options)
+            self.class.execute(args, options)
           end
         end
       end
-    end
-
-    def execute(args, options={})
-      command = "kubectl #{args}"
-      capture(command)
     end
 
     # Useful for kustomize mode
@@ -44,9 +40,8 @@ module Kubes
     end
 
     def exit_on_fail
-      kubectl = Kubes.config.kubectl
-      exit_on_fail = kubectl.send("exit_on_fail_for_#{@name}")
-      exit_on_fail.nil? ? kubectl.exit_on_fail : exit_on_fail
+      return false if ENV['KUBES_EXIT_ON_FAIL'] == '0'
+      Kubes.config.kubectl.exit_on_fail[@name]
     end
 
     def switch_context(&block)
@@ -63,12 +58,6 @@ module Kubes
       else
         block.call
       end
-    end
-
-    def run_hooks(name, &block)
-      hooks = Kubes::Hooks::Builder.new(name, "#{Kubes.root}/.kubes/config/kubectl/hooks.rb")
-      hooks.build # build hooks
-      hooks.run_hooks(&block)
     end
 
     def args
@@ -90,8 +79,22 @@ module Kubes
     memoize :default
 
     class << self
+      include Kubes::Util::Sh
       def run(name, options={})
         new(name, options).run
+      end
+
+      def execute(args, options={})
+        sh("kubectl #{args}", options)
+      end
+
+      def capture(args, options={})
+        resp = sh_capture("kubectl #{args}", options)
+        if args.include?('-o json')
+          JSON.load(resp) # data
+        else
+          resp
+        end
       end
     end
   end
