@@ -10,7 +10,7 @@ The command name corresponds to the `{{ include.command }}` commands: apply, del
 
 Name | Description
 ---|---
-label | A human-friendly label so you can see what hooks is being run during `kubes apply`
+label | A human-friendly label so you can see what hooks is being run.
 execute | The script or command to run. IE: path/to/some/script.sh
 exit_on_fail | Whether or not to continue process if the script returns an failed exit code.
 {% if include.command == "kubectl" %}on | What resource to run the hook on. IE: shared/namespace, web/deployment, web/service. Note: This option is only used by kubectl hooks.{% endif %}

@@ -70,7 +70,7 @@ The `on` option is used to match the path the gets applied: .kubes/resources/**w
 
 ## exit on fail
 
-By default, if the hook commands fail, then terraspace will exit with the original hook error code.  You can change this behavior with the `exit_on_fail` option.
+By default, if the hook commands fail, then kubes will exit with the original hook error code.  You can change this behavior with the `exit_on_fail` option.
 
 ```ruby
 before("apply"
