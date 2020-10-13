@@ -19,7 +19,12 @@ class Kubes::CLI
     end
 
     def namespace
-      @options[:namespace] || "#{@options[:app]}-#{Kubes.env}"
+      @options[:namespace] || default_namespace
+    end
+
+    def default_namespace
+      env = @options[:type] == "yaml" ? '<%= Kubes.env %>' : '#{Kubes.env}'
+      "#{app}-#{env}"
     end
 
     def excludes
