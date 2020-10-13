@@ -6,7 +6,7 @@ class Kubes::CLI
         [:force, type: :boolean, desc: "Bypass overwrite are you sure prompt for existing files"],
         [:type, aliases: ["t"], default: "yaml", desc: "Type: dsl or yaml"],
         [:repo, required: true, desc: "Docker repo name. Example: user/repo. Configures .kubes/config.rb"],
-        [:namespace, aliases: ["n"], desc: "Namespace to use, defaults to the app option"],
+        [:namespace, aliases: ["n"], desc: "Namespace to use, defaults to APP-ENV. IE: demo-dev"],
       ]
     end
 
@@ -19,7 +19,7 @@ class Kubes::CLI
     end
 
     def namespace
-      @options[:namespace] || @options[:app]
+      @options[:namespace] || "#{@options[:app]}-#{Kubes.env}"
     end
 
     def excludes
