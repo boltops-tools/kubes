@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.4.1 UNRELEASED]
+- kubes init: default namespace now includes Kubes.env
+- fix kubes deploy: compile it gets called once and output folder kept
+- include kubes_google dependency helpers
+
 ## [0.4.0]
 - #26 features: kubes vs kubectl hooks, prune, etc
 - hooks: kubes, kubectl, docker breaking changes.
