@@ -28,6 +28,9 @@ Gem::Specification.new do |spec|
   spec.add_dependency "thor"
   spec.add_dependency "zeitwerk"
 
+  # core helper libs
+  spec.add_dependency "kubes_google"
+
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
   spec.add_development_dependency "cli_markdown"

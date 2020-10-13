@@ -11,9 +11,11 @@ We'll create a namespace for the app resources:
 .kubes/resources/shared/namespace.rb
 
 ```ruby
-name "demo"
+name "demo-#{Kubes.env}"
 labels(app: "demo")
 ```
+
+Notice, the `#{Kubes.env}`. Kubes adds the env to the namespace by default. You can change this with the `init --namespace` option.
 
 ## Deployment
 
@@ -39,7 +41,7 @@ Also let's check the files in the base folder.
 .kubes/resources/base/all.rb
 
 ```ruby
-namespace "default"
+namespace "demo-#{Kubes.env}"
 labels(app: "demo")
 ```
 

@@ -14,6 +14,9 @@ require "memoist"
 require "rainbow/ext/string"
 require "yaml"
 
+# core helper libraries
+require "kubes_google"
+
 DslEvaluator.backtrace_reject = ".kubes"
 
 require "kubes/autoloader"

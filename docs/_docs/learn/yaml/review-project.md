@@ -14,10 +14,12 @@ We'll create a namespace for the app resources:
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: demo
+  name: demo-<%= Kubes.env %>
   labels:
     app: demo
 ```
+
+Notice, the `<%= Kubes.env %>`. Kubes adds the env to the namespace by default. You can change this with the `init --namespace` option.
 
 ## Deployment
 
@@ -57,7 +59,7 @@ Also let's check the files in the base folder.
 
 ```yaml
 metadata:
-  namespace: demo
+  namespace: demo-<%= Kubes.env %>
 ```
 
 .kubes/resources/base/deployment.yaml

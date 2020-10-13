@@ -8,13 +8,7 @@ module Kubes
       @options = options
     end
 
-    # Separate command like prune can call compile. Apply also calls Prune.
-    # Instead of moving Compile out of Prune, will use this class variable.
-    # In case we have other cases where compile is called in another area.
-    # We only want compiled to be called once so hooks only fire once.
-    @@compiled = false
     def run
-      return if @@compiled
       Kubes.config # trigger config load. So can set ENV['VAR'] in config/envs/dev.rb etc
       run_hooks("kubes.rb", name: "compile") do
         results = resources.map do |path|
@@ -28,7 +22,6 @@ module Kubes
       end
 
       puts "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
-      @@compiled = true
     end
 
     def resources
