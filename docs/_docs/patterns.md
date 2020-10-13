@@ -4,4 +4,7 @@ title: Patterns
 
 We'll cover some common deployment patterns here:
 
-* [Clock Web Worker]({% link _docs/patterns/clock-web-worker.md %})
+{% assign docs = site.docs | where: "categories","patterns" %}
+{% for doc in docs -%}
+* [{{ doc.title }}]({{ doc.url }})
+{% endfor %}

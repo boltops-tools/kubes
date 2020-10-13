@@ -1,5 +1,7 @@
 ---
 title: Database Migrations
+nav_text: Database Migrations
+categories: patterns
 ---
 
 A common task is to run database migrations. You can use Kubes hooks to achieve this as part of the `kubes deploy` process.
