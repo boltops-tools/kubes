@@ -49,6 +49,8 @@ data:
   foo: <%= ENV['SECRET_FOO'] %>
 ```
 
+Note, the example above is used to explain how Ruby can be used as the execute option. For secrets, kubes supports secrets with some helpers. See: [Secrets Pattern Docs]({% link _docs/patterns/secrets.md %})
+
 ## Ruby Object
 
 When the Ruby object, Kubes expects it to have a `call` method and will run it.  Example:
