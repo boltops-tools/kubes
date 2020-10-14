@@ -31,7 +31,7 @@ metadata:
     app: demo
 data:
 <% KubesGoogle::Secrets.data.each do |k,v| -%>
-  <%= k %>: <%= Base64.encode64(v).strip %>
+  <%= k %>: <%= base64(v) %>
 <% end -%>
 ```
 
@@ -73,6 +73,7 @@ Secrets#initialize options:
 
 Variable | Description | Default
 ---|---|---
+base64 | Automatically base64 encode the values. | false
 upcase | Automatically upcase the Kubernetes secret data keys. | false
 prefix | Prefixed used to list and filter Google secrets. IE: `projects/686010496118/secrets/demo-dev-`. Can also be set with the `GCP_SECRET_PREFIX` env variable. The env variable takes the highest precedence. | nil
 
