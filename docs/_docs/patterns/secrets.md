@@ -4,7 +4,7 @@ nav_text: Secrets
 categories: patterns
 ---
 
-A Google Secrets helper currently supported.
+A Google Secrets helper is currently supported.
 
 ## Set Up Kubes Hook
 
@@ -35,7 +35,7 @@ data:
 <% end -%>
 ```
 
-This results in Google secrets with the prefix the `demo-dev-` being added to the Kubernetes secret data.  The values are automatically base64 encoded.
+This results in Google secrets with the prefix the `demo-dev-` being added to the Kubernetes secret data.  The values are base64 encoded.
 
 For example if you have these secret values:
 
@@ -44,6 +44,8 @@ For example if you have these secret values:
     $ gcloud secrets versions access latest --secret demo-dev-db_pass
     test2
     $
+
+The compiled secrets.yaml looks like this:
 
 .kubes/output/shared/secret.yaml
 
