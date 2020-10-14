@@ -18,7 +18,7 @@ When the Ruby object is a class with an instance method `call`, Kubes creates a 
 ```ruby
 class EnvExporter
   def call
-    ENV['SECRET_FOO'] = Base64.encode64("hi").strip
+    ENV['SECRET_FOO'] = Base64.strict_encode64("hi").strip
   end
 end
 
@@ -59,7 +59,7 @@ When the Ruby object, Kubes expects it to have a `call` method and will run it. 
 
 ```ruby
 before("compile",
-  execute: lambda { ENV['SECRET_FOO'] = Base64.encode64("hi2").strip }
+  execute: lambda { ENV['SECRET_FOO'] = Base64.strict_encode64("hi2").strip }
 )
 ```
 

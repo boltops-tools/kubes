@@ -24,8 +24,13 @@ module Kubes::Compiler::Shared
       extra&.strip&.empty? ? nil : extra # if blank string then also return nil
     end
 
-    def base64(v)
-      Base64.encode64(v).strip
+    def encode64(v)
+      Base64.strict_encode64(v).strip
+    end
+    alias_method :base64, :encode64
+
+    def decode64(v)
+      Base64.strict_decode64(v)
     end
   end
 end
