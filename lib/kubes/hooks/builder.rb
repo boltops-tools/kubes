@@ -50,7 +50,7 @@ module Kubes::Hooks
     def run?(hook)
       return false unless hook["execute"]
       return true  unless hook["on"]
-      @output_file.include?(hook["on"])
+      @output_file && @output_file.include?(hook["on"]) # output file is only passed
     end
   end
 end
