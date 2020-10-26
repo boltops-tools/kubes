@@ -17,7 +17,7 @@ class Kubes::Compiler::Strategy
     end
 
     def syntax_class
-      klass_name = normalize_kind(@filename)
+      klass_name = normalize_kind(@save_file)
       "Kubes::Compiler::Dsl::Syntax::#{klass_name}".constantize
     rescue NameError
       logger.debug "Using default resource for: #{klass_name}"
@@ -25,7 +25,7 @@ class Kubes::Compiler::Strategy
     end
 
     def block_form?
-      type = extract_type(@filename)
+      type = extract_type(@save_file)
       type.pluralize == type
     end
   end

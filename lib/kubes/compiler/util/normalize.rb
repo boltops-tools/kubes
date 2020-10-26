@@ -5,7 +5,7 @@ module Kubes::Compiler::Util
     end
 
     def extract_type(path)
-      File.basename(path).sub('.rb','').sub(/-.*/,'')
+      File.basename(path).sub('.yaml','').sub('.yml','').sub('.rb','').sub(/-.*/,'')
     end
   end
 end
