@@ -17,7 +17,7 @@ require "yaml"
 # core helper libraries
 require "kubes_google"
 
-DslEvaluator.backtrace_reject = ".kubes"
+DslEvaluator.backtrace_reject = "lib/kubes"
 
 require "kubes/autoloader"
 Kubes::Autoloader.setup
