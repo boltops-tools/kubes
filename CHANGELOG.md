@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.4.4]
+- #30 friendly message for rendered erb yaml and dsl errors
+- fix backtrace_reject pattern
+
 ## [0.4.3]
 - #29 fix edge case when user provides hook on option for non-kubectl hooks
 
