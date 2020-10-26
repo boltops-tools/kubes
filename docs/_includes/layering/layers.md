@@ -27,7 +27,7 @@ To explain the layering, here's the general processing order that Kubes takes.
 
 Note, both YAML and DSL forms support layering.
 
-Layering only combines resources definitions with the same form. For example, `base/all.rb` will not be combined with `web/deployment.yaml`.
+Layering only combines resources definitions with the same form. For example, the DSL form `base/all.rb` will not be combined with YAML form `web/deployment.yaml`.
 
 ## Full Layering
 
