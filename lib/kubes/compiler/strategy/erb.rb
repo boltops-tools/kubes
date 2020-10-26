@@ -32,11 +32,18 @@ class Kubes::Compiler::Strategy
     def render_result(path)
       if File.exist?(path)
         yaml = RenderMePretty.result(path, context: self)
-        result = YAML.load(yaml)
+        result = yaml_load(path, yaml)
         result.is_a?(Hash) ? result : {} # in case of blank yaml doc a Boolean false is returned
       else
         {}
       end
+    end
+
+    def yaml_load(path, yaml)
+      YAML.load(yaml)
+    rescue Psych::SyntaxError
+      YamlError.new(path, yaml).show
+      exit 1
     end
   end
 end
