@@ -18,3 +18,10 @@ Here's also the source code with most of the helpers: [helpers.rb](https://githu
 ## DSL Specific Methods
 
 Each DSL resource has it's own specific methods. Refer to the [DSL Docs]({% link _docs/dsl.md %}) for their methods.
+
+## Provider Helpers
+
+There are also provider-specific helpers:
+
+* [AWS Helpers]({% link _docs/helpers/aws.md %})
+* [Google Helpers]({% link _docs/helpers/google.md %})

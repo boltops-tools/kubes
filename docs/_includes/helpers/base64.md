@@ -1,0 +1,1 @@
+Note, Kubernetes secrets are only base64 encoded. So users who have access to read Kubernetes secrets will be able to decode and get the value trivially. Depending on your security posture requirements, this may or may not suffice.

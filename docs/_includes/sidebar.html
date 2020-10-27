@@ -97,7 +97,26 @@
           <li><a href="{% link _docs/dsl/multiple-resources.md %}">Multiple Resources</a>
         </ul>
       </li>
-      <li><a href="{% link _docs/helpers.md %}">Helpers</a></li>
+      <li><a href="{% link _docs/helpers.md %}">Helpers</a>
+        <ul>
+          <li><a href="{% link _docs/helpers/aws.md %}">AWS</a>
+            <ul>
+              {% assign docs = site.docs | where: "categories","helpers-aws" %}
+              {% for doc in docs -%}
+                <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{% link _docs/helpers/google.md %}">Google</a>
+            <ul>
+              {% assign docs = site.docs | where: "categories","helpers-google" %}
+              {% for doc in docs -%}
+                <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+              {% endfor %}
+            </ul>
+          </li>
+        </ul>
+      </li>
       <li><a href="{% link _docs/patterns.md %}">Patterns</a>
         <ul>
           {% assign docs = site.docs | where: "categories","patterns" %}
