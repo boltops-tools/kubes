@@ -48,7 +48,7 @@ module Kubes
       kubectl = Kubes.config.kubectl
       context = kubectl.context
       if context
-        previous_context = capture("kubectl config current-context")
+        previous_context = sh_capture("kubectl config current-context")
         sh("kubectl config use-context #{context}", mute: true)
         result = block.call
         if !previous_context.blank? && !kubectl.context_keep
