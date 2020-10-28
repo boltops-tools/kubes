@@ -17,13 +17,11 @@ module Kubes
       params = args.flatten.join(' ')
       args = "#{@name} #{params}" # @name: apply or delete
 
-      switch_context do
-        run_hooks("kubectl.rb", name: @name, file: @options[:file]) do
-          if options[:capture]
-            self.class.capture(args, options) # already includes kubectl
-          else
-            self.class.execute(args, options)
-          end
+      run_hooks("kubectl.rb", name: @name, file: @options[:file]) do
+        if options[:capture]
+          self.class.capture(args, options) # already includes kubectl
+        else
+          self.class.execute(args, options)
         end
       end
     end
@@ -42,22 +40,6 @@ module Kubes
     def exit_on_fail
       return false if ENV['KUBES_EXIT_ON_FAIL'] == '0'
       Kubes.config.kubectl.exit_on_fail[@name]
-    end
-
-    def switch_context(&block)
-      kubectl = Kubes.config.kubectl
-      context = kubectl.context
-      if context
-        previous_context = sh_capture("kubectl config current-context")
-        sh("kubectl config use-context #{context}", mute: true)
-        result = block.call
-        if !previous_context.blank? && !kubectl.context_keep
-          sh("kubectl config use-context #{previous_context}", mute: true)
-        end
-        result
-      else
-        block.call
-      end
     end
 
     def args

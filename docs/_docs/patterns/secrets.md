@@ -78,5 +78,3 @@ upcase | Automatically upcase the Kubernetes secret data keys. | false
 prefix | Prefixed used to list and filter Google secrets. IE: `projects/686010496118/secrets/demo-dev-`. Can also be set with the `GCP_SECRET_PREFIX` env variable. The env variable takes the highest precedence. | nil
 
 Note, Kubernetes secrets are only base64 encoded. So users who have access to read Kubernetes secrets will be able to decode and get the value trivially. Depending on your security posture requirements, this may or may not suffice.
-
-The Google helpers are provided by the [boltops-tools/kubes_google](https://github.com/boltops-tools/kubes_google) library. For more details, check out its README.

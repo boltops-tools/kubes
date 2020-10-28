@@ -14,4 +14,4 @@ List of Google helpers:
 * By default, `KubeGoogle.logger = Kubes.logger`. This means, you can set `logger.level = "debug"` in `.kubes/config.rb` to see more details.
 * The `gcloud` cli is used to create IAM roles. So `gcloud` is required.
 * Note: Would like to use the google sdk, but it wasn't obvious how to do so. PRs are welcomed.
-
+* The Google helpers are provided by the [boltops-tools/kubes_google](https://github.com/boltops-tools/kubes_google) library.
