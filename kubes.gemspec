@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "zeitwerk"
 
   # core helper libs
+  spec.add_dependency "kubes_aws"
   spec.add_dependency "kubes_google"
 
   spec.add_development_dependency "bundler"

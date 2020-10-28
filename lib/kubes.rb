@@ -15,6 +15,7 @@ require "rainbow/ext/string"
 require "yaml"
 
 # core helper libraries
+require "kubes_aws"
 require "kubes_google"
 
 DslEvaluator.backtrace_reject = "lib/kubes"
