@@ -41,6 +41,8 @@ metadata:
 
 The role permissions are currently always added to the existing permissions. So removing roles that were previously added does not remove them.
 
+## Variables
+
 ServiceAccount#initialize options:
 
 Variable | Description | Default
@@ -50,3 +52,9 @@ gsa | The Google Service Account name. The conventional name is APP-ENV. IE: dem
 ksa | The Kubernetes Service Account name. The conventional name is APP. IE: demo | APP
 namespace | The Kubernetes namespace. Defaults to the APP-ENV. IE: demo-dev. | APP-ENV
 roles | Google IAM roles to add. This adds permissions to the Google service account. | []
+
+Relevant environment variables:
+
+Name | Description
+---|---
+GOOGLE_PROJECT | Google project id. This is required as it's used to build the full service account name.
