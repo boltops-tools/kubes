@@ -4,10 +4,12 @@ class Kubes::Compiler::Strategy
   class Erb < Base
     extend Kubes::Compiler::Dsl::Core::Fields
     include Kubes::Compiler::Dsl::Core::Helpers
+    include Kubes::Compiler::Shared::CustomHelpers
     include Kubes::Compiler::Shared::Helpers
     include Kubes::Compiler::Layering
 
     def run
+      load_custom_helpers
       @data = {}
 
       render_files(pre_layers)
