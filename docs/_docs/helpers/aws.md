@@ -12,3 +12,4 @@ List of AWS helpers:
 ## Notes
 
 * By default, `KubeGoogle.logger = Kubes.logger`. This means, you can set `logger.level = "debug"` in `.kubes/config.rb` to see more details.
+* The AWS helpers are provided by the [boltops-tools/kubes_aws](https://github.com/boltops-tools/kubes_aws) library.
