@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.4.6]
+- #32 custom helpers support
+
 ## [0.4.5]
 - #31 kubes AWS helpers
 
