@@ -3,6 +3,7 @@ class Kubes::Compiler::Strategy
     include Kubes::Compiler::Util::Normalize
 
     def run
+      load_custom_helpers
       dsl = dsl_class.new(@options) # Deployment, Service, etc
       data = dsl.run
       Result.new(@save_file, data)
