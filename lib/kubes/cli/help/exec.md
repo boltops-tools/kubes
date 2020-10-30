@@ -22,3 +22,18 @@ If you have have multiple deployments in your `.kubes/resources` then the comman
 If you have have multiple containers in your pod. You can specify the specfic container with the `--container` or `-c` option.  Examples:
 
     kubes exec --name web
+
+## Default Exec Command
+
+The default exec command is `sh`.  Example:
+
+    $ kubes exec
+    => kubectl exec -n demo-dev -ti web-568645f665-62j8f -- sh
+    /app #
+
+You can override the default with `KUBES_DEFAULT_EXEC`.  Example:
+
+    $ export KUBES_DEFAULT_EXEC=bash
+    $ kubes exec
+    => kubectl exec -n demo-dev -ti web-568645f665-62j8f -- bash
+    /app #

@@ -20,8 +20,12 @@ class Kubes::CLI
       end
 
       container = " -c #{@options[:container]}" unless @options[:container].nil?
-      cmd = @options[:cmd].empty? ? "bash" : @options[:cmd].join(' ')
+      cmd = @options[:cmd].empty? ? default_exec : @options[:cmd].join(' ')
       sh("kubectl exec #{ns} -ti #{pod}#{container} -- #{cmd}")
+    end
+
+    def default_exec
+      ENV['KUBES_DEFAULT_EXEC'] || "sh"
     end
 
     def find_pod

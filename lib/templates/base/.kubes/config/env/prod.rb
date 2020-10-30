@@ -2,5 +2,5 @@
 #
 # Example:
 # Kubes.configure do |config|
-#   config.kubectl.context = "prod-services"
+#   config.kubectl.context = "prod-cluster"
 # end
