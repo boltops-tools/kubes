@@ -56,7 +56,7 @@ module Kubes
       Compile.new(options).run
     end
 
-    desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources within the app folder"
+    desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources in defined .kubes/resources"
     long_desc Help.text(:delete)
     image_option.call
     yes_option.call
