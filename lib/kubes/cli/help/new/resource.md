@@ -1,8 +1,8 @@
 ## Examples
 
-    $ kubes new ingress
+    $ kubes new resource ingress
           create  .kubes/resources/web/ingress.yaml
-    $ kubes new service_account
+    $ kubes new resource service_account
           create  .kubes/resources/shared/service_account.yaml
     $
 
@@ -27,4 +27,4 @@ Here's a list of some of the supported resources.
     service
 
 Refer to the source code to all the resources that the generator supports:
-https://github.com/boltops-tools/kubes/blob/master/lib/templates/new/yaml
+https://github.com/boltops-tools/kubes/blob/master/lib/templates/new/resource/yaml

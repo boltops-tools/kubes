@@ -1,6 +1,6 @@
 describe Kubes::Compiler::Dsl::Syntax::NetworkPolicy do
   let(:evaluator) { described_class.new(options) }
-  let(:options) { {path: fixture("syntax/network_policy") } }
+  let(:options) { {path: fixture("syntax/.kubes/resources/web/network_policy") } }
 
   context "network_policy" do
     it "run" do

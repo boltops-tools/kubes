@@ -4,28 +4,9 @@ nav_text: Secrets
 categories: helpers-aws
 ---
 
-## Simple Values
+The `aws_secret` helper fetches secret data from AWS Secrets Manager.
 
-For example if you have these secret values:
-
-    $ aws secretsmanager get-secret-value --secret-id demo/dev/db_user | jq '.SecretString'
-    user
-    $ aws secretsmanager get-secret-value --secret-id demo/dev/db_pass | jq '.SecretString'
-    pass
-
-Set up a [Kubes hook](https://kubes.guru/docs/config/hooks/kubes/).
-
-.kubes/config/hooks/kubes.rb
-
-```ruby
-secrets = KubesAws::Secrets.new(upcase: true, prefix: "demo/dev/")
-before("compile",
-  label: "Get secrets from AWS Secrets Manager",
-  execute: secrets,
-)
-```
-
-Then set the secrets in the YAML:
+## Example
 
 .kubes/resources/shared/secret.yaml
 
@@ -37,12 +18,17 @@ metadata:
   labels:
     app: demo
 data:
-<% KubesAws::Secrets.data.each do |k,v| -%>
-  <%= k %>: <%= base64(v) %>
-<% end -%>
+  PASS: <%= aws_secret("demo-#{Kubes.env}-PASS") %>
+  USER: <%= aws_secret("demo-#{Kubes.env}-USER") %>
 ```
 
-This results in AWS secrets with the prefix the `demo/dev/` being added to the Kubernetes secret data.  The values are automatically base64 encoded. Produces:
+For example if you have these secret values:
+
+    $ aws secretsmanager get-secret-value --secret-id demo-dev-PASS | jq '.SecretString'
+    test1
+    $ aws secretsmanager get-secret-value --secret-id demo-dev-USER | jq '.SecretString'
+    test2
+    $
 
 .kubes/output/shared/secret.yaml
 
@@ -55,75 +41,19 @@ metadata:
 apiVersion: v1
 kind: Secret
 data:
-  db_pass: dGVzdDEK
-  db_user: dGVzdDIK
+  PASS: dGVzdDEK
+  USER: dGVzdDIK
 ```
 
-## JSON Values
+The values are automatically base64 encoded.
 
-For example if you have these secret values:
+## Base64 Option
 
-    $ aws secretsmanager get-secret-value --secret-id demo/dev/k2 | jq '.SecretString'
-    {\"a\":1,\"b\":2}"
-
-Set up a [Kubes hook](https://kubes.guru/docs/config/hooks/kubes/).
-
-.kubes/config/hooks/kubes.rb
+The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
 
 ```ruby
-secrets = KubesAws::Secrets.new(prefix: "rails/dev/")
-before("compile",
-  label: "Get secrets from AWS Secrets Manager",
-  execute: secrets,
-)
+aws_secret("demo-#{Kubes.env}-USER", base64: true)  # default is base64=true
+aws_secret("demo-#{Kubes.env}-PASS", base64: false)
 ```
-
-Then set the secrets in the YAML:
-
-.kubes/resources/shared/secret.yaml
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: demo
-  labels:
-    app: demo
-data:
-<% k2 = JSON.load(KubesAws::Secrets.data["k2"]) %>
-  a: <%= base64(k2["a"]) %>
-  b: <%= base64(k2["b"]) %>
-```
-
-Produces:
-
-```yaml
-metadata:
-  namespace: demo-dev
-  name: demo-a4cd604a95
-  labels:
-    app: demo
-apiVersion: v1
-kind: Secret
-data:
-  a: MQ==
-  b: Mg==
-```
-
-## Variables
-
-These environment variables can be set:
-
-Name | Description
----|---
-AWS_SECRET_PREFIX | Prefixed used to list and filter AWS secrets. IE: `demo/dev/`.
-
-Secrets#initialize options:
-
-Variable | Description | Default
----|---|---
-base64 | Automatically base64 encode the values. | false
-upcase | Automatically upcase the Kubernetes secret data keys. | false
-prefix | Prefixed used to list and filter AWS secrets. IE: `demo/dev/`. Can also be set with the `AWS_SECRET_PREFIX` env variable. The env variable takes the highest precedence. | nil
 
 {% include helpers/base64.md %}

@@ -91,6 +91,7 @@
         <ul>
           <li><a href="{% link _docs/layering/yaml.md %}">YAML</a></li>
           <li><a href="{% link _docs/layering/dsl.md %}">DSL</a></li>
+          <li><a href="{% link _docs/layering/mix.md %}">Mix</a></li>
           <li><a href="{% link _docs/layering/merge.md %}">Merge Behavior</a></li>
         </ul>
       </li>
@@ -107,6 +108,14 @@
           <li><a href="{% link _docs/dsl/multiple-resources.md %}">Multiple Resources</a>
         </ul>
       </li>
+      <li><a href="{% link _docs/variables.md %}">Variables</a>
+        <ul>
+          {% assign docs = site.docs | where: "categories","variables" %}
+          {% for doc in docs -%}
+            <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+          {% endfor %}
+        </ul>
+      </li>
       <li><a href="{% link _docs/helpers.md %}">Helpers</a>
         <ul>
           <li><a href="{% link _docs/helpers/custom.md %}">Custom</a></li>
@@ -114,7 +123,18 @@
             <ul>
               {% assign docs = site.docs | where: "categories","helpers-aws" %}
               {% for doc in docs -%}
+                {% if doc.nav_text == "Advanced" %}
+                <li><a href='{{ doc.url }}'>{{ doc.nav_text }}</a>
+                  <ul>
+                    {% assign docs = site.docs | where: "categories","advanced-helpers-aws" %}
+                    {% for doc in docs -%}
+                    <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% else %}
                 <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+                {% endif %}
               {% endfor %}
             </ul>
           </li>
@@ -122,7 +142,18 @@
             <ul>
               {% assign docs = site.docs | where: "categories","helpers-google" %}
               {% for doc in docs -%}
+                {% if doc.nav_text == "Advanced" %}
+                <li><a href='{{ doc.url }}'>{{ doc.nav_text }}</a>
+                  <ul>
+                    {% assign docs = site.docs | where: "categories","advanced-helpers-google" %}
+                    {% for doc in docs -%}
+                    <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                {% else %}
                 <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+                {% endif %}
               {% endfor %}
             </ul>
           </li>

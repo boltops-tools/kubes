@@ -16,12 +16,13 @@ class Kubes::Compiler
     end
 
     def strategy_class
-      ext = File.extname(@path)
-      case ext
-      when '.rb'   then Dsl
-      when '.yaml','.yml' then Erb
-      else Pass
-      end
+      ext = File.extname(@path).sub('.','').to_sym
+      map = {
+        rb: Dsl,
+        yaml: Erb,
+        yml: Erb,
+      }
+      map[ext]
     end
   end
 end

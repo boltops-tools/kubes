@@ -4,26 +4,9 @@ nav_text: SSM
 categories: helpers-aws
 ---
 
-For example if you have these secret values:
+The `aws_ssm` helper fetches data from AWS SSM Parameter Store.
 
-    $ aws ssm get-parameter --name /demo/development/db_user --with-decryption | jq '.Parameter.Value'
-    user
-    $ aws ssm get-parameter --name /demo/development/db_pass --with-decryption | jq '.Parameter.Value'
-    pass
-
-Set up a [Kubes hook](https://kubes.guru/docs/config/hooks/kubes/).
-
-.kubes/config/hooks/kubes.rb
-
-```ruby
-ssm = KubesAws::SSM.new(upcase: true, prefix: "/demo/development/")
-before("compile",
-  label: "Get secrets from AWS SSM Manager",
-  execute: ssm,
-)
-```
-
-Then set the secrets in the YAML:
+## Example
 
 .kubes/resources/shared/secret.yaml
 
@@ -35,12 +18,16 @@ metadata:
   labels:
     app: demo
 data:
-<% KubesAws::SSM.data.each do |k,v| -%>
-  <%= k %>: <%= base64(v) %>
-<% end -%>
+  PASS: <%= aws_ssm("/demo/#{Kubes.env}/PASS") %>
+  USER: <%= aws_ssm("/demo/#{Kubes.env}/USER") %>
 ```
 
-This results in AWS secrets with the prefix the `demo/dev/` being added to the Kubernetes secret data.  The values are automatically base64 encoded. Produces:
+For example if you have these ssm parameter values:
+
+    $ aws ssm get-parameter --name /demo/dev/PASS --with-decryption | jq '.Parameter.Value'
+    test1
+    $ aws ssm get-parameter --name /demo/dev/USER --with-decryption | jq '.Parameter.Value'
+    test2
 
 .kubes/output/shared/secret.yaml
 
@@ -53,24 +40,19 @@ metadata:
 apiVersion: v1
 kind: Secret
 data:
-  db_pass: dGVzdDEK
-  db_user: dGVzdDIK
+  PASS: dGVzdDEK
+  USER: dGVzdDIK
 ```
 
-## Variables
+The values are automatically base64 encoded.
 
-These environment variables can be set:
+## Base64 Option
 
-Name | Description
----|---
-AWS_SSM_PREFIX | Prefixed used to list and filter AWS SSM Parameters. IE: `demo/dev/`.
+The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
 
-Secrets#initialize options:
-
-Variable | Description | Default
----|---|---
-base64 | Automatically base64 encode the values. | false
-upcase | Automatically upcase the Kubernetes secret data keys. | false
-prefix | Prefixed used to list and filter AWS secrets. IE: `demo/dev/`. Can also be set with the `AWS_SECRET_PREFIX` env variable. The env variable takes the highest precedence. | nil
+```ruby
+aws_ssm("/demo/#{Kubes.env}/USER", base64: true)  # default is base64=true
+aws_ssm("/demo/#{Kubes.env}/PASS", base64: false)
+```
 
 {% include helpers/base64.md %}

@@ -4,7 +4,7 @@ describe Kubes::Compiler do
     allow(compiler).to receive(:write_full)
     compiler
   end
-  let(:options) { {path: "spec/fixtures/project/.kubes/deployment.rb" } }
+  let(:options) { {path: "spec/fixtures/project/.kubes/resources/web/deployment.rb" } }
 
   describe "compiler" do
     it "run" do

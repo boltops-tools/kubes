@@ -4,17 +4,9 @@ nav_text: Secrets
 categories: helpers-google
 ---
 
-Set up a [Kubes hook](https://kubes.guru/docs/config/hooks/kubes/).
+The `google_secret` helper fetches secret data from Google Secrets.
 
-.kubes/config/hooks/kubes.rb
-
-```ruby
-before("compile",
-  execute: KubesGoogle::Secrets.new(upcase: true, prefix: 'projects/686010496118/secrets/demo-dev-')
-)
-```
-
-Then set the secrets in the YAML:
+## Example
 
 .kubes/resources/shared/secret.yaml
 
@@ -26,18 +18,17 @@ metadata:
   labels:
     app: demo
 data:
-<% KubesGoogle::Secrets.data.each do |k,v| -%>
-  <%= k %>: <%= base64(v) %>
-<% end -%>
+  PASS: <%= google_secret("demo-#{Kubes.env}-PASS") %>
+  USER: <%= google_secret("demo-#{Kubes.env}-USER") %>
 ```
 
-This results in Google secrets with the prefix the `demo-dev-` being added to the Kubernetes secret data.  The values are automatically base64 encoded.
+The values are automatically base64 encoded.
 
 For example if you have these secret values:
 
-    $ gcloud secrets versions access latest --secret demo-dev-db_user
+    $ gcloud secrets versions access latest --secret demo-dev-USER
     test1
-    $ gcloud secrets versions access latest --secret demo-dev-db_pass
+    $ gcloud secrets versions access latest --secret demo-dev-PASS
     test2
     $
 
@@ -52,8 +43,8 @@ metadata:
 apiVersion: v1
 kind: Secret
 data:
-  db_pass: dGVzdDEK
-  db_user: dGVzdDIK
+  PASS: dGVzdDEK
+  USER: dGVzdDIK
 ```
 
 ## Variables
@@ -62,15 +53,15 @@ These environment variables can be set:
 
 Name | Description
 ---|---
-GCP_SECRET_PREFIX | Prefixed used to list and filter Google secrets. IE: `projects/686010496118/secrets/demo-dev-`.
-GOOGLE_PROJECT | Google project id.
+GOOGLE_PROJECT | Google project id. This is required.
 
-Secrets#initialize options:
+## Base64 Option
 
-Variable | Description | Default
----|---|---
-base64 | Automatically base64 encode the values. | false
-upcase | Automatically upcase the Kubernetes secret data keys. | false
-prefix | Prefixed used to list and filter Google secrets. IE: `projects/686010496118/secrets/demo-dev-`. Can also be set with the `GCP_SECRET_PREFIX` env variable. The env variable takes the highest precedence. | nil
+The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
+
+```ruby
+google_secret("demo-#{Kubes.env}-USER", base64: true)  # default is base64=true
+google_secret("demo-#{Kubes.env}-PASS", base64: false)
+```
 
 {% include helpers/base64.md %}
