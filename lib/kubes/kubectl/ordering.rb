@@ -35,5 +35,47 @@ class Kubes::Kubectl
       i = index.to_s.rjust(3, "0") # pad with 0
       "#{i}-#{value}" # append name so that terms with same index get order alphabetically
     end
+
+    # kubes apply                   # {role: nil, resource: nil}
+    # kubes apply clock             # {role: "clock", resource: nil}
+    # kubes apply clock deployment  # {role: "clock", resource: "deployment"}
+    def search_expr
+      role, resource = @options[:role], @options[:resource]
+      if role && resource
+        "#{Kubes.root}/.kubes/output/#{role}/#{resource}.yaml"
+      elsif role
+        "#{Kubes.root}/.kubes/output/#{role}/*.yaml"
+      else
+        "#{Kubes.root}/.kubes/output/**/*.yaml"
+      end
+    end
+
+    def files
+      files = []
+      Dir.glob(search_expr).each do |path|
+        next unless process?(path)
+        file = path.sub("#{Kubes.root}/", '')
+        files << file
+      end
+      files
+    end
+
+    # Only considering files 2 layers deep. So:
+    #
+    #    Yes = web/deployment.yaml
+    #    No = web/deployment/dev.yaml
+    #
+    def process?(path)
+      if Kubes.kustomize?
+        File.file?(path)
+      else
+        consider?(path) && two_levels_deep?(path)
+      end
+    end
+
+    def two_levels_deep?(path)
+      rel_path = path.sub(%r{.*\.kubes/(resources|output)/},'')
+      rel_path.split('/').size == 2
+    end
   end
 end

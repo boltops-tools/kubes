@@ -9,7 +9,7 @@ reference: true
 
 ## Description
 
-Delete Kubernetes resources within the app folder
+Delete Kubernetes resources in defined .kubes/resources
 
 
 ## Options

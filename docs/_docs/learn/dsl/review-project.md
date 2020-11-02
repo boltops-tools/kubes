@@ -29,10 +29,10 @@ labels(role: "web")
 namespace "default"
 
 replicas 1
-image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 ```
 
-The DSL form is more concise than the YAML form.  Also, notice the use of the `built_image` helper. The `built_image` is a kubes helper method that refers to the latest Docker image built. This spares you from updating the image manually.
+The DSL form is more concise than the YAML form.  Also, notice the use of the `docker_image` helper. The `docker_image` is a kubes helper method that refers to the latest Docker image built. This spares you from updating the image manually.
 
 ## Base Folder
 

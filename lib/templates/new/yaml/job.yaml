@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: <%= app %>
+spec:
+  template:
+    spec:
+      restartPolicy: Never
+      serviceAccountName: <%= app %>
+      containers:
+      - name: <%= app %>
+        image: <%%= docker_image %>
+        command: ["uptime"] # IE: ["bin/job/migrate.sh"]
+        # envFrom:
+        # - secretRef:
+        #     name: <%= app %>
+        # - configMapRef:
+        #     name: <%= app %>
+  backoffLimit: 1

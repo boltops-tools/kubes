@@ -108,7 +108,7 @@ spec:
     spec:
       containers:
       - name: demo-web
-        image: <%= built_image %>
+        image: <%= docker_image %>
 {% endhighlight %}
               </div>
             </div>
@@ -121,7 +121,7 @@ namespace "default"
 labels(role: "web")
 
 replicas 2
-image built_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
 {% endhighlight %}
               </div>
             </div>

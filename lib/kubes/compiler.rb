@@ -3,6 +3,7 @@ module Kubes
     include Kubes::Hooks::Concern
     include Kubes::Logging
     include Kubes::Util::Consider
+    include Kubes::Kubectl::Ordering
 
     def initialize(options={})
       @options = options
@@ -21,7 +22,9 @@ module Kubes
         end
       end
 
-      puts "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
+      write_full
+
+      logger.info "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
     end
 
     def resources
@@ -32,24 +35,6 @@ module Kubes
         paths << path
       end
       paths
-    end
-
-    # Only considering files 2 layers deep. So:
-    #
-    #    Yes = web/deployment.yaml
-    #    No = web/deployment/dev.yaml
-    #
-    def process?(path)
-      if Kubes.kustomize?
-        File.file?(path)
-      else
-        consider?(path) && two_levels_deep?(path)
-      end
-    end
-
-    def two_levels_deep?(path)
-      rel_path = path.sub(%r{.*\.kubes/resources/},'')
-      rel_path.split('/').size == 2
     end
 
     def write(result)
@@ -64,12 +49,25 @@ module Kubes
         IO.write(dest, content)
       end
 
-      pretty_dest = dest.sub("#{Kubes.root}/",'')
-      logger.debug "Compiled  #{pretty_dest}"
+      logger.debug "Compiled  #{pretty(dest)}"
+    end
+
+    def write_full
+      full = sorted_files.inject([]) do |acc, file|
+        acc << IO.read(file)
+      end
+      content = full.join("\n")
+      path = "#{Kubes.root}/.kubes/output/full.yaml"
+      IO.write(path, content)
+      logger.debug "Compiled  #{pretty(path)}"
     end
 
     def show_compiled_message?
       !%w[g ge get].include?(ARGV.first)
+    end
+
+    def pretty(path)
+      path.sub("#{Kubes.root}/",'')
     end
   end
 end

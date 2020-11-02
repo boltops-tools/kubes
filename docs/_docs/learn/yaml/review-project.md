@@ -46,10 +46,10 @@ spec:
     spec:
       containers:
       - name: web
-        image: <%= built_image %>
+        image: <%= docker_image %>
 ```
 
-Notice the `<%= built_image %>`.  Kubes processes the YAML files with ERB templating and replaces these tags.  The `built_image` is a kubes helper method that refers to the latest Docker image built by Kubes. This spares you updating the image manually.
+Notice the `<%= docker_image %>`.  Kubes processes the YAML files with ERB templating and replaces these tags.  The `docker_image` is a kubes helper method that refers to the latest Docker image built by Kubes. This spares you updating the image manually.
 
 ## Base Folder
 

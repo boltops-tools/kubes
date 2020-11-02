@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: cleanup
-        image: <%= built_image %>
+        image: <%= docker_image %>
         command: ["bin/cleanup.sh"]
       restartPolicy: Never
 ```

@@ -3,6 +3,7 @@ require 'thor'
 class Kubes::CLI
   class Sequence < Thor::Group
     include Thor::Actions
+    include Kubes::Logging
 
   private
     def logger

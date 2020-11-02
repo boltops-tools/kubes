@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: migrate
-        image: <%= built_image %>
+        image: <%= docker_image %>
         command: ["bin/job/migrate.sh"]
       restartPolicy: Never
   backoffLimit: 4

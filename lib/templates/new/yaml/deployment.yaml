@@ -1,0 +1,20 @@
+test: 1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: <%= role %>
+  labels:
+    role: <%= role %>
+spec:
+  replicas: 1  # overridden on a env basis
+  selector:
+    matchLabels:
+      role: <%= role %>
+  template:
+    metadata:
+      labels:
+        role: <%= role %>
+    spec:
+      containers:
+      - name: <%= role %>
+        image: <%%= docker_image %>

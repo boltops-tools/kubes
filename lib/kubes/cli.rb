@@ -26,6 +26,14 @@ module Kubes
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
+    desc "docker SUBCOMMAND", "Docker subcommands"
+    long_desc Help.text(:docker)
+    subcommand "docker", Docker
+
+    long_desc Help.text("new")
+    New.options.each { |args| option(*args) }
+    register(New, "new", "new", "Generates new resource.")
+
     desc "apply [ROLE] [RESOURCE]", "Apply the Kubernetes YAML files without building docker image"
     long_desc Help.text(:apply)
     image_option.call
@@ -48,7 +56,7 @@ module Kubes
       Compile.new(options).run
     end
 
-    desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources within the app folder"
+    desc "delete [ROLE] [RESOURCE]", "Delete Kubernetes resources in defined .kubes/resources"
     long_desc Help.text(:delete)
     image_option.call
     yes_option.call

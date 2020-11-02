@@ -16,4 +16,6 @@ title: CLI Reference
 * [kubes get]({% link _reference/kubes-get.md %})
 * [kubes init]({% link _reference/kubes-init.md %})
 * [kubes logs]({% link _reference/kubes-logs.md %})
+* [kubes new]({% link _reference/kubes-new.md %})
+* [kubes prune]({% link _reference/kubes-prune.md %})
 * [kubes version]({% link _reference/kubes-version.md %})

@@ -28,5 +28,11 @@ module Kubes
     def kustomize?
       Kubectl::Kustomize.detect?
     end
+
+    def check_project!
+      return if File.exist?("#{Kubes.root}/.kubes/config.rb")
+      logger.error "ERROR: It doesnt look like this is a kubes project. Are you sure you are in a kubes project?".color(:red)
+      ENV['TS_TEST'] ? raise : exit(1)
+    end
   end
 end

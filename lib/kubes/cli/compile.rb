@@ -8,9 +8,16 @@ class Kubes::CLI
     @@compiled = false
     def run
       return if @@compiled
+      build_docker_image
       Clean.new(@options.merge(mute: true)).run
       Kubes::Compiler.new(@options).run
       @@compiled = true
+    end
+
+    # auto build docker image and push image if kubes docker build not yet called
+    def build_docker_image
+      return if File.exist?("#{Kubes.root}/.kubes/state/docker_image.txt")
+      Build.new(@options).run
     end
   end
 end

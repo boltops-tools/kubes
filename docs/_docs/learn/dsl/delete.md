@@ -6,11 +6,19 @@ Let's now delete the app and clean up:
 
     kubes delete
 
-You will be prompted to confirm before deletion. Here's out the output looks like:
+You will be prompted to confirm before deletion.
 
     $ kubes delete
+    Compiled  .kubes/resources files to .kubes/output
+    Will run:
+        kubectl delete -f .kubes/output/web/deployment.yaml
+        kubectl delete -f .kubes/output/web/service.yaml
+        kubectl delete -f .kubes/output/shared/namespace.yaml
+    This will delete resources. Are you sure? (y/N)
+
+Confirm to delete the resources:
+
     This will delete resources. Are you sure? (y/N) y
-    Compiled  .kubes/resources files
     => kubectl delete -f .kubes/output/web/service.yaml
     service "demo-web" deleted
     => kubectl delete -f .kubes/output/web/deployment.yaml

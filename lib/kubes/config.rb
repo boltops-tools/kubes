@@ -32,7 +32,7 @@ module Kubes
 
       config.repo = nil # expected to be set by .kubes/config.rb
 
-      config.logger = Logger.new($stdout)
+      config.logger = Logger.new($stderr)
       config.logger.level = ENV['KUBES_LOG_LEVEL'] || :info
 
       config.skip = []
