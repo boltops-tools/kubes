@@ -16,4 +16,4 @@ spec:
     spec:
       containers:
       - name: web
-        image: <%%= built_image %>
+        image: <%%= docker_image %>
