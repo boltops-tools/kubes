@@ -2,7 +2,7 @@
 title: Generators
 ---
 
-Kubes ships with a few generators to help you get building with Kubernetes quickly.
+Kubes ships with a few generators to help you get building with Kubernetes quickly.  The generated  starter YAML should be modified and customized for your needs.
 
 ## Examples
 
