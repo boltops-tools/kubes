@@ -30,7 +30,7 @@ module Kubes::Docker::Strategy
       return "tongueroo/demo-kubes:kubes-12345678" if ENV['TEST']
 
       unless File.exist?(image_state_path)
-        puts "Unable to find #{image_state_path} which contains the last docker image name built with kubes build.  Please run `kubes docker build` first."
+        logger.error "ERROR: Unable to find #{image_state_path} which contains the last docker image name built with kubes build.  Please run `kubes docker build` first."
         exit 1
       end
       IO.read(image_state_path).strip

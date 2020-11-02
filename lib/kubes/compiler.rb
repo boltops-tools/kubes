@@ -21,7 +21,7 @@ module Kubes
         end
       end
 
-      puts "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
+      logger.info "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
     end
 
     def resources

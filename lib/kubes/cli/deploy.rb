@@ -4,10 +4,5 @@ class Kubes::CLI
       Build.new(@options).run if build?
       Apply.new(@options).run # also calls Compile
     end
-
-    def build?
-      return false if @options[:build] == false || @options[:image] || Kubes.config.image
-      @options[:resource].nil? || @options[:resource] == "deployment"
-    end
   end
 end
