@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.5.0]
+- #34 Generators, docker_image helper, check project, also write full.yaml #34
+- new generators: docs: https://kubes.guru/docs/generators/
+- `docker_image` helper. deprecated `built_image`. `config.image` option support.
+- check_project: check within a Kubes project
+- job dsl
+- kubes compile: auto run docker build and push when if needed
+- also write .kubes/output/full.yaml
+
 ## [0.4.7]
 - #33 improve switch context: earlier and only when needed
 
