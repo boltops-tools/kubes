@@ -26,6 +26,14 @@ module Kubes
     long_desc Help.text(:docker)
     subcommand "docker", Docker
 
+    desc "docker SUBCOMMAND", "Docker subcommands"
+    long_desc Help.text(:docker)
+    subcommand "docker", Docker
+
+    long_desc Help.text("new")
+    New.options.each { |args| option(*args) }
+    register(New, "new", "new", "Generates new resource.")
+
     desc "apply [ROLE] [RESOURCE]", "Apply the Kubernetes YAML files without building docker image"
     long_desc Help.text(:apply)
     image_option.call

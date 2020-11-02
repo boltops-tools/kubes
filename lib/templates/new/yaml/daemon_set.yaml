@@ -1,0 +1,11 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: <%= app %>
+  labels:
+    app: <%= app %>
+spec:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
