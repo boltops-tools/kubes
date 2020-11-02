@@ -4,6 +4,7 @@ describe Kubes::CLI::Prune do
     allow(prune).to receive(:sure?)
     allow(prune).to receive(:capture_items).and_return(capture)
     allow(prune).to receive(:logger).and_return(null)
+    allow(prune).to receive(:compile).and_return(null) # to avoid building Docker image
     prune
   end
   let(:null) { double(:null).as_null_object }
