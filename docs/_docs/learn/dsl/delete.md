@@ -16,7 +16,7 @@ You will be prompted to confirm before deletion.
         kubectl delete -f .kubes/output/shared/namespace.yaml
     This will delete resources. Are you sure? (y/N)
 
-Confirm you want to delete all the resources by entering `y`:
+Confirm to delete the resources:
 
     This will delete resources. Are you sure? (y/N) y
     => kubectl delete -f .kubes/output/web/service.yaml

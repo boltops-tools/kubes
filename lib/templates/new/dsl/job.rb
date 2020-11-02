@@ -1,2 +1,2 @@
 name "<%= app %>"
-image(built_image)
+image(docker_image)

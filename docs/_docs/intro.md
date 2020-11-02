@@ -11,6 +11,7 @@ title: What is Kubes?
 * Automation: [Builds the Docker image]({% link _docs/config/docker.md %}) and updates the compiled YAML files
 * Syntactic Sugar: Use an [ERB/YAML]({% link _docs/yaml.md %}) or a [DSL]({% link _docs/dsl.md %}) to write your Kubernetes YAML files. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
 * Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod with [layering]({% link _docs/layering.md %}).
+* Generators: Kubes ships with a few generators to help you get building with Kubernetes quickly. See: [Generator Docs]({% link _docs/generators.md %}).
 * CLI Customizations: You can customize the [cli args]({% link _docs/config/args/kubectl.md %}). You can also run [hooks]({% link _docs/config/hooks/kubectl.md %}) before and after kubectl commands.
 * Automated Suffix Hashes: Automatically appends a suffix hash to ConfigMap and Secret resources. More details in [ConfigMap]({% link _docs/dsl/resources/config_map.md %}) and [Secret]({% link _docs/dsl/resources/secret.md %}) docs.
 * Kustomize Support: If you’re a kustomization user, you can use it with Kubes. More details in [Kustomize Support Docs]({% link _docs/misc/kustomize.md %}).

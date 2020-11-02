@@ -9,7 +9,7 @@ spec:
       serviceAccountName: <%= app %>
       containers:
       - name: <%= app %>
-        image: <%%= built_image %>
+        image: <%%= docker_image %>
         command: ["uptime"] # IE: ["bin/job/migrate.sh"]
         # envFrom:
         # - secretRef:

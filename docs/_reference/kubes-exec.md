@@ -36,13 +36,29 @@ If you have have multiple containers in your pod. You can specify the specfic co
 
     kubes exec --name web
 
+## Default Exec Command
+
+The default exec command is `sh`.  Example:
+
+    $ kubes exec
+    => kubectl exec -n demo-dev -ti web-568645f665-62j8f -- sh
+    /app #
+
+You can override the default with `KUBES_DEFAULT_EXEC`.  Example:
+
+    $ export KUBES_DEFAULT_EXEC=bash
+    $ kubes exec
+    => kubectl exec -n demo-dev -ti web-568645f665-62j8f -- bash
+    /app #
+
 
 ## Options
 
 ```
     [--compile], [--no-compile]  # whether or not to compile the .kube/resources
                                  # Default: true
-n, [--name=NAME]                 # deployment name to use. IE: demo-web
+p, [--pod=POD]                   # pod to use. IE: web
+d, [--deployment=DEPLOYMENT]     # deployment name to use. IE: demo-web
 c, [--container=CONTAINER]       # Container name. If omitted, the first container in the pod will be chosen
     [--verbose], [--no-verbose]  
     [--noop], [--no-noop]        

@@ -25,5 +25,6 @@ Kubes::Autoloader.setup
 
 module Kubes
   class Error < StandardError; end
+  class MissingDockerImage < Error; end
   extend Core
 end
