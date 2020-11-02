@@ -28,6 +28,8 @@ module Kubes
   class Command < Thor
     class << self
       def dispatch(m, args, options, config)
+        check_project!(args.first)
+
         # Allow calling for help via:
         #   kubes command help
         #   kubes command -h
@@ -52,6 +54,11 @@ module Kubes
         end
 
         super
+      end
+
+      def check_project!(command_name)
+        return if %w[init new].include?(command_name)
+        Kubes.check_project!
       end
 
       # Override command_help to include the description at the top of the
