@@ -11,7 +11,7 @@ Here's an example of an job.
 
 ```ruby
 name "<%= app %>"
-image(built_image)
+image(docker_image)
 ```
 
 Produces:

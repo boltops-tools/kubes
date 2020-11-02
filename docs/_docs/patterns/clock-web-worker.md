@@ -31,7 +31,7 @@ namespace "default"
 labels(role: "web")
 
 replicas 1
-image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 command "bin/clock"
 ```
 
@@ -43,7 +43,7 @@ namespace "default"
 labels(role: "web")
 
 replicas 1
-image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 ```
 
 .kubes/resources/demo-worker/deployment.rb
@@ -54,7 +54,7 @@ namespace "default"
 labels(role: "web")
 
 replicas 2
-image built_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-clock:kubes-2020-06-13T19-55-16-43afc6e
 command "bin/worker"
 ```
 

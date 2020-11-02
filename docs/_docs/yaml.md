@@ -12,7 +12,7 @@ You can write your Kubernetes resources in YAML format.
 
 ## YAML and Templating
 
-Kubes provides a little extra power for the YAML format. The YAML files are processed through an ERB templating language.  So you have dynamic control. Here's an example with `Kubes.env` and the `built_image` helper.
+Kubes provides a little extra power for the YAML format. The YAML files are processed through an ERB templating language.  So you have dynamic control. Here's an example with `Kubes.env` and the `docker_image` helper.
 
 .kubes/resources/web/deployment.yaml
 
@@ -37,5 +37,5 @@ spec:
     spec:
       containers:
       - name: demo-web
-        image: <%= built_image %>
+        image: <%= docker_image %>
 ```

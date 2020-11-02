@@ -28,7 +28,7 @@ spec:
         app: demo
     spec:
       containers:
-      - image: <%= built_image %>
+      - image: <%= docker_image %>
         name: demo-web
 ```
 

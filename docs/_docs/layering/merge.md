@@ -67,7 +67,7 @@ The merging of simple String is a straightforward replacement.
 .kubes/resources/web/deployment.rb
 
 ```ruby
-image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 # ...
 ```
 

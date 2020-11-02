@@ -14,7 +14,7 @@ labels(role: "web")
 namespace with_extra("default")
 
 replicas 1
-image built_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
 ```
 
 .kubes/resources/web/service.rb
@@ -50,7 +50,7 @@ labels(app: name, extra: extra)
 namespace "default"
 
 replicas 1
-image built_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
+image docker_image # IE: user/demo-web:kubes-2020-06-13T19-55-16-43afc6e
 ```
 
 .kubes/resources/web/service.rb

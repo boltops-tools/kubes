@@ -51,13 +51,13 @@ You can also use a block form to create multiple resources.  You name the resour
 deployment "demo-web" do
   labels(role: "web")
   replicas 1
-  image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
+  image docker_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 end
 
 deployment "demo-web-2" do
   labels(role: "web")
   replicas 1
-  image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
+  image docker_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 end
 ```
 
@@ -70,7 +70,7 @@ You can also mix and matched resources. When you use the block form, the file na
 deployment "demo-web" do
   labels(role: "web")
   replicas 1
-  image built_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
+  image docker_image # IE: user/demo:kubes-2020-06-13T19-55-16-43afc6e
 end
 
 service "demo-web" do
