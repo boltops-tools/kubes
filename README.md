@@ -44,8 +44,8 @@ In fact, you can use Kubes to build the files first, and then run `kubectl` dire
 Now, use `kubectl` directly in the proper order:
 
     kubectl apply -f .kubes/output/shared/namespace.yaml
-    kubectl apply -f .kubes/output/web/deployment.yaml
     kubectl apply -f .kubes/output/web/service.yaml
+    kubectl apply -f .kubes/output/web/deployment.yaml
 
 You can also apply with kubes. This will compile the automatically files also.
 

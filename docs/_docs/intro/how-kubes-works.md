@@ -10,20 +10,16 @@ In fact, you can use Kubes to build the files first, and then run `kubectl` dire
     kubes docker push
     kubes compile  # compiles the .kubes/resources files to .kubes/output
 
-Now, use `kubectl` directly. This will apply all the files:
+Now, use `kubectl` directly and apply them in the proper order:
 
-    kubectl apply --recursive -f .kubes/output
-
-You can also selectively apply specific files:
-
-    kubectl apply -f .kubes/output/web/deployment.yaml
+    kubectl apply -f .kubes/output/shared/namespace.yaml
     kubectl apply -f .kubes/output/web/service.yaml
+    kubectl apply -f .kubes/output/web/deployment.yaml
 
-You can also apply with kubes. This will compile the files automatically also.
-
-    kubes apply
-
-The deploy command, does all 3 steps: builds the docker image, compiles the `.kubes/resources` files, and runs kubectl apply.
+The deploy command simpifily does all 3 steps: build, compile, and apply.
 
     kubes deploy
 
+You can also run the `kubectl apply` only. The `kube apply` command compiles but will skip the docker build stage if it's already been built.
+
+    kubes apply
