@@ -28,6 +28,14 @@
           <li><a href="{% link _docs/learn/dsl/next-steps.md %}">Next Steps</a></li>
         </ul>
       </li>
+      <li><a href="{% link _docs/vs.md %}">Kubes vs Others</a>
+        <ul>
+        {% assign docs = site.docs | where: "categories","vs" %}
+        {% for doc in docs -%}
+          <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+        {% endfor %}
+        </ul>
+      </li>
     </ul>
     <h2><a href="{% link docs.md %}">Docs</a></h2>
     <ul id="docs">
