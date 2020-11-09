@@ -39,7 +39,9 @@ Using multiple files is the general recommended approach.
 
 ## Multiple Resources: Block Form
 
-You can also use a block form to create multiple resources.  You name the resource files with plural names. An example helps explain:
+You can also use a block form to create multiple resources.  The multiple resources block form is an experimental feature.
+
+You name the resource files with plural names. An example helps explain:
 
     .kubes
     └── resources

@@ -70,7 +70,7 @@ spec:
 
 ## Output
 
-The result is the merge layered files.
+The result is the merged layered files.
 
 ```yaml
 metadata:
