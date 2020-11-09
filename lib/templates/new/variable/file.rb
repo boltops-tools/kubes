@@ -1,0 +1,1 @@
+@example = "<%= Kubes.env %>-value"

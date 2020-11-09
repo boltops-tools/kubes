@@ -4,31 +4,19 @@ class Kubes::Compiler::Strategy
   class Erb < Base
     extend Kubes::Compiler::Dsl::Core::Fields
     include Kubes::Compiler::Dsl::Core::Helpers
-    include Kubes::Compiler::Shared::CustomHelpers
-    include Kubes::Compiler::Shared::Helpers
     include Kubes::Compiler::Layering
+    include Kubes::Compiler::Shared::CustomHelpers
+    include Kubes::Compiler::Shared::CustomVariables
+    include Kubes::Compiler::Shared::Helpers
+    include Kubes::Compiler::Shared::PluginHelpers
 
-    def run
+    def initialize(options={})
+      super
+      # For ERB scope is in this same Strategy::Erb class
+      # For DSL scope is within the each for the Resource classes. IE: kubes/compile/dsl/core/base.rb
+      load_plugin_helpers
+      load_custom_variables
       load_custom_helpers
-      @data = {}
-
-      render_files(pre_layers)
-      render(@path) # main resource definition
-      render_files(post_layers)
-
-      Result.new(@save_file, @data)
-    end
-
-    def render_files(paths)
-      paths.each do |path|
-        render(path)
-      end
-    end
-
-    # render and merge
-    def render(path)
-      result = render_result(path)
-      @data.deeper_merge!(result)
     end
 
     def render_result(path)

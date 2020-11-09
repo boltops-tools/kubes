@@ -11,7 +11,7 @@ module Kubes::Compiler::Decorator
     end
 
     def result
-      if @data.is_a?(Kubes::Compiler::Dsl::Core::Blocks)
+      if @data.key?(Kubes::Compiler::Dsl::Core::Blocks)
         @data.results.each { |k,v| process(v) } # returns nil
       else
         process # processes and returns @data

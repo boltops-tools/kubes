@@ -14,13 +14,8 @@
 # If that format changes, the update will need to be updated.
 #
 class Kubes::Auth
-  class Ecr
+  class Ecr < Base
     include Kubes::AwsServices
-
-    def initialize(image)
-      @image = image
-      @repo_domain = "#{image.split('/').first}"
-    end
 
     def run
       auth_token = fetch_auth_token
@@ -41,15 +36,6 @@ class Kubes::Auth
 
     def fetch_auth_token
       ecr.get_authorization_token.authorization_data.first.authorization_token
-    end
-
-    def docker_config
-      "#{ENV['HOME']}/.docker/config.json"
-    end
-
-    def ensure_dotdocker_exists
-      dirname = File.dirname(docker_config)
-      FileUtils.mkdir_p(dirname) unless File.exist?(dirname)
     end
   end
 end

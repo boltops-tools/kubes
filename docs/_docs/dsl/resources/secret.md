@@ -19,7 +19,7 @@ data(
 
 Produces:
 
-.kubes/output/shared/service.yaml
+.kubes/output/shared/secret.yaml
 
 ```yaml
 apiVersion: v1
@@ -38,6 +38,23 @@ data:
 
 {% include dsl/rolling_deployment.md kind="Secret" %}
 
+.kubes/resources/web/deployment.yaml:
+
+```yaml
+# ..
+spec:
+  template:
+    spec:
+      containers:
+      - name: demo
+        image: nginx
+        envFrom:
+        - secretRef:
+            name: demo-secret
+```
+
+Produces:
+
 .kubes/output/web/deployment.yaml:
 
 ```yaml
@@ -46,7 +63,7 @@ spec:
   template:
     spec:
       containers:
-      - name: demo-shared
+      - name: demo
         image: nginx
         envFrom:
         - secretRef:

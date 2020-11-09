@@ -3,7 +3,7 @@ describe Kubes::Compiler::Strategy::Dsl do
   let(:options) { {path: fixture(resource) } }
 
   context "standard" do
-    let(:resource) { "project/.kubes/resources/deployment" }
+    let(:resource) { "project/.kubes/resources/web/deployment" }
     it "run" do
       result = dsl.run
       expect(dsl.dsl_class).to eq(Kubes::Compiler::Dsl::Syntax::Deployment)
@@ -25,7 +25,7 @@ describe Kubes::Compiler::Strategy::Dsl do
   end
 
   context "multiple files" do
-    let(:resource) { "multiple-files/deployment-1" }
+    let(:resource) { "multiple-files/.kubes/resources/web/deployment-1" }
     it "run" do
       result = dsl.run
       expect(dsl.dsl_class).to eq(Kubes::Compiler::Dsl::Syntax::Deployment)

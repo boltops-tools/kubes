@@ -57,7 +57,7 @@ module Kubes
       end
 
       def check_project!(command_name)
-        return if %w[init new].include?(command_name)
+        return if %w[-h help init new].include?(command_name)
         Kubes.check_project!
       end
 

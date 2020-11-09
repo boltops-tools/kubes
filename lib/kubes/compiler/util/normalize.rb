@@ -1,11 +1,14 @@
 module Kubes::Compiler::Util
   module Normalize
     def normalize_kind(path)
-      extract_type(path).underscore.camelize # Deployment, Service, Ingress, ManagedCertificate, etc
+      info = path.sub(%r{.*/.kubes/resources/}, '')
+      extract_type(info).underscore.camelize # Deployment, Service, Ingress, ManagedCertificate, etc
     end
 
-    def extract_type(path)
-      File.basename(path).sub('.yaml','').sub('.yml','').sub('.rb','').sub(/-.*/,'')
+    # info: web/service.yaml
+    def extract_type(info)
+      _, kind = info.split('/')
+      kind.sub('.yaml','').sub('.yml','').sub('.rb','').sub(/-.*/,'')
     end
   end
 end

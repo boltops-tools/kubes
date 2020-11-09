@@ -1,0 +1,62 @@
+---
+title: Advanced Variables
+nav_text: Advanced
+categories: variables
+---
+
+Basic variables layering should provides enough flexibility and is generally recommended. This page  covers more advanced variables layering.
+
+## Advanced Layering Example
+
+Here's a more complex structure to demonstrate advanced layering.
+
+    .kubes/variables
+    ├── base
+    │   └── deployment.rb
+    ├── base.rb
+    ├── dev.rb
+    ├── prod.rb
+    └── web
+        ├── deployment
+        │   ├── dev.rb
+        │   └── prod.rb
+        └── deployment.rb
+
+## Concrete Example
+
+Let's look at a concrete web/deployment.yaml.
+
+Here are the files that get layered when `KUBES_ENV=dev`:
+
+    .kubes/variables/base.rb
+    .kubes/variables/dev.rb
+    .kubes/variables/base/deployment.rb
+    .kubes/variables/web/deployment.rb
+    .kubes/variables/web/deployment/dev.rb
+
+And when `KUBES_ENV=prod`:
+
+    .kubes/variables/base.rb
+    .kubes/variables/prod.rb
+    .kubes/variables/base/deployment.rb
+    .kubes/variables/web/deployment.rb
+    .kubes/variables/web/deployment/prod.rb
+
+With advanced layering you can target a specific role and kind. So variables are only scoped to the resources you want.
+
+## Full Layering Table
+
+Here's a table showing the the full layering.
+
+Folder/Pattern    | Example
+------------------|--------------------------------------------
+base.rb           | base.rb
+ENV.rb            | dev.rb
+base/all.rb       | base/all.rb
+base/all/ENV.rb   | base/all/dev.rb
+base/KIND.rb      | base/deployment.rb
+base/KIND/base.rb | base/deployment/base.rb
+base/KIND/ENV.rb  | base/deployment/dev.rb
+ROLE/KIND.rb      | web/deployment.rb
+ROLE/KIND/base.rb | web/deployment/base.rb
+ROLE/KIND/ENV.rb  | web/deployment/dev.rb

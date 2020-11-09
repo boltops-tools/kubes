@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [UNRELEASED]
+- mix layering support: evaluate DSL so layering can be mixed between YAML and DSL
+- custom variables support
+- custom helpers support
+- plugins helpers support
+- generators: new resource, new helper, new variable
+- setup autoloader earlier. removes need for shims
+- auth login for gcr also
+- fix cli -h when not within Kubes project
+
 ## [0.5.1]
 - fix deployment generator
 

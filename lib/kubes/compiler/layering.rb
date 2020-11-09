@@ -11,14 +11,26 @@ class Kubes::Compiler
         all = all.pluralize
       end
       layers = [
-        "#{all}#{ext}",
-        "#{all}/#{Kubes.env}#{ext}",
-        "#{kind}#{ext}",
-        "#{kind}/#{Kubes.env}#{ext}",
+        "#{all}",
+        "#{all}/#{Kubes.env}",
+        "#{kind}",
+        "#{kind}/#{Kubes.env}",
       ]
-      layers.map do |layer|
+      layers = add_exts(layers)
+      layers.map! do |layer|
         "#{Kubes.root}/.kubes/resources/base/#{layer}"
       end
+      layers.select { |layer| File.exist?(layer) }
+    end
+
+    def add_exts(layers)
+      layers.map do |layer|
+        [
+          "#{layer}.rb",
+          "#{layer}.yaml",
+          "#{layer}.yml",
+        ]
+      end.flatten
     end
 
     def post_layers
@@ -31,9 +43,11 @@ class Kubes::Compiler
         "base",
         Kubes.env.to_s
       ]
-      layers.map do |layer|
-        "#{kind_path}/#{layer}#{ext}"
+      layers = add_exts(layers)
+      layers.map! do |layer|
+        "#{kind_path}/#{layer}"
       end
+      layers.select { |layer| File.exist?(layer) }
     end
   end
 end

@@ -1,6 +1,6 @@
 Kubes Layering in it's full form allows you to keep your resource definitions DRY and create different environments with the same code.
 
-## Structure
+## Project Structure
 
 Here's an example structure, so we can understand how layering works.
 
@@ -25,9 +25,7 @@ To explain the layering, here's the general processing order that Kubes takes.
 2. Then Kubes will process your `.kubes/resources/ROLE` definitions.
 3. Lastly, Kubes processes any post-layers in the `.kubes/resources/ROLE/KIND` folders.
 
-Note, both YAML and DSL forms support layering.
-
-Layering only combines resources definitions with the same form. For example, the DSL form `base/all.rb` will not be combined with YAML form `web/deployment.yaml`.
+Note, both YAML and DSL forms support layering. They can be mixed together.
 
 ## Full Layering
 
