@@ -3,10 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [UNRELEASED]
+- update gemspec dependency to plugins that provide the secrets helpers
+
 ## [0.6.0]
-- mix layering support: evaluate DSL so layering can be mixed between YAML and DSL
-- custom variables support
-- custom helpers support
+- [#35](https://github.com/boltops-tools/kubes/pull/35) mix layering support: evaluate DSL so layering can be mixed between YAML and DSL docs: https://kubes.guru/docs/layering/mix/
+- custom variables support: docs https://kubes.guru/docs/variables/basic/
+- custom helpers support: docs https://kubes.guru/docs/helpers/custom/
 - plugins helpers support
 - generators: new resource, new helper, new variable
 - setup autoloader earlier. removes need for shims

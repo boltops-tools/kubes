@@ -90,6 +90,7 @@ Kubes components examples:
 * Automation: [Builds the Docker image](https://kubes.guru/docs/config/docker/) and updates the compiled YAML files
 * Syntactic Sugar: Use an [ERB/YAML](https://kubes.guru/docs/yaml/) or a [DSL](https://kubes.guru/docs/dsl/) to write your Kubernetes YAML files. You can use a mix of DSL and YAML definitions in the `.kubes/resources` folder.
 * Layering: Use the same Kubernetes YAML to build multiple environments like dev and prod with [layering](https://kubes.guru/docs/layering/).
+* Secrets: Use helpers like [aws_secret](https://kubes.guru/docs/helpers/aws/secrets/), [aws_ssm](https://kubes.guru/docs/helpers/aws/ssm/), and [google_secret](https://kubes.guru/docs/helpers/google/secrets/) to build Kubernetes secrets.yaml from secret providers designed for it.
 * Generators: Kubes ships with a few generators to help you get building with Kubernetes quickly. See: [Generator Docs](https://kubes.guru/docs/generators/).
 * CLI Customizations: You can customize the [cli args](https://kubes.guru/docs/config/args/kubectl/).
 * Hooks: You can also run [hooks](https://kubes.guru/docs/config/hooks/) before and after [kubes](https://kubes.guru/docs/config/hooks/kubes/) and [kubectl](https://kubes.guru/docs/config/hooks/kubectl/) commands.
