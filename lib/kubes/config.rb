@@ -81,9 +81,22 @@ module Kubes
       yield(@config)
     end
 
+    # Load configs example:
+    #
+    # .kubes/config.rb
+    # .kubes/config/env/dev.rb
+    # .kubes/config/plugins/google.rb
+    # .kubes/config/plugins/google/dev.rb
+    #
     def load_configs
       evaluate_file(".kubes/config.rb")
       evaluate_file(".kubes/config/env/#{Kubes.env}.rb")
+      Kubes::Plugin.plugins.each do |klass|
+        # klass: IE: KubesAws, KubesGoogle
+        name = klass.to_s.underscore.sub('kubes_','') # kubes_google => google
+        evaluate_file(".kubes/config/plugins/#{name}.rb")
+        evaluate_file(".kubes/config/plugins/#{name}/#{Kubes.env}.rb")
+      end
     end
   end
 end

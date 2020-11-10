@@ -13,6 +13,7 @@ Hook | Description
 compile | When kubes compiles the `.kubes/resources` to `.kubes/output`.
 apply | When kubes runs all the `kubectl apply` commands.
 delete | When kubes runs all the `kubectl delete` commands.
+prune | When kubes prunes. IE: To clean old secrets.
 
 ## Lifecycle At Kubes Level
 

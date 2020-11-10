@@ -6,8 +6,9 @@ module Kubes::Hooks
     include Kubes::Logging
 
     attr_accessor :name
-    def initialize(dsl_file, options={})
-      @dsl_file, @options = dsl_file, options # IE: .kubes/config/hooks/kubectl.rb
+    def initialize(file, options={})
+      @file, @options = file, options # IE: .kubes/config/hooks/kubectl.rb
+      @dsl_file = "#{Kubes.root}/.kubes/config/hooks/#{@file}"
       @output_file = options[:file] # IE: .kubes/output/web/service.yaml
       @name = options[:name].to_s
       @hooks = {before: {}, after: {}}
@@ -16,9 +17,25 @@ module Kubes::Hooks
     def build
       return @hooks unless File.exist?(@dsl_file)
       evaluate_file(@dsl_file)
+      evaluate_plugin_hooks
       @hooks.deep_stringify_keys!
     end
     memoize :build
+
+    def evaluate_plugin_hooks
+      Kubes::Plugin.plugins.each do |klass|
+        hooks_class = hooks_class(klass)
+        next unless hooks_class
+        plugin_hooks = hooks_class.new
+        path = "#{plugin_hooks.path}/#{@file}"
+        evaluate_file(path)
+      end
+    end
+
+    def hooks_class(klass)
+      "#{klass}::Hooks".constantize # IE: KubesGoogle::Hooks
+    rescue NameError
+    end
 
     def run_hooks
       build
@@ -42,8 +59,7 @@ module Kubes::Hooks
       id = "#{command} #{type} #{@name}"
       on = " on: #{hook["on"]}" if hook["on"]
       label = " label: #{hook["label"]}" if hook["label"]
-      logger.info  "Running #{id} hook.#{on}#{label}"
-      logger.debug "Hook options: #{hook}"
+      logger.info  "Hook: Running #{id} hook.#{on}#{label}"
       Runner.new(hook).run
     end
 

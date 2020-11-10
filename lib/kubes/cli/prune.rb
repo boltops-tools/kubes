@@ -2,15 +2,17 @@ class Kubes::CLI
   class Prune < Base
     KINDS = %w[ConfigMap Secret]
     extend Memoist
+    include Kubes::Hooks::Concern
     include Kubes::Util::Sure
 
     def run
       return unless anything_to_prune?
       logger.info "Pruning old resources: #{KINDS.join(', ')}"
-
       perform(preview: true) unless @options[:yes]
       sure?("This will prune/delete resources. Are you sure?")
-      perform(preview: false)
+      run_hooks("kubes.rb", name: "prune") do
+        perform(preview: false)
+      end
     end
 
     def fetcher
