@@ -22,8 +22,15 @@ class Kubes::Kubectl
               Kubes::Kubectl.run(@name, @options.merge(file: file))
             end
           end
+          prune # important to call within run_hooks for case of GKE IP whitelisting
         end
       end
+    end
+
+    def prune
+      return unless @name == "apply" # only run for apply
+      return unless Kubes.config.auto_prune # prune old secrets and config maps
+      Kubes::CLI::Prune.new(@options.merge(yes: true, quiet: true)).run
     end
 
     def switch_context(&block)
