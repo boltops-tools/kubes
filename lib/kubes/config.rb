@@ -31,6 +31,7 @@ module Kubes
       config.kubectl.order.kinds = kind_order
 
       config.repo = nil # expected to be set by .kubes/config.rb
+      config.repo_auto_auth = true
 
       config.logger = Logger.new($stderr)
       config.logger.level = ENV['KUBES_LOG_LEVEL'] || :info

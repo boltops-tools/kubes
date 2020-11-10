@@ -15,3 +15,8 @@
 /test/tmp
 /test/version_tmp
 /tmp
+
+.git
+pkg
+docs
+spec

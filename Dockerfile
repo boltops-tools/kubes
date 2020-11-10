@@ -1,10 +1,10 @@
-FROM ruby:2.7-alpine
+FROM ruby:2.7
 
-RUN apk add --no-cache docker
-RUN apk add --no-cache build-base ruby ruby-dev
-
-RUN wget https://storage.googleapis.com/kubernetes-release/release/v1.18.6/bin/linux/amd64/kubectl
-RUN chmod u+x kubectl && mv kubectl /bin/kubectl
+COPY docker docker
+RUN docker/install/docker.sh
+RUN docker/install/gcloud.sh
+ENV PATH=/opt/google/google-cloud-sdk/bin/:$PATH
+RUN docker/install/kubectl.sh
 
 WORKDIR /app
 ADD . /app
