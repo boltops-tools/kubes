@@ -44,11 +44,11 @@ data:
   USER: dGVzdDIK
 ```
 
-The values are automatically base64 encoded.
+The values are base64 encoded based on the SSM parameter type. When the type is a `SecureString`, Kubes base64 encodes it. Other types are not base64 encoded.  You can override this behavior with the base64 option, described next.
 
 ## Base64 Option
 
-The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
+The value is automatically base64 encoded based on whether or not the SSM parameter type is a `SecureString`. You can explicitly the `base64` option if needed though. Example:
 
 ```ruby
 aws_ssm("/demo/#{Kubes.env}/USER", base64: true)  # default is base64=true

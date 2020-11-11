@@ -45,11 +45,23 @@ data:
   USER: dGVzdDIK
 ```
 
-The values are automatically base64 encoded.
+By default, the values are automatically base64 encoded.
 
 ## Base64 Option
 
-The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
+By default, the values are automatically base64 encoded. You can change the default behavior with a config option.
+
+.kubes/config.rb
+
+```ruby
+KubesAws.configure do |config|
+  config.base64_secrets = false
+end
+```
+
+Note: The use of `KubesAws.configure` instead of `Kubes.configure` here.
+
+You can also set the `base64` option to turn on and off the automated base64 encoding on a per secret basis.
 
 ```ruby
 aws_secret("demo-#{Kubes.env}-USER", base64: true)  # default is base64=true
