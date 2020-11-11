@@ -10,7 +10,7 @@ GKE Private Clusters whitelist and only allow authorized IPs to communicate with
 
 ## Setup
 
-To enable the GKE IP whitelisting feature, it's a single line:
+To enable the GKE IP whitelisting feature, it's a few simple configurations:
 
 .kubes/config/env/dev.rb
 
