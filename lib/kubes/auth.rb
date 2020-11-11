@@ -24,7 +24,7 @@ module Kubes
 
     def auth?
       if ENV['KUBES_REPO_AUTO_AUTH'].nil?
-        Kubes.config.repo_auth
+        Kubes.config.repo_auto_auth
       else
         %w[1 true].include?(ENV['KUBES_REPO_AUTO_AUTH'])
       end

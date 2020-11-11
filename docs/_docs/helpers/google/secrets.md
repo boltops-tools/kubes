@@ -57,7 +57,19 @@ GOOGLE_PROJECT | Google project id. This is required.
 
 ## Base64 Option
 
-The value is automatically base64 encoded. You can set the `base64` option to turn on and off the automated base64 encoding.
+By default, the values are automatically base64 encoded. You can change the default behavior with a config option.
+
+.kubes/config.rb
+
+```ruby
+KubesGoogle.configure do |config|
+  config.base64_secrets = true
+end
+```
+
+Note: The use of `KubesGoogle.configure` instead of `Kubes.configure` here.
+
+You can also set the `base64` option to turn on and off the automated base64 encoding on a per secret basis.
 
 ```ruby
 google_secret("demo-#{Kubes.env}-USER", base64: true)  # default is base64=true
