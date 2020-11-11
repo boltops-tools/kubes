@@ -4,7 +4,7 @@ nav_text: Custom Solutions
 categories: vs
 ---
 
-Kubernetes provide a great platform to run and manage Docker containers. The `kubectl` command how you usually interact with a Kubernetes cluster.  It does its job well and is quite a powerful tool.
+Kubernetes provides a great platform to run and manage Docker containers. The `kubectl` command is usually how you interact with a Kubernetes cluster.  It does its job well and is quite a powerful tool.
 
 {% include vs/article.md %}
 
@@ -51,7 +51,7 @@ We've duplicated `service.yaml` and `deployment.yaml`, though. Instead, it'll be
 
 ## PreBuilt Docker Image
 
-Additionally, the Docker image is expected to be prebuilt. Because you must first build the Docker image, folks will usually write bash script that perform these additional steps and then glue things together.
+Additionally, the Docker image is expected to be prebuilt. Because you must first build the Docker image, folks will usually write bash script that performs these additional steps and then glue things together.
 
 ## Kubernetes Resources Galore
 
@@ -82,7 +82,7 @@ The same code is used to create different environments. Kubes achieves this with
 
 ## Hooks
 
-Kubes support a variety of hooks run scripts at any part of the `kubectl` commands. This allows you customize and add app-specific logic needed. Example:
+Kubes support a variety of hooks run scripts at any part of the `kubectl` commands. This allows you to customize and add app-specific logic needed. Example:
 
 .kubes/config/hooks/kubectl.rb
 
