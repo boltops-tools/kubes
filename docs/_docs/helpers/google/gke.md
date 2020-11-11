@@ -84,6 +84,10 @@ Important: The "Kubernetes Engine Developer" that is available in the Cloud Buil
 
 ## Run CloudBuild
 
-Run cloudbuild with:
+Run cloudbuild to deploy the dev env:
 
     gcloud builds submit --config cloudbuild.yaml
+
+To deploy the prod env:
+
+    gcloud builds submit --config cloudbuild.yaml --substitutions _KUBES_ENV=prod
