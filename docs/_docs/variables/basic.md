@@ -135,3 +135,5 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 ```
+
+{% include variables/generator.md %}

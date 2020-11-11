@@ -60,3 +60,5 @@ base/KIND/ENV.rb  | base/deployment/dev.rb
 ROLE/KIND.rb      | web/deployment.rb
 ROLE/KIND/base.rb | web/deployment/base.rb
 ROLE/KIND/ENV.rb  | web/deployment/dev.rb
+
+{% include variables/generator.md %}

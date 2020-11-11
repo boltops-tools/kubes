@@ -48,15 +48,13 @@ ROLE/KIND/ENV.{{ include.ext }}  | web/deployment/dev.{{ include.ext }}
 2. Then you can define the core of your resource definition in the `ROLE/KIND.{{ include.ext }}`. Example: `web/deployment.{{ include.ext }}`
 3. Finally, you can provide environment-specific overrides in the `ROLE/KIND/ENV.{{ include.ext }}`. Example: `web/deployment/dev.{{ include.ext }}`.
 
-Here's an example of the structure:
+Here's a concrete example of layering with the deployment resource kind:
 
-    .kubes/resources/
-    ├── base
-    │   ├── all.{{ include.ext }}
-    │   └── deployment.{{ include.ext }}
-    └── web
-        ├── deployment
-        │   ├── dev.{{ include.ext }}
-        │   └── prod.{{ include.ext }}
-        ├── deployment.{{ include.ext }}
-        └── service.{{ include.ext }}
+    .kubes/resources/base/all.{{ include.ext }}
+    .kubes/resources/base/deployment.{{ include.ext }}
+    .kubes/resources/web/deployment.{{ include.ext }}
+    .kubes/resources/web/deployment/dev.{{ include.ext }}
+
+All of these files get layered and merged together to produce a resulting deployment.{{ include.ext }}
+
+    .kubes/output/web/deployment.{{ include.ext }}

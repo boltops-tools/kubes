@@ -38,3 +38,4 @@ data:
   DATABASE_ENDPOINT: <%= database_endpoint %>
 ```
 
+{% include helpers/generator.md %}

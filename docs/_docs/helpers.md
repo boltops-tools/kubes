@@ -26,16 +26,4 @@ There are also provider-specific helpers:
 * [AWS Helpers]({% link _docs/helpers/aws.md %})
 * [Google Helpers]({% link _docs/helpers/google.md %})
 
-## Generator
-
-To help you get started quickly, you can generate starter helper code.
-
-    $ kubes new helper custom
-          create  .kubes/helpers/custom_helper.rb
-
-.kubes/helpers/custom_helper.rb
-
-```ruby
-module CustomHelper
-end
-```
+{% include helpers/generator.md %}

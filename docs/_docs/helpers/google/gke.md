@@ -91,3 +91,5 @@ Run cloudbuild to deploy the dev env:
 To deploy the prod env:
 
     gcloud builds submit --config cloudbuild.yaml --substitutions _KUBES_ENV=prod
+
+See [gcloud builds submit](https://cloud.google.com/sdk/gcloud/reference/builds/submit) reference docs for more options.

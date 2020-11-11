@@ -9,15 +9,4 @@ You can set variables to be made available to the templates. Generally, it is re
 * [{{ doc.title }}]({{ doc.url }})
 {% endfor %}
 
-## Generator
-
-To help you get started quickly, you can generate starter variable code.
-
-    $ kubes new variable
-          create  .kubes/variables/dev.rb
-
-.kubes/variables/dev.rb
-
-```ruby
-@example = "dev-value"
-```
+{% include variables/generator.md %}
