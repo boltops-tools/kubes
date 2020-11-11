@@ -10,7 +10,7 @@ GKE Private Clusters whitelist and only allow authorized IPs to communicate with
 
 ## Setup
 
-To enable the GKE IP whitelisting feature, it's a single line:
+To enable the GKE IP whitelisting feature, it's a few simple configurations:
 
 .kubes/config/env/dev.rb
 
@@ -58,7 +58,7 @@ steps:
   - 'GOOGLE_PROJECT=$PROJECT_ID' # .kubes/config.rb: config.repo
   - 'KUBES_ENV=$_KUBES_ENV'
   - 'KUBES_EXTRA=$_KUBES_EXTRA'
-  - 'KUBES_REPO_AUTH=0'
+  - 'KUBES_REPO_AUTO_AUTH=0'
 
 substitutions:
   _KUBES_ENV: dev
@@ -67,7 +67,7 @@ options:
     substitution_option: 'ALLOW_LOOSE'
 ```
 
-Make sure to replace the substitutions with your own values. IE: _GCP_REGION, _GKE_CLUSTER, _KUBES_ENV, etc.
+Make sure to replace the substitutions with your own values. IE: _KUBES_ENV, etc.
 
 ## Google CloudBuild IAM Permissions
 
