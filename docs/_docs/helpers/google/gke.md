@@ -58,7 +58,7 @@ steps:
   - 'GOOGLE_PROJECT=$PROJECT_ID' # .kubes/config.rb: config.repo
   - 'KUBES_ENV=$_KUBES_ENV'
   - 'KUBES_EXTRA=$_KUBES_EXTRA'
-  - 'KUBES_REPO_AUTH=0'
+  - 'KUBES_REPO_AUTO_AUTH=0'
 
 substitutions:
   _KUBES_ENV: dev
