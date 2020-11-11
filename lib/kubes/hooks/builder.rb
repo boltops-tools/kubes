@@ -15,7 +15,6 @@ module Kubes::Hooks
     end
 
     def build
-      return @hooks unless File.exist?(@dsl_file)
       evaluate_file(@dsl_file)
       evaluate_plugin_hooks
       @hooks.deep_stringify_keys!

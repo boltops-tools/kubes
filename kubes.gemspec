@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   # core helper libs
   spec.add_dependency "kubes_aws", "~> 0.2.0"
-  spec.add_dependency "kubes_google", "~> 0.3.0"
+  spec.add_dependency "kubes_google", "~> 0.3.1"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
