@@ -67,7 +67,7 @@ options:
     substitution_option: 'ALLOW_LOOSE'
 ```
 
-Make sure to replace the substitutions with your own values. IE: _GCP_REGION, _GKE_CLUSTER, _KUBES_ENV, etc.
+Make sure to replace the substitutions with your own values. IE: _KUBES_ENV, etc.
 
 ## Google CloudBuild IAM Permissions
 
