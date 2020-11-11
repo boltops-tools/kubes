@@ -12,6 +12,10 @@ KubesAws.configure do |config|
 end
 ```
 
+## Options Reference Table
+
+Here's a table with the options:
+
 Name | Description | Default
 ---|---|---
 base64_secrets | Whether or not to automatically base64 encoded values returned by the `aws_secret` helper. | true
