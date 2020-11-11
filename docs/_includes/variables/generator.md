@@ -10,3 +10,14 @@ To help you get started quickly, you can generate starter variable code.
 ```ruby
 @example = "dev-value"
 ```
+
+To create the prod variables, set `KUBES_ENV=prod`.
+
+    $ KUBES_ENV=prod kubes new variable
+          create  .kubes/variables/prod.rb
+
+.kubes/variables/prod.rb
+
+```ruby
+@example = "prod-value"
+```
