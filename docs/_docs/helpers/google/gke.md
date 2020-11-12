@@ -19,13 +19,17 @@ KubesGoogle.configure do |config|
   config.gke.cluster_name = "dev-cluster"
   config.gke.google_region = ENV['GOOGLE_REGION']
   config.gke.google_project = ENV['GOOGLE_PROJECT']
-  config.gke.enable_get_credentials = true # enable hook to call: gcloud container clusters get-credentials
+  config.gke.enable_hooks   = KubesGoogle.cloudbuild?
+  config.gke.enable_get_credentials = KubesGoogle.cloudbuild? # enable hook to call: gcloud container clusters get-credentials
 end
 ```
 
-Note: The use of `KubesGoogle.configure` instead of `Kubes.configure` here.
-
 This enables `kubes apply` before and after hooks to add and remove the current machine IP.
+
+Notes:
+
+* Notice he use of `KubesGoogle.configure` instead of `Kubes.configure` here.
+* The `KubesGoogle.cloudbuild?` checks if kubes is running on a CloudBuild machine.  So hooks don't run locally on your machine.
 
 ## Options
 
