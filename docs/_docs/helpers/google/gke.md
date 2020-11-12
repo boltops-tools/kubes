@@ -28,7 +28,7 @@ This enables `kubes apply` before and after hooks to add and remove the current 
 
 Notes:
 
-* Notice he use of `KubesGoogle.configure` instead of `Kubes.configure` here.
+* Notice the use of `KubesGoogle.configure` instead of `Kubes.configure` here.
 * The `KubesGoogle.cloudbuild?` checks if kubes is running on a CloudBuild machine.  So hooks don't run locally on your machine.
 
 ## Options
