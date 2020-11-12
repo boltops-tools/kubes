@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.6.7] - 2020-11-12
+- dependencies version bump: kubes_google
+
 ## [0.6.6] - 2020-11-12
 - dependencies version bump: kubes_aws and kubes_google
 
