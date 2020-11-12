@@ -28,7 +28,7 @@ If you would like to use a user IAM credentials instead of a service account. Yo
 
     gcloud auth application-default login
 
-This generates a to use for Application Default Credentials at `.config/gcloud/application_default_credentials.json`. Note, make sure that `GOOGLE_APPLICATION_CREDENTIALS` is not set or else the `application_default_credentials.json` will not be used.  Also, will print a warning to use a service account instead. You can suppress that warning with this:
+This generates an Application Default Credentials at `.config/gcloud/application_default_credentials.json`. Note, make sure that `GOOGLE_APPLICATION_CREDENTIALS` is not set or else the `application_default_credentials.json` will not be used.  Also, will print a warning to use a service account instead. You can suppress that warning with this:
 
 .bash_profile
 
