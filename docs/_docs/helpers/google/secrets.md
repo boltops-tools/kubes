@@ -63,7 +63,7 @@ By default, the values are automatically base64 encoded. You can change the defa
 
 ```ruby
 KubesGoogle.configure do |config|
-  config.secrets.base64 = true
+  config.secrets.base64 = false
 end
 ```
 
