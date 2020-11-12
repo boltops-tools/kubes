@@ -8,7 +8,7 @@ The Google Kubes Plugin adds support helpers like `google_secret`. You can confi
 
 ```ruby
 KubesGoogle.configure do |config|
-  config.base64_secrets = true
+  config.secrets.base64 = true
 end
 ```
 
@@ -18,5 +18,5 @@ Here's a table with the options:
 
 Name | Description | Default
 ---|---|---
-base64_secrets | Whether or not to automatically base64 encoded values returned by the `google_secret` helper. | true
+secrets.base64 | Whether or not to automatically base64 encoded values returned by the `google_secret` helper. | true
 {% include plugins/gke-config.md %}
