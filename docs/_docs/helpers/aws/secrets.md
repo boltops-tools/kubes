@@ -55,7 +55,7 @@ By default, the values are automatically base64 encoded. You can change the defa
 
 ```ruby
 KubesAws.configure do |config|
-  config.base64_secrets = false
+  config.secrets.base64 = false
 end
 ```
 

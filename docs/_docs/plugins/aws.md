@@ -8,7 +8,7 @@ The AWS Kubes Plugin adds support helpers like `aws_secret`. You can configure i
 
 ```ruby
 KubesAws.configure do |config|
-  config.base64_secrets = false
+  config.secrets.base64 = false
 end
 ```
 
@@ -18,4 +18,4 @@ Here's a table with the options:
 
 Name | Description | Default
 ---|---|---
-base64_secrets | Whether or not to automatically base64 encoded values returned by the `aws_secret` helper. | true
+secrets.base64 | Whether or not to automatically base64 encoded values returned by the `aws_secret` helper. | true

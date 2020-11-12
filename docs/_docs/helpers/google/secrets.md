@@ -63,7 +63,7 @@ By default, the values are automatically base64 encoded. You can change the defa
 
 ```ruby
 KubesGoogle.configure do |config|
-  config.base64_secrets = true
+  config.secrets.base64 = true
 end
 ```
 
@@ -77,3 +77,19 @@ google_secret("demo-#{Kubes.env}-PASS", base64: false)
 ```
 
 {% include helpers/base64.md %}
+
+## Fetcher Strategy
+
+Some systems configured with a VPN seem to have issues with the Google secrets SDK. You may see an error:
+
+    Handshake failed with fatal error SSL_ERROR_SSL: error:100000f7:SSL routines:OPENSSL_internal:WRONG_VERSION_NUMBER.
+
+As a workaround to this error, you can use the `gcloud` instead of the default `sdk` fetcher strategy. To configure it:
+
+.kubes/config.rb
+
+```ruby
+KubesGoogle.configure do |config|
+  config.secrets.fetcher = "gcloud"
+end
+```
