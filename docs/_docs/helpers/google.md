@@ -4,7 +4,7 @@ title: Google Helpers
 
 List of Google helpers:
 
-{% assign docs = site.docs | where: "categories","helpers-aws" %}
+{% assign docs = site.docs | where: "categories","helpers-google" %}
 {% for doc in docs -%}
   * [{{ doc.nav_text }}]({{ doc.url }})
 {% endfor %}
