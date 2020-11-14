@@ -18,3 +18,4 @@ exit_on_fail | Whether or not to continue process if the script returns an faile
 ## Ruby Hooks
 
 Instead of using a script for the hook `execute` option, you can also use a Ruby object. This provides some more control over the current process. See: [Ruby Hooks]({% link _docs/config/hooks/ruby.md %})
+
