@@ -20,13 +20,12 @@ class Kubes::Compiler::Strategy
     end
 
     def render_result(path)
-      if File.exist?(path)
-        yaml = RenderMePretty.result(path, context: self)
-        result = yaml_load(path, yaml)
-        result.is_a?(Hash) ? result : {} # in case of blank yaml doc a Boolean false is returned
-      else
-        {}
-      end
+      return unless File.exist?(path)
+
+      yaml = RenderMePretty.result(path, context: self)
+      result = yaml_load(path, yaml)
+      # in case of blank yaml doc a Boolean false is returned. else Hash or Array is returned
+      %w[Array Hash].include?(result.class.to_s) ? result : {}
     end
 
     def yaml_load(path, yaml)

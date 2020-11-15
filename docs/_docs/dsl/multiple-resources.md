@@ -1,5 +1,5 @@
 ---
-title: Multiple Resources
+title: DSL Multiple Resources
 ---
 
 Kubes encourages a structure with files that matches the resource kind. Example:
@@ -35,7 +35,7 @@ deployment-2.rb | Deployment
 service-1.rb | Service
 service-2.rb | Service
 
-Using multiple files is the general recommended approach.
+Using multiple files is the general recommended approach when using the DSL.
 
 ## Multiple Resources: Block Form
 
@@ -86,8 +86,9 @@ You can declare deployment, service, and other resource kinds multiple times.
 
 Layering works for both simple and block form. Just create a folder with the corresponding name.
 
-* The layering definitions with the simple form only merge with other simple form layers.
-* The layering definitions for block forms only merge with other block form layers.
+* The layering definitions for the prelayers are in singular form.
+* The layering definitions for the post layers are in a folder with plural form.
+* Resources in the main "middle" layer are the only ones that are allowed multiple resource definitions.
 
 Simple form layering:
 
@@ -105,8 +106,8 @@ Block form layering:
 
     .kubes/resources/
     ├── base
-    │   ├── alls.rb
-    │   └── deployments.rb
+    │   ├── all.rb
+    │   └── deployment.rb
     └── web
         ├── deployments
         │   ├── dev.rb

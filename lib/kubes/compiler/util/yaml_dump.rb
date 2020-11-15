@@ -4,12 +4,15 @@ require "yaml"
 module Kubes::Compiler::Util
   module YamlDump
     def yaml_dump(data)
-      if data.key?("kind")  # single resource in YAML
+      case data
+      when Array
+        items = data.map do |i|
+          standardize_yaml(i)
+        end
+        items.map(&:to_yaml).join("")
+      else # single resource in YAML
         data = standardize_yaml(data)
         data.to_yaml
-      else
-        items = data.map { |k,v| standardize_yaml(v) }
-        items.map(&:to_yaml).join("")
       end
     end
 

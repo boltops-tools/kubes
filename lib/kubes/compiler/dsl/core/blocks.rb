@@ -5,7 +5,11 @@ module Kubes::Compiler::Dsl::Core
       @results = {} # Hash key is the name of resource, using it so we can keep a map to handle layering
       @block_form = true # pluralizes the layer names
       super # handles layering and evaluating the main DSL file
-      self
+      result # Array
+    end
+
+    def result
+      @results.values # Array
     end
 
     def syntax_instance(meth, name)
