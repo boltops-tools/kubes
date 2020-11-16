@@ -3,17 +3,13 @@ module Kubes::Compiler::Dsl::Core
     extend Fields
     include DslEvaluator
     include Helpers
-    include Kubes::Compiler::Shared::CustomHelpers
-    include Kubes::Compiler::Shared::CustomVariables
-    include Kubes::Compiler::Shared::PluginHelpers
+    include Kubes::Compiler::Shared::RuntimeHelpers
 
     def initialize(options={})
       @options = options
       @name = options[:name]
       @path = options[:path]
-      load_plugin_helpers
-      load_custom_variables
-      load_custom_helpers
+      load_runtime_helpers
     end
 
     def run
