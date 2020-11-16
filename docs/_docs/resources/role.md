@@ -8,15 +8,14 @@ Role-based resources are your main project's resources.  Kubes groups resources 
 
 Here's an example structure to help explain how role-based resources work.
 
-    .kubes
-    └── resources
-        ├── clock
-        │   └── deployment.yaml
-        ├── web
-        │   ├── deployment.yaml
-        │   └── service.yaml
-        └── worker
-            └── deployment.yaml
+    .kubes/resources
+    ├── clock
+    │   └── deployment.yaml
+    ├── web
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    └── worker
+        └── deployment.yaml
 
 ## Resource Roles
 

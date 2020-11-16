@@ -4,11 +4,10 @@ title: DSL Multiple Resources
 
 Kubes encourages a structure with files that matches the resource kind. Example:
 
-    .kubes
-    └── resources
-        └── web
-            ├── deployment.rb
-            └── service.rb
+    .kubes/resources
+    └── web
+        ├── deployment.rb
+        └── service.rb
 
 This structure is nicely organized and covers 80% of use cases. An astute user may point out that this struture assumes one resource of each kind.
 
@@ -18,13 +17,12 @@ Next, we'll cover different ways to create multiple resource of the same kinds.
 
 You can create multiple resources of same kind by appending a dash followed by anything. Example:
 
-    .kubes
-    └── resources
-        └── web
-            ├── deployment-1.rb
-            ├── deployment-2.rb
-            ├── service-1.rb
-            └── service-2.rb
+    .kubes/resources
+    └── web
+        ├── deployment-1.rb
+        ├── deployment-2.rb
+        ├── service-1.rb
+        └── service-2.rb
 
 Only words before the dash are used to infer the resource kind.
 
@@ -43,9 +41,8 @@ You can also use a block form to create multiple resources.  The multiple resour
 
 You name the resource files with plural names. An example helps explain:
 
-    .kubes
-    └── resources
-        └── deployments.rb
+    .kubes/resources
+    └── deployments.rb
 
 .kubes/resources/web/deployments.rb
 

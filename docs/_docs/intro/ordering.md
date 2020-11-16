@@ -37,16 +37,15 @@ Kubes will delete in the reverse order.
 
 Resources in the `shared` folder will be applied first.  Example:
 
-    .kubes
-    └── resources
-        ├── clock
-        │   └── deployment.yaml
-        ├── web
-        │   ├── deployment.yaml
-        │   └── service.yaml
-        └── shared
-            ├── config_map.yaml
-            └── secret.yaml
+    .kubes/resources
+    ├── clock
+    │   └── deployment.yaml
+    ├── web
+    │   ├── deployment.yaml
+    │   └── service.yaml
+    └── shared
+        ├── config_map.yaml
+        └── secret.yaml
 
 Results in:
 

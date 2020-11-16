@@ -4,11 +4,10 @@ title: Kubes YAML
 
 You can write your Kubernetes resources in YAML format.
 
-    .kubes
-    └── resources
-        └── web
-            ├── deployment.yaml
-            └── service.yaml
+    .kubes/resources
+    └── web
+        ├── deployment.yaml
+        └── service.yaml
 
 ## YAML and Templating
 

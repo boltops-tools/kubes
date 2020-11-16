@@ -4,11 +4,10 @@ title: YAML Multiple Resources
 
 Kubes encourages a structure with files that matches the resource kind. Example:
 
-    .kubes
-    └── resources
-        └── web
-            ├── deployment.yaml
-            └── service.yaml
+    .kubes/resources
+    └── web
+        ├── deployment.yaml
+        └── service.yaml
 
 This structure is nicely organized and covers 80% of use cases. An astute user may point out that this struture assumes one resource of each kind.
 
@@ -18,9 +17,8 @@ Next, we'll cover how to create multiple resource of the same kinds.
 
 You can simply define multiple resources in th same YAML file. Conventionally, you should name the resource files with plural names. An example helps explain:
 
-    .kubes
-    └── resources
-        └── deployments.yaml
+    .kubes/resources
+    └── deployments.yaml
 
 .kubes/resources/web/deployments.yaml
 
