@@ -86,8 +86,8 @@ You can declare deployment, service, and other resource kinds multiple times.
 
 Layering works for both simple and block form. Just create a folder with the corresponding name.
 
-* The layering definitions for the prelayers are in singular form.
-* The layering definitions for the post layers are in a folder with plural form.
+* The layering definitions for the pre layers are in singular form.
+* The layering definitions for the post layers are in a folder with plural form, but the overrides are defined in singular form still.
 * Resources in the main "middle" layer are the only ones that are allowed multiple resource definitions.
 
 Simple form layering:
