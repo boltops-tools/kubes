@@ -72,19 +72,19 @@ Layering works just fine with multiple resource definitions. The layering is pro
 Notes:
 
 * The layering definitions for the pre layers must be in singular form.
-* The layering definitions for the post layers must be in a folder with plural form, but define a singlar resource override.
+* The layering definitions for the post layers must be in a folder with plural form, but define a singular resource override.
 * Resources in the main "middle" layer is the only one that allows for multiple resource definitions.
 
 Multiple resources layering structure.
 
     .kubes/resources/
     ├── base
-    │   ├── all.rb
+    │   ├── all.rb         # SINGULAR
     │   └── deployment.rb  # SINGULAR
     └── web
         ├── deployments    # PLURAL
-        │   ├── dev.rb
-        │   └── prod.rb
+        │   ├── dev.rb     # SINGULAR
+        │   └── prod.rb    # SINGULAR
         └── deployments.rb # PLURAL
 
 The main difference is the pluralized filenames.
