@@ -18,7 +18,8 @@ Next, we'll cover how to create multiple resource of the same kinds.
 You can simply define multiple resources in th same YAML file. Conventionally, you should name the resource files with plural names. An example helps explain:
 
     .kubes/resources
-    └── deployments.yaml
+    └── web
+        └── deployments.yaml
 
 .kubes/resources/web/deployments.yaml
 
