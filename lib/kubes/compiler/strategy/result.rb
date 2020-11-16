@@ -14,11 +14,15 @@ class Kubes::Compiler::Strategy
     # decorate(:pre) or decorate(:post)
     def decorate!(phase)
       klass = "Kubes::Compiler::Decorator::#{phase.to_s.camelize}".constantize
-      @data = klass.new(@data).result
+      results = [@data].flatten
+      results.map! do |r|
+        klass.new(r).result
+      end
     end
 
     def content
-      yaml_dump(@data)
+      result = @data.size == 1 ? @data.first : @data
+      yaml_dump(result)
     end
   end
 end

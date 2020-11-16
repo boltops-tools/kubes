@@ -18,7 +18,7 @@ module Kubes::Compiler::Dsl::Core
 
     def run
       evaluate_file(@path) # main resource definition
-      result if respond_to?(:result) # block form doesnt have result
+      result
     end
   end
 end

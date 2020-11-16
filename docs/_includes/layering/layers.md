@@ -21,11 +21,14 @@ Here's an example structure, so we can understand how layering works.
 
 To explain the layering, here's the general processing order that Kubes takes.
 
-1. The `.kubes/resources/base` folder is treated as a base layer.  It gets processed as pre-layers by Kubes.
-2. Then Kubes will process your `.kubes/resources/ROLE` definitions.
-3. Lastly, Kubes processes any post-layers in the `.kubes/resources/ROLE/KIND` folders.
+1. **Pre Layers**: The `.kubes/resources/base` folder is treated as a base layer.  It gets processed as pre-layers by Kubes.
+2. **Main Layer**: Then Kubes will process your `.kubes/resources/ROLE` definitions.
+3. **Post Layers**: Lastly, Kubes processes any post-layers in the `.kubes/resources/ROLE/KIND` folders.
 
-Note, both YAML and DSL forms support layering. They can be mixed together.
+Notes
+
+* Both YAML and DSL forms support layering. They can be mixed together.
+* In the Main Layer you can define single or multiple resource definitions.
 
 ## Full Layering
 
