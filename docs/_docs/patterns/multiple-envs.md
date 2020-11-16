@@ -4,11 +4,11 @@ nav_text: Multiple Environments
 categories: patterns
 ---
 
-You can use Kubes to easily create multiple enviroments with the same YAML configs.  This is thanks to [Kubes Layering]({% link _docs/layering.md %}). We'll walk through an example to help understand how it works.
+You can use Kubes to easily create multiple environments with the same YAML configs.  This is thanks to [Kubes Layering]({% link _docs/layering.md %}). We'll walk through an example to help understand how it works.
 
 ## Creating Multiple Environments
 
-To create multiple enviroments like dev and prod just change KUBES_ENV. Example:
+To create multiple environments like dev and prod just change KUBES_ENV. Example:
 
     KUBES_ENV=dev  kubes deploy
     KUBES_ENV=prod kubes deploy
@@ -17,7 +17,7 @@ Different env files will be layered and merged to produce YAML files specific to
 
 ## Project Structure
 
-Here's an example structure, so we can understand how layering works to create multiple enviroments.
+Here's an example structure, so we can understand how layering works to create multiple environments.
 
     .kubes/resources/
     ├── base
