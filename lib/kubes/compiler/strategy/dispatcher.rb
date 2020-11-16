@@ -52,7 +52,8 @@ class Kubes::Compiler::Strategy
 
     def merge_layers(layers)
       layers.inject({}) do |hash, layer|
-        render(layer)
+        data = render(layer)
+        hash.deep_merge!(data)
       end
     end
   end
