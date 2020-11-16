@@ -5,18 +5,13 @@ class Kubes::Compiler::Strategy
     extend Kubes::Compiler::Dsl::Core::Fields
     include Kubes::Compiler::Dsl::Core::Helpers
     include Kubes::Compiler::Layering
-    include Kubes::Compiler::Shared::CustomHelpers
-    include Kubes::Compiler::Shared::CustomVariables
-    include Kubes::Compiler::Shared::Helpers
-    include Kubes::Compiler::Shared::PluginHelpers
+    include Kubes::Compiler::Shared::RuntimeHelpers
 
     def initialize(options={})
       super
       # For ERB scope is in this same Strategy::Erb class
       # For DSL scope is within the each for the Resource classes. IE: kubes/compile/dsl/core/base.rb
-      load_plugin_helpers
-      load_custom_variables
-      load_custom_helpers
+      load_runtime_helpers
     end
 
     def render_result(path)

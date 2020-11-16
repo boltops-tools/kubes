@@ -1,7 +1,6 @@
 module Kubes::Compiler::Dsl::Syntax
   class Resource < Kubes::Compiler::Dsl::Core::Base
     include Kubes::Compiler::Util::Normalize
-    include Kubes::Compiler::Shared::Helpers
 
     fields :apiVersion,  # <string>
            :kind,        # <string>
