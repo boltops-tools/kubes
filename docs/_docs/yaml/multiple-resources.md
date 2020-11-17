@@ -78,12 +78,12 @@ Multiple resources layering structure.
 
     .kubes/resources/
     ├── base
-    │   ├── all.rb         # SINGULAR
-    │   └── deployment.rb  # SINGULAR
+    │   ├── all.yaml         # SINGULAR
+    │   └── deployment.yaml  # SINGULAR
     └── web
-        ├── deployments    # PLURAL
-        │   ├── dev.rb     # SINGULAR
-        │   └── prod.rb    # SINGULAR
-        └── deployments.rb # PLURAL
+        ├── deployments      # PLURAL
+        │   ├── dev.yaml     # SINGULAR
+        │   └── prod.yaml    # SINGULAR
+        └── deployments.yaml # PLURAL
 
 The main difference is the pluralized filenames.
