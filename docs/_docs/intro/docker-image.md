@@ -16,7 +16,7 @@ Kubes uses the image from the `--image` option if specified. It's a quick way to
 
     kubes deploy --image repo/image:tag
 
-When the `--image` option is set, Kubes skips the Docker build phase.
+When the `--image` option is set, Kubes skips the Docker build phase. You can also set `config.image = false` to simply disable image building.
 
 ## 2. Kubes Config
 
@@ -30,7 +30,7 @@ Kubes.configure do |config|
 end
 ```
 
-When `config.image` is set, Kubes skips the Docker build phase.
+When `config.image` is set, Kubes skips the Docker build phase. You can also set `config.image = false` to simply disable image building.
 
 ## 3. Built Docker Image
 
