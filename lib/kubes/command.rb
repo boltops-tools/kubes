@@ -57,6 +57,7 @@ module Kubes
       end
 
       def check_project!(command_name)
+        return if command_name.nil?
         return if %w[-h -v completion completion_script help init new version].include?(command_name)
         Kubes.check_project!
       end
