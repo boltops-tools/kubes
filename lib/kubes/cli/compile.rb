@@ -16,7 +16,7 @@ class Kubes::CLI
 
     # auto build docker image and push image if kubes docker build not yet called
     def build_docker_image
-      return if File.exist?("#{Kubes.root}/.kubes/state/docker_image.txt")
+      return if File.exist?(Kubes.config.state.path)
       Build.new(@options).run
     end
   end

@@ -1,4 +1,5 @@
 require "base64"
+require "json"
 
 module Kubes::Compiler::Shared
   module Helpers
@@ -17,11 +18,12 @@ module Kubes::Compiler::Shared
     end
 
     def built_image_helper
-      path = Kubes.config.state.docker_image_path
+      path = Kubes.config.state.path
       unless File.exist?(path)
         raise Kubes::MissingDockerImage.new("Missing file with docker image built by kubes: #{path}. Try first running: kubes docker build")
       end
-      IO.read(path)
+      data = JSON.load(IO.read(path))
+      data['image']
     end
 
     def with_extra(value)

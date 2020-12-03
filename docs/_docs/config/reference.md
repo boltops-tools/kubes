@@ -18,5 +18,5 @@ logger.level | Logger level. Can also be set with `KUBES_LOG_LEVEL` env var | in
 repo | The Docker repo to use. Required to be set. | nil
 repo_auto_auth | Whether or not to try to auth authorize docker repo registry if not yet logged in. Can also be set with env var `KUBES_REPO_AUTO_AUTO` | true
 skip | List of resources to skip. Can also be set with the `KUBES_SKIP` env var. `KUBES_SKIP` should be a list of strings separated by spaces. It adds onto the `config.skip` option. | []
-state.docker_image_path | Where to store the state file with the last build Docker image. | .kubes/state/docker_image.txt
+state.path | Where to store the state file with the last build Docker image. | .kubes/state/KUBES_env/data.json
 suffix_hash | Whether or not to append suffix hash to ConfigMap and Secret | true
