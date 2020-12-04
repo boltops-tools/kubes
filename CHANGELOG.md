@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.2] - 2020-12-04
+- [#43](https://github.com/boltops-tools/kubes/pull/43) store docker image name in env based folder
+- fix kubes help
+
 ## [0.7.1] - 2020-11-16
 - [#42](https://github.com/boltops-tools/kubes/pull/42) load helpers for dsl properly
 - fix merge layer
