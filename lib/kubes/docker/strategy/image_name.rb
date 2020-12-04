@@ -1,3 +1,5 @@
+require "json"
+
 module Kubes::Docker::Strategy
   module ImageName
     extend Memoist
@@ -13,12 +15,13 @@ module Kubes::Docker::Strategy
     # Only when a new docker build command gets run will the image name state be updated.
     def store_image_name
       FileUtils.mkdir_p(File.dirname(image_state_path))
-      IO.write(image_state_path, @@image_name)
+      text = JSON.pretty_generate(image: @@image_name)
+      IO.write(image_state_path, text)
     end
 
     # output can get entirely wiped so dont use that folder
     def image_state_path
-      Kubes.config.state.docker_image_path
+      Kubes.config.state.path
     end
 
     # full_image - Includes the tag. Examples:
@@ -33,7 +36,8 @@ module Kubes::Docker::Strategy
         logger.error "ERROR: Unable to find #{image_state_path} which contains the last docker image name built with kubes build.  Please run `kubes docker build` first."
         exit 1
       end
-      IO.read(image_state_path).strip
+      data = JSON.load(IO.read(image_state_path))
+      data['image']
     end
 
     @@timestamp = Time.now.strftime('%Y-%m-%dT%H-%M-%S')

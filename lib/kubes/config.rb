@@ -39,7 +39,7 @@ module Kubes
       config.skip = []
 
       config.state = ActiveSupport::OrderedOptions.new
-      config.state.docker_image_path = "#{Kubes.root}/.kubes/state/docker_image.txt"
+      config.state.path = "#{Kubes.root}/.kubes/state/#{Kubes.env}/data.json"
 
       config.suffix_hash = true # append suffix hash to ConfigMap and Secret
 
