@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.3] - 2020-12-24
+- [#44](https://github.com/boltops-tools/kubes/pull/44) require singleton
+
 ## [0.7.2] - 2020-12-04
 - [#43](https://github.com/boltops-tools/kubes/pull/43) store docker image name in env based folder
 - fix kubes help
