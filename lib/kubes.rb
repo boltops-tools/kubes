@@ -16,6 +16,7 @@ require "hash_squeezer"
 require "kubes/version"
 require "memoist"
 require "rainbow/ext/string"
+require "singleton"
 require "yaml"
 
 # core helper libraries
