@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.4] - 2021-03-02
+- [#46](https://github.com/boltops-tools/kubes/pull/46) call run method to respect config.suffix_hash
+
 ## [0.7.3] - 2020-12-24
 - [#44](https://github.com/boltops-tools/kubes/pull/44) require singleton
 
