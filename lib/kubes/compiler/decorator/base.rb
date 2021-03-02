@@ -12,9 +12,9 @@ module Kubes::Compiler::Decorator
 
     def result
       if @data.key?(Kubes::Compiler::Dsl::Core::Blocks)
-        @data.results.each { |k,v| process(v) } # returns nil
+        @data.results.each { |k,v| run(v) } # returns nil
       else
-        process # processes and returns @data
+        run # processes and returns @data
       end
       @data # important to return @data so we keep the original @data structure: Blocks or Hash
     end
