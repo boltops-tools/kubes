@@ -10,6 +10,8 @@
 
 Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, and apply them.
 
+Please **watch/star** this repo to help grow and support the project.
+
 Official Docs Site: [kubes.guru](https://kubes.guru)
 
 Kubes will:
