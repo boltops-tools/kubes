@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.5] - 2021-06-03
+- [#47](https://github.com/boltops-tools/kubes/pull/47) add search
+- [#48](https://github.com/boltops-tools/kubes/pull/48) use deep_merge overwrite_arrays option fixes #45
+
 ## [0.7.4] - 2021-03-02
 - [#46](https://github.com/boltops-tools/kubes/pull/46) call run method to respect config.suffix_hash
 
