@@ -34,5 +34,11 @@ module Kubes
       logger.error "ERROR: It doesnt look like this is a kubes project. Are you sure you are in a kubes project?".color(:red)
       ENV['TS_TEST'] ? raise : exit(1)
     end
+
+    # wrapper to ensure we use the same deeper_merge options everywhere
+    def deep_merge!(a, b)
+      a.deeper_merge!(b, overwrite_arrays: true)
+      a
+    end
   end
 end
