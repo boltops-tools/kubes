@@ -2,6 +2,13 @@
   <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <a class="navbar-brand" href="/"><img class="navbar-logo" src="/img/logos/kubes-black.png" /></a>
 
+    {% if page.url != '/' %}
+    <form class="search-form form-group has-search" method="get" action="/search" data-search-form>
+      <span class="fa fa-search form-control-feedback"></span>
+      <input type="text" class="form-control" name="q" id="q" placeholder="Search docs" data-search-input />
+    </form>
+    {% endif %}
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
