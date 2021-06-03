@@ -18,7 +18,7 @@ module Kubes::Compiler::Dsl::Syntax
     # top-level of resource is quite common
     def default_result
       data = top.merge(default_top)
-      data.deeper_merge!(default_result_append)
+      Kubes.deep_merge!(data, default_result_append)
       data.deep_stringify_keys!
       HashSqueezer.squeeze(data)
     end
@@ -63,7 +63,7 @@ module Kubes::Compiler::Dsl::Syntax
 
     # For generic kind
     def field(name, data)
-      top.deeper_merge!(name => data)
+      Kubes.deep_merge!(top, {name => data})
     end
   end
 end

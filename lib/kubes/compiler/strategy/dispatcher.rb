@@ -4,8 +4,8 @@ class Kubes::Compiler::Strategy
       result = render(@path) # main
       results = [result].flatten # ensure array
       data = results.map! do |main|
-        hash = pre_layer.deeper_merge!(main) # need the ! or deep_merge returns original hash
-        hash.deeper_merge!(post_layer)
+        hash = Kubes.deep_merge!(pre_layer, main)
+        Kubes.deep_merge!(hash, post_layer)
       end
       Result.new(@save_file, data)
     end

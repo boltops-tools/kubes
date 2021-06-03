@@ -64,7 +64,7 @@ module Kubes::Compiler::Dsl::Core
         result = instance_variable_get(ivar)
         result = {} if mode == "reset" # allow user to override with mode: reset option
         result ||= {} # maintain value for layering
-        result.deeper_merge!(value)
+        Kubes.deep_merge!(result, value)
         instance_variable_set(ivar, result)
       end
     end
