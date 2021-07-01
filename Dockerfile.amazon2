@@ -15,7 +15,7 @@ RUN amazon-linux-extras install ruby3.0 -y \
     && amazon-linux-extras install python3.8 -y \
     && amazon-linux-extras install docker -y
 
-    RUN yum -y install curl wget jq unzip gcc ruby-devel make
+    RUN yum -y install curl wget jq unzip gcc ruby-devel make libxml
 
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
     && unzip awscliv2.zip \
