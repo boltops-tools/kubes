@@ -168,7 +168,7 @@ Helm supports a wide variety of hooks for the install, delete, upgrade, and roll
 
 Kubes also supports hook as the kubes-level; this is similar to the helm-level. Kubes also provide finer-grain control hooks at the kubectl-level.
 
-Overally, Helm and Kubes hooks work quite differently. We'll take a look at **some** examples:
+Overall, Helm and Kubes hooks work quite differently. We'll take a look at **some** examples:
 
 ### Helm Hook Example
 
@@ -240,4 +240,4 @@ Kubes supports the deployment workflow. It can build the docker image from your 
 
 ## Summary
 
-Helm and Kubes are quite different. Helm is a full-fledge package management. Kubes is a more focused on deployment. Both tools support templating logic to help keep your code DRY. Additionally, Kubes supports layering to merge YAML files together for DRYness. Kubes also helps you build your Docker images.
+Helm and Kubes are quite different. Helm is a full-fledge package management tool. In contrast, Kubes is more focused on app deployment. Both tools support templating logic to help keep your code DRY. Additionally, Kubes supports layering to merge YAML files together for DRYness. Kubes also helps you build your Docker images.
