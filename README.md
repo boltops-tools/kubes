@@ -8,7 +8,7 @@
 
 [![BoltOps Badge](https://img.boltops.com/boltops/badges/boltops-badge.png)](https://www.boltops.com)
 
-Kubernetes Deployment Tool: build docker image, compile Kubernetes YAML files, and apply them.
+Kubernetes App Deploy Tool: build docker image, compile Kubernetes YAML files, and apply them.
 
 Please **watch/star** this repo to help grow and support the project.
 

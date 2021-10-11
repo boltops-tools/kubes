@@ -20,6 +20,8 @@ The deploy command simpifily does all 3 steps: build, compile, and apply.
 
     kubes deploy
 
+Kubes is very transparent about it does.  It prints out the `kubectl` commands as they are being called.
+
 You can also run the `kubectl apply` only. The `kube apply` command compiles but will skip the docker build stage if it's already been built.
 
     kubes apply
