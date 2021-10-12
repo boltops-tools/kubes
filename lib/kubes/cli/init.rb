@@ -86,10 +86,11 @@ class Kubes::CLI
       ignores = %w[
         .kubes/output
         .kubes/state
+        .kubes/tmp
       ].map {|l| "#{l}\n"} # the readlines will have lines with \n so keep consistent for processing
       if File.exist?(".gitignore")
         lines = IO.readlines(".gitignore")
-        if lines.detect { |l| l.include?('.kubes/output') }
+        if lines.detect { |l| l.include?('.kubes/tmp') }
           return # early
         else
           lines += ignores

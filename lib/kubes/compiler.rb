@@ -57,7 +57,8 @@ module Kubes
         acc << IO.read(file)
       end
       content = full.join("\n")
-      path = "#{Kubes.root}/.kubes/output/full.yaml"
+      path = "#{Kubes.root}/.kubes/tmp/full.yaml" # write to tmp instead of output so it doesnt interfere with kubes get
+      FileUtils.mkdir_p(File.dirname(path))
       IO.write(path, content)
       logger.debug "Compiled  #{pretty(path)}"
     end

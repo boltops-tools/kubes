@@ -22,10 +22,6 @@ module Kubes::Docker::Args
 
 
   private
-    def common_args
-      %w[--recursive -f ]
-    end
-
     def resource_path
       [".kubes/output", @options[:role], resource].compact.join('/')
     end
