@@ -47,6 +47,7 @@ class Kubes::Compiler::Decorator::Hashable
         'secretRef' => 'name',
         'secretKeyRef' => 'name',
         'secret' => 'secretName',
+        'tls' => 'secretName',
       }
     end
   end
