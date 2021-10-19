@@ -3,8 +3,8 @@ module Kubes::Util
     def consider?(path)
       File.file?(path) &&
       !path.include?('/resources/base') &&
-      !path.include?('/base.yaml') &&
-      !path.include?('/base.yml')
+      !path.include?('/base.') &&
+      !path.include?('/all.')
     end
   end
 end

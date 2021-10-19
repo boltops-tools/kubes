@@ -11,6 +11,7 @@ Here's an example structure, so we can understand how layering works.
     ├── clock
     │   └── deployment.{{ include.ext }}
     └── web
+        ├── all.{{ include.ext }}
         ├── deployment
         │   ├── dev.{{ include.ext }}
         │   └── prod.{{ include.ext }}
@@ -34,16 +35,17 @@ Notes
 
 Here's a table showing the the full layering.
 
-Folder/Pattern     | Example
--------------------|--------------------------------------------
-base/all.{{ include.ext }}       | base/all.{{ include.ext }}
-base/all/ENV.{{ include.ext }}   | base/all/dev.{{ include.ext }}
-base/KIND.{{ include.ext }}      | base/deployment.{{ include.ext }}
-base/KIND/base.{{ include.ext }} | base/deployment/base.{{ include.ext }}
-base/KIND/ENV.{{ include.ext }}  | base/deployment/dev.{{ include.ext }}
-ROLE/KIND.{{ include.ext }}      | web/deployment.{{ include.ext }}
-ROLE/KIND/base.{{ include.ext }} | web/deployment/base.{{ include.ext }}
-ROLE/KIND/ENV.{{ include.ext }}  | web/deployment/dev.{{ include.ext }}
+Type | Folder/Pattern | Example
+---|---|---
+pre | base/all.{{ include.ext }}        | base/all.{{ include.ext }}
+pre | base/all/ENV.{{ include.ext }}    | base/all/dev.{{ include.ext }}
+pre | base/KIND.{{ include.ext }}       | base/deployment.{{ include.ext }}
+pre | base/KIND/base.{{ include.ext }}  | base/deployment/base.{{ include.ext }}
+pre | base/KIND/ENV.{{ include.ext }}   | base/deployment/dev.{{ include.ext }}
+pre | ROLE/all.{{ include.ext }}        | web/all.{{ include.ext }}
+main | ROLE/KIND.{{ include.ext }}      | web/deployment.{{ include.ext }}
+post | ROLE/KIND/base.{{ include.ext }} | web/deployment/base.{{ include.ext }}
+post | ROLE/KIND/ENV.{{ include.ext }}  | web/deployment/dev.{{ include.ext }}
 
 ## Real-World Uses
 
