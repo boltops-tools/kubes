@@ -6,27 +6,19 @@ class Kubes::Compiler
       ext = File.extname(@path)
       kind = File.basename(@path).sub(ext,'') # IE: deployment
       kind = kind.pluralize if @block_form
+      role = @path.split('/')[-2] # .kubes/resources/web/deployment.yaml
       layers = [
-        "all",
-        "all/#{Kubes.env}",
-        "#{kind}",
-        "#{kind}/#{Kubes.env}",
+        "base/all",
+        "base/all/#{Kubes.env}",
+        "base/#{kind}",
+        "base/#{kind}/#{Kubes.env}",
+        "#{role}/all",
       ]
       layers = add_exts(layers)
       layers.map! do |layer|
-        "#{Kubes.root}/.kubes/resources/base/#{layer}"
+        "#{Kubes.root}/.kubes/resources/#{layer}"
       end
       layers.select { |layer| File.exist?(layer) }
-    end
-
-    def add_exts(layers)
-      layers.map do |layer|
-        [
-          "#{layer}.rb",
-          "#{layer}.yaml",
-          "#{layer}.yml",
-        ]
-      end.flatten
     end
 
     def post_layers
@@ -44,6 +36,16 @@ class Kubes::Compiler
         "#{kind_path}/#{layer}"
       end
       layers.select { |layer| File.exist?(layer) }
+    end
+
+    def add_exts(*layers)
+      layers.flatten.map do |layer|
+        [
+          "#{layer}.rb",
+          "#{layer}.yaml",
+          "#{layer}.yml",
+        ]
+      end.flatten
     end
   end
 end
