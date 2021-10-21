@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.7] - 2021-10-21
+- [#51](https://github.com/boltops-tools/kubes/pull/51) add hash checksum for tls secretName
+- [#52](https://github.com/boltops-tools/kubes/pull/52) add role all layer to pre_layers
+- [#53](https://github.com/boltops-tools/kubes/pull/53) Merger options
+
 ## [0.7.6] - 2021-10-12
 - remove init yaml templates, removed duplication
 - write full.yaml to .kubes/tmp instead
