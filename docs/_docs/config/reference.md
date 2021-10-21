@@ -20,3 +20,4 @@ repo_auto_auth | Whether or not to try to auth authorize docker repo registry if
 skip | List of resources to skip. Can also be set with the `KUBES_SKIP` env var. `KUBES_SKIP` should be a list of strings separated by spaces. It adds onto the `config.skip` option. | []
 state.path | Where to store the state file with the last build Docker image. | .kubes/state/KUBES_ENV/data.json
 suffix_hash | Whether or not to append suffix hash to ConfigMap and Secret | true
+merger.options | Merger options that control how Hashes are merged. More info: [Merger Options]({% link _docs/layering/merge-options.md %}) | `{overwrite_arrays: true}`

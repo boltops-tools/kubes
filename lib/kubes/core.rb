@@ -37,7 +37,7 @@ module Kubes
 
     # wrapper to ensure we use the same deeper_merge options everywhere
     def deep_merge!(a, b)
-      a.deeper_merge!(b, overwrite_arrays: true)
+      a.deeper_merge!(b, config.merger.options)
       a
     end
   end
