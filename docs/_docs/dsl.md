@@ -63,4 +63,4 @@ In general:
 
 ## Merge Behavior
 
-Generally, the merge should behave as expected. For example, map or Hash fields are merged together from multiple layers. Strings are simply replaced. See more details at [Layering Merge Behavior]({% link _docs/layering/merge.md %})
+Generally, the merge should behave as expected. For example, map or Hash fields are merged together from multiple layers. Strings are simply replaced. See more details at [Layering Merge Behavior]({% link _docs/layering/merge-dsl.md %})
