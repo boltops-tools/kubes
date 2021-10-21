@@ -43,6 +43,9 @@ module Kubes
 
       config.suffix_hash = true # append suffix hash to ConfigMap and Secret
 
+      config.merger = ActiveSupport::OrderedOptions.new
+      config.merger.options = {overwrite_arrays: true}
+
       config
     end
 
