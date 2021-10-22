@@ -58,8 +58,8 @@ Notice how `port` and `targetPort` correspond to `spec.ports.port` and `spec.por
 
 In general:
 
-* The DSL methods behave as reader methods when no arguments are passed to it. IE: `name "demo-web"` sets the value.
-* The DSL methods behave as writer methods when arguments are passed to it. IE: `name` returns the value.
+* The DSL methods behave as reader methods when no arguments are passed to it. IE: `name` returns the value.
+* The DSL methods behave as writer methods when arguments are passed to it. IE: `name "demo-web"` sets the value.
 
 ## Merge Behavior
 
