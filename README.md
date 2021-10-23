@@ -17,8 +17,8 @@ Official Docs Site: [kubes.guru](https://kubes.guru)
 Kubes will:
 
 1. Build the docker image and push it to repo
-2. Compile Kubernetes YAML files from YAML/ERB or a DSL and adjusts the Docker build image
-3. Deploy via kubectl apply on the compiled Kubernetes YAML files
+2. Compile Kubernetes YAML files from YAML/ERB or a DSL with built Docker image
+3. Deploy via `kubectl apply` on the compiled Kubernetes YAML files
 
 ## Usage
 
@@ -42,7 +42,7 @@ Now, use `kubectl` directly in the proper order:
     kubectl apply -f .kubes/output/web/service.yaml
     kubectl apply -f .kubes/output/web/deployment.yaml
 
-You can also apply with kubes. This will compile the automatically files also.
+You can also apply with kubes. This will automatically compile the files also.
 
     kubes apply
 
@@ -50,7 +50,7 @@ The deploy command, does all 3 steps: builds the docker image, compiles the `.ku
 
     kubes deploy
 
-## Multiple Enviroments
+## Multiple Environments
 
 You can easily create multiple environments with the same YAML configs. Example:
 
