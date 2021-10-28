@@ -135,4 +135,29 @@ describe Kubes::Compiler::Decorator::Post do
       end
     end
   end
+
+  context "order" do
+    # spec to fix issue TODO: add issue number
+    describe "name first" do
+      let(:data) { fixture("configMap/volumes-name-first") }
+      it "run" do
+        decorator.run
+        data = decorator.data
+        volumes = data['volumes']
+        name = volumes[0]['configMap']['name']
+        expect(name).to eq("demo-config-map-fakehash-config")
+      end
+    end
+
+    describe "name second" do
+      let(:data) { fixture("configMap/volumes-name-second") }
+      it "run" do
+        decorator.run
+        data = decorator.data
+        volumes = data['volumes']
+        name = volumes[0]['configMap']['name']
+        expect(name).to eq("demo-config-map-fakehash-config")
+      end
+    end
+  end
 end

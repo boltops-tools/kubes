@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+spec:
+  tls:
+  - secretName: tls-secret
+  defaultBackend:
+    service:
+      name: web
+      port:
+        number: 80
