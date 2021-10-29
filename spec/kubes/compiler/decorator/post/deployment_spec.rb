@@ -137,7 +137,7 @@ describe Kubes::Compiler::Decorator::Post do
   end
 
   context "order" do
-    # spec to fix issue TODO: add issue number
+    # spec to fix issue https://github.com/boltops-tools/kubes/issues/49
     describe "name first" do
       let(:data) { fixture("configMap/volumes-name-first") }
       it "run" do
