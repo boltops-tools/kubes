@@ -1,0 +1,14 @@
+---
+# apiVersion: apps/v1
+# kind: Deployment
+# spec:
+#   template:
+#     spec:
+# only including structure needed for spec
+volumes:
+- configMap:
+    name: demo-config-map
+    items:
+    - key: k1
+      path: config-map.conf
+  name: config-map-volume

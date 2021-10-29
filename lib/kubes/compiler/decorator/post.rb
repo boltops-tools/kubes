@@ -16,12 +16,12 @@ module Kubes::Compiler::Decorator
       # hashable set from previous stack call
       if options[:hashable_field] && item.is_a?(Hash)
         field = options[:hashable_field]
-        value_without_md5 = item[field.key]
+        value_without_md5 = item[field.target_key]
         @reset_hashable_field = true unless value_without_md5
         if field.hashable? && value_without_md5
           md5 = Hashable::Storage.fetch(field.kind, value_without_md5)
           v = [value_without_md5, md5].compact.join('-')
-          item[field.key] = v
+          item[field.target_key] = v
         end
       end
 
@@ -29,10 +29,10 @@ module Kubes::Compiler::Decorator
       # Pretty tricky case. Given:
       #
       #     envFrom:
-      #     - secretRef:
-      #         name: demo-secret
-      #     - configMapRef:
-      #         name: demo-config-map
+      #     - secretRef:               <--- wrapper_key
+      #         name: demo-secret      <--- target_key is 'name' from wrapper_map[wrapper_key]
+      #     - configMapRef:            <--- wrapper_key
+      #         name: demo-config-map  <--- target_key is 'name' from wrapper_map[wrapper_key]
       #
       # Need to reset the stored hashable_field in the call stack.
       # Else the field.kind is cached and the md5 look is incorrect
@@ -52,19 +52,19 @@ module Kubes::Compiler::Decorator
     #
     #     1. envFrom example
     #     envFrom:
-    #     - secretRef:
-    #         name: demo-secret
+    #     - secretRef:          <--- wrapper_key
+    #         name: demo-secret <--- target_key is 'name' from wrapper_map[wrapper_key]
     #
     #     2. valueFrom example
     #     valueFrom:
-    #       secretKeyRef:
-    #         name: demo-secret
+    #       secretKeyRef:       <--- wrapper_key
+    #         name: demo-secret <--- target_key is 'name' from wrapper_map[wrapper_key]
     #         key: password
     #
     #     3. volumes example
     #     volumes:
-    #     - secret:
-    #         secretName: demo-secret
+    #     - secret:                   <--- wrapper_key
+    #         secretName: demo-secret <--- target_key is 'name' from wrapper_map[wrapper_key]
     #
     # This is useful to capture for the next level of the stack call
     #
