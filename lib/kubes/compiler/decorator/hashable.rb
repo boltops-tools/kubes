@@ -9,7 +9,7 @@ module Kubes::Compiler::Decorator
       name = @data.dig('metadata','name')
       return @data unless name
 
-      # puts "name #{name}" # TODO: scope Kind so Secret and ConfigMap can have the same name...
+      # scope Kind so Secret and ConfigMap can have same name
       md5 = md5(@data)
       @data['metadata']['name'] = "#{name}-#{md5}"
       Storage.store(@data['kind'], name, md5)
