@@ -49,7 +49,7 @@ To build kubes as a Docker image entrypoint for [Google CloudBuild Custom Builde
 
 Be sure to set GOOGLE_PROJECT to your own project id.
 
-## Example Codebuild YAML
+## Example Cloudbuild YAML
 
 cloudbuild.yaml:
 
