@@ -3,9 +3,9 @@ module Kubes::Compiler::Shared
     include Kubes::Compiler::Shared::Helpers
 
     def load_runtime_helpers
-      load_custom_variables # also load custom variables
       load_plugin_helpers
       load_custom_helpers
+      load_custom_variables # also load custom variables
     end
 
     @@custom_helpers_loaded = false
