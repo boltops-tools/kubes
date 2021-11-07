@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.9] - 2021-11-07
+- [#55](https://github.com/boltops-tools/kubes/pull/55) make helper methods available in variables files
+
 ## [0.7.8] - 2021-10-29
 - [#54](https://github.com/boltops-tools/kubes/pull/54) fix configMap and secret hash when not first element in Array
 
