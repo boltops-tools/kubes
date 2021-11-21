@@ -4,6 +4,8 @@ nav_text: Kubectl
 categories: hooks
 ---
 
+{% include config/hooks/generator.md type="kubectl" %}
+
 You can use hooks to run scripts at any part of the `kubectl` commands. Here's an example of running a script before and after the `kubectl apply` command for the `web/deployment` resource.
 
 .kubes/config/hooks/kubectl.rb

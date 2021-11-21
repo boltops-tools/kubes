@@ -4,6 +4,8 @@ nav_text: Kubes
 categories: hooks
 ---
 
+{% include config/hooks/generator.md type="kubes" %}
+
 You can use hooks to run scripts at specific steps of the `kubes deploy` lifecycle.
 
 ## Lifecycle Hooks
