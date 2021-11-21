@@ -14,6 +14,7 @@ Generates new resource.
 ## Subcommands
 
 * [kubes new helper]({% link _reference/kubes-new-helper.md %}) - Generates kubes helper file.
+* [kubes new hook]({% link _reference/kubes-new-hook.md %}) - Generates kubes hook file.
 * [kubes new resource]({% link _reference/kubes-new-resource.md %}) - Generates Kubes Kubernetes resource definition.
 * [kubes new variable]({% link _reference/kubes-new-variable.md %}) - Generates kubes variable file.
 
