@@ -16,6 +16,7 @@ iam_role = KubesAws::IamRole.new(
   namespace: "demo-#{Kubes.env}", # defaults to APP-ENV when not set. IE: demo-dev
   managed_policies: ["AmazonS3ReadOnlyAccess", "AmazonSSMReadOnlyAccess"], # defaults to empty when not set
   inline_policies: [:secrets_read_only], # See Secrets Read Only Inline Policy at the bottom
+  # cluster: "eks-cluster-name", # inferred with kubectl when not set
 )
 before("apply",
   label: "create iam role",

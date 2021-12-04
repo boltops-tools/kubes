@@ -4,6 +4,8 @@ nav_text: Docker
 categories: hooks
 ---
 
+{% include config/hooks/generator.md type="docker" %}
+
 Here are some examples of running custom hooks before and after the docker commands.
 
 ## Build Hooks

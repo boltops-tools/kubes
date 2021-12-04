@@ -11,5 +11,9 @@ class Kubes::CLI
     long_desc Help.text("new/variable")
     Variable.options.each { |args| option(*args) }
     register(Variable, "variable", "variable", "Generates kubes variable file.")
+
+    long_desc Help.text("new/hook")
+    Hook.options.each { |args| option(*args) }
+    register(Hook, "hook", "hook", "Generates kubes hook file.")
   end
 end
