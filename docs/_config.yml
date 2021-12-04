@@ -69,3 +69,5 @@ defaults:
 
 plugins_dir:
   # - jekyll-gzip - GitHub pages does not support this plugin.
+
+ads_url: "https://ads.boltops.com"
