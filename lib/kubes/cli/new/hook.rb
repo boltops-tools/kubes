@@ -12,7 +12,7 @@ class Kubes::CLI::New
   public
     def create_hook
       set_source("new/hooks")
-      template "#{type}.rb", ".kubes/hooks/#{type}.rb"
+      template "#{type}.rb", ".kubes/config/hooks/#{type}.rb"
     end
   end
 end

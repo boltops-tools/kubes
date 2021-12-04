@@ -3,4 +3,4 @@
 To generator a starter hook:
 
     $ kubes new hook {{ include.type }}
-          create  .kubes/hooks/{{ include.type }}.rb
+          create  .kubes/config/hooks/{{ include.type }}.rb

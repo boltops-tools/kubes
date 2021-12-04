@@ -2,7 +2,9 @@ spec:
   selector:
     matchLabels:
       app: <%= app %>
+      env: <%= Kubes.env %>
   template:
     metadata:
       labels:
         app: <%= app %>
+        env: <%= Kubes.env %>
