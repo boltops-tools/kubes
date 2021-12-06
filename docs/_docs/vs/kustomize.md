@@ -135,7 +135,7 @@ You can even define your own custom helpers for even more control. See: [Helpers
 
 ## Kubes Features
 
-Kubes does a lot more than build YAML files. Here's a list of features:
+Kubes does a lot more than building YAML files. Here's a list of features:
 
 {% include intro/features.md %}
 
