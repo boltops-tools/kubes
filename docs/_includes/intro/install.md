@@ -16,4 +16,4 @@ Kubes calls docker. Kubes has been tested with docker 18.x-ce+. Generally, it sh
 
 ## gcloud
 
-If you are using the [gcloud builder](% link _docs/config/builder.md %), set up and configure the [gcloud cli](https://cloud.google.com/sdk/install).
+If you are using the [gcloud builder]({% link _docs/config/builder.md %}), set up and configure the [gcloud cli](https://cloud.google.com/sdk/install).
