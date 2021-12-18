@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.7.10] - 2021-12-18
+- [#56](https://github.com/boltops-tools/kubes/pull/56) New hook generator
+- [#57](https://github.com/boltops-tools/kubes/pull/57) Fix activesupport require
+- add nokogiri dependency. looks like aws-sdk removed it and its breaking specs
+- hook generator docs
+- new hook generator
+
 ## [0.7.9] - 2021-11-07
 - [#55](https://github.com/boltops-tools/kubes/pull/55) make helper methods available in variables files
 
