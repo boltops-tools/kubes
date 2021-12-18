@@ -5,6 +5,7 @@ $:.unshift(File.expand_path("../", __FILE__))
 require "kubes/autoloader"
 Kubes::Autoloader.setup
 
+require "active_support"
 require "active_support/core_ext/class"
 require "active_support/core_ext/hash"
 require "active_support/core_ext/string"
