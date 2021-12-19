@@ -2,6 +2,8 @@
 title: Kubes vs. Other Tools
 ---
 
+{% include videos/vs.md %}
+
 Here are some useful comparisons to help you compare Kubes vs other tools in the ecosystem:
 
 {% assign docs = site.docs | where: "categories","vs" %}

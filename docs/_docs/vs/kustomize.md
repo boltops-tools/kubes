@@ -4,6 +4,8 @@ nav_text: Kustomize
 categories: vs
 ---
 
+{% include videos/vs.md %}
+
 Though both Kubes and Kustomize build YAML files, they are quite different beasts. Kustomize is more like a `kubectl` feature that decorates YAML. Kubes is more like a tool. Kubes also builds YAML, but it also provides additional features.
 
 Kustomize lets you customize your Kubernetes YAML files with additional `kustomization.yaml` files. The kustomization.yaml files contain configs that tell `kubectl` how to decorate existing Kubernetes YAML files in a template-free way.
