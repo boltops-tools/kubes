@@ -4,7 +4,7 @@ nav_text: Helm
 categories: vs
 ---
 
-{% include videos/vs.md %}
+{% include videos/learn/vs.md %}
 
 Kubes and Helm are quite different.  Helm is a package manager tool. In contrast, Kubernetes is focused on deploying your application. While you can use package manager tools like Helm to deploy your application, application-focused deploy tools are better for the job. For example, apt-get and yum are also package manager tools. But few companies use `apt-get install` or `yum install` to deploy their application code. Instead, people usually use application-specific tools to deploy their web app.
 

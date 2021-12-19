@@ -407,3 +407,14 @@ ul.toc {
     }
   }
 }
+
+.learn {
+  img {
+    max-width: 600px;
+  }
+  .note {
+    font-size: 0.9em;
+  }
+  border-bottom: 1px solid #696969;
+  padding-bottom: 8px;
+}

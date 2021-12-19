@@ -4,7 +4,7 @@ nav_text: Custom Solutions
 categories: vs
 ---
 
-{% include videos/vs.md %}
+{% include videos/learn/vs.md %}
 
 Kubernetes provides a great platform to run and manage Docker containers. The `kubectl` command is usually how you interact with a Kubernetes cluster.  It does its job well and is quite a powerful tool.
 
