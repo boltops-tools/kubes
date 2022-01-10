@@ -49,8 +49,30 @@
               <li><a href="{% link _docs/intro/ordering/custom.md %}">Custom Order</a></li>
             </ul>
           </li>
-          <li><a href="{% link _docs/intro/install.md %}">Install</a></li>
           <li><a href="{% link _docs/intro/docker-image.md %}">Docker Image</a></li>
+        </ul>
+      </li>
+      <li><a href="{% link _docs/install.md %}">Install</a>
+        <ul>
+          <li><a href="{% link _docs/install/gem.md %}">Gem</a></li>
+          <li><a href="{% link _docs/install/standalone.md %}">Standalone</a>
+            <ul>
+              {% assign docs = site.docs | where: "categories","standalone" | sort:"order" %}
+              {% for doc in docs -%}
+              {% if doc.nav_text == "Details" %}
+              <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a>
+                <ul>
+                  <li><a href="{% link _docs/install/standalone/details/permissions.md %}">Permissions</a></li>
+                  <li><a href="{% link _docs/install/standalone/details/uninstall.md %}">Uninstall</a></li>
+                </ul>
+              </li>
+              {% else %}
+              <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
+              {% endif %}
+              {% endfor %}
+            </ul>
+          </li>
+          <li><a href="{% link _docs/install/dependencies.md %}">Dependencies</a>
         </ul>
       </li>
       <li><a href="{% link _docs/resources.md %}">Resources</a>

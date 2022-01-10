@@ -2,4 +2,4 @@
 title: Install Kubes
 ---
 
-{% include intro/install.md %}
+{% include install/gem.md %}
