@@ -1,10 +1,9 @@
-## RubyGems
+---
+title: Install Dependencies
+---
 
-Install kubes via RubyGems.
+These dependencies are not included with any of the installers. This allows you to install and run the versions you want to use.
 
-    gem install kubes
-
-Ruby 2.7 and above is recommended.
 
 ## kubectl
 
