@@ -38,6 +38,8 @@ module Kubes
     end
 
     def write(result)
+      return if config_skip?(result.filename)
+      return if result.skip?
       result.decorate!(:post)
       filename, content = result.filename, result.content
       dest = "#{Kubes.root}/.kubes/output/#{filename}"

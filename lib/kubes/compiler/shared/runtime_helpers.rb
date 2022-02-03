@@ -68,6 +68,13 @@ module Kubes::Compiler::Shared
         "#{role}/#{kind}/base.rb",
         "#{role}/#{kind}/#{Kubes.env}.rb",
       ]
+      if Kubes.app
+        app_layers = ["#{Kubes.app}.rb"]
+        app_layers += layers.map do |path|
+          "#{Kubes.app}/#{path}"
+        end
+        layers += app_layers
+      end
 
       layers.each do |layer|
         path = "#{Kubes.root}/.kubes/variables/#{layer}"

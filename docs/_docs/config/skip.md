@@ -56,3 +56,25 @@ You can also us ethe `KUBES_SKIP` env var. It takes list of strings separated by
     KUBES_SKIP="cleanup/job" kubes delete
 
 This can be useful for one-off use cases.
+
+## Skip With kubes skip metdata
+
+You can also skip a resource from being written by using `kubes.skip = true`. This is useful if you want to conditionally not create a resource with a variable. Example:
+
+.kubes/resources/config_map.yaml
+
+```yaml
+<% if @skip %>
+kubes:
+  skip: true
+<% end %>
+metadata:
+  namespace: demo-dev
+  labels:
+    app: demo-dev
+  name: demo-dev-configmap-495c18844b
+apiVersion: v1
+kind: ConfigMap
+```
+
+If the variable is set to `@skip = true`, then the config_map.yaml will not get created.

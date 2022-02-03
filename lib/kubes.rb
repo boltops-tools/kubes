@@ -31,3 +31,5 @@ module Kubes
   class MissingDockerImage < Error; end
   extend Core
 end
+
+Kubes::Booter.boot

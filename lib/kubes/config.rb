@@ -18,7 +18,7 @@ module Kubes
       # Auto-switching options
       config.kubectl = ActiveSupport::OrderedOptions.new
       config.kubectl.context = nil
-      config.kubectl.context_keep = true # after switching context keep it
+      config.kubectl.context_keep = false # after switching context keep it
 
       # whether or not continue if the kubectl command fails
       config.kubectl.exit_on_fail = ActiveSupport::OrderedOptions.new
@@ -39,7 +39,7 @@ module Kubes
       config.skip = []
 
       config.state = ActiveSupport::OrderedOptions.new
-      config.state.path = "#{Kubes.root}/.kubes/state/#{Kubes.env}/data.json"
+      config.state.path = ["#{Kubes.root}/.kubes/tmp/state", Kubes.app, "#{Kubes.env}/data.json"].compact.join('/')
 
       config.suffix_hash = true # append suffix hash to ConfigMap and Secret
 
@@ -95,6 +95,10 @@ module Kubes
     def load_configs
       evaluate_file(".kubes/config.rb")
       evaluate_file(".kubes/config/env/#{Kubes.env}.rb")
+      if Kubes.app
+        evaluate_file(".kubes/config/env/#{Kubes.app}.rb")
+        evaluate_file(".kubes/config/env/#{Kubes.app}/#{Kubes.env}.rb")
+      end
       Kubes::Plugin.plugins.each do |klass|
         # klass: IE: KubesAws, KubesGoogle
         name = klass.to_s.underscore.sub('kubes_','') # kubes_google => google

@@ -21,8 +21,20 @@ class Kubes::Compiler::Strategy
     end
 
     def content
-      result = @data.size == 1 ? @data.first : @data
+      data = filter_skip(@data)
+      return if data.empty?
+      result = data.size == 1 ? data.first : data
       yaml_dump(result)
+    end
+
+    def skip?
+      content.nil?
+    end
+
+    def filter_skip(data)
+      data.reject do |item|
+        item.dig('kubes', 'skip')
+      end
     end
   end
 end
