@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.1] - 2022-02-06
+- allow --version command to run outside project
+
 ## [0.8.0] - 2022-02-06
 - [#58](https://github.com/boltops-tools/kubes/pull/58) standalone install docs
 - [#59](https://github.com/boltops-tools/kubes/pull/59) central deployer support
