@@ -85,7 +85,6 @@ class Kubes::CLI
     def adjust_gitignore
       ignores = %w[
         .kubes/output
-        .kubes/state
         .kubes/tmp
       ].map {|l| "#{l}\n"} # the readlines will have lines with \n so keep consistent for processing
       if File.exist?(".gitignore")

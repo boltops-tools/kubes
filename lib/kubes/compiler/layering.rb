@@ -31,6 +31,15 @@ class Kubes::Compiler
         "base",
         Kubes.env.to_s
       ]
+
+      if Kubes.app
+        layers += [
+          Kubes.app,
+          "#{Kubes.app}/base",
+          "#{Kubes.app}/#{Kubes.env}",
+        ]
+      end
+
       layers = add_exts(layers)
       layers.map! do |layer|
         "#{kind_path}/#{layer}"

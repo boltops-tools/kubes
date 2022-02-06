@@ -2,6 +2,10 @@ module Kubes
   module Core
     extend Memoist
 
+    def app
+      ENV['KUBES_APP']
+    end
+
     def env
       ENV['KUBES_ENV'] || "dev"
     end

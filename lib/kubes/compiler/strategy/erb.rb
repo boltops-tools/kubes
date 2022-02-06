@@ -17,7 +17,11 @@ class Kubes::Compiler::Strategy
     def render_result(path)
       return unless File.exist?(path)
 
+      comment = Comment.new(path)
+      path = comment.process if comment.process?
       yaml = RenderMePretty.result(path, context: self)
+      comment.clean if comment.process?
+
       result = yaml_load(path, yaml)
       # in case of blank yaml doc a Boolean false is returned. else Hash or Array is returned
       %w[Array Hash].include?(result.class.to_s) ? result : {}

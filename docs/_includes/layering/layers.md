@@ -46,6 +46,9 @@ pre | ROLE/all.{{ include.ext }}        | web/all.{{ include.ext }}
 main | ROLE/KIND.{{ include.ext }}      | web/deployment.{{ include.ext }}
 post | ROLE/KIND/base.{{ include.ext }} | web/deployment/base.{{ include.ext }}
 post | ROLE/KIND/ENV.{{ include.ext }}  | web/deployment/dev.{{ include.ext }}
+post | ROLE/KIND/APP.{{ include.ext }} | web/deployment/app1.{{ include.ext }}
+post | ROLE/KIND/APP/base.{{ include.ext }} | web/deployment/app1/base.{{ include.ext }}
+post | ROLE/KIND/APP/ENV.{{ include.ext }}  | web/deployment/app1/dev.{{ include.ext }}
 
 ## Real-World Uses
 

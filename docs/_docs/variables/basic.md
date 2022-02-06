@@ -2,6 +2,7 @@
 title: Basic Variables
 nav_text: Basic
 categories: variables
+order: 1
 ---
 
 ## Basic Layering Example

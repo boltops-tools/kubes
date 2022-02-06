@@ -16,7 +16,9 @@ Kubes.configure do |config|
 end
 ```
 
-## Layering
+## Config Overrides
+
+### Env Overrides
 
 You can override configs on a per-env basis with `config/env` files. Examples:
 
@@ -38,7 +40,32 @@ Kubes.configure do |config|
 end
 ```
 
-For more details refer to the [Layering Docs]({% link _docs/layering.md %}).
+### App Overrides
+
+If KUBES_APP is set, app-scoped configs can be used to override settings further. Here are some with `config/env/app` example files:
+
+.kubes/config/env/app1/dev.rb
+
+```ruby
+Kubes.configure do |config|
+  config.repo = "222222222222.dkr.ecr.us-west-2.amazonaws.com/demo"
+  config.kubectl.context = "dev-cluster"
+end
+```
+
+.kubes/config/env/app2/prod.rb
+
+```ruby
+Kubes.configure do |config|
+  config.repo = "333333333333.dkr.ecr.us-west-2.amazonaws.com/demo"
+  config.kubectl.context = "prod-cluster"
+end
+```
+
+This allows you to set specific app-level settings with:
+
+    KUBES_APP=app1 kubes deploy
+    KUBES_APP=app2 kubes deploy
 
 ## Auto-Switching Context
 

@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 gem "html-proofer"
 gem "jekyll"
+gem "jekyll-include-cache"
 gem "opal"
 gem "opal-browser"
 gem "opal-jquery"

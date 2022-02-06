@@ -70,4 +70,10 @@ defaults:
 plugins_dir:
   # - jekyll-gzip - GitHub pages does not support this plugin.
 
+# List of supported plugins:
+# https://pages.github.com/versions.json
+# https://github.com/github/pages-gem/issues/171
+plugins:
+- jekyll-include-cache # Supported by GitHub pages
+
 ads_url: "https://ads.boltops.com"

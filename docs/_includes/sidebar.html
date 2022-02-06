@@ -100,10 +100,12 @@
             {% endfor %}
             </ul>
           </li>
+          <li><a href="{% link _docs/config/boot.md %}">Boot Hooks</a></li>
           <li><a href="{% link _docs/config/docker.md %}">Docker</a></li>
           <li><a href="{% link _docs/config/env.md %}">Env</a></li>
           <li><a href="{% link _docs/config/builder.md %}">Builder</a></li>
           <li><a href="{% link _docs/config/skip.md %}">Skip Option</a></li>
+          <li><a href="{% link _docs/config/app-overrides.md %}">App Overrides</a></li>
           <li><a href="{% link _docs/config/reference.md %}">Reference</a></li>
         </ul>
       </li>
@@ -112,6 +114,7 @@
         <ul>
           <li><a href="{% link _docs/yaml/multiple-resources.md %}">Multiple Resources</a></li>
           <li><a href="{% link _docs/yaml/multiple-files.md %}">Multiple Files</a></li>
+          <li><a href="{% link _docs/yaml/erb-comment.md %}">ERB Comment Syntax</a></li>
         </ul>
       </li>
       <li><a href="{% link _docs/layering.md %}">Layering</a>
@@ -138,7 +141,7 @@
       </li>
       <li><a href="{% link _docs/variables.md %}">Variables</a>
         <ul>
-          {% assign docs = site.docs | where: "categories","variables" %}
+          {% assign docs = site.docs | where: "categories","variables" | sort:"order" %}
           {% for doc in docs -%}
             <li><a href="{{ doc.url }}">{{ doc.nav_text }}</a></li>
           {% endfor %}
