@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.0] - 2022-02-06
+- [#58](https://github.com/boltops-tools/kubes/pull/58) standalone install docs
+- [#59](https://github.com/boltops-tools/kubes/pull/59) central deployer support
+
 ## [0.7.10] - 2021-12-18
 - [#56](https://github.com/boltops-tools/kubes/pull/56) New hook generator
 - [#57](https://github.com/boltops-tools/kubes/pull/57) Fix activesupport require
