@@ -31,6 +31,8 @@ Then to deploy different app level settings.
 
 {% include config/app-overrides-cheatsheet.md %}
 
+Also check out: [App Overrides Docs]({% link _docs/config/app-overrides.md %}).
+
 The central deployer approach is removes duplication of the kubes config files between projects. Leveraging app-level overrides gives provides a great degree of control.
 
 If the settings start to diverge too much, then it probably makes sense to use separate .kubes files in that app specific repo.
