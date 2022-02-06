@@ -13,12 +13,12 @@ Kubes can be use as either an app-centric or ops-centric tool.
 
 With an ops-centric approach, you use the same `.kubes` settings files for the app repos you want to use. For example:
 
-    https://github.com/repo/app1
-    https://github.com/repo/app2
+    https://github.com/org/app1
+    https://github.com/org/app2
 
 You then also have a
 
-    https://github.com/repo/.kubes
+    https://github.com/org/.kubes
 
 You can simply copy the `.kubes` folder into the app repo folder or even add the `repo/.kubes` as a submodule.
 
