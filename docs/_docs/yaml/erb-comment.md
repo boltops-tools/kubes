@@ -30,7 +30,7 @@ spec:
   type: ClusterIP
 ```
 
-This allows IDB kubernetes autocompletion plugins and tools to work because the `.kubes/resources/web/service.yaml` source code itself is perfectly valid YAML.
+This allows IDE kubernetes autocompletion plugins and tools to work because the `.kubes/resources/web/service.yaml` source code itself is perfectly valid YAML.
 
 The `#ERB` comments are essentially replaced by `<% ... %>` tags before ERB processing happens. Example:
 
