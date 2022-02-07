@@ -30,8 +30,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "zeitwerk"
 
   # core helper libs
-  spec.add_dependency "kubes_aws", "~> 0.3.1"
-  spec.add_dependency "kubes_google", "~> 0.3.5"
+  spec.add_dependency "kubes_aws", ">= 0.3.1"
+  spec.add_dependency "kubes_google", ">= 0.3.8"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "byebug"
