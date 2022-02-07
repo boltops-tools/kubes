@@ -7,7 +7,7 @@ categories: patterns
 Kubes can be use as either an app-centric or ops-centric tool.
 
 * **app-centric**: Each app repo has it's own `.kubes` settings files. This is useful if your applications are very differently setup.
-* **ops-centric**: Each app repo has pretty much the same `.kubes` settings files. This is useful if your applications are very similarly setup.
+* **ops-centric**: Each app repo has pretty much the same `.kubes` settings files. This is useful if your applications are very similarly set up.
 
 ## Setup
 
