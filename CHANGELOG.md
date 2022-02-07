@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.2] - 2022-02-07
+- improve gem dependency version specifiers
+
 ## [0.8.1] - 2022-02-06
 - allow --version command to run outside project
 
