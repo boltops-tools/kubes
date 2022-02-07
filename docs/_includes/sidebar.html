@@ -54,7 +54,11 @@
       </li>
       <li><a href="{% link _docs/install.md %}">Install</a>
         <ul>
-          <li><a href="{% link _docs/install/gem.md %}">Gem</a></li>
+          <li><a href="{% link _docs/install/gem.md %}">Gem</a>
+            <ul>
+              <li><a href="{% link _docs/install/gem/custom-version.md %}">Custom Version</a></li>
+            </ul>
+          </li>
           <li><a href="{% link _docs/install/standalone.md %}">Standalone</a>
             <ul>
               {% assign docs = site.docs | where: "categories","standalone" | sort:"order" %}
