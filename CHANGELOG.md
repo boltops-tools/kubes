@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.4] - 2022-02-16
+- bump kubes_aws and kubes_google dependencies
+
 ## [0.8.3] - 2022-02-16
 - [#60](https://github.com/boltops-tools/kubes/pull/60) Config files
 
