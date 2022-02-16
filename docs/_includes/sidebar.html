@@ -153,7 +153,11 @@
       </li>
       <li><a href="{% link _docs/helpers.md %}">Helpers</a>
         <ul>
-          <li><a href="{% link _docs/helpers/custom.md %}">Custom</a></li>
+          <li><a href="{% link _docs/helpers/builtin.md %}">Built-In</a>
+            <ul>
+              <li><a href="{% link _docs/helpers/builtin/config-map-files.md %}">Config Map Files</a>
+            </ul>
+          </li>
           <li><a href="{% link _docs/helpers/aws.md %}">AWS</a>
             <ul>
               {% assign docs = site.docs | where: "categories","helpers-aws" %}
@@ -192,6 +196,7 @@
               {% endfor %}
             </ul>
           </li>
+          <li><a href="{% link _docs/helpers/custom.md %}">Custom</a></li>
         </ul>
       </li>
       <li><a href="{% link _docs/patterns.md %}">Patterns</a>
