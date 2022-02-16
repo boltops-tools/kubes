@@ -18,9 +18,10 @@ module Kubes::Compiler::Shared::Helpers
       data = {}
       layers.each do |path|
         next unless File.exist?(path)
-        lines = IO.readlines(path)
+        text = RenderMePretty.result(path, context: self)
+        lines = text.split("\n")
         lines.each do |line|
-          key, value = line.split('=').map(&:strip)
+          key, value = parse_env_like_line(line)
           data[key] = value
         end
       end
