@@ -53,7 +53,7 @@ data:
 
 ## Layering Details
 
-Layering for Config Map Files and also supports app-scoped layers.
+Config Map Files also supports App-Scoped Layering.
 
 Name | Example
 --- | ---
