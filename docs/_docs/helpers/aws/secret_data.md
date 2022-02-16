@@ -4,7 +4,7 @@ nav_text: Secrets Data
 categories: helpers-aws
 ---
 
-The `aws_secret_data` helper fetches secret data that is one single file from AWS Secrets.
+The `aws_secret_data` helper fetches secret data that is designed to be in one single file from AWS Secrets.
 
 ## Example
 

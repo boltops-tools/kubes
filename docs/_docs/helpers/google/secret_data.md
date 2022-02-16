@@ -4,7 +4,7 @@ nav_text: Secrets Data
 categories: helpers-google
 ---
 
-The `google_secret_data` helper fetches secret data that is one single file from Google Secrets.
+The `google_secret_data` helper fetches secret data that is designed to be in one single file from Google Secrets.
 
 ## Example
 
