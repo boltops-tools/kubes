@@ -10,6 +10,7 @@ module Kubes::Compiler::Shared::Helpers
       ]
       if Kubes.app
         layers += [
+          [shared_config_map, "#{Kubes.app}.txt"],
           [shared_config_map, Kubes.app, "base.txt"],
           [shared_config_map, Kubes.app, "#{Kubes.env}.txt"],
         ]

@@ -58,6 +58,7 @@ Layering for Config Map Files and also supports app-scoped layers.
 Name | Example
 --- | ---
 configmap root | .kubes/resources/shared/config_map/{base,dev}.txt
-configmap app-scoped | .kubes/resources/shared/config_map/app1/{base,dev}.txt
+configmap app file | .kubes/resources/shared/config_map/app1.txt
+configmap app folder | .kubes/resources/shared/config_map/app1/{base,dev}.txt
 
 So if `KUBES_APP=app1`, then the app-scoped layer is also used. This handles the [Central Deployer Pattern]({% link _docs/patterns/central-deployer.md %}).
