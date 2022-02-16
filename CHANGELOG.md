@@ -3,6 +3,9 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.3] - 2022-02-16
+- [#60](https://github.com/boltops-tools/kubes/pull/60) Config files
+
 ## [0.8.2] - 2022-02-07
 - improve gem dependency version specifiers
 
