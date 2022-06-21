@@ -96,8 +96,12 @@ module Kubes
       evaluate_file(".kubes/config.rb")
       evaluate_file(".kubes/config/env/#{Kubes.env}.rb")
       if Kubes.app
+        # TODO: deprecate
         evaluate_file(".kubes/config/env/#{Kubes.app}.rb")
         evaluate_file(".kubes/config/env/#{Kubes.app}/#{Kubes.env}.rb")
+        # newer
+        evaluate_file(".kubes/config/app/#{Kubes.app}.rb")
+        evaluate_file(".kubes/config/app/#{Kubes.app}/#{Kubes.env}.rb")
       end
       Kubes::Plugin.plugins.each do |klass|
         # klass: IE: KubesAws, KubesGoogle
