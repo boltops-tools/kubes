@@ -22,6 +22,7 @@ class Kubes::Compiler::Strategy
 
     def content
       data = filter_skip(@data)
+      data.each { |item| item.delete('kubes') }
       return if data.empty?
       result = data.size == 1 ? data.first : data
       yaml_dump(result)
