@@ -9,7 +9,7 @@ If you already a project with an existing Dockerfile, you can use that. If you d
 
 {% include learn/repos.md %}
 
-Let's generate a starter project:
+Let's initialize a starter kubes project. This is similar to a `git init`.
 
     $ kubes init --app demo --repo $REPO --type dsl
           create  .kubes/config.rb

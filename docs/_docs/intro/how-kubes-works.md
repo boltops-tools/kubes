@@ -16,7 +16,7 @@ Now, use `kubectl` directly and apply them in the proper order:
     kubectl apply -f .kubes/output/web/service.yaml
     kubectl apply -f .kubes/output/web/deployment.yaml
 
-The deploy command simpifily does all 3 steps: build, compile, and apply.
+The deploy command simply does all 3 steps: build, compile, and apply.
 
     kubes deploy
 

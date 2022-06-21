@@ -6,6 +6,13 @@ categories: hooks
 
 {% include config/hooks/generator.md type="docker" %}
 
+## Docker Hooks
+
+Hook | Description
+---|---
+build | When kubes builds Docker image.
+push | When kubes pushes the Docker image.
+
 Here are some examples of running custom hooks before and after the docker commands.
 
 ## Build Hooks

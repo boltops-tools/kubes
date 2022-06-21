@@ -17,7 +17,7 @@ apply | When kubes runs all the `kubectl apply` commands.
 delete | When kubes runs all the `kubectl delete` commands.
 prune | When kubes prunes. IE: To clean old secrets.
 
-## Lifecycle At Kubes Level
+## Kubes Lifecyle Level
 
 These lifecycle points occur at a higher-level than the `kubectl` commands. Here's an example to help explain:
 

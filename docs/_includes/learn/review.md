@@ -2,6 +2,8 @@
 
 The `config.rb` is where you can configure Kubes settings.
 
+.kubes/config.rb
+
 ```ruby
 Kubes.configure do |config|
   config.repo = "112233445566.dkr.ecr.us-west-2.amazonaws.com/demo" # may be gcr.io/project-123/demo
@@ -13,7 +15,7 @@ end
 
 This is where the `--repo` from `kubes init` got saved.  The other options are covered in the [Env Config Docs]({% link _docs/config/env.md %}).
 
-## Dockerfie
+## Dockerfile
 
 The `Dockerfile` is a simple starter example that just runs nginx
 
