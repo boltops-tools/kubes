@@ -3,11 +3,15 @@ module Kubes
     extend Memoist
 
     def app
-      ENV['KUBES_APP']
+      ENV['KUBES_APP'] unless ENV['KUBES_APP'].blank?
     end
 
     def env
-      ENV['KUBES_ENV'] || "dev"
+      ENV['KUBES_ENV'].blank? ? "dev" : ENV['KUBES_ENV']
+    end
+
+    def extra
+      ENV['KUBES_EXTRA'] unless ENV['KUBES_EXTRA'].blank?
     end
 
     def root
@@ -36,7 +40,7 @@ module Kubes
     def check_project!
       return if File.exist?("#{Kubes.root}/.kubes/config.rb")
       logger.error "ERROR: It doesnt look like this is a kubes project. Are you sure you are in a kubes project?".color(:red)
-      ENV['TS_TEST'] ? raise : exit(1)
+      ENV['KUBES_TEST'] ? raise : exit(1)
     end
 
     # wrapper to ensure we use the same deeper_merge options everywhere
