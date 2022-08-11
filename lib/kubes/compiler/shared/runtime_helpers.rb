@@ -59,14 +59,18 @@ module Kubes::Compiler::Shared
       layers = [
         "base.rb",
         "#{Kubes.env}.rb",
+        "#{Kubes.env}-#{Kubes.extra}.rb",
         "base/all.rb",
         "base/all/#{Kubes.env}.rb",
+        "base/all/#{Kubes.env}-#{Kubes.extra}.rb",
         "base/#{kind}.rb",
         "base/#{kind}/base.rb",
         "base/#{kind}/#{Kubes.env}.rb",
+        "base/#{kind}/#{Kubes.env}-#{Kubes.extra}.rb",
         "#{role}/#{kind}.rb",
         "#{role}/#{kind}/base.rb",
         "#{role}/#{kind}/#{Kubes.env}.rb",
+        "#{role}/#{kind}/#{Kubes.env}-#{Kubes.extra}.rb",
       ]
       if Kubes.app
         app_layers = ["#{Kubes.app}.rb"]
