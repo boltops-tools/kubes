@@ -8,3 +8,4 @@ Kubes supports layering files together so you can use the same Kubernetes files 
 * [DSL Layering]({% link _docs/layering/dsl.md %})
 * [Mix Layering]({% link _docs/layering/mix.md %})
 * [Merge Behavior]({% link _docs/layering/merge-dsl.md %})
+* [Extra Layering]({% link _docs/layering/extra.md %})
