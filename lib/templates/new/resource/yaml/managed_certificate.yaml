@@ -1,7 +1,9 @@
-apiVersion: networking.gke.io/v1beta2
+# Docs: https://cloud.google.com/kubernetes-engine/docs/how-to/managed-certs#setting_up_a_google-managed_certificate
+# https://kubes.guru/docs/dsl/resources/managed_certificate/
+apiVersion: networking.gke.io/v1
 kind: ManagedCertificate
 metadata:
-  name: cert1
+  name: managed-cert
 spec:
   domains:
-  - cert1.example.com
+  - subdomain1.example.com
