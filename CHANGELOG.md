@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.8.10] - 2022-08-18
+- [#65](https://github.com/boltops-tools/kubes/pull/65) show variables layers support
+- improve new secret generator
+
 ## [0.8.9] - 2022-08-11
 - [#64](https://github.com/boltops-tools/kubes/pull/64) extra variable layering
 - add extra layering docs
