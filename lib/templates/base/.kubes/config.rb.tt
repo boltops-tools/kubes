@@ -1,6 +1,7 @@
 Kubes.configure do |config|
   config.repo = "<%= @options[:repo] %>"
-  config.logger.level = "info"
+  # config.logger.level = "debug"
+  # config.layering.show = true
   # auto-switching
   # config.kubectl.context = "dev-cluster"
   # config.kubectl.context_keep = true # keep context after switching

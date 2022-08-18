@@ -4,6 +4,7 @@ class Kubes::Compiler::Strategy
     include Kubes::Compiler::Util::Normalize
     include Kubes::Compiler::Util::SaveFile
     include Kubes::Logging
+    include Kubes::Util::Pretty
 
     def initialize(options={})
       @options = options

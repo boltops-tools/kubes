@@ -1,5 +1,7 @@
 ---
 title: Merge Options
+category: layering
+order: 5
 ---
 
 Underneath the hood, Kubes uses the [danielsdeleo/deep_merge](https://github.com/danielsdeleo/deep_merge) library to merge layers together. You can control the merge behavior options with [config.merger.options]({% link _docs/config/reference.md %}).

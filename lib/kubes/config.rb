@@ -33,6 +33,9 @@ module Kubes
       config.repo = nil # expected to be set by .kubes/config.rb
       config.repo_auto_auth = true
 
+      config.layering = ActiveSupport::OrderedOptions.new
+      config.layering.show = ENV['KUBES_LAYERING_SHOW'] || false
+
       config.logger = Logger.new($stderr)
       config.logger.level = ENV['KUBES_LOG_LEVEL'] || :info
 
