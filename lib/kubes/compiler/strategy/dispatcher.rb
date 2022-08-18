@@ -1,6 +1,7 @@
 class Kubes::Compiler::Strategy
   class Dispatcher < Base
     def dispatch
+      logger.info "Compiling #{pretty_path(@path)}" if Kubes.config.layering.show
       result = render(@path) # main
       results = [result].flatten # ensure array
       data = results.map! do |main|
@@ -16,8 +17,7 @@ class Kubes::Compiler::Strategy
         klass = dsl_class(path) # IE: Kubes::Compiler::Dsl::Syntax::Deployment or Kubes::Compiler::Dsl::Core::Blocks
         klass.new(@options.merge(path: path, data: @data)).run
       else
-        pretty_path = path.sub("#{Kubes.root}/",'')
-        logger.debug "Rendering #{pretty_path}"
+        logger.info "Rendering #{pretty_path(path)}" if ENV['KUBES_LAYERING_SHOW_ALL']
         Erb.new(@options.merge(data: @data)).render_result(path)
       end
     end

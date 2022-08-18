@@ -1,5 +1,8 @@
 ---
 title: DSL Merge Behavior
+nav_text: DSL Merge
+category: layering
+order: 4
 ---
 
 Generally, the merge should behave as expected. For example, map or Hash fields are merged together from multiple layers. Strings are simply replaced.

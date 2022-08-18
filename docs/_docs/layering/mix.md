@@ -1,5 +1,8 @@
 ---
 title: Mixed Layering
+nav_text: Mix and Match
+category: layering
+order: 3
 ---
 
 You can mix and match the YAML and DSL forms together and layering still works.

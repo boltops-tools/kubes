@@ -1,5 +1,7 @@
 ---
 title: Extra Layering
+category: layering
+order: 8
 ---
 
 Setting KUBES_EXTRA will process extra layers.

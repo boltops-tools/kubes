@@ -1,6 +1,7 @@
 module Kubes::Compiler::Shared
   module RuntimeHelpers
     include Kubes::Compiler::Shared::Helpers
+    include Kubes::Util::Pretty
 
     def load_runtime_helpers
       load_plugin_helpers
@@ -72,6 +73,10 @@ module Kubes::Compiler::Shared
         "#{role}/#{kind}/#{Kubes.env}.rb",
         "#{role}/#{kind}/#{Kubes.env}-#{Kubes.extra}.rb",
       ]
+      # filter out the -.rb layers when Kubes.extra is not set
+      # IE: .kubes/variables/dev-.rb
+      layers.reject! { |layer| layer.ends_with?('-.rb') }
+
       if Kubes.app
         app_layers = ["#{Kubes.app}.rb"]
         app_layers += layers.map do |path|
@@ -82,7 +87,22 @@ module Kubes::Compiler::Shared
 
       layers.each do |layer|
         path = "#{Kubes.root}/.kubes/variables/#{layer}"
+        show_variable_layer_path(path)
         evaluate_file(path)
+      end
+    end
+
+    @@shown = {}
+    def show_variable_layer_path(path)
+      # Examples:
+      #   .kubes/resources/web/deployment.yaml
+      #   .kubes/resources/shared/namespace.yaml
+      main_path = @path # main path is main resource file
+      show_once = !@@shown.dig(main_path, path)
+      if ENV['KUBES_LAYERING_SHOW_ALL'] || (Kubes.config.layering.show && show_once && File.exist?(path))
+        logger.info "    #{pretty_path(path)}"
+        @@shown[main_path] ||= {}
+        @@shown[main_path][path] = true
       end
     end
   end

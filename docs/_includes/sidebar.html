@@ -123,12 +123,10 @@
       </li>
       <li><a href="{% link _docs/layering.md %}">Layering</a>
         <ul>
-          <li><a href="{% link _docs/layering/yaml.md %}">YAML</a></li>
-          <li><a href="{% link _docs/layering/dsl.md %}">DSL</a></li>
-          <li><a href="{% link _docs/layering/mix.md %}">Mix</a></li>
-          <li><a href="{% link _docs/layering/merge-dsl.md %}">Merge DSL</a></li>
-          <li><a href="{% link _docs/layering/merge-options.md %}">Merge Options</a></li>
-          <li><a href="{% link _docs/layering/extra.md %}">Extra Layering</a></li>
+          {% assign docs = site.docs | where: "categories","layering" | sort: "order" %}
+          {% for doc in docs -%}
+            <li><a href="{{ doc.url }}">{% if doc.nav_text %}{{ doc.nav_text }}{% else %}{{ doc.title }}{% endif %}</a></li>
+          {% endfor %}
         </ul>
       </li>
       <li><a href="{% link _docs/dsl.md %}">DSL</a>
