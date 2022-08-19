@@ -4,7 +4,7 @@ category: layering
 order: 9
 ---
 
-Kube's Layering abilities are so powerful that they can be difficult to debug when overly used.  It is recommend you chose only a few layers that make sense for your goals and stick to them. Essentially, limit the rope length. Here are also some debugging tips.
+Kube's Layering abilities are so powerful that they can be difficult to debug when overly used.  It is recommended that you chose only a few layers that make sense for your goals and stick to them. Essentially, limit the rope length. Here are also some debugging tips.
 
 ## Enable Logging
 
