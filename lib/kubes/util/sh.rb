@@ -24,7 +24,7 @@ module Kubes::Util
       logger.info "=> #{command}" if show_command
       success = system(env, command)
       unless success
-        logger.error "ERROR: running #{command}".color(:red)
+        logger.error "ERROR: running #{command}".color(:red) if exit_on_fail
         exit $?.exitstatus if exit_on_fail
       end
       success
