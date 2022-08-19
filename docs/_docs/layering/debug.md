@@ -1,5 +1,5 @@
 ---
-title: "Debugging Layering"
+title: "Debug Layering"
 category: layering
 order: 9
 ---
