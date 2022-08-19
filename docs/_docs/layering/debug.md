@@ -20,16 +20,16 @@ end
 
 This will show the **found** layers.
 
-        $ kubes compile
-        Compiling .kubes/resources/shared/namespace.yaml
-            .kubes/variables/base.rb
-            .kubes/variables/dev.rb
-        Compiling .kubes/resources/web/deployment.yaml
-            .kubes/variables/base.rb
-            .kubes/variables/dev.rb
-        Compiling .kubes/resources/web/service.yaml
-            .kubes/variables/base.rb
-            .kubes/variables/dev.rb
+    $ kubes compile
+    Compiling .kubes/resources/shared/namespace.yaml
+        .kubes/variables/base.rb
+        .kubes/variables/dev.rb
+    Compiling .kubes/resources/web/deployment.yaml
+        .kubes/variables/base.rb
+        .kubes/variables/dev.rb
+    Compiling .kubes/resources/web/service.yaml
+        .kubes/variables/base.rb
+        .kubes/variables/dev.rb
 
 ## All Considered Layers
 
