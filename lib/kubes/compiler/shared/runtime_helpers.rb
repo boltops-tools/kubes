@@ -85,21 +85,30 @@ module Kubes::Compiler::Shared
         layers += app_layers
       end
 
-      layers.each do |layer|
-        path = "#{Kubes.root}/.kubes/variables/#{layer}"
+      layer_paths = layers.map { |layer| "#{Kubes.root}/.kubes/variables/#{layer}" }
+      layer_paths = layer_paths.select { |path| File.exist?(path) } unless ENV['KUBES_LAYERING_SHOW_ALL']
+      layer_paths.each do |path|
         show_variable_layer_path(path)
         evaluate_file(path)
       end
     end
 
+    @@header_shown = {} # key is main @path
     @@shown = {}
     def show_variable_layer_path(path)
+      main_path = @path # main path is main resource file
+
+      show_header = !@@header_shown.dig(main_path)
+      if show_header && Kubes.config.layering.show
+        logger.info "    Variables layers:"
+        @@header_shown[main_path] = true
+      end
       # Examples:
       #   .kubes/resources/web/deployment.yaml
       #   .kubes/resources/shared/namespace.yaml
-      main_path = @path # main path is main resource file
       show_once = !@@shown.dig(main_path, path)
-      if ENV['KUBES_LAYERING_SHOW_ALL'] || (Kubes.config.layering.show && show_once && File.exist?(path))
+      show_layer = Kubes.config.layering.show && show_once
+      if show_layer
         logger.info "    #{pretty_path(path)}"
         @@shown[main_path] ||= {}
         @@shown[main_path][path] = true
