@@ -24,7 +24,7 @@ module Kubes
 
       write_full
 
-      logger.info "Compiled  .kubes/resources files to .kubes/output" if show_compiled_message?
+      logger.info "Compiled .kubes/resources files to .kubes/output" if show_compiled_message?
     end
 
     def resources
@@ -51,7 +51,7 @@ module Kubes
         IO.write(dest, content)
       end
 
-      logger.debug "Compiled  #{pretty(dest)}"
+      logger.debug "Written  #{pretty(dest)}"
     end
 
     def write_full
@@ -62,7 +62,7 @@ module Kubes
       path = "#{Kubes.root}/.kubes/tmp/full.yaml" # write to tmp instead of output so it doesnt interfere with kubes get
       FileUtils.mkdir_p(File.dirname(path))
       IO.write(path, content)
-      logger.debug "Compiled  #{pretty(path)}"
+      logger.debug "Written  #{pretty(path)}"
     end
 
     def show_compiled_message?
