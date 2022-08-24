@@ -8,6 +8,7 @@ class Kubes::Compiler::Strategy
         hash = Kubes.deep_merge!(pre_layer, main)
         Kubes.deep_merge!(hash, post_layer)
       end
+      logger.info "Compiled .kubes/output/#{@save_file}" if Kubes.config.layering.show
       Result.new(@save_file, data)
     end
 
