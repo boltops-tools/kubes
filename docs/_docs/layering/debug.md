@@ -8,7 +8,11 @@ Kube's Layering abilities are so powerful that they can be difficult to debug wh
 
 ## Enable Logging
 
-You can debug layers by turning a config to show the **found** layers. Currently, only variables layering is shown.
+You can debug layers by setting `KUBES_LAYERING_SHOW=1`.
+
+    export KUBES_LAYERING_SHOW=1
+
+You can also turn on show layering with a config.
 
 .kubes/config.rb
 
@@ -21,13 +25,13 @@ end
 This will show the **found** layers.
 
     $ kubes compile
-    Compiling .kubes/resources/shared/namespace.yaml
-        .kubes/variables/base.rb
-        .kubes/variables/dev.rb
     Compiling .kubes/resources/web/deployment.yaml
-        .kubes/variables/base.rb
-        .kubes/variables/dev.rb
-    Compiling .kubes/resources/web/service.yaml
+        Resource layers:
+        .kubes/resources/base/all.yaml
+        .kubes/resources/base/deployment.yaml
+        .kubes/resources/web/deployment.yaml
+        .kubes/resources/web/deployment/dev.yaml
+        Variables layers:
         .kubes/variables/base.rb
         .kubes/variables/dev.rb
 
@@ -37,18 +41,12 @@ If you want to also see all the considered layers use `KUBES_LAYERING_SHOW_ALL=1
 
     $ export KUBES_LAYERING_SHOW_ALL=1
     Compiling .kubes/resources/web/deployment.yaml
-    Rendering .kubes/resources/web/deployment.yaml
-        .kubes/variables/base.rb
-        .kubes/variables/dev.rb
-        .kubes/variables/base/all.rb
-        .kubes/variables/base/all/dev.rb
-        .kubes/variables/base/deployment.rb
-        .kubes/variables/base/deployment/base.rb
-        .kubes/variables/base/deployment/dev.rb
-        .kubes/variables/web/deployment.rb
-        .kubes/variables/web/deployment/base.rb
-        .kubes/variables/web/deployment/dev.rb
-    Rendering .kubes/resources/base/all.yaml
+        Resource layers:
+        .kubes/resources/base/all.yaml
+        .kubes/resources/base/deployment.yaml
+        .kubes/resources/web/deployment.yaml
+        .kubes/resources/web/deployment/dev.yaml
+        Variables layers:
         .kubes/variables/base.rb
         .kubes/variables/dev.rb
         .kubes/variables/base/all.rb
