@@ -43,7 +43,8 @@ module Kubes::Docker::Strategy
     @@timestamp = Time.now.strftime('%Y-%m-%dT%H-%M-%S')
     def generate_name
       # IE: tongueroo/demo:kubes-
-      ["#{repo}:kubes-#{@@timestamp}", git_sha].compact.join('-')
+      tag = ENV['KUBES_IMAGE_TAG'] || Kubes.config.image_tag || ["kubes-#{@@timestamp}", git_sha].compact.join('-')
+      "#{repo}:#{tag}"
     end
 
     def repo

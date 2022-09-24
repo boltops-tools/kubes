@@ -7,6 +7,7 @@ Name | Description | Default
 auto_prune | Prune and delete old hashed resources like Secret and ConfigMap. | true
 builder | What docker build command to use. Can use `docker` or `gcloud` to build the Docker image. | docker
 image | Set a prebuilt Docker image to use. This is optional. Usually, you want to build an image from the Dockerfile.  Setting this will change the `docker_image` helper to use a predefined image. See: [Docker Image]({% link _docs/intro/docker-image.md %}) | nil
+image_tag | Normally, kubes will generate an image tag name. You can explicitly set it instead. IE: `latest` | nil
 kubectl.context | What kubectl context to auto-switch to. | nil
 kubectl.context_keep | Whether or not to keep the context switched | false
 kubectl.exit_on_fail.apply  | Whether or not continue if the `kubectl apply` fails. Note, can use `KUBES_EXIT_ON_FAIL=0` env var to set to false. | true
