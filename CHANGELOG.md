@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project *loosely tries* to adhere to [Semantic Versioning](http://semver.org/), even before v1.0.
 
+## [0.9.2] - 2022-10-10
+- [#68](https://github.com/boltops-tools/kubes/pull/68) kubes docker name
+- KUBES_IMAGE_TAG env var override ability
+
 ## [0.9.1] - 2022-08-24
 - [#67](https://github.com/boltops-tools/kubes/pull/67) small improvement to show layering: show compiled output path
 
