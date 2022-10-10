@@ -15,5 +15,8 @@ module Kubes
       klass_name = "Kubes::Docker::Strategy::#{@name.camelize}::#{strategy}"
       klass_name.constantize
     end
+
+    # For `kubes docker image` and read_image_name method
+    include Kubes::Docker::Strategy::ImageName
   end
 end

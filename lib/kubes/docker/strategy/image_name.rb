@@ -19,6 +19,12 @@ module Kubes::Docker::Strategy
       IO.write(image_state_path, text)
     end
 
+    def read_image_name
+      return unless File.exist?(image_state_path)
+      data = IO.read(image_state_path).strip
+      JSON.load(data)['image']
+    end
+
     # output can get entirely wiped so dont use that folder
     def image_state_path
       Kubes.config.state.path
