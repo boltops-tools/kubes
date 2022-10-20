@@ -2,8 +2,13 @@ module Kubes::Compiler::Shared::Helpers
   module ConfigMapHelper
     def config_map_files(options={})
       indent = options[:indent] || 2
+      # /path/to/app/.kubes/resources/shared/config_map.yaml:7:in `__tilt_4660'
+      line = caller[0]
+      path = line.split(':').first
+      basename = File.basename(path).sub(/.erb$/,'').sub(/.yaml$/, '').sub(/.rb$/, '')
+      filename = options[:name] || basename
 
-      shared_config_map = "#{Kubes.root}/.kubes/resources/shared/config_map"
+      shared_config_map = "#{Kubes.root}/.kubes/resources/shared/#{filename}"
       layers = [
         [shared_config_map, "base.txt"],
         [shared_config_map, "#{Kubes.env}.txt"],
