@@ -21,6 +21,7 @@ class Kubes::Auth
       auth_token = fetch_auth_token
       if File.exist?(docker_config)
         data = JSON.load(IO.read(docker_config))
+        data["auths"] ||= {}
         data["auths"][@repo_domain] = {auth: auth_token}
       else
         data = {"auths" => {@repo_domain => {auth: auth_token}}}
