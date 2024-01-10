@@ -16,4 +16,4 @@ Happy Hackin' 😁
 
 ## Commercial Support
 
-If you would like professional help, [BoltOps](https://www.boltops.com/) provides consulting. Feel free to reach out by filling out the [contact page](https://www.boltops.com/contact) or sending an email to contact@boltops.com.
+If you would like professional help, [BoltOps](https://www.boltops.com/) provides consulting. Feel free to reach out: [contact page](https://www.boltops.com/contact)
