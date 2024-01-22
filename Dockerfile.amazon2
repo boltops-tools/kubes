@@ -1,0 +1,37 @@
+FROM amazonlinux:2
+
+# This Dockerfile is much lighter but won't work with gke whitelisting. Getting this error when the google gke sdk is called:
+#
+#    Error loading shared library ld-linux-x86-64.so.2: No such file or directory #986
+#
+# If you don't need gke whitelisting, then this image should work and is lighter.
+
+ENV AWS_DEFAULT_REGION "us-east-1"
+
+# https://github.com/sgerrand/alpine-pkg-glibc/releases
+ENV KUBERNETES_VER=1.19.0
+
+RUN amazon-linux-extras install ruby3.0 -y \
+    && amazon-linux-extras install python3.8 -y \
+    && amazon-linux-extras install docker -y
+
+    RUN yum -y install curl wget jq unzip gcc ruby-devel make libxml
+
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip awscliv2.zip \
+    && ./aws/install
+
+RUN wget https://storage.googleapis.com/kubernetes-release/release/v${KUBERNETES_VER}/bin/linux/amd64/kubectl
+RUN chmod u+x kubectl && mv kubectl /bin/kubectl
+
+WORKDIR /app
+ADD . /app
+RUN bundle install
+RUN rake install
+
+RUN yum -y remove wget jq unzip gcc ruby-devel make
+RUN yum -y autoremove
+RUN yum clean all && rm -rf /var/cache/yum
+
+
+ENTRYPOINT ["/usr/local/bundle/bin/kubes"]
